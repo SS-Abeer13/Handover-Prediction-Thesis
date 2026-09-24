@@ -1,0 +1,370 @@
+ABSTRACT
+
+Long Term Evolution networks execute handovers through Event A3, a rule that fires only after a neighbour cell has already become stronger than the serving cell by a configured offset and has remained stronger for a full time-to-trigger. The rule is reactive by construction: it issues a response, not a warning. This thesis asks whether the next handover can be forecast from the measurements a handset already reports, how far ahead, with what guarantee — and, as it turned out, what has to be verified before any such number can be believed.
+
+Four drive-test campaigns were conducted on a live commercial LTE network in Dhaka and Gazipur, yielding 4 continuous logging sessions, 10,260 samples at one hertz and 957 handover commands decoded from RRC signalling rather than inferred from vendor counters. An alignment audit of the one-hertz export is reported first, because it governs every result that follows: in 76% of handovers the export row stamped before the handover command already carries the post-handover serving cell, so a row summarises the second that follows its own timestamp. Every feature is therefore lagged by one row, which moves the one-second AUPRC of the same model from 0.600 to 0.179; an arm-wise decomposition attributes 96% of that fall to the serving-cell radio scalars, which change their referent when the assignment flips, and none of it to the loss of one second of kinematics. The defect is traced to its mechanism rather than reported as an anomaly: a row written at the end of its second carries the target cell exactly when the handover completes before that second closes, a prediction that fails for none of the 15 handovers here whose execution crosses the boundary. It replicates on 4,712 handovers from an independent XCAL corpus spanning 3 operators (93% contaminated under an end-of-second rule, 4% under a start-of-second rule on the same events) and is absent from a public log whose rows are instantaneous samples. Read deliberately, the same artefact recovers the sub-second serving-cell update delay from a one-hertz export. The task is posed as discrete-time survival: one model estimates per-interval hazards and horizon probabilities are products of hazards, so ordering holds by construction for any learner.
+
+Under leave-one-campaign-out evaluation — the only protocol whose units are genuinely independent here, since each campaign is one continuous session — gradient-boosted trees reach AUPRC 0.179 at one second against a 6.8% prevalence floor (2.6x lift, AUROC 0.777) and AUPRC 0.475 at five seconds (1.8x), against 0.116 for the deployed A3 rule scored as a predictor. Splitting rows at random instead inflates the same number by 48 %, and splitting by 180-second chunks of one session — the protocol this work used before the audit — still inflates it by 13 %. The hazard formulation yields zero ordering violations against 40.2% of rows for independent per-horizon classifiers, a defect that a cumulative-maximum projection also removes at no cost, so the formulation is defended on needing neither a held-out calibration split nor five separate fits rather than on coherence alone. Scored as a warning rather than as a ranking, the system detects 34% of handover commands at the one-second horizon at 179 false alarms per hour with a median lead of 0.47 s, and 42% at five seconds at 70 per hour with a median lead of 3.31 s; no operating point measured here is deployable for target-cell preparation, and the contribution is the measurement framework rather than a deployable predictor.
+
+Two properties of the deployed network are corrected against the earlier draft of this work. Weighted by handovers rather than by configurations, 75% of A3-triggered handovers fire under a positive offset, so the operator's negative offsets belong to measurement configurations that rarely lead to mobility. The A3 conversion rate is shown to have no unit-free value: 63% of reports, 30% of trigger episodes under a loose rule that lets overlapping episodes claim the same command, and 73% once each command is matched to one episode. The separation between mobility and monitoring configurations survives all three and is widest under the strictest: 37% declined for the dominant mobility profile against 95% for the dominant monitoring profile. The contribution is a signalling-grounded, leakage-audited framework that converts measured handover events into coherent multi-horizon probabilities with a stated operating cost, together with a reproducible demonstration of how much of an apparently strong result on drive-test data can be timestamp alignment.
+
+Keywords: LTE, handover prediction, Event A3, RRC signalling, discrete-time survival analysis, data leakage, evaluation protocol, conformal risk control, calibration, drive test.
+
+TABLE OF CONTENTS
+
+Acknowledgements	iv
+
+Abstract	v
+
+List of figures	x
+
+List of tables	xii
+
+List of acronyms	xiii
+
+Chapter 1  Introduction	1
+
+1.1 Background	1
+
+1.2 Motivation	2
+
+1.3 Problem statement	3
+
+1.4 Objectives	4
+
+1.5 Scope and limitations	4
+
+1.6 Contributions	5
+
+1.7 Organisation of the report	5
+
+Chapter 2  Literature review and methodology	7
+
+2.1 LTE mobility and the Event A3 trigger	7
+
+2.2 The measurement literature	8
+
+2.3 The prediction literature and a protocol audit	8
+
+2.4 Ping-pong and its definitional instability	10
+
+2.5 Survival analysis as the appropriate formulation	11
+
+2.6 Distribution-free uncertainty quantification	11
+
+2.7 Point processes and the self-excitation of handover arrivals	12
+
+2.8 Evaluation practice imported from adjacent fields	12
+
+2.9 Research gap	13
+
+2.10 Methodology	13
+
+2.10.1 Approaches considered and rejected	14
+
+Chapter 3  Measurement campaign and ground truth	16
+
+3.1 Instrumentation	16
+
+3.2 The four campaigns	17
+
+3.3 Signalling decoding and the configuration timeline	18
+
+3.3.1 The attribution chain	18
+
+3.3.2 Why a flat parse is wrong	18
+
+3.3.3 The timeline	19
+
+3.4 Drive segmentation and quality control	19
+
+3.5 The deployed configuration	20
+
+3.6 The dataset	21
+
+Chapter 4  Predictive formulation and system design	24
+
+4.1 Problem formalisation	24
+
+4.2 The multi-horizon binary formulation and its defect	25
+
+4.3 The discrete-time survival formulation	26
+
+4.4 The likelihood under censoring	27
+
+4.5 Why class reweighting is inadmissible here	28
+
+4.6 Feature construction	28
+
+4.7 Models compared	29
+
+4.8 Calibration	30
+
+4.9 Evaluation protocol	30
+
+4.10 Distribution-free risk control	31
+
+4.11 Point-process analysis of handover arrivals	32
+
+Chapter 5  Results and discussion	34
+
+5.1 The alignment audit and what it costs	34
+
+5.2 The primary prediction result	36
+
+5.3 Splitting protocol: what each unit is worth	38
+
+5.4 Coherence and calibration	40
+
+5.5 The risk-control frontier and its price	43
+
+5.6 Generalisation across corridors and speed regimes	44
+
+5.7 An independent collection on the same network	45
+
+5.8 What the model uses, and where it works	46
+
+5.9 The A3 report-conversion rate and the unit it is counted in	48
+
+5.10 Ping-pong: definitional instability and its actual source	50
+
+5.11 Negative results and the cost of the audit	54
+
+5.12 Discussion against the objectives	55
+
+5.13 Threats to validity	56
+
+Chapter 6  Demonstration of outcome based education	58
+
+6.1 Introduction	58
+
+6.2 Course outcomes addressed	58
+
+6.3 Aspects of program outcomes addressed	59
+
+6.4 Knowledge profiles addressed	60
+
+6.5 Use of complex engineering problems	61
+
+6.6 Socio-cultural, environmental and ethical impact	61
+
+6.7 Attributes of complex engineering problem solving addressed	62
+
+6.8 Attributes of complex engineering activities addressed	63
+
+6.9 Project management, resources and budget	63
+
+Chapter 7  Conclusions	65
+
+7.1 Summary of findings	65
+
+7.2 Limitations	66
+
+7.3 Recommendations for future work	67
+
+7.4 Concluding remark	67
+
+References	69
+
+Appendix A  Full per-horizon results	71
+
+Appendix B  Feature inventory	72
+
+Appendix C  Reproduction notes	73
+
+Appendix D  The 22 audited models	74
+
+LIST OF FIGURES
+
+Figure 1.1 Event A3 fires only after the neighbour has been better than the serving cell by a configured offset for a full time-to-trigger. The profile that produces most of the handovers measured here is a +1 dB offset with a 320 ms time-to-trigger and 1 dB hysteresis.
+
+Figure 2.1 The methodology in five stages. Stage 2 supplies the ground truth; Stage 4 is the formulation that keeps the five horizons mutually consistent; Stage 5 is the evaluation protocol whose unit is a whole campaign.
+
+Figure 3.1 The three Dhaka campaigns on an OpenStreetMap background. Events cluster at particular junctions rather than distributing uniformly along the route. The 15 September highway campaign lies outside this extent. Map data © OpenStreetMap contributors.
+
+Figure 3.2 Measurement identifiers persist in VarMeasConfig until they are modified or removed. A flat parse resolves every report against the union of all configuration fragments; the timeline replays additions, modifications and removals in order and resolves each report against the configuration in force at its own timestamp.
+
+Figure 3.3 Handovers attributed to each configuration profile, weighted by the handovers each actually produced rather than by the number of configurations present. Blue bars are positive-offset A3 profiles, red bars negative-offset A3 profiles, grey bars other events.
+
+Figure 3.4 Composition of the pooled dataset. The four campaigns differ in duration and in event density; the highway campaign contributes the fewest handovers per minute and the highest mean speed.
+
+Figure 4.1 Independent per-horizon classifiers against the hazard formulation, drawn on simulated rows with the measured violation rate. Independent fits cross; the product of hazards cannot.
+
+Figure 4.2 The splitting ladder. Leave-one-campaign-out holds out a whole continuous session; blocked cross-validation holds out a contiguous stretch of each session with a 60-second purge on either side; the two leaky protocols draw 180-second blocks, or rows, at random.
+
+Figure 5.1 The alignment audit and its mechanism. (a) A handover command at tau inside the second [t, t+1) is carried by the row stamped t whenever the serving-cell register updates before the second closes, that is whenever the margin m = 1 - delta - x is positive. (b) The audit on our captures: rows around the command. (c) The same quantity on three datasets; the two aggregated exports are contaminated and the sampled log is not. (d) The falsification test: no handover whose execution crosses the second boundary contaminates its row. (e) Contamination against where the command falls inside the second, in both XCAL corpora. (f) In the last fifth of the second the contamination share becomes an estimator of the serving-cell update delay, which sits near 60 ms.
+
+Figure 5.2 Event-level cost of the warning at the 5 % false-positive operating point: share of handover commands detected against the 1 Hz grid ceiling, with the false-alarm episode rate per hour on the right axis.
+
+Figure 5.3 AUPRC lift over the prevalence floor by horizon for every learner, out of fold under leave-one-campaign-out. A lift of one is the floor itself.
+
+Figure 5.4 One-second AUPRC lift by learner, with each held-out campaign drawn separately. The spread across campaigns is wider than the spread across learners.
+
+Figure 5.5 The splitting ladder, at one and five seconds. Every learner rises as the protocol weakens, and the learners rise by different amounts, so the ranking changes with the protocol.
+
+Figure 5.6 Calibration error at one second, one line per held-out campaign, for independent classifiers against the hazard formulation.
+
+Figure 5.7 Calibration error against the horizon for every coherence arm (left) and the share of rows violating horizon ordering (right).
+
+Figure 5.8 Where the model earns its advantage: rows with no handover in the previous ten seconds against rows inside a burst.
+
+Figure 5.9 Conformal risk control in both regimes. Left: realised mean per-unit miss rate against the target, with the guarantee boundary as the diagonal. Right: the alarm rate that compliance costs.
+
+Figure 5.10 Leave-one-campaign-out on four metrics. Each bar holds one campaign out entirely and trains on the other three; the dashed line is the pooled out-of-fold value. The highway campaign is in red.
+
+Figure 5.11 Transfer to an independently collected dataset on the same network, with both domains built from L3 signalling alone. Bars are 95 % bootstrap intervals over runs.
+
+Figure 5.12 Single-feature discriminative power at one second on the lagged export. No single feature approaches the full model.
+
+Figure 5.13 Probability of a handover command within one and five seconds against the time since the previous command, computed from signalling timestamps.
+
+Figure 5.14 A3 report conversion under three units. Counting transmitted reports counts periodic re-reports of one trigger; counting trigger episodes loosely lets several overlapping episodes claim the same command; the one-to-one unit matches each command to exactly one episode.
+
+Figure 5.15 The ping-pong rate over the full definitional grid: three return windows against three conventions for cell identity and return, computed on one unchanging set of handover commands.
+
+Figure 5.16 Where ping-pong concentrates. The dominant axis is the carrier relationship, not the mobility regime.
+
+Figure 5.17 Hawkes branching ratio estimated on each campaign separately and on the pooled stream, with bootstrap intervals.
+
+Figure 5.18 Self-excitation in the handover arrival stream. The clustering is real; the Ogata residual test rejects the exponential kernel, so its temporal shape is not exponential.
+
+Figure 5.19 Feature-block, alignment and censoring ablations at one and five seconds, out of fold under leave-one-campaign-out, with the spread over three seeds.
+
+LIST OF TABLES
+
+Table 2.1 Protocol audit of the 22 most comparable prediction models, contrasted with the protocol adopted here. Appendix D lists the models.
+
+Table 3.1 Deployed Event A3 configuration recovered from RRC signalling, weighted by the handovers each profile produced.
+
+Table 3.2 The four measurement campaigns after quality control.
+
+Table 4.1 Positive-class prevalence by horizon on the common row set, and the accuracy obtained by a constant negative prediction.
+
+Table 4.2 Measured discrete-time hazard by bin, and the cumulative incidence it implies, against the prevalence of Table 4.1. The two agree exactly by construction.
+
+Table 4.3 Feature blocks, their source and their alignment.
+
+Table 5.1 The alignment audit: share of handovers whose target cell already serves in export rows around the command.
+
+Table 5.2 What the one-row lag costs, with everything else held fixed.
+
+Table 5.3 Out-of-fold performance of LightGBM under the hazard formulation, leave-one-campaign-out. ARM A (tuned): nested random search of twenty trials per outer fold, averaged over three seeds. Tables 5.3, 5.4, 5.8 and A.1 are this arm, and every headline number in the abstract and Chapter 7 comes from it. Intervals are block-bootstrapped over 180 s blocks and are conditional on these four sessions.
+
+Table 5.4 Every learner under identical folds, features, formulation and tuning budget. ARM A (tuned): nested random search of twenty trials per outer fold, averaged over three seeds. Tables 5.3, 5.4, 5.8 and A.1 are this arm, and every headline number in the abstract and Chapter 7 comes from it.
+
+Table 5.5 One-second AUPRC under four splitting protocols. ARM B (fixed hyper-parameters): one configuration per learner, held fixed across all four protocols so that the splitting rule is the only thing that varies. Because the learners are untuned, the levels in the leave-one-campaign-out column are NOT comparable with Tables 5.3, 5.4 and A.1, which report arm A; every percentage quoted from this table is a ratio within the table.
+
+Table 5.6 Horizon coherence and calibration for the hazard formulation and its four controls. ARM C (coherence): fixed hyper-parameters, with an extra calibration block held out of every fold so the isotonic arms can be fitted; its AUPRC levels are therefore not comparable with arm A either, and only the comparison between arms within this table is meaningful. Violation rates are given for a single fitted system, which is what a deployment meets, and for the three-seed ensemble beside it; averaging predictions over seeds lowers the rate without removing its cause. Every violation figure quoted in the text is the single-fit rate.
+
+Table 5.7 Conformal risk control at the one-second horizon, in the exchangeable regime and across campaigns.
+
+Table 5.8 Leave-one-campaign-out performance at the one-second horizon.
+
+Table 5.9 Transfer between our campaigns and an independently collected public dataset on the same network, both built from L3 signalling alone.
+
+Table 5.10 Single-feature AUROC at the one-second horizon on the lagged export.
+
+Table 5.11 Performance inside and outside handover bursts.
+
+Table 5.12 Event A3 report conversion, counted per transmitted report and per trigger episode.
+
+Table 5.13 The ping-pong rate on one fixed set of handover commands under four definitions.
+
+Table 5.14 Ping-pong rate by carrier relationship and mobility regime.
+
+Table 5.15 Approaches implemented and measured that produced no improvement.
+
+Table 5.5 Conformal risk-control frontier. The certified target is the bound on the expected per-drive miss rate; the alarm rate and realised miss rate are measured on held-out drives.	43
+
+Table 5.6 Leave-one-campaign-out performance at the one-second horizon. Each row is trained on the other three campaigns and tested on the campaign named.	44
+
+Table 5.7 External validation at the one-second horizon on an independently collected public drive-test dataset.	45
+
+Table 5.8 Single-feature AUROC at the one-second horizon. Each feature is evaluated on its own.	46
+
+Table 5.9 Event A3 report-conversion rate by campaign. The figure reported is the fraction of A3 reports not followed by a handover command within two seconds.	48
+
+Table 5.10 The ping-pong rate on one fixed set of handovers under four definitions.	50
+
+Table 5.11 Ping-pong rate by carrier relationship, configuration profile and mobility regime.	51
+
+Table 5.12 Approaches implemented and measured that produced no improvement.	54
+
+Table 6.1 Course outcomes addressed in this project.	58
+
+Table 6.2 Aspects of program outcomes addressed, with the evidencing section.	59
+
+Table 6.3 Knowledge profiles addressed, with justification.	60
+
+Table 6.4 Attributes of complex engineering problem solving addressed.	62
+
+Table 6.5 Attributes of complex engineering activities addressed.	63
+
+Table 6.6 Resource and cost summary for the project.	64
+
+Table A.1 Complete per-horizon results for all seven learners under the grouped-drive rotation. AUPRC is reported with its prevalence floor; lift is AUPRC divided by prevalence.	71
+
+Table A.2 Event-level operating characteristics of the primary model at the certified operating point of Section 5.5.	71
+
+LIST OF ACRONYMS
+
+
+[TABLE]
+
+3GPP | Third Generation Partnership Project
+
+A3 | Event A3 (neighbour becomes offset better than serving)
+
+AUPRC | Area Under the Precision–Recall Curve
+
+AUROC | Area Under the Receiver Operating Characteristic Curve
+
+CHO | Conditional Handover
+
+CO | Course Outcome
+
+CORAL | Correlation Alignment
+
+CRC | Conformal Risk Control
+
+E-UTRAN | Evolved Universal Terrestrial Radio Access Network
+
+EARFCN | E-UTRA Absolute Radio Frequency Channel Number
+
+ECE | Expected Calibration Error
+
+GRU | Gated Recurrent Unit
+
+GPS | Global Positioning System
+
+HOM | Handover Margin
+
+KPI | Key Performance Indicator
+
+LTE | Long Term Evolution
+
+MLP | Multi-Layer Perceptron
+
+PCI | Physical Cell Identity
+
+PO | Program Outcome
+
+QoE | Quality of Experience
+
+RLF | Radio Link Failure
+
+RRC | Radio Resource Control
+
+RSRP | Reference Signal Received Power
+
+RSRQ | Reference Signal Received Quality
+
+SINR | Signal-to-Interference-plus-Noise Ratio
+
+TCN | Temporal Convolutional Network
+
+TTT | Time-to-Trigger
+
+UE | User Equipment
+
+[/TABLE]

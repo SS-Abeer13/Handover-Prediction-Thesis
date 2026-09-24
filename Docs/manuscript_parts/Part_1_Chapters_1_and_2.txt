@@ -1,0 +1,181 @@
+CHAPTER 1: INTRODUCTION
+
+Mobility is the attribute of a cellular network which distinguishes it from all other access technology and the handover is the mechanism providing this. When a UE leaves the "useful coverage range" of its serving cell, the network has to handover the connection to a neighbour, but without stopping the traffic carried on the connection. This occurs frequently on a dense urban network, and during the measurement campaigns reported in this thesis, in average a handover took place once every 11 seconds of driving. Each of those occurrences is a relatively short period of time during which throughput falls and latency increases (and sometimes, radio connectivity simply fails).
+
+This chapter outlines the problem the thesis will attempt to solve, why it is a problem, and what the goals of the thesis should be. The handover triggering rule in Long Term Evolution (LTE) is described and explained why it is structurally unable to provide advance warning, as described in Section 1.1. Section 1.2 provides a quantitative estimation of the cost of that restriction on measured data. Formal statement of the problem in Section 1.3, objectives in Section 1.4, scoped in Section 1.5, summarised contributions in Section 1.6, and the remainder of the report organised in Section 1.7.
+
+1.1 Background
+
+In LTE network, the user equipment (UE) measures the Reference Signal Received Power (RSRP) and Reference Signal Received Quality (RSRQ) of its serving cell and any neighbour cell that it can detect, and reports these results to the network when the condition is met, which is configured by the network. Event A3 is defined in 3GPP TS 36.331 as the condition for a neighbour cell to become better than the serving cell by a configured offset and that this relation should hold for a configured time-to-trigger (TTT) before it is reported and is the dominant condition that governs intra-frequency mobility.
+
+There are two properties of that definition which are relevant to this thesis. First, it is stated on a comparison which must already be valid: the neighbour must have improved before anything takes place. Secondly, the TTT introduces an extra delay for the purpose of avoiding false triggering due to fast fading. Combined they ensure that when a measurement report is exiting the handset, the radio environment is already different. Next the network reviews the report and if it determines it is appropriate to move forward, it sends an RRCConnectionReconfiguration message containing mobilityControlInfo, the actual handover command.
+
+Event A3, therefore, is a reaction rule and not a prediction rule and this is not a fault in the standard. The rule was created to have a finality to the decision and it does do that very well. What the standard doesn't give, and what an increasingly latency-sensitive service mix increasingly needs is advance notice: an indication, one or two seconds before the event, that a handover is likely to happen so that the target cell can get ready, the transmission schedule can be tweaked, or an unnecessary transfer can be avoided.
+
+1.2 Motivation
+
+The cost of reacting, instead of expecting, can be measured, and it was measured, in the data collected for this thesis, rather than assumed from the literature. In all four campaigns a total of 2.9 hours of driving were observed during which 938 handovers were seen with an average of 11 seconds between handovers and a median gap of 3.5 seconds. Of these handovers, 24.5 % handed back to the last cell handed off within 15 seconds; each of these two handovers represents two signalling exchanges and two service interruptions that did not result in a net change in serving cell. There were 341 instances of the radio link dropping and needing to be re-established. The rule generated 62.9 % of the control-plane traffic that the handset transmitted as Event A3 that was not followed by a handover command within 2 seconds, meaning that the majority of the control-plane traffic the rule produced did not result in mobility.
+
+These are the numbers of a deployed configuration, these are not pathological for a dense urban deployment. They do, however, put in place that even a brief prediction horizon has something to act on. One second warning time is enough to allow the network to prepare the target cell and a warning that a handover is likely to be reversed within 15 seconds is enough to consider not doing it.
+
+The obvious question is: Is there already such a predictor available? A survey of 108 publications, 22 of which were examined in detail in Chapter 2, suggests that it does not exist in a form from which an operator might take action. Of those 22 models, none provides a mobility unit (a whole drive or a whole device session) when evaluating a per timestep classification task on measured radio data, nor calibrates itself, provides an expected calibration error or a Brier score, nor reports when warnings are issued or how many false alarms are issued per unit time. Seven report accuracy on the tasks whose +class prevalence is in the range 0.86 % to 11 % where even a constant negative prediction would score in the range 89 % to 99 %.
+
+1.3 Problem statement
+
+This thesis dealt with the following problem. With measurements available to a handset at time t, serving signal level and quality, neighbours signal level and quality, their short-term statistics, mobility state and recent signalling history, estimate the probability that the network will command a handover in h seconds, for several h's simultaneously, so that:
+
+the estimates are consistent in the sense that the probability for a longer horizon is at least that for a shorter horizon;
+
+the estimates are "calibrated", meaning that a claimed probability of p is matched by a frequency of occurrence in the real world, around p;
+
+the evaluation protocol is unable to pass information from a test drive into training; and
+
+the warning based on the estimates includes a specified limit on the proportion of handovers it will lose in future drives.
+
+None of these four requirements is met in both the audited literature and the handover-prediction setting, and the first and fourth requirements are not met anywhere in the audited literature.
+
+1.4 Objectives
+
+The following are specific objectives of this thesis.
+
+O1. To predict the next handover at 0.5, 1, 2, 3 and 5 seconds look-ahead, based on only quantities at the handset as they are at the moment they are predicted.
+
+O2. To define an evaluation protocol that does not allow information to leak between train and test data by splitting all the data on a per-drive basis, and to quantify the value of this protocol relative to the random-row splitting commonly used in the comparator literature.
+
+O3. To render the resulting probabilities useable to an operator: mutually coherent across horizons, calibrated in value and having a distribution-free bound on the per-drive miss rate.
+
+O4. To check for the generalizability of the outcome, beyond the campaign it was created for, both to a corridor with a different speed regime, and to a dataset of public samples independently collected.
+
+O5. Instead of reporting a prediction accuracy, to explain the mechanism behind the prediction and thus to characterise the behaviour of the mobility configuration deployed on this network.
+
+1.5 Scope and limitations
+
+The scope of this work is limited as such on purpose and the limits are defined here, not at the end of the work.
+
+The study is based on one commercial LTE operator, four measurement days, two mobility regimes and 57 drives. It does not state that the numerical results are valid for another operator and/or another radio access technology, although an external validation (that has a bearing on this question) is reported in Chapter 5. This is a characteristic of the instrument measuring the export and not of the models and is limited to one hertz sampling, which in principle limits the fraction of handover events that can be resolved to 90.5%.
+
+The system developed in this paper is an Offline predictor to be tested on recorded data. It does not run in a network and no network key performance indicator is claimed to be improved by deployment. In particular, there is no causal claim that there is a benefit to acting upon the warning; as explained in Chapter 5, the logging policy is deterministic, meaning that the propensities needed to evaluate the policy off-policy are either one or zero, and the causal estimand is not identified on observational data of this form. Only a counting upper bound is reported; there are at least that many.
+
+Lastly, no claim is made in relation to human health. No human subjects were involved, no exposure measurements were taken and the impact analysis in Chapter 6 is limited to what the measurements indicate.
+
+1.6 Contributions
+
+This thesis makes the following five contributions, each backed up by a corresponding result in Chapter 5.
+
+A discrete-time hazard formulation of handover prediction, that gives five look-ahead horizons, which are all mutually consistent, for any learner, without a held-out calibration split and without post-hoc correction. Measured effect: 0 % HO violation compared with 43.6 % for independent per-horizon classifiers.
+
+2. An evaluation of grouped data on drive-test radio data, indicating that the inflation due to random-row splitting is architecture dependent (74 % for a gated recurrent unit versus 4 % for logistic regression) and that it does not just increase the ranking of the model, but reorders the ranking.
+
+3. A distribution free risk guarantee and the associated campaign-design rule that comes with it: the number of calibration drives is the most precise miss-rate target that can be indicated in a study, regardless of model quality.
+
+4. A signalling-decoding correction (configuration timeline for the message-scoped measurement identifiers), which reveals that the deployed A3 offsets on this network are negative, not the positive numbers that are used in the prediction literature.
+
+Two characterisations of network behaviour that the prediction literature has not modelled: the A3 report-conversion rate, which fell in 2 seconds from 62.9 % to a ping-pong rate, reported simultaneously with the three definitional choices that determine its value.
+
+The report is organised as follows:
+
+The rest of this report is structured in the following way. The four literatures that have an impact on this problem are reviewed, a protocol audit of the 22 most similar prediction models is conducted, and the methodology adopted is presented along with the approaches considered and rejected. The measurement campaign, the signal-decoding procedure and the building of the dataset are described in chapter 3. The predictive formulation, the feature construction, the models to be compared, evaluation protocol and the risk-control procedure are developed in Chapter 4. The results reported and discussed are given in Chapter 5 with respect to the objectives set in Section 1.4. Chapter 6 demonstrates how the work addresses the course outcomes, program outcomes, knowledge profiles and complex engineering problem and activity attributes required of a capstone project. Chapter 7 summarizes and points out future research arising from the boundaries of the current study.
+
+The second chapter is devoted to the literature review and methodology.
+
+There are four oeuvres of work that relate to the problem stated in Chapter 1, and they almost but not quite intersect. Cellular measurement literature shows what handovers are in deployed networks, but does not construct predictors. The handover-prediction literature creates predictors, and most of these are created mostly on simulated data and most of them do not have evaluation protocol that could hold up to scrutiny. The point process literature and the survival-analysis literature provide just the right mathematical objects, a discrete-time hazard and a self-exciting process that have been validated by time rescaling, which have not been focused on mobility data. For signal-processing tasks whose exchangeability structure is not like an event stream recorded along a drive, the distribution-free uncertainty literature provides guarantees.
+
+Each is examined individually in this chapter, followed by a quantitative audit of the 22 most comparable prediction models, a statement of what the audit revealed as the gap in the literature needs to be filled, and a description of the methodology used to do so, along with alternatives that were considered but not used.
+
+LTE mobility and the trigger for the event A3.
+
+Mobility procedure in E-UTRAN is defined in 3GPP TS 36.331 [1] and is defined at system level in TS 36.300 [2]. The network sets the UE with a set of measurement objects, report configurations and measurement identities associating the configured measurement objects with the report configuration(s); the UE checks the measurement identity against its filtered measurements and sends a MeasurementReport when the defined entry condition has been fulfilled for the configured time-to-trigger.
+
+Event A3 is the controlling event for intra-frequency mobility. Writing Mn for the measured neighbour quantity, Ms for the serving quantity, Off for the configured offset, Ocn and Ocs for cell-individual offsets and Hys for hysteresis, the entry condition of TS 36.331 is
+
+M_n + Ocn − Hys  >  M_s + Ocs + Off	(2.1)
+
+must hold true for the whole time to trigger period prior to report. The handover decision is made by the network and not the UE and signaled using an RRCConnectionReconfiguration message containing mobilityControlInfo.
+
+There are three consequences to this, and all three will be utilized later in this thesis. One, it is a report, and not that it will be handed over, but rather that it may be handed over: the conversion rate from report to command is an empirical quantity and is measured in Chapter 5. Secondly, the parameters Off, Hys and the TTT are operator set and cannot be observed unless the signalling is broken. Third, the condition is based on a state which the radio must acquire and which it must also maintain; therefore, for the first time that Event A3 is able to produce an output, it is strictly after the radio has changed its radio environment.
+
+2.2 The measurement literature
+
+Recovering operator mobility deployment from control-plane traces from live networks is a well-developed art in the networking-measurement world. This is done in Deng et al. [3] via LTE precedent, the measurement study of LTE 4G mobility configurations and their impact. Ghoshal et al. [4] repeat the same analysis on scale on today's networks, estimating hysteresis, threshold, offset, time-to-trigger and trigger quantity for events A1-A6, B1 and B2 per operator and band from driver experience on over 15,000 km of driving and 48,426 handovers on 3 operators. Hassan et al. [5] define the use of commercial diagnostic tooling for RRC extraction as a valid methodology and Liu et al. [6] use mobilityControlInfo to analyze mobility without recovering numeric parameters.
+
+There are two ways this literature is directly relevant. The contribution of Methodologically is that it doesn't compete with the decoding pipeline in Chapter 3, but validates it, as the extraction of deployed A3 parameters in the measConfig is already a practice. Functionally, it provides the reference points by which the measured configuration is judged; the offsets of the operator networks studied by Ghoshal et al. are between +6 dB and +10 dB, and the shortest time-to-trigger is 256 to 640 ms, both of which are positive whereas the network measured here has offsets ranging from −15 dB to +5 dB and a shortest time-to-trigger of 160 ms.
+
+This literature is not predicting. The work is descriptive by design as Ghoshal et al. explicitly say they don't make any machine-learned prediction, don't perform any off-policy evaluation, nor do they perform any counterfactual analysis. The ping-pong values these studies report are similarly descriptive and as Section 2.4 explains, reported under definitions which vary sufficiently to double the value.
+
+The prediction literature and a protocol audit.
+
+There are many works that predict handover, failure of radio-link or next cell occupancy using learnt models. It is described in an adverse manner by recent systematic reviews. Ankome and Hanada [7] screened 429 records, deduplicated to 336, included 49 studies in 2010-2025; they explain that simulators and outcome definitions are too diverse to perform a meta-analysis, that the majority of studies report percentage improvement from a baseline of their own design and that they found no reports of data splitting, class imbalance or calibration explicitly discussed anywhere in the included reports. Saoud et al. [8] state that there is a lack of quantitative cross-comparison of strategies in the field and Chabira et al. [9] list the vocabulary actually used in the field — handover failure rate, latency, quality of service, energy — in which neither calibration nor any prevalence-aware ranking metric occurs.
+
+To make that generic complaint into one that is specific enough to act upon a 108 publications were screened for the purpose of this thesis and 22 of these which present a learned or analytical model predicting handover, radio-link failure or next cell occupancy were chosen and audited on protocol quality only - not on headline performance. This audit is reported in Table 2.1.
+
+The two observations in the audit are load-bearing for the rest of this thesis.
+
+The first has to do with metrics. The seven of 22 report accuracy when the positive prevalence is between 0.86 % and 11 %; three of the headline figures so reported are 98.03 %, 99.84 % and 94.83 %. The radio-link-failure study for railways uses an approximately equal number of positive and negative examples, and reports area under the ROC curve above 0.95 for all six architectures that it compares, so that none of the architectures distinguishes between them.
+
+Second is with respect to splitting and the exceptions are not rounded away but named. Of the 22, 5 do split: by spatial zone, by device, by time according to a rolling-origin protocol on operator data, by travel day [10] and by deployment event [11]. However, none of the five addresses a per-timestep classification problem on measured radio, with the two most recent additions being regression problems, where the prevalence is not a concern, and the best protocol in the set will cover next day cell-level radio-link failure, not a prediction of prevalence per sample.
+
+The pattern is due to a structure in this literature. It is anti-correlated with protocol quality and measurement quality. The studies with the most "clean" splits are those operating on trajectory data generated either from ray-tracing or SUMO simulation [10] or from aggregated operator KPIs or at cell-and-day granularity [11]; the studies using real per-sample drive-test radio data are actually the ones with unstated split protocol. Recent graph-based models show both halves – TH-GCN [12] is a graph-based model for dynamic vehicular scenarios that is simulated, has no split protocol, and specify relative deltas against self-chosen baselines, while GRIMCELL [11] uses graph learning for radio-planning, configuration-management and performance-management data from a commercial LTE-A Pro network for 55 real deployment events, but predicts key performance indicators per cell per day and thus is not a per-second warning system. Graser et al. [13] categorize the literature on the trajectory-learning task by considering the density of the data and note that the literature is sparser for the one-hertz drive data for event prediction than for location prediction.
+
+Therefore, it is a narrow claim that the audited models (22 in all) report an absence of split protocol (10), split on a unit finer than a row (5), and none on a measured radio set with respect to a per-timestep classification task; none reports calibration; and none reports on when warning is received.
+
+2.4 Ping-pong and its definitional instability
+
+Handover ping-pong, which is simply a return to a recently vacated cell, is widely reported, but inconsistently defined. In 3GPP, there is no consistent definition – all that is known is a cell return in an author-selected window and the window itself shifts the reported rate significantly. Ping-pong measurements are reported by Zidic et al. [14] for real 4G networks and per-operator rates between 15 % and 25 % are reported by Ghoshal et al. [4] for a time window of 15 seconds and per-handover denominator.
+
+There are three options to determine the number and papers frequently do not mention all three: Does a cell count if it is identified by physical cell identity only or also by carrier; Does a cell count if it is returned to any cell in the window or only to the cell immediately before it; and Is the denominator the set of all raw handover events or the set of quality controlled handover events? The impact is so bad as to cast doubt on the validity of cross-paper comparison: Amirova et al. [15] report a ping-pong rate of 0.13 % (because they divide by measurement records, not by handovers). The complete hierarchy of these decisions is presented on a fixed set of 938 handovers as a rate that ranges from 24.5 % to 41.3 % with no data changes.
+
+2.5 Appropriate formulation: survival analysis.
+
+The problem described in Section 1.3 — "what is the chance that an event happens within h seconds, for various h values" — is a time-to-event problem, and thus it is not a collection of independent classifiers. A review of 61 deep time-to-event methods by Wiegrebe et al. [16] categorizes the discrete-time route where the time axis is binned, and binary indicators per interval are trained as classification, squarely in the mainstream. Thorsen-Meyer et al. [17] build the same object, structurally, for prediction of intensive-care outcomes with a censoring-aware log-likelihood, over discretised windows.
+
+The literature is used here without any suggestion that the formulation per se is novel, and so that places the obvious objection of a reviewer, to the extent that any such objection exists, beyond argument. The novelty is the direction of the formulation; this type of handover prediction is not performed by any of the models in the 22-paper audit of Section 2.3; thus, it is inherited by all of them and consequently has the incoherence described in Section 4.2.
+
+There's one thing that's intentional that I'm not doing in the survival literature. The literature currently assesses mainly using the concordance index and the integrated Brier scores, which are both average over an horizon axis. An operator, however, acts at a single horizon. A model that has a good average performance, but that says that the probability of a handover in one second is greater than the probability of a handover in three seconds on 43.6 % of samples, is not deployable whatever its concordance index. Chapter 4 thus assesses on a horizon-wise basis, presenting the AUPRC at each horizon and a coherence-violation rate.
+
+2.6 Distribution-free uncertainty quantification
+
+Conformal prediction provides finite-sample, distribution-free guarantees for an exchangeability assumption, and has already found applications within a wireless communications context by a very capable bunch. Cohen, Park, Simeone and Shamai [18] extend split and cross-validation conformal prediction to problems of demodulation, modulation classification and channel prediction, while Simeone, Park and Zecchin [19] generalise the approach for a deployment lifecycle consisting of pre-deployment calibration and hyperparameter selection, monitoring under distribution shift, and post-deployment counterfactual analysis. Conformal risk control, which is the extension of the guarantee from the coverage of a prediction set to the expectation of a bounded monotone risk is due to Angelopoulos et al. [20].
+
+It is thus more limited than perhaps it seems in the title of this thesis, but the limitation is intentional. The guarantees in [18] and [19] are over prediction sets, for tasks that are independent and identically distributed within a frame. The guarantee created in Chapter 4 is for a risk (an operator key performance indicator, the per-drive miss rate) and this risk is for a stream that can only be exchanged at the level of a complete drive. That is the contribution, the campaign-design floor that follows from it is its consequence, and no wireless conformal study in three screening-sets reports a mobility-management case at all.
+
+The self-excitation of handover arrivals is introduced by using point processes.
+
+Handover events are not independent of each other. The Hawkes self-exciting point process is the basic model for arrival streams where each arrival increases the intensity of the subsequent ones: it is the standard model and is treated these days by Laub et al. [22] including the branching-ratio interpretation applied in Chapter 5. Having such a process fitted is not in itself evidence that the process is self-exciting, however, the fit must be checked. The traditional check is the residual analysis of Ogata [23] in which the time axis is scaled by the estimated compensator, and the resulting transformed arrivals are tested against a unit-rate Poisson process; Price-Williams and Heard [24] set the precedent for use of this in a networking context, where a self-exciting fit to campus and laboratory network traffic was validated through time rescaling followed by Kolmogorov–Smirnov test on held-out data. Chapter 5 takes up that tradition, and presents the test result, including where it disconfirms the fitted kernel.
+
+2.8 Evaluation practice from neighbouring fields
+
+Two more findings from nearby literatures are reported here to help render the negative findings in Chapter 5 intelligible, and not shameful: A recent work by Ismail Fawaz et al. [25] evaluates nine unsupervised domainadaptation algorithms on twelve time-series datasets and shows that several published algorithms perform worse than using no adaptation whatsoever and using the source-only training method, which explains why the result of Deep CORAL [26] in Chapter 5 was a null result – it was a correct result on the basis of the published benchmark. Shi et al. [27] provide the terminology—called the shift taxonomy—that describes the shift found here as a device-and-day shift, not a sensor-modality shift. The point-adjusted metrics for time-series event detection each satisfy only a subset of the desirable properties, and no metric satisfies all of them, which is why Wagner et al. [28] report the event-level detection rate, lead time and false alarms per hour, in addition to the row-level AUPRC, but not in place of it.
+
+Lastly, the standards relate to the option of horizon. Deb et al. [29] explicitly model the conditional handover as a DTMC over preparation and execution offsets and timers, and their analysis shows that conditional handover is a trade on a lead time and not a label: a model which can identify the correct target cell two hundred milliseconds before the event is worth nothing as the preparation message needs to be sent, acknowledged and stored. This is the analytical explanation for the adoption of a lead-time distribution instead of just a detection rate and for keeping two and three and five-second horizons even if the trigger used in the deployment only takes a few hundred milliseconds to fire.
+
+2.9 Research gap
+
+Gathering up the foregoing parts, the range between which this thesis stands can be exactly defined. Ground truth (measurement grade) available, but no link between it and prediction. There are prediction models but not under an evaluation protocol where the mobility unit is held out, nor with calibrated outputs nor costs at the event level. The suitable formulation is there in the survival literature but has not been used in the mobility literature. Distribution-free guarantees are available in wireless, but for another exchangeability structure, and not for any mobility-management task.
+
+This work falls in this gap: measurement-grade ground truth from the decoded signalling, a borrowed formulation made coherent across horizons, a conformal risk bound whose exchangeability unit is stated and defended, and an evaluation protocol designed not only for a reviewer from the wireless community, but one from the machine-learning community as well.
+
+2.10 Methodology
+
+The methodology taken up is a direct result of the gap. It has five stages as shown in Figure 2.1, which are detailed in Chapter 3 and Chapter 4.
+
+Stage 1 — Collection. Four drive-test campaigns are performed on the live commercial LTE network, using an instrumented handset, and capturing a 1Hz radio measurement export file in parallel with a decoded RRC signalling log.
+
+Stage 2 — Recovery of the ground truth and the configuration. Handovers are determined from RRCConnectionReconfiguration messages containing mobilityControlInfo which are received and decoded. Measurement identifiers are message scoped so that a configuration timeline is replayed with each measurement report being resolved against the configuration timeline at the time of the measurement report.
+
+Stage 3 — Feature construction. A set of one hundred and fifty-two features are built from radio, mobility, history and signalling sources, and are all strictly causal, closing at the prediction instant, and not crossing a drive boundary.
+
+Stage 4: Formulation and modelling. The problem is formulated as a discrete time survival problem. One model assumes that the product-limit identity, which ensures the ordering, is used to estimate the per-interval hazard and the horizon probabilities. The comparison of seven learners under the same conditions.
+
+Stage 5: Evaluation and risk control. Splits are clustered by whole drive and are repeated for every five seeds, and conformal risk control is used to certify a warning threshold with exchangeable unit the drive.
+
+For each approach, the reasons for considering it and why it was rejected are provided.
+
+Four options were seriously discussed and rejected and their reasons are documented here as it forms part of the methodological argument.
+
+Independent per-horizon classifiers. The intuitive solution – one binary classifier for each look-ahead time – was tested and kept as a control arm, instead of the main method. It is rejected as the main approach, because as Chapter 5 quantifies, it produces outputs on a large proportion of examples that are mutually contradictory, and secondly because it has the effect that it must be repaired afterwards at the cost of a held-out split and of predictive performance.
+
+Random-row cross-validation. The majority of the comparator literature used the splitting protocol.The comparator literature has only used the splitting protocol to measure what it's worth. It is rejected because adjacent one second samples within a drive are near-duplicates, and thus a random split puts nearly equal rows on either side of the split; see Chapter 5 for an explanation of the resulting architecture dependent inflation that changes the ordering of models.
+
+Correcting for imbalance in classes. The default strategy with a rare-event task is to reweight the positive class. There is a reason specific to the formulation: It is rejected in the hazard arm because the transformation to the fitted probability is monotonic, and the product-limit identity is a multiplication of K such probabilities, meaning that a per-interval multiplicative error compounds with the horizon. So that the comparison between the two arms is valid, they are both fitted unweighted.
+
+Handover decision in Reinforcement Learning. A decision-theoretic formulation, where an agent learns when to hand over was considered, and is the formulation that the nearest comparator study (also available on this network) adopts. Here it is rejected because it attempts to answer a different question, one that the network may be able to make for itself, but not for this thesis; it optimises a decision that the network is entitled to make at its own pace, but here an event is to be forecasted. For completeness, a reimplementation of that comparator scored as a predictor is reported in chapter 5.

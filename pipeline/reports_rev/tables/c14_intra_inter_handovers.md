@@ -1,0 +1,10 @@
+| capture    | ho_relation     |   handovers |
+|:-----------|:----------------|------------:|
+| XCAL10Sept | inter-frequency |          68 |
+| XCAL10Sept | intra-frequency |         239 |
+| XCAL12Sept | inter-frequency |          31 |
+| XCAL12Sept | intra-frequency |         145 |
+| XCAL13Sept | inter-frequency |          71 |
+| XCAL13Sept | intra-frequency |         226 |
+| XCAL15Sept | inter-frequency |          39 |
+| XCAL15Sept | intra-frequency |         138 |

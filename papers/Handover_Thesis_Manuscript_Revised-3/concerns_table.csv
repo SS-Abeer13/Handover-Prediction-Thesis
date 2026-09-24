@@ -1,0 +1,14 @@
+concern,alfa,bravo,charlie
+Pseudo-replication and anti-conservative confidence intervals from within-campaign block bootstrapping,True,True,False
+Severely underpowered sample size (N=4 sessions) and uninformative cross-campaign inference,True,True,True
+"Multiplicity, post-hoc pipeline tuning, and unadjusted multi-hypothesis comparisons",True,True,True
+Breakdown of distribution-free conformal risk guarantees under cross-campaign shift and grid discretization,True,True,True
+"Operational unviability of proactive target-cell preparation under 1-Hz telemetry (179 false alarms/hr, 0.47s lead time)",False,True,True
+Survival formulation provides no empirical advantage over simple monotonic projections on independent heads,True,False,True
+"Duplicated and corrupted equation tags, malformed expressions, and dead cross-references",True,True,True
+"Contradictory calibration error statements between pooled and per-campaign metrics, and missing Appendix A data",False,True,False
+Absence of qualitative trace-level error analysis and repurposing of Chapter 6 as an administrative OBE checklist,False,False,True
+"Inconsistent reporting of branching ratio from a rejected, misspecified Hawkes process",False,True,False
+Proprietary binary XCAL diagnostic logs restrict independent verification of ASN.1 parser timeline,False,False,True
+Selection bias and base-rate confounding in quiet vs. burst row stratification,True,False,False
+Confounding RF propagation boundaries with intersection kinematics and timer cadence,False,False,True

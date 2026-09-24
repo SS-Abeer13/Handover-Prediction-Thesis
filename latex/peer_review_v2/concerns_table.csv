@@ -1,0 +1,14 @@
+concern,alfa,bravo,charlie,delta
+Campaign 4 not blind: one-row lag correction (0.600->0.179) derived using all 4 campaigns incl. the held-out one; freeze excludes it,False,False,True,True
+'Independent' external dataset [38] and RL comparator [39] share supervisor/department/operator/XCAL instrument; transfer uses 6 of 112 features,False,True,True,True
+O4 declared met on a single highway campaign where corridor and speed are fully confounded,False,False,True,True
+"'k of 4 campaigns' vote-counting used as confirmatory evidence despite n=4, p>=0.125, no repeat-route replicate",False,True,True,True
+"Protocol thresholds (180 s blocks, 60 s purge, 10 s burst, 2 s blanking, lag) chosen post hoc; freeze only in internal git; Table A.5 only local sensitivity",True,True,True,False
+"0/15 boundary-crossing test (Wilson UB 20.4%) is same-sample and small-n, over-weighted as mechanism confirmation; 211-case refinement validated in-sample only",True,False,False,True
+Code/data unavailable at review; release deferred to acceptance despite pipeline-bug history,True,True,True,False
+Residual contamination at corrected row t-1 (15.6% overall vs 11.7% isolated) concentrated in bursts; headline 0.179 not tested on isolated handovers,True,False,False,False
+A3 baseline is a weakened instantaneous-margin proxy; no TTT-window-emulating baseline from recovered TTT values,True,False,False,False
+No second-device/firmware replication of the export-lag defect; limitation not stated,True,False,False,False
+Conformal-for-handover novelty rests on unaudited search; conformal-under-shift/weighted/adaptive conformal literature uncited and untried,True,True,False,False
+Discrete-time hazard via expanded-bin BCE is standard in churn/predictive-maintenance literature; uncited and over-presented as contribution,False,True,False,False
+Abstract quotes conformal miss loss 0.153 before stating no cross-campaign guarantee and per-handover estimand inexpressible at 1 s,False,False,True,False

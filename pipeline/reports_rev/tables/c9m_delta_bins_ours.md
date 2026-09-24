@@ -1,0 +1,17 @@
+| subset                               | delta bin (s into the second)   |   n |   row t shows target |   row t+1 shows target |   median execution (ms) |
+|:-------------------------------------|:--------------------------------|----:|---------------------:|-----------------------:|------------------------:|
+| all handovers                        | [0.00, 0.25)                    | 235 |                0.817 |                  0.804 |                       1 |
+| all handovers                        | [0.25, 0.50)                    | 260 |                0.758 |                  0.873 |                       1 |
+| all handovers                        | [0.50, 0.75)                    | 230 |                0.813 |                  0.883 |                       1 |
+| all handovers                        | [0.75, 1.00)                    | 213 |                0.638 |                  0.892 |                       1 |
+| all handovers                        | all                             | 938 |                0.759 |                  0.862 |                       1 |
+| isolated (previous > 8 s earlier)    | [0.00, 0.25)                    |  70 |                0.8   |                  0.9   |                       1 |
+| isolated (previous > 8 s earlier)    | [0.25, 0.50)                    |  67 |                0.687 |                  0.896 |                       1 |
+| isolated (previous > 8 s earlier)    | [0.50, 0.75)                    |  83 |                0.855 |                  0.904 |                       1 |
+| isolated (previous > 8 s earlier)    | [0.75, 1.00)                    |  71 |                0.62  |                  0.887 |                       1 |
+| isolated (previous > 8 s earlier)    | all                             | 291 |                0.746 |                  0.897 |                       1 |
+| clean (no other handover within 2 s) | [0.00, 0.25)                    | 108 |                0.861 |                  1     |                       1 |
+| clean (no other handover within 2 s) | [0.25, 0.50)                    | 124 |                0.79  |                  0.984 |                       1 |
+| clean (no other handover within 2 s) | [0.50, 0.75)                    | 113 |                0.858 |                  1     |                       1 |
+| clean (no other handover within 2 s) | [0.75, 1.00)                    | 100 |                0.67  |                  0.99  |                       1 |
+| clean (no other handover within 2 s) | all                             | 445 |                0.798 |                  0.993 |                       1 |

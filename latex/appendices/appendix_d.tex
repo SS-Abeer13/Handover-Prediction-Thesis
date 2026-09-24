@@ -1,0 +1,42 @@
+\chapter{The 22 Audited Models}\label{app:D}
+
+
+\begin{table}[htbp]
+\centering
+\caption{The 22 audited prediction models, their venue, mobility type, split protocol, and audit criteria.}
+\label{tab:D_1}
+\vspace{0.4em}
+\singlespacing
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{l c c c c c c c}
+\toprule
+\textbf{\#} & \textbf{Model} & \textbf{Year} & \textbf{Venue} & \textbf{Data} & \textbf{Split protocol} & \textbf{Prevalence-aware metric} & \textbf{Calibration} \\
+\midrule
+1 & Chou et al., Learning-based RLF Prediction (Railway) & 2026 & arXiv:2511.08851 & REAL-MEASURED & NOT STATED & no & no \\
+2 & Kabeer et al., Sequence-Based DL for Handover Optimization & 2025 & arXiv:2510.02958 & REAL-MEASURED & NOT STATED & no & no \\
+3 & Dzaferagic et al., ML-Based HO Prediction over Real O-RAN & 2024 & IEEE TNSM & REAL TESTBED & NOT STATED & precision/recall & no \\
+4 & Panitsas et al., Predictive Handover Strategy in 6G & 2024 & arXiv:2404.08113 & SIMULATED & 80/20 with 10-fold CV (title changed between versions) & precision/recall & no \\
+5 & Boutiba et al., Radio Link Failure Prediction in 5G & 2021 & IEEE GLOBECOM & REAL TESTBED & two separate sets, unspecified & precision/recall & no \\
+6 & Mandapati, Meta-Continual Mobility Forecasting & 2025 & arXiv:2512.11841 & HYBRID (GeoLife + ray trace) & spatial zone hold-out & no & no \\
+7 & Chien et al., Privacy-Preserving HO Optimization (FL+LSTM) & 2024 & Sensors 24(20):6685 & UNVERIFIED "real-world" & NOT STATED & no & no \\
+8 & Wadud et al., AI-Driven Multi-Modal Adaptive HO Control & 2026 & arXiv:2603.17158 & SIMULATED & NOT STATED for the ML components & precision/recall & CI over 30 runs \\
+9 & Amirova et al., Data-Driven ML Analysis of HO Behavior & 2026 & Future Internet 18(6):290 & REAL-MEASURED & device-level hold-out & YES (PR curve + AUC CI) & bootstrap CI on AUC only \\
+10 & Bartsioka et al., Intelligent Dynamic Handover via AI Signal Quality & 2025 & arXiv:2510.14832 & SIMULATED & random 80/20 & n/a (regression) & no \\
+11 & Sun et al., Proactive HO Type Prediction and Parameter Optimization & 2025 & IEEE TWC 24(4) & SIMULATED & NOT VERIFIED & not verified & not verified \\
+12 & Gonzalez Bermudez et al., GNNs for O-RAN Mobility Management & 2025 & arXiv:2502.02170 & REAL-OPERATOR (Huawei) & random 80/10/10 edge split, structure-preserving & yes (AP alongside AUC) & threshold tuning for imbalance only \\
+13 & Hasan, Trappenberg \& Haque, Generalized Transformer RLF Prediction & 2024 & arXiv:2407.05197 (journal version IEEE Xplore 11018489) & REAL-OPERATOR (Turkcell) & rolling-origin temporal, 5 folds & no (F1 only) & no \\
+14 & Santana \& Dias, Open RAN-Enabled DL-Assisted Mobility Management & 2024 & arXiv:2412.21161 & SIMULATED (OMNeT++/Simu5G) + real traces for seeding & NOT STATED & no & no \\
+15 & Narayana et al., AI-Native Mobility in 6G (dataset paper) & 2026 & arXiv:2605.12453 & REAL-MEASURED (commercial 5G SA, n78) & n/a - no models trained & nan & nan \\
+16 & Wu et al., DL for Moving Blockage Prediction (real mmWave) & 2022 & arXiv:2101.06886 / IEEE ICC & REAL-MEASURED (mmWave testbed) & NOT STATED & no & no \\
+17 & Lee et al., Prediction-Based Conditional Handover (5G mm-Wave) & 2020 & IEEE Veh. Technol. Magazine 15(1):54-62 & SIMULATED & NOT STATED & no & no \\
+18 & Mehregan \& De Grande, TH-GCN Throughput-Oriented Handover (GCN) & 2025 & arXiv:2505.04894 (IEEE DCOSS-IoT 2025) & SIMULATED & NOT STATED & no & no \\
+19 & Dinh, Fazio \& Voznak, Mobility and Resource Prediction for 5G Small Cells & 2026 & PLOS ONE 21(8):e0355372 & SIMULATED (SUMO over a real Singapore map) & hold-out by travel day & n/a (regression) & no \\
+20 & Safiullin et al., RL-Based Handover Algorithm for 5G/6G AI-RAN & 2026 & Inventions 11(1):8 & SIMULATED (ns-3) & n/a (RL) & nan & no \\
+21 & Deb et al., Conditional Handover under Fading & 2024 & arXiv:2403.04379 & ANALYTICAL + SIMULATED (Python + ns-3) & n/a (no learning) & nan & nan \\
+22 & Sanchez-Martin et al., GRIMCELL (GNN for new-cell impact) & 2026 & MAKE 8(9):260 & REAL-OPERATOR (commercial LTE-A Pro) & hold-out over deployment events & n/a (regression) & no \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+

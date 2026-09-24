@@ -1,0 +1,264 @@
+=== PARAGRAPHS ===
+The research direction is worth continuing, but this manuscript is not ready for submission. Its strongest contribution is the audit of timestamp leakage and evaluation protocols. However, several conclusions exceed the evidence, and the document contains conflicting results across its text, tables and figures.
+
+I reviewed the manuscript, equations, tables and embedded figures, and checked selected primary sources. I have not reproduced the experiments: without the code, logs and saved predictions, I cannot determine which conflicting results are correct.
+
+1. Critical: the figures and text do not describe one consistent experiment.
+
+These are confirmed document problems, not speculative concerns:
+
+Required action: regenerate all figures and tables from one frozen set of experiment outputs. Editing individual numbers manually will leave further inconsistencies.
+
+2. Critical: the ping-pong subset result is mathematically inconsistent.
+
+Table 5.14 reports 252 ping-pongs among 957 commands. Table 5.13 reports 28.7% among a retained subset of 938 commands under what it describes as the same return definition.
+
+The check is straightforward:
+
+A subset cannot contain more than the original 252 flagged events.
+
+Its largest possible rate is therefore:\[ \frac{252}{938}\times100=26.87\%. \]
+
+A rate of 28.7% implies approximately:\[ 0.287\times938\approx269 \]flagged events.
+
+That cannot be a simple restriction of the original labels. Either the labels were recomputed after filtering, the definition changed, or a reported value is stale. Recomputing “previous cell” after removing events would itself change the task.
+
+Flag each event once on the full session sequence, then apply subsets to those fixed flags.
+
+3. Critical: the claimed “one-hertz instrument ceiling” mixes sampling limits with your own exclusion policy.
+
+Sections 4.1 and 3.4 remove prediction rows during the two seconds after a handover. Appendix A then reports that only 64.6% of commands have a usable prediction row in their preceding one-second window.
+
+That percentage is not attributable to one-hertz sampling alone.
+
+For an uninterrupted integer-second grid:
+
+Consider a command at time \(12.7\).
+
+Its one-second warning window is \([11.7,12.7)\).
+
+The grid contains a prediction instant at \(12.0\).
+
+The same reasoning applies to every interior event on a complete one-second grid. Lagged features may reduce informativeness, but they do not remove that prediction instant.
+
+Your missing opportunities must therefore also reflect blanking, gaps, filtering or boundary rules. The two-second blank is particularly consequential for closely spaced handovers.
+
+Required correction: call this an eligible-prediction-window ceiling under the chosen preprocessing and warning policy. Report separately how many events become unresolvable because of each exclusion.
+
+There is also an arithmetic inconsistency: 64.6% resolvable means 35.4% unresolvable, whereas the risk-control discussion repeatedly uses 36.4%. Different evaluation populations could explain this, but they must be identified.
+
+4. Critical: the conformal section needs mathematical revision.
+
+There are four separate problems.
+
+Threshold direction: Equation 4.9 assumes loss decreases as \(\lambda\) increases. Equation 4.10 defines misses through \(p<\lambda\), so loss increases with \(\lambda\). Reparameterize alarm permissiveness or change the selection rule consistently.
+
+Meaning of the guarantee: expected-risk control does not require every test campaign to have loss below \(\alpha\). Therefore, “83% of rotations respect the bound” does not establish that the theorem failed.
+
+Exchangeability: drawing blocks randomly from a common pool does not, by itself, establish the exchangeability required for deployment to future campaigns.
+
+The sample-size floor is overstated: \(1/(n+1)\) is a floor for satisfying the displayed corrected empirical-risk inequality. It is not a universal impossibility result for risk control. The cited theorem includes a most-permissive fallback, subject to its endpoint-loss assumption. For row-level misses, an always-alarm rule can have zero loss while being operationally useless.
+
+These distinctions follow directly from Angelopoulos et al., Conformal Risk Control, Theorem 1.
+
+The observed cross-campaign mean loss at \(\alpha=0.20\) is 0.153, below the target. That does not prove validity either, but it makes the manuscript’s “failure in 17% of rotations” interpretation particularly misleading.
+
+My recommendation: retain this as an exploratory risk–alarm trade-off analysis until the implementation, parameter direction, calibration separation and theorem assumptions are verified.
+
+5. High priority: the event definition and completion matching need auditing.
+
+Section 3.6 says all commands have a decoded completion, then adds that this is “what defines the set.”
+
+That creates an ambiguity:
+
+Did you extract every handover command and independently find that all completed?
+
+Or did you retain only commands with a matching completion?
+
+The second procedure predicts commands associated with confirmed completions, not all issued commands. That distinction matters when discussing failures or warning utility.
+
+Table 3.3 also reports median “interruption” times of 0–1 ms. These values deserve direct inspection of the matching and timestamp semantics. A command-to-completion log interval is not automatically a measurement of user-plane service interruption.
+
+Document the matching keys, transaction handling, duplicate removal and treatment of intervening reconfigurations. Show several complete raw message sequences, including zero-duration cases. The relevant handover and completion procedures are defined in 3GPP TS 36.331.
+
+6. High priority: the leakage observation is stronger than the proposed mechanism.
+
+The large score reduction after correcting alignment is compelling as reported. But several explanations are stated too conclusively:
+
+The text says the end-of-second rule holds “exactly,” yet 211 positive-margin cases do not show the expected target cell.
+
+Seeing the target in the following row is consistent with delayed refresh; it does not uniquely establish that mechanism.
+
+A completion-message timestamp does not directly measure when a KPI register refreshed.
+
+The Irish control lacks an independent signalling event clock, limiting its ability to establish the absence of leakage.
+
+Artificially downsampling native data demonstrates that an aggregation rule can create leakage. It does not prove that your own exporter uses precisely that rule.
+
+The manuscript acknowledges some of these limits in Section 5.13, but its abstract and contribution statements remain stronger.
+
+The approximately 60 ms update-delay estimate also needs a sampling-phase analysis. With native 100 ms sampling, the observed transition can combine physical delay, logging delay and sample timing.
+
+Finally, shifting serving-radio features identifies a sensitive feature family, but “96% of the leak comes from these features” is not an additive causal decomposition. Correlated features and stale valid information can affect the ablation.
+
+Keep the measured alignment effect. Present the exporter mechanism and delay estimate as hypotheses supported by the observations.
+
+7. High priority: the A3 comparison does not yet establish superiority over the deployed mobility system.
+
+A one-hertz reconstruction cannot faithfully recover whether an entry condition remained true continuously for 160, 320 or 640 ms. The manuscript needs to specify exactly what generates the A3 baseline score:
+
+a binary instantaneous condition;
+
+a continuous signal margin;
+
+an approximation of TTT;
+
+or actual decoded A3 reports.
+
+Those are different predictors.
+
+Moreover, A3 is a measurement-reporting event; the network’s handover decision contains additional logic. The full A3 condition includes frequency and cell offsets as well as hysteresis. A raw target RSRP need not always exceed serving RSRP. 3GPP TS 36.331, §5.5.4.4
+
+The defensible claim is:
+
+“The learned model outperforms this specified A3-derived forecasting baseline on the evaluated rows.”
+
+Also compare against recent decoded A3-report history at matched false-alarm budgets. That is a more demanding practical baseline.
+
+8. High priority: report-to-command attribution is being interpreted as network intent.
+
+Figure 3.3 describes attribution using the latest report within two seconds. Temporal proximity does not establish which report caused a command.
+
+Consequently:
+
+“A1-triggered handover” may mean “handover preceded by an A1 report.”
+
+An unmatched episode was not necessarily “declined.”
+
+Low conversion does not prove that a configuration was intended solely for monitoring.
+
+Enforcing one-to-one matching eliminates duplicate counting but does not reveal the true causal association.
+
+Use target PCI/carrier agreement where available, distinguish ambiguous cases, and vary the matching window. Prefer “associated with” and “not followed by a matched command” over “triggered by” and “declined.”
+
+Also reconcile 651 A3-associated commands with 635 episodes owning commands. Multiple commands per episode might explain it, but then the one-to-one terminology needs qualification.
+
+9. The predictive results suggest useful signal, but modest probability improvement.
+
+Taking the main tables at face value:
+
+The Brier comparison is worth adding:
+
+A constant predictor equal to prevalence has Brier score \(p(1-p)\).
+
+At one second:\[ 0.068(1-0.068)=0.063376. \]
+
+Your model reports 0.060, approximately 5.3% lower.
+
+That is a modest improvement against this descriptive constant baseline. For a deployable benchmark, estimate the constant from training data.
+
+Also, ECE 0.012 does not establish the specific claim that predictions near 0.8 succeed 80% of the time. Show reliability plots, bin counts and uncertainty, especially in the alarm region. Calibration concerns probability–frequency agreement, as discussed by Guo et al..
+
+10. The workflow has good safeguards, but important gaps remain.
+
+Campaign-level holdouts and separating tuned, fixed-parameter and coherence experiments are sensible. Preserve them.
+
+However:
+
+Four sessions are four clusters, not proven independent draws from the wider deployment population.
+
+The manuscript correctly admits that alignment changes followed inspection of all campaigns. The final results should therefore remain exploratory.
+
+Sequence models receive ten feature vectors; tabular models receive one engineered vector. Their information inputs are related, but not identical.
+
+A higher random-split score does not prove that 180-second block bootstrapping is invalid. Prediction leakage and bootstrap validity require separate arguments.
+
+Define alarm episodes, merging, cooldowns, event matching and exposure time explicitly.
+
+Distinguish a threshold targeting 5% calibration FPR from an observed 5% test FPR.
+
+State whether hyperparameter selection and conformal calibration reuse the same observations.
+
+Explain why tuned logistic regression scores 0.130, while the fixed-parameter version scores 0.167. This can happen, but deserves examination.
+
+A fresh campaign collected after the pipeline is frozen would provide more convincing evidence than adding another model architecture.
+
+11. External validation and the literature audit need narrower claims.
+
+Section 5.7 appropriately admits that its external experiment tests a six-feature signalling model, not the primary 112-feature model. That limitation must also govern the abstract and objective assessment.
+
+The statement that the public dataset does not provide periodic radio exports needs checking against the actual files used. Its official description explicitly mentions raw CSVs, radio measurements, velocity, cell IDs, signalling and processed interpolated data. This does not prove that every required feature is available, but it requires a file-level explanation. Confirm that labels were reconstructed from signalling rather than inherited from its TTT-refined processed labels. Official dataset record
+
+The literature audit has internal inconsistencies:
+
+Kabeer and Mandapati are described as outside the screened set, but appear in Appendix D.
+
+The “22 prediction models” include a dataset entry explicitly marked as having no trained models.
+
+Some rows are unverified or not applicable, yet broad counts use 22 as the denominator.
+
+The exclusion of Prognos needs a consistent methodological justification, particularly because the manuscript identifies it as a close comparator.
+
+Several references retain unfinished verification notes.
+
+Do not base a “none of the literature does this” claim on the current audit table.
+
+12. Other technical statements should be corrected.
+
+My recommendation is to keep the research direction and narrow its central claim: trustworthy evaluation of multi-horizon handover forecasting from commercial drive-test logs.
+
+Complete the remaining work in this order:
+
+Reconcile every table, figure, feature count and event population.
+
+Audit command extraction, completion matching and timestamp availability.
+
+Recompute event detectability with blanking, gaps and sampling separated.
+
+Correct the conformal mathematics and remove unsupported certification language.
+
+Specify and strengthen the A3/report-history and operational warning baselines.
+
+Freeze the pipeline and evaluate one genuinely untouched session.
+
+Generate the manuscript from traceable experiment outputs.
+
+The modest corrected prediction score does not invalidate the thesis. The main threat is that the manuscript currently claims a level of verification that its own conflicting evidence does not support.
+
+
+=== TABLES ===
+
+--- TABLE 1 ---
+Component | Strength | Main limitation | Assessment
+Timestamp audit | Identifies a potentially substantial source of prediction leakage | Exact exporter mechanism remains inferred | Strongest research direction
+Multi-horizon forecasting | Coherent survival formulation and useful baselines | Limited evidence of an advantage over simpler corrections | Sound supporting contribution
+Evaluation workflow | Campaign holdouts, ablations and event-level metrics | Four sessions; some comparisons and definitions remain inconsistent | Promising but needs verification
+Conformal risk control | Addresses an important operational question | Mathematical and interpretational problems | Requires substantial correction
+Network characterization | Uses decoded signalling and configuration histories | Report-to-command attribution is not necessarily causal | Useful descriptive analysis
+Practical warning system | Reports false alarms and lead times | No demonstrated operational benefit | Preliminary feasibility evidence
+
+--- TABLE 2 ---
+Location | What I found
+Figure 5.6 | The caption promises an independent-classifier versus hazard comparison. The image contains only hazard points. Those values resemble the tuned model’s campaign results, rather than the coherence experiment in Appendix A.
+Figure 5.15 | The image says 938 handovers and shows a strict 15-second return rate of 24.5%. The accompanying discussion describes 957 commands and 26.3%.
+Figure 5.16 | The image reports 690 intra-frequency and 248 inter-frequency handovers, with rates of 31.0% and 6.5%. Table 5.14 reports 748 and 209, with 31.1% and 9.1%. Its second panel shows TTT profiles, although the caption describes mobility regimes.
+Figures 5.17–5.18 | The plotted pooled Hawkes branching ratio is 0.605; the text reports 0.653.
+Figure 5.18 | The image states that six in ten handovers are triggered by a previous handover. The text explicitly withdraws this interpretation after the model fails its residual test.
+Appendix B | Its feature blocks total 120, despite claiming 112. Section 4.6 instead specifies 89 radio + 17 mobility + 6 history = 112, with 10 additional signalling features.
+
+--- TABLE 3 ---
+Result | What it supports | What it does not establish
+One-second AUPRC 0.179 versus prevalence 0.068 | Useful discrimination above the prevalence baseline | Deployment readiness
+Five-second AUPRC 0.475 versus prevalence 0.261 | Useful longer-window ranking | That five-second forecasting is intrinsically better
+One-second detection 34%, 179 false alarms/hour | A costly tested warning point | A useful network intervention
+Five-second detection 42.5%, 69.6 false alarms/hour | More lead time at the reported threshold | Acceptable resource cost
+Zero horizon violations | Correct structural coherence | Accurate probabilities
+
+--- TABLE 4 ---
+Statement | Issue
+Class weighting preserves ranking throughout the hazard model | Monotonic transformation of each hazard does not generally preserve ranking after combining hazards across bins. Retraining also changes more than the probability scale.
+Temperature scaling cannot change horizon ordering | True for one shared increasing transformation; not generally true for separately fitted temperatures across horizons.
+A Hawkes residual-test rejection proves the decay is non-exponential | Rejection concerns the fitted model as a whole. A varying baseline or omitted covariates could also explain it.
+No exported neighbour means an A3 report is impossible | Missing export information does not prove the UE had no qualifying measurement.
+A3 determinism establishes deterministic handover-policy propensities | The measurement trigger and the network’s action policy are different objects.
+Returning to the previous cell proves the first handover was unnecessary | A return does not establish the counterfactual service quality without the first transfer.

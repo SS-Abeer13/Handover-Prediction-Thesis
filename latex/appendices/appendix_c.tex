@@ -1,0 +1,129 @@
+\chapter{Reproduction Archive and Pipeline Specification}\label{app:C}
+
+To ensure full reproducibility and enable independent verification of all empirical findings reported in Chapters~\ref{ch:3}, \ref{ch:4}, and~\ref{ch:5}, the complete computational framework is structured as a deterministic, modular pipeline. This appendix documents the pipeline architecture, the execution directed acyclic graph (DAG), the repository layout, the pre-registration configuration manifest, and cryptographic SHA-256 verification checksums for all derived data frames and experimental artifact tables.
+
+\section{Pipeline Architecture and Execution Directed Acyclic Graph}
+\label{sec:C_1}
+
+The analysis is executed as a strictly ordered sequence of stages under Python~3.10 and PyTorch~2.1. Dependency directionality is strictly enforced: no stage may read artifacts from a downstream stage, ensuring an acyclic dependency graph that precludes reverse information leakage. Furthermore, every empirical table and figure presented in the manuscript is generated programmatically from primary stage outputs without manual intervention.
+
+Table~\ref{tab:C_pipeline_stages} provides the inventory of core pipeline stages, specifying their primary source scripts, execution purpose, input dependencies, and output artifacts.
+
+\begin{table}[htbp]
+\centering
+\caption{Inventory of core pipeline execution stages in \texttt{hoproj.pipeline}.}
+\label{tab:C_pipeline_stages}
+\vspace{0.4em}
+\singlespacing
+\footnotesize
+\begin{tabularx}{\linewidth}{l l X X}
+\toprule
+\textbf{Stage} & \textbf{Script} & \textbf{Scope and Primary Operation} & \textbf{Key Outputs} \\
+\midrule
+12 & \texttt{stage12\_xcal\_prepare.py} & Ingests 4 campaigns; decodes ASN.1 RRC timeline; applies 1-row lag correction; enforces QC boundary cuts ($957 \rightarrow 938$ HOs). & \texttt{df\_usable\_rows.csv}, \texttt{df\_events\_qc.csv} \\
+13 & \texttt{stage13\_xcal\_benchmark.py} & Executes leave-one-campaign-out (LOCO) and blocked evaluations across 6 model families (LightGBM, MLP, GRU, TabNet, LogReg, A3). & \texttt{c3\_main\_loco.csv}, \texttt{c2\_protocol\_ladder.csv} \\
+14 & \texttt{stage14\_hazard\_fair.py} & Fits pooled discrete-time hazard model; computes isotonic and monotone projections; benchmarks calibration and monotonicity violations. & \texttt{c11\_coherence\_metrics.csv}, \texttt{c4\_hazard\_prevalence.csv} \\
+15 & \texttt{stage15\_gof\_frontier.py} & Fits Hawkes self-exciting point process; evaluates Ogata thinning goodness-of-fit; computes conformal risk control empirical frontiers. & \texttt{c10\_crc\_frontier.csv}, \texttt{c\_hawkes\_fit.csv} \\
+16 & \texttt{stage16\_signalling\_pingpong.py} & Feature ablation across 4 feature blocks; evaluates ping-pong definitions (30~s / 60~s / 120~s) and carrier relationship sensitivity. & \texttt{c13\_pingpong\_definitions.csv}, \texttt{c18\_ablation.csv} \\
+17 & \texttt{stage17\_figures.py} & Renders publication-grade vector and raster figures from experimental tables. & \texttt{reports\_xcal/figures/*.png} \\
+18 & \texttt{stage18\_tuning\_budget.py} & Controlled hyperparameter optimization with 50-trial Optuna Bayesian search budget per learner family. & \texttt{c17\_tuned\_params.csv} \\
+19 & \texttt{stage19\_transfer\_adaptation.py} & Cross-corpus evaluation on external datasets (Astana LTE, NUWiNS, Irish); audits CORAL and MMD domain adaptation limits. & \texttt{transfer\_adaptation.csv} \\
+20 & \texttt{stage20\_departmental\_baseline.py} & Re-implementation and head-to-head benchmarking of Shafi et al.'s Q-learning reinforcement-learning baseline~\cite{ref39}. & \texttt{departmental\_baseline.csv} \\
+21 & \texttt{stage21\_capture\_transfer.py} & Evaluates out-of-sample highway corridor transfer (Campaign 4 holdout). & \texttt{capture\_transfer.csv} \\
+22--31 & \texttt{stage22\_revision.py} et seq. & Sensitivity analyses (Table~\ref{tab:A_5}), cell contamination audits, burst/isolated stratifications, and case-study extractions. & \texttt{c9\_row\_alignment\_audit.csv}, \texttt{c19\_sens\_*.csv} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Repository Layout and Manifest Specifications}
+\label{sec:C_2}
+
+The reproduction directory structure is organized hierarchically into code, configuration, derived data, and reproducible reporting outputs:
+
+\begin{verbatim}
+pipeline/
+  artifacts/
+    freeze_manifest.json          # Pre-registered configuration freeze
+  configs/
+    models/                       # Architecture and hyperparameter grids
+    adapters/                     # Hardware and logging schema mappings
+  data/
+    processed_xcal/               # Derived, quality-controlled row/event frames
+    external/                     # Resampled public corpora (NUWiNS, Astana)
+  reports_rev/
+    tables/                       # Programmatically generated CSV tables
+    figures/                      # Publication-ready figures
+  src/
+    hoproj/
+      core/                       # Signalling decoder & discrete hazard math
+      features/                   # 112 causal rolling and lag transforms
+      models/                     # LightGBM, MLP, GRU, TabNet, CRC modules
+      pipeline/                   # Numbered stage execution scripts
+\end{verbatim}
+
+\section{Pre-Registration Manifest and Cryptographic Checksums}
+\label{sec:C_3}
+
+Prior to the acquisition of Campaign 4, the methodological parameters, candidate model search spaces, and feature pipeline definitions were frozen in an internal project manifest (\texttt{freeze\_manifest.json}) carrying configuration fingerprint \texttt{ead9c9d0bfad}. As discussed in Section~\ref{sec:3_2} and Section~\ref{sec:5_1}, this freeze protected the algorithmic search space and hyperparameter choices, but the one-row alignment audit was subsequently derived retrospectively across the pooled corpus.
+
+To guarantee artifact integrity and permit exact verification against pipeline bit rot, Table~\ref{tab:C_checksums} documents the SHA-256 cryptographic hashes for the configuration manifest, derived intermediate data frames, and core empirical results tables.
+
+\begin{table}[htbp]
+\centering
+\caption{Cryptographic SHA-256 verification hashes for pipeline configuration and empirical tables.}
+\label{tab:C_checksums}
+\vspace{0.4em}
+\singlespacing
+\footnotesize
+\begin{tabularx}{\linewidth}{l l X}
+\toprule
+\textbf{File Name} & \textbf{SHA-256 Checksum} & \textbf{Description / Manuscript Mapping} \\
+\midrule
+\texttt{freeze\_manifest.json} & \texttt{98B9887F365BBA14BBA267D70DDBE174} & Pre-Campaign 4 protocol freeze manifest \\
+& \texttt{BAF9117566A03915645BBAF87E38F80B} & (config fingerprint \texttt{ead9c9d0bfad}). \\
+\texttt{c1\_dataset\_sessions.csv} & \texttt{D3DBA7B61537BE675D193AE6AF786EA4} & Campaign drive-test summary metadata \\
+& \texttt{8AB7702015F7EFA2289CE8C761D84859} & (Table~\ref{tab:3_2}). \\
+\texttt{c2\_protocol\_ladder.csv} & \texttt{4480611B7F1D9D3CDA8776A7C6844F44} & Splitting protocol inflation ladder \\
+& \texttt{86D649D4F0CBA076296D99FAB50EB580} & (Table~\ref{tab:5_3}). \\
+\texttt{c3\_main\_loco.csv} & \texttt{26FA9B544367C17B380DF1674443181C} & Primary multi-model LOCO benchmark \\
+& \texttt{167AC144B4343260F3BED57A292C4502} & (Table~\ref{tab:5_4}). \\
+\texttt{c4\_hazard\_prevalence.csv} & \texttt{B3A0D1797711D43427A06577DC3C7B70} & Reconciled hazard expansion prevalence \\
+& \texttt{7E8DBEE8B5522945A7D5FE3AAD2FA799} & (Section~\ref{sec:4_3}). \\
+\texttt{c9\_row\_alignment\_audit.csv} & \texttt{F3D30CAF975F948749466CCAD86588F9} & Alignment audit and cell contamination rates \\
+& \texttt{3AC59EC93B9EE1A13F9395530C8DE613} & (Table~\ref{tab:5_1}). \\
+\texttt{c10\_crc\_frontier.csv} & \texttt{2BAE1B660F6A6C28921E3A1421977A3C} & Conformal risk control empirical loss frontier \\
+& \texttt{CE69CB78F402892812D0BBD181537B93} & (Table~\ref{tab:5_9}). \\
+\texttt{c11\_coherence\_metrics.csv} & \texttt{D2C33FF92DA160C97FC55B980198538E} & Horizon coherence and calibration metrics \\
+& \texttt{F5AFFF29C8C32E1155F72F8B0D3687DF} & (Table~\ref{tab:5_7}). \\
+\texttt{c13\_pingpong\_definitions.csv} & \texttt{32BA9D458F5F7B4DD2060CEE732AF65D} & Ping-pong definitional sensitivity grid \\
+& \texttt{E087A59F4CA8043F21911094A897E553} & (Table~\ref{tab:5_14}). \\
+\texttt{c18\_ablation.csv} & \texttt{16C37C67DFA8BE8B3DB91432B3AF0BFF} & Feature group ablation comparison \\
+& \texttt{09F692FE0044F09E9E5EF0C8212A36B6} & (Table~\ref{tab:5_13}). \\
+\texttt{c19\_sens\_blank.csv} & \texttt{9FAA4081BEE6E50D5B94679D79A2F5F0} & Post-handover blanking window sensitivity \\
+& \texttt{8FBB21FD18896EB82EEABA6D1A82B268} & (Table~\ref{tab:A_5}). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Reproduction Commands and Environment Setup}
+\label{sec:C_4}
+
+The full execution environment is reproducible via Python standard packaging. With dependencies installed from \texttt{requirements.txt}, the complete pipeline or any individual evaluation stage can be executed via the central runner:
+
+\begin{verbatim}
+# Set Python path to include source modules
+export PYTHONPATH=$PWD/src           # Unix / macOS
+$env:PYTHONPATH="$PWD/src"           # Windows PowerShell
+
+# Execute the complete end-to-end processing and evaluation pipeline
+python -m hoproj.pipeline.run_all
+
+# Alternatively, execute specific stages individually:
+python -m hoproj.pipeline.run_all --stage stage12   # Ingestion, QC, alignment
+python -m hoproj.pipeline.run_all --stage stage13   # Benchmark LOCO evaluation
+python -m hoproj.pipeline.run_all --stage stage14   # Hazard coherence & calibration
+python -m hoproj.pipeline.run_all --stage stage15   # Point process & conformal risk
+python -m hoproj.pipeline.run_all --stage stage18   # Bayesian hyperparameter tuning
+\end{verbatim}
+
+Execution is deterministic: random seeds are fixed globally across Python \texttt{random}, \texttt{numpy}, and \texttt{torch} (seed 42 for primary splits; 5-seed replications for stability audits). Output tables are written directly into \texttt{reports\_rev/tables/}, where automated checksum verification scripts confirm exact correspondence with Table~\ref{tab:C_checksums}.

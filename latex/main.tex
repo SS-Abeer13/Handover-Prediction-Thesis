@@ -1,0 +1,106 @@
+\documentclass[12pt, a4paper]{report}
+
+\usepackage[a4paper, left=3.0cm, right=2.5cm, top=2.5cm, bottom=2.5cm, headheight=15pt]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{microtype}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[font=small, labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{titlesec}
+
+% Section styling per IUT guidelines
+\titleformat{\chapter}[display]
+  {\normalfont\fontsize{16}{20}\bfseries\centering}
+  {\MakeUppercase{\chaptertitlename}\ \thechapter}
+  {10pt}
+  {\fontsize{16}{20}\bfseries\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{-10pt}{20pt}
+
+\titleformat{\section}
+  {\normalfont\fontsize{14}{17}\bfseries}
+  {\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{12pt plus 3pt minus 2pt}{6pt plus 2pt minus 1pt}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{12}{15}\bfseries}
+  {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{10pt plus 2pt minus 2pt}{4pt plus 2pt minus 1pt}
+
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{12}{15}\itshape}
+  {\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{8pt plus 2pt minus 2pt}{3pt plus 1pt minus 1pt}
+
+% Float management to prevent empty spaces and reduce page count
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\emergencystretch=2em
+
+% Switch between full academic thesis and journal submission mode
+% Set \journaltrue to omit local university OBE course/program outcome mappings (Chapter 6)
+\newif\ifjournal
+\journalfalse
+
+\begin{document}
+
+% Frontmatter
+\pagenumbering{roman}
+\input{frontmatter/title}
+\input{frontmatter/declaration}
+\input{frontmatter/approval}
+\input{frontmatter/acknowledgements}
+\input{frontmatter/abstract}
+
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+\input{frontmatter/acronyms}
+\newpage
+
+% Mainmatter
+\pagenumbering{arabic}
+\onehalfspacing
+
+\input{chapters/ch1_introduction}
+\input{chapters/ch2_literature_review}
+\input{chapters/ch3_measurement_corpus}
+\input{chapters/ch4_predictive_formulation}
+\input{chapters/ch5_results_and_analysis}
+\ifjournal
+  % Chapter 6 (Outcome-Based Education demonstration) omitted for journal/conference version
+\else
+  \input{chapters/ch6_demonstrative_case_studies}
+\fi
+\input{chapters/ch7_conclusions}
+
+\newpage
+\input{references}
+
+\newpage
+\appendix
+\input{appendices/appendix_a}
+\input{appendices/appendix_b}
+\input{appendices/appendix_c}
+\input{appendices/appendix_d}
+
+\end{document}

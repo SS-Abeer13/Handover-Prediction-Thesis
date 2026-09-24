@@ -1,0 +1,249 @@
+CHAPTER 6
+
+
+# DEMONSTRATION OF OUTCOME BASED EDUCATION
+
+
+This chapter demonstrates how the work reported in Chapters 1 to 5 addresses the course outcomes, program outcomes, knowledge profiles and complex engineering problem and activity attributes required of a capstone project in EEE 4700/4800. Each claim made here refers to a specific section of the thesis rather than asserting an attribute in the abstract, and attributes that the work does not genuinely address are marked as such rather than claimed.
+
+
+## 6.1 Introduction
+
+
+Outcome Based Education requires that a capstone project be assessed against what the student is able to do at its conclusion rather than against the volume of work performed. The sections that follow map the activities of this project onto the defined outcomes, in the order set out in the departmental thesis format: course outcomes in Section 6.2, aspects of program outcomes in Section 6.3, knowledge profiles in Section 6.4, the use of complex engineering problems in Section 6.5, the socio-cultural, environmental and ethical impact in Section 6.6, and the attributes of complex engineering problem solving and complex engineering activities in Sections 6.7 and 6.8.
+
+
+## 6.2 Course outcomes addressed
+
+
+Table 6.1 lists the course outcomes defined for EEE 4700 and indicates those addressed by this project.
+
+Table 6.1 Course outcomes addressed in this project.
+
+
+[TABLE]
+
+CO | CO statement | PO | Addressed
+
+CO1 | Apply knowledge of electrical and electronic engineering to the solution of complex engineering problems | PO1 | √
+
+CO2 | Identify a contemporary real-life problem related to electrical and electronic engineering by reviewing and analysing existing research works | PO2 | √
+
+CO3 | Determine functional requirements of the problem considering feasibility and efficiency through analysis and synthesis of information | PO4 | √
+
+CO4 | Select a suitable solution and determine its method considering professional ethics, codes and standards | PO8 | √
+
+CO5 | Adopt modern engineering resources and tools for the solution of the problem | PO5 | √
+
+CO6 | Prepare management plan and budgetary implications for the solution of the problem | PO11 | √
+
+CO7 | Analyse the impact of the proposed solution on health, safety, culture and society | PO6 | √
+
+CO8 | Analyse the impact of the proposed solution on environment and sustainability | PO7 | √
+
+CO9 | Develop a viable solution considering health, safety, cultural, societal and environmental aspects | PO3 | √
+
+CO10 | Work effectively as an individual and as a team member for the accomplishment of the solution | PO9 | √
+
+CO11 | Prepare various technical reports, design documentation, and deliver effective presentations for demonstration of the solution | PO10 | √
+
+CO12 | Recognise the need for continuing education and participation in professional societies and meetings | PO12 | √
+
+[/TABLE]
+
+
+
+## 6.3 Aspects of program outcomes addressed
+
+
+Table 6.2 identifies the specific aspects of the relevant program outcomes that the project addresses, and states where each is evidenced.
+
+Table 6.2 Aspects of program outcomes addressed, with the evidencing section.
+
+
+[TABLE]
+
+PO | Aspect | Addressed | Evidence
+
+PO3 | Public health | — | No health claim is made; see Section 6.6
+
+PO3 | Safety | √ | Connection continuity and radio-link failure, Section 1.2
+
+PO3 | Societal | √ | Section 6.6
+
+PO3 | Environmental | √ | Measured unnecessary signalling, Section 5.10
+
+PO4 | Design of experiments | √ | Grouped-drive rotation and seed repetition, Section 4.9
+
+PO4 | Analysis and interpretation of data | √ | Chapter 5 in its entirety
+
+PO4 | Synthesis of information | √ | Protocol audit of 22 models, Section 2.3
+
+PO5 | Modern tool usage | √ | Drive-test instrumentation and analysis stack, Section 6.4
+
+PO6 | Societal | √ | Section 6.6
+
+PO6 | Legal | √ | Data handling and operator anonymity, Section 6.6
+
+PO7 | Societal and environmental | √ | Section 6.6
+
+PO8 | Professional ethics and responsibilities | √ | Reporting of negative results, Section 5.11
+
+PO8 | Norms | √ | Conformance to 3GPP TS 36.331 terminology throughout
+
+PO10 | Comprehend and write effective reports | √ | This report
+
+PO10 | Design documentation | √ | Chapters 3 and 4
+
+PO10 | Make effective presentations | √ | Progress and defence presentations
+
+PO11 | Engineering management principles | √ | Section 6.9
+
+PO11 | Economic decision-making | √ | Section 6.9
+
+[/TABLE]
+
+
+
+## 6.4 Knowledge profiles addressed
+
+
+Table 6.3 identifies the knowledge profiles K3 to K8 and justifies each against the content of this thesis. No profile is claimed without a corresponding section.
+
+Table 6.3 Knowledge profiles addressed, with justification.
+
+
+[TABLE]
+
+K | Justification
+
+K3 | A systematic, theory-based formulation of engineering fundamentals: the discrete-time survival formulation of Section 4.3, including the product-limit identity and its monotonicity proof, and the censoring-aware likelihood of Section 4.4
+
+K4 | Specialist knowledge at the forefront of the discipline: the decoding of RRC measurement configuration under message-scoped identifiers, Section 3.3, and the recovery of deployed Event A3 parameters, Section 3.5
+
+K5 | Knowledge supporting engineering design in a practice area: the feature construction, model selection and calibration design of Sections 4.6 to 4.8, each chosen against a stated alternative
+
+K6 | Knowledge of engineering practice and technology: the conduct of four drive-test campaigns with commercial diagnostic instrumentation on a live operator network, Chapter 3
+
+K7 | Comprehension of the role of engineering in society: the impact analysis of Section 6.6, including the explicit refusal to make a health claim the measurements do not support
+
+K8 | Engagement with research literature: the screening of 108 publications and the protocol audit of 22 comparable models in Section 2.3, together with the methodological provenance recorded in Sections 2.5 to 2.8
+
+[/TABLE]
+
+
+
+## 6.5 Use of complex engineering problems
+
+
+The problem addressed here satisfies the defining characteristics of a complex engineering problem in several independent respects.
+
+It cannot be resolved without deep, analytically based knowledge: the incoherence of independent multi-horizon classifiers is not visible without the survival formulation of Section 4.3, and the inadmissibility of class reweighting under that formulation, Section 4.5, follows from a compounding argument that no amount of empirical tuning would reveal.
+
+It involves conflicting technical requirements whose trade-offs must be resolved quantitatively rather than asserted. The clearest is the warning trade-off of Section 5.5: an earlier and more sensitive warning is more useful to the network and also more expensive, and the frontier from a 20 % certified miss rate at a 47% alarm rate to a 5 % target at 86% is measured rather than assumed.
+
+It is not amenable to a standard procedure. The evaluation protocol the comparator literature treats as standard is demonstrably wrong on this data, and Section 5.3 measures by how much; so is the implicit assumption that a measurement row describes the interval before its own timestamp, which Section 5.1 measures.
+
+It spans several sub-disciplines: the LTE control plane, radio propagation, statistical survival analysis, distribution-free inference, point-process modelling and software engineering, and no single one of them is sufficient.
+
+
+## 6.6 Socio-cultural, environmental and ethical impact
+
+
+Societal. Bangladesh, and Dhaka in particular, sustains one of the densest populations of mobile subscribers in the world, and on the routes measured here a handover occurs every eleven seconds. Mobile connectivity in this setting is not a convenience but an infrastructure on which financial services, transport and emergency communication depend. A warning one to two seconds ahead of a handover gives the network the opportunity to prepare the target cell before an interruption occurs rather than to recover after it, which bears directly on the continuity of those services.
+
+Environmental and sustainability. The environmental argument made here is confined to what was measured. Section 5.10 shows that 26.3% of the handovers observed returned to the cell just vacated within fifteen seconds, and that the phenomenon is concentrated in intra-carrier transfers under one dominant configuration profile. Each such pair is signalling work, radio resource occupancy and processing load expended for no change in serving cell. Identifying that fraction is a precondition for reducing it. This thesis does not claim a measured energy saving, because no such measurement was made.
+
+Health. No health claim of any kind is made. This project involved no human subjects, took no exposure measurements and conducted no experiment bearing on health. Stating that plainly is itself the ethical position: the temptation in a thesis that touches radio transmission is to assert a health benefit on the grounds that fewer transmissions must be better, and that assertion would not be supported by anything in Chapters 3 to 5.
+
+Ethical and legal. Four ethical considerations arose and were handled explicitly. Measurements were collected from the authors' own handsets and subscriptions, so no third-party user data was recorded and no subscriber identifiers appear in the dataset. The operator is not named, because the purpose of reporting its configuration is scientific rather than comparative. Negative results were reported rather than omitted, including the one in Section 5.1 that removed this project's most impressive number. And the dataset used for the independent check in Section 5.7 was produced in the same department as this work, which is stated in the text rather than left for a reader to discover.
+
+Declaration of competing interests. The supervisor of this thesis is a co-author of the publicly released dataset used for the independent check of Section 5.7 [38] and of the comparator method reimplemented in Section 5.11 [39]. Neither the dataset nor the comparator was modified for this work; both were taken as released, and the results involving them are reported in the same form as every other result. The relationship is declared here because the word independent, applied to a collection produced by an overlapping group on the same operator with the same instrument, would otherwise carry more weight than the evidence supports. The authors declare no other competing interest.
+
+Cultural. The measurement campaigns were conducted on public roads under ordinary traffic conditions, and the driving itself conformed to local traffic regulation. No aspect of the work required access to private premises or to restricted infrastructure.
+
+
+## 6.7 Attributes of complex engineering problem solving addressed
+
+
+Table 6.4 maps the attributes P1 to P7 onto the work.
+
+Table 6.4 Attributes of complex engineering problem solving addressed.
+
+
+[TABLE]
+
+P | Attribute | Addressed | How
+
+P1 | Depth of knowledge required | √ | Survival formulation and its monotonicity proof, Section 4.3; conformal risk control, Section 4.10
+
+P2 | Range of conflicting requirements | √ | The warning frontier of Section 5.5: lead time against false-alarm cost, measured across the whole curve
+
+P3 | Depth of analysis required | √ | No standard procedure applies; the standard evaluation protocol is shown to be invalid here, Section 5.3
+
+P4 | Familiarity of issues | √ | The deployed configuration was unknown before decoding, Section 3.5, and differs in sign from the literature's assumption
+
+P5 | Extent of applicable codes | √ | 3GPP TS 36.331 and TS 36.300 govern the signalling interpretation throughout Chapter 3
+
+P6 | Extent of stakeholder involvement | √ | Operator, subscriber and regulator interests differ; Section 6.6 states which are and are not addressed
+
+P7 | Interdependence | √ | Six sub-problems — decoding, labelling, feature design, formulation, evaluation and risk control — each of which constrains the others
+
+[/TABLE]
+
+
+
+## 6.8 Attributes of complex engineering activities addressed
+
+
+Table 6.5 maps the attributes A1 to A5 onto the work.
+
+Table 6.5 Attributes of complex engineering activities addressed.
+
+
+[TABLE]
+
+A | Attribute | Addressed | How
+
+A1 | Range of resources | √ | Commercial drive-test instrumentation, decoded control-plane logs, a gradient-boosting and deep-learning software stack, and 108 screened publications
+
+A2 | Level of interaction | √ | Resolution of conflicting requirements between prediction horizon, calibration quality and alarm cost, Sections 5.4 and 5.5
+
+A3 | Innovation | √ | The application of a discrete-time hazard formulation and a drive-level conformal risk bound to mobility prediction, neither of which appears in the audited literature
+
+A4 | Consequences for society and the environment | √ | Section 6.6, bounded to what was measured
+
+A5 | Familiarity | √ | The problem falls outside standards-governed practice: no 3GPP procedure specifies handover prediction, and no standard definition of ping-pong exists, as Section 5.10 demonstrates quantitatively
+
+[/TABLE]
+
+
+
+## 6.9 Project management, resources and budget
+
+
+The project was conducted over two academic terms. The first term covered problem identification, the literature screening of Section 2.3 and the construction of the decoding pipeline; the second covered the four measurement campaigns of September 2026, the formulation and modelling of Chapter 4, the evaluation of Chapter 5 and the preparation of this report. The alignment audit of Section 5.1 was performed during the final revision, after all four campaigns and after the first complete draft, and it required every experiment in Chapter 5 to be re-run.
+
+Table 6.6 Resource and cost summary for the project.
+
+
+[TABLE]
+
+Item | Justification | Cost (BDT)
+
+Drive-test instrumentation | Departmental equipment, used under supervision | Nil (departmental)
+
+Mobile data and subscription | Four measurement campaigns on a live network | 3,000
+
+Vehicle fuel and hire | Approximately 95 km across four campaigns, including the highway run | 9,000
+
+Computation | Model training and evaluation on personal and departmental hardware | Nil
+
+Report production and binding | Three hard-bound copies as required | 3,000
+
+Total |  | 15,000
+
+[/TABLE]
+
+
+Table 6.6 itemises the cost. The budget falls within the departmental allocation of BDT 15,000 per group. The dominant cost is field data collection rather than computation, which is characteristic of measurement-driven work and is the reason the feasibility floor of Section 5.5 is an economic constraint as much as a statistical one: buying a tighter guarantee means buying more driving.

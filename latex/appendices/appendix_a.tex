@@ -1,0 +1,175 @@
+\chapter{Full Per-Horizon Results}\label{app:A}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Per-horizon AUPRC for every learner under leave-one-campaign-out, against the prevalence floor.}
+\label{tab:A_1}
+\vspace{0.4em}
+\singlespacing
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{l c c c c c}
+\toprule
+\textbf{Learner} & \textbf{0.5 s} & \textbf{1 s} & \textbf{2 s} & \textbf{3 s} & \textbf{5 s} \\
+\midrule
+LightGBM & 0.103 & 0.179 & 0.285 & 0.362 & 0.475 \\
+MLP & 0.101 & 0.173 & 0.280 & 0.359 & 0.467 \\
+TCN & 0.104 & 0.167 & 0.281 & 0.367 & 0.481 \\
+Transformer & 0.090 & 0.152 & 0.256 & 0.338 & 0.453 \\
+GRU & 0.075 & 0.130 & 0.237 & 0.321 & 0.438 \\
+Logistic regression & 0.072 & 0.130 & 0.224 & 0.299 & 0.417 \\
+Hawkes-kernel intensity (LR) & 0.070 & 0.120 & 0.210 & 0.285 & 0.403 \\
+Event A3 rule (deployed parameters) & 0.068 & 0.116 & 0.204 & 0.272 & 0.374 \\
+History block only (LightGBM) & 0.066 & 0.114 & 0.203 & 0.277 & 0.397 \\
+Dwell time only (LightGBM) & 0.062 & 0.105 & 0.190 & 0.258 & 0.367 \\
+Prevalence floor & 0.037 & 0.068 & 0.126 & 0.176 & 0.261 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Event-level operating characteristics of the primary model at the 5 \% false-positive operating point. Note: Evaluated events reduce from the 938 quality-controlled commands inside retained session blocks to 934--937 across horizons because commands occurring within the first $h$ seconds of a 180~s block boundary lack full pre-event lookahead history.}
+\label{tab:A_2}
+\vspace{0.4em}
+\singlespacing
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{l c c c c c c c}
+\toprule
+\textbf{Horizon} & \textbf{Events} & \textbf{Resolvable on the 1 Hz grid} & \textbf{Detected} & \textbf{Detection rate} & \textbf{False alarms / h} & \textbf{False alarms / km} & \textbf{Median lead time} \\
+\midrule
+0.5 s & 934 & 34.2 \% & 203 & 21.7 \% & 277.6 & 8.45 & 0.25 s \\
+1 s & 935 & 64.6 \% & 318 & 34.0 \% & 179.0 & 5.45 & 0.47 s \\
+2 s & 935 & 74.8 \% & 314 & 33.6 \% & 124.1 & 3.78 & 1.24 s \\
+3 s & 936 & 88.2 \% & 344 & 36.8 \% & 91.8 & 2.80 & 1.96 s \\
+5 s & 937 & 95.3 \% & 398 & 42.5 \% & 69.6 & 2.12 & 3.31 s \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\caption{The alignment audit of Section~\ref{sec:5_1} across three datasets.}
+\label{tab:A_3}
+\vspace{0.4em}
+\singlespacing
+\small
+\begin{tabularx}{\linewidth}{p{2.8cm} X X X}
+\toprule
+\textbf{Property} & \textbf{This work} & \textbf{Irish 4G/5G (MMSys 2020)} & \textbf{US tier-1 (NUWiNS PAM 2025)} \\
+\midrule
+Instrument & XCAL, 1 Hz export produced by the tool & G-NetTrack Pro, ~1 Hz application log & XCAL, native 10 Hz export downsampled here \\
+Network and region & One operator, Dhaka and Gazipur & One operator, Ireland (Raca et al., MMSys 2020) & 3 tier-1 operators, two cross-US routes (NUWiNS, PAM 2025) \\
+Event clock & RRC signalling: command and complete & serving-cell identifier changes only & XCAL handover event column \\
+Row semantics & aggregate over the second, written at its end & instantaneous sample & set by us: last, or first, sample of the second \\
+Handovers audited & 938 & 1,175 cell changes & 4,712 in 12 files \\
+Row t shows the target cell & 75.9 \% & 29.4 \% & 93.2 \% \\
+Isolated handovers only & 74.6 \% (n = 291) & not separable (no signalling clock) & 92.8 \% (n = 3,160) \\
+Row t-1 shows the target cell & 15.6 \% & no step across the integer boundary & 0.1 \% \\
+Same rows, start-of-second rule & not available (the tool aggregates) & not applicable (rows are samples) & 4.1 \% \\
+Update delay observed & p90 99 ms from RRC complete messages & not observable on a 1 Hz grid & 50-75 ms, recovered from the contamination cliff (98 \% at 75-100 ms left, 44 \% at 50-75 ms, 0 \% below 50 ms) \\
+Verdict & defect present, attenuated by a one-row KPI refresh lag & no defect: sampled rows are not aggregates & defect present under end-of-second, absent under start-of-second \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Per-campaign calibration at the one-second horizon.}
+\label{tab:A_4}
+\vspace{0.4em}
+\singlespacing
+\footnotesize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{l c c c c}
+\toprule
+\textbf{Arm} & \textbf{1st Campaign (urban arterial) ECE / Brier} & \textbf{2nd Campaign (urban loop) ECE / Brier} & \textbf{3rd Campaign (dense urban) ECE / Brier} & \textbf{4th Campaign (highway) ECE / Brier} \\
+\midrule
+independent & 0.056 / 0.078 & 0.049 / 0.071 & 0.049 / 0.061 & 0.036 / 0.050 \\
+independent + cumulative max & 0.055 / 0.078 & 0.049 / 0.071 & 0.049 / 0.061 & 0.036 / 0.050 \\
+independent + PAV & 0.056 / 0.078 & 0.049 / 0.071 & 0.050 / 0.061 & 0.036 / 0.050 \\
+independent + isotonic & 0.030 / 0.074 & 0.019 / 0.067 & 0.013 / 0.057 & 0.044 / 0.051 \\
+independent + isotonic + PAV & 0.027 / 0.074 & 0.018 / 0.067 & 0.013 / 0.057 & 0.042 / 0.051 \\
+hazard & 0.044 / 0.075 & 0.027 / 0.068 & 0.044 / 0.060 & 0.026 / 0.051 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Sensitivity of every window chosen after the data were collected. Each is varied across a factor of two. These runs use a single seed and default LightGBM hyper-parameters without nested tuning, so absolute values differ from the tuned three-seed results of Chapter~5 (e.g.\ the 10~s cutoff gives 2.62$\times$ vs 1.72$\times$ here against 3.1$\times$ vs 1.9$\times$ in Table~\ref{tab:5_11}); only the ordering across values is interpreted. This is local sensitivity around the chosen values, not a test of whether the choices themselves were unbiased.}
+\label{tab:A_5}
+\vspace{0.4em}
+\singlespacing
+\small
+\begin{tabularx}{\linewidth}{p{3.5cm} p{2.8cm} c X}
+\toprule
+\textbf{Window varied} & \textbf{Value} & \textbf{Quantity it governs} & \textbf{Result} \\
+\midrule
+Random-block length & 60 s & 1 s AUPRC vs LOCO & +17.6 \% \\
+Random-block length & 120 s & 1 s AUPRC vs LOCO & +8.1 \% \\
+Random-block length & 180 s & 1 s AUPRC vs LOCO & +15.6 \% \\
+Random-block length & 240 s & 1 s AUPRC vs LOCO & +5.9 \% \\
+Random-block length & 300 s & 1 s AUPRC vs LOCO & +7.2 \% \\
+Purge between blocked train and test & 0 s & 1 s AUPRC vs LOCO & +3.7 \% \\
+Purge between blocked train and test & 30 s & 1 s AUPRC vs LOCO & +3.1 \% \\
+Purge between blocked train and test & 60 s & 1 s AUPRC vs LOCO & +1.6 \% \\
+Purge between blocked train and test & 90 s & 1 s AUPRC vs LOCO & -4.1 \% \\
+Purge between blocked train and test & 120 s & 1 s AUPRC vs LOCO & -2.1 \% \\
+Purge between blocked train and test & 180 s & 1 s AUPRC vs LOCO & -5.6 \% \\
+Quiet / in-burst cutoff & 5 s & 1 s lift by stratum & 2.57x vs 1.48x \\
+Quiet / in-burst cutoff & 10 s & 1 s lift by stratum & 2.62x vs 1.72x \\
+Quiet / in-burst cutoff & 15 s & 1 s lift by stratum & 2.80x vs 1.84x \\
+Quiet / in-burst cutoff & 20 s & 1 s lift by stratum & 3.19x vs 1.86x \\
+Post-handover blank & 0 s & 1 s lift on the row set & 2.10x on 10,236 rows \\
+Post-handover blank & 1 s & 1 s lift on the row set & 2.28x on 9,333 rows \\
+Post-handover blank & 2 s & 1 s lift on the row set & 2.31x on 8,586 rows \\
+Post-handover blank & 3 s & 1 s lift on the row set & 2.41x on 8,004 rows \\
+Post-handover blank & 5 s & 1 s lift on the row set & 2.55x on 7,074 rows \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\begin{table}[htbp]
+\centering
+\caption{Per-handover evidence for the delayed-refresh explanation.}
+\label{tab:A_6}
+\vspace{0.4em}
+\singlespacing
+\small
+\begin{tabularx}{\linewidth}{p{4.0cm} X}
+\toprule
+\textbf{Quantity} & \textbf{Value} \\
+\midrule
+Handovers with a positive margin (row t predicted contaminated) & 923 \\
+of which row t does carry the target & 712 \\
+Residual: row t carries the source instead & 211 \\
+of the residual, row t+1 carries the target & 178 (84\%) \\
+Median margin, residual handovers & 0.477 s \\
+Median margin, contaminated handovers & 0.522 s \\
+ &  \\
+Ten residual handovers, smallest margin first &  \\
+1st Campaign, $\delta$ = 0.999 s, margin 0.000 s & row t shows PCI 489, row t+1 shows PCI 380, target is PCI 380 \\
+1st Campaign, $\delta$ = 0.998 s, margin 0.001 s & row t shows PCI 27, row t+1 shows PCI 91, target is PCI 91 \\
+2nd Campaign, $\delta$ = 0.998 s, margin 0.002 s & row t shows PCI 346, row t+1 shows PCI 38, target is PCI 38 \\
+1st Campaign, $\delta$ = 0.995 s, margin 0.004 s & row t shows PCI 13, row t+1 shows PCI 256, target is PCI 147 \\
+3rd Campaign, $\delta$ = 0.995 s, margin 0.005 s & row t shows PCI 435, row t+1 shows PCI 303, target is PCI 303 \\
+3rd Campaign, $\delta$ = 0.984 s, margin 0.015 s & row t shows PCI 30, row t+1 shows PCI 348, target is PCI 348 \\
+1st Campaign, $\delta$ = 0.980 s, margin 0.019 s & row t shows PCI 270, row t+1 shows PCI 280, target is PCI 280 \\
+4th Campaign, $\delta$ = 0.978 s, margin 0.022 s & row t shows PCI 39, row t+1 shows PCI 88, target is PCI 88 \\
+4th Campaign, $\delta$ = 0.975 s, margin 0.024 s & row t shows PCI 193, row t+1 shows PCI 292, target is PCI 292 \\
+1st Campaign, $\delta$ = 0.876 s, margin 0.026 s & row t shows PCI 280, row t+1 shows PCI 33, target is PCI 33 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+

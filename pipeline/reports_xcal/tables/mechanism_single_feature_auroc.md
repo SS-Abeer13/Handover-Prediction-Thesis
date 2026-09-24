@@ -1,0 +1,8 @@
+| feature               |   auroc | direction   |    n |
+|:----------------------|--------:|:------------|-----:|
+| serving_dwell_s       |  0.8741 | -           | 6362 |
+| serving_sinr          |  0.8305 | -           | 6362 |
+| sig_s_since_a3_report |  0.7032 | -           | 6350 |
+| sig_a3_reports_prev3s |  0.6846 | +           | 6362 |
+| t_since_prev_ho_s     |  0.6523 | -           | 6362 |
+| gap_serving_nbr1      |  0.5663 | -           | 3270 |

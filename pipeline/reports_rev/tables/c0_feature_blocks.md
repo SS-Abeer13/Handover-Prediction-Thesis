@@ -1,0 +1,8 @@
+| block                      |   count | in_main_set   | source                             |
+|:---------------------------|--------:|:--------------|:-----------------------------------|
+| Radio                      |      89 | True          | 1 Hz export, lagged one row        |
+| Mobility                   |      17 | True          | 1 Hz export, lagged one row        |
+| History                    |       6 | True          | decoded signalling, session-level  |
+| Main feature set           |     112 | True          |                                    |
+| Signalling (ablation only) |      10 | False         | decoded signalling                 |
+| Design matrix as built     |     122 | False         | main set plus the signalling block |

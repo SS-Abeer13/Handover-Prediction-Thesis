@@ -1,0 +1,6630 @@
+19:38:17.884	67342906769	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:17.884 ]
+
+Msg sequence : 34282
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2206692369
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11100111 01010110 10101101 00010011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11000100 01010010 00011001 11000001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11010111 11010101 10100101 11000001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0D 8E 75 6A D1 30 F0 C4 52
+    19 C1 0F 8D 7D 5A 5C 10
+
+
+
+
+19:38:20.445	67345466522	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:20.445 ]
+
+Msg sequence : 34368
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2206776247
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11011000 00010101 10100110 10110011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0B 0D 81 5A 6B 30
+
+
+
+
+19:38:21.724	67346746582	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:21.724 ]
+
+Msg sequence : 34413
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2206818192
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001110 00011011 11101111 00011110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 8C E1 BE F1 E0
+
+
+
+
+19:38:26.845	67351867249	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:26.845 ]
+
+Msg sequence : 34590
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2206985986
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11101101 11000110 11100010 10110101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0E 8E DC 6E 2B 50
+
+
+
+
+19:38:26.945	67353146545	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:26.945 ]
+
+Msg sequence : 34635
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207027906
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011010 11000000 01011101 10100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010000 01001110 00111100 11010001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 8D AC 05 DA 10 D8 D0 4E
+    3C D1 00
+
+
+
+
+19:38:28.224	67354426544	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:28.224 ]
+
+Msg sequence : 34680
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207069849
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11111000 01101110 01101000 10000001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11100000 11101110 10110010 10100000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11001100 11000011 10011110 11100011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111000 11111110 01010100 00111100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8F 0F 86 E6 88 10 F8 E0 EE
+    B2 A0 0F 8C CC 39 EE 30 E8 F8
+    FE 54 3C 00 00 00
+
+
+
+
+19:38:28.224	67354506287	<---	BCCH:BCH	LTE	LTE MasterInformationBlock
+
+PC Timestamp: [ 2024  Oct  15    19:38:28.224 ]
+
+Msg sequence : 34686
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207072462
+nDataLength : 7
+
+value BCCH-BCH-Message ::= 
+  message 
+    dl-Bandwidth n75,
+    phich-Config 
+      phich-Duration normal,
+      phich-Resource one
+     ,
+    systemFrameNumber '10001110'B,
+    schedulingInfoSIB1-BR-r13 0,
+    systemInfoUnchanged-BR-r15 FALSE,
+    spare '0000'B
+
+
+L3 Data in Hex : 
+    8A 38 00
+
+
+
+
+19:38:28.324	67354519806	<---	BCCH:DL SCH	LTE	LTE systemInformationBlockType1 - MCC : 470(Bangladesh) / MNC : 1(Grameenphone)
+
+PC Timestamp: [ 2024  Oct  15    19:38:28.324 ]
+
+Msg sequence : 34689
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207072905
+nDataLength : 26
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformationBlockType1 : 
+        cellAccessRelatedInfo 
+          plmn-IdentityList 
+              plmn-Identity 
+                mcc 
+                  4,
+                  7,
+                  0
+                 ,
+                mnc 
+                  0,
+                  1
+               ,
+              cellReservedForOperatorUse notReserved
+           ,
+          trackingAreaCode '11101011 11011110'B,
+          cellIdentity '00011000 01110010 00100000 1101'B,
+          cellBarred notBarred,
+          intraFreqReselection allowed,
+          csg-Indication FALSE
+         ,
+        cellSelectionInfo 
+          q-RxLevMin -64
+         ,
+        freqBandIndicator 3,
+        schedulingInfoList 
+            si-Periodicity rf16,
+            sib-MappingInfo 
+              sibType3
+           ,
+            si-Periodicity rf32,
+            sib-MappingInfo 
+              sibType5
+           ,
+            si-Periodicity rf64,
+            sib-MappingInfo 
+              sibType6,
+              sibType7
+         ,
+        si-WindowLength ms40,
+        systemInfoValueTag 12
+
+
+L3 Data in Hex : 
+    40 51 C0 03 EB DE 18 72 20 D8
+    18 21 10 81 04 4C 43 26 60 00
+    00 00
+
+
+
+
+19:38:28.328	67354559357	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib2, sib3
+
+PC Timestamp: [ 2024  Oct  15    19:38:28.328 ]
+
+Msg sequence : 34749
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207074201
+nDataLength : 41
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib2 : 
+                  radioResourceConfigCommon 
+                    rach-ConfigCommon 
+                      preambleInfo 
+                        numberOfRA-Preambles n52,
+                        preamblesGroupAConfig 
+                          sizeOfRA-PreamblesGroupA n28,
+                          messageSizeGroupA b56,
+                          messagePowerOffsetGroupB dB10
+                       ,
+                      powerRampingParameters 
+                        powerRampingStep dB2,
+                        preambleInitialReceivedTargetPower dBm-104
+                       ,
+                      ra-SupervisionInfo 
+                        preambleTransMax n10,
+                        ra-ResponseWindowSize sf10,
+                        mac-ContentionResolutionTimer sf64
+                       ,
+                      maxHARQ-Msg3Tx 5
+                     ,
+                    bcch-Config 
+                      modificationPeriodCoeff n2
+                     ,
+                    pcch-Config 
+                      defaultPagingCycle rf128,
+                      nB oneT
+                     ,
+                    prach-Config 
+                      rootSequenceIndex 750,
+                      prach-ConfigInfo 
+                        prach-ConfigIndex 6,
+                        highSpeedFlag FALSE,
+                        zeroCorrelationZoneConfig 11,
+                        prach-FreqOffset 3
+                     ,
+                    pdsch-ConfigCommon 
+                      referenceSignalPower 15,
+                      p-b 0
+                     ,
+                    pusch-ConfigCommon 
+                      pusch-ConfigBasic 
+                        n-SB 4,
+                        hoppingMode interSubFrame,
+                        pusch-HoppingOffset 11,
+                        enable64QAM TRUE
+                       ,
+                      ul-ReferenceSignalsPUSCH 
+                        groupHoppingEnabled FALSE,
+                        groupAssignmentPUSCH 0,
+                        sequenceHoppingEnabled FALSE,
+                        cyclicShift 0
+                     ,
+                    pucch-ConfigCommon 
+                      deltaPUCCH-Shift ds1,
+                      nRB-CQI 1,
+                      nCS-AN 0,
+                      n1PUCCH-AN 54
+                     ,
+                    soundingRS-UL-ConfigCommon release : NULL,
+                    uplinkPowerControlCommon 
+                      p0-NominalPUSCH -67,
+                      alpha al07,
+                      p0-NominalPUCCH -115,
+                      deltaFList-PUCCH 
+                        deltaF-PUCCH-Format1 deltaF0,
+                        deltaF-PUCCH-Format1b deltaF3,
+                        deltaF-PUCCH-Format2 deltaF1,
+                        deltaF-PUCCH-Format2a deltaF2,
+                        deltaF-PUCCH-Format2b deltaF2
+                       ,
+                      deltaPreambleMsg3 4
+                     ,
+                    ul-CyclicPrefixLength len1,
+                    pusch-ConfigCommon-v1270 
+                      enable64QAM-v1270 true
+                   ,
+                  ue-TimersAndConstants 
+                    t300 ms200,
+                    t301 ms200,
+                    t310 ms1000,
+                    n310 n10,
+                    t311 ms10000,
+                    n311 n1
+                   ,
+                  freqInfo 
+                    ul-Bandwidth n75,
+                    additionalSpectrumEmission 1
+                   ,
+                  timeAlignmentTimerCommon infinity
+                 ,
+              sib3 : 
+                  cellReselectionInfoCommon 
+                    q-Hyst dB4
+                   ,
+                  cellReselectionServingFreqInfo 
+                    s-NonIntraSearch 5,
+                    threshServingLow 3,
+                    cellReselectionPriority 6
+                   ,
+                  intraFreqCellReselectionInfo 
+                    q-RxLevMin -64,
+                    s-IntraSearch 29,
+                    allowedMeasBandwidth mbw50,
+                    presenceAntennaPort1 FALSE,
+                    neighCellConfig '01'B,
+                    t-ReselectionEUTRA 1,
+                    t-ReselectionEUTRA-SF 
+                      sf-Medium lDot0,
+                      sf-High oDot75
+
+
+L3 Data in Hex : 
+    00 80 5C 31 18 6F E1 2B B8 65
+    83 96 61 70 00 02 01 B0 EE 31
+    6A A0 44 06 00 4D CC 30 1C 22
+    4A 3C E3 75 93 C0 00
+
+
+
+
+19:38:28.328	67354573151	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:28.328 ]
+
+Msg sequence : 34750
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207074653
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11100000 11101110 10110010 10100000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11001100 11000011 10011110 11100011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111000 11111110 01010100 00111100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0F 8E 0E EB 2A 00 F8 CC C3
+    9E E3 0E 8F 8F E5 43 C0
+
+
+
+
+19:38:28.328	67354597321	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib5
+
+PC Timestamp: [ 2024  Oct  15    19:38:28.328 ]
+
+Msg sequence : 34751
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207075445
+nDataLength : 41
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib5 : 
+                  interFreqCarrierFreqList 
+                      dl-CarrierFreq 40292,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 8,
+                      threshX-Low 6,
+                      allowedMeasBandwidth mbw100,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 7,
+                      neighCellConfig '01'B
+                     ,
+                      dl-CarrierFreq 40490,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 8,
+                      threshX-Low 6,
+                      allowedMeasBandwidth mbw100,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 7,
+                      neighCellConfig '01'B
+                     ,
+                      dl-CarrierFreq 40688,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 8,
+                      threshX-Low 6,
+                      allowedMeasBandwidth mbw100,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 7,
+                      neighCellConfig '01'B
+                     ,
+                      dl-CarrierFreq 275,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 5,
+                      threshX-Low 11,
+                      allowedMeasBandwidth mbw50,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 6,
+                      neighCellConfig '01'B
+                     ,
+                      dl-CarrierFreq 3772,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 8,
+                      threshX-Low 6,
+                      allowedMeasBandwidth mbw15,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 5,
+                      neighCellConfig '01'B
+
+
+L3 Data in Hex : 
+    00 0D 04 4E B2 0C 50 6A E8 89
+    E2 A1 8A 0D 5D 11 3D E0 31 41
+    AB A2 00 44 C6 25 5B 64 40 75
+    E0 C5 06 2A 80 00 00
+
+
+
+
+19:38:28.424	67354646698	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib6, sib7
+
+PC Timestamp: [ 2024  Oct  15    19:38:28.424 ]
+
+Msg sequence : 34752
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207077063
+nDataLength : 65
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib6 : 
+                  carrierFreqListUTRA-FDD 
+                      carrierFreq 10638,
+                      cellReselectionPriority 4,
+                      threshX-High 6,
+                      threshX-Low 1,
+                      q-RxLevMin -58,
+                      p-MaxUTRA 24,
+                      q-QualMin -22
+                     ,
+                      carrierFreq 10663,
+                      cellReselectionPriority 4,
+                      threshX-High 6,
+                      threshX-Low 1,
+                      q-RxLevMin -58,
+                      p-MaxUTRA 24,
+                      q-QualMin -22
+                   ,
+                  t-ReselectionUTRA 1
+                 ,
+              sib7 : 
+                  t-ReselectionGERAN 1,
+                  carrierFreqsInfoList 
+                      carrierFreqs 
+                        startingARFCN 799,
+                        bandIndicator pcs1900,
+                        followingARFCNs explicitListOfARFCNs : 
+                       ,
+                      commonInfo 
+                        cellReselectionPriority 3,
+                        ncc-Permitted '11111111'B,
+                        q-RxLevMin 0,
+                        threshX-High 6,
+                        threshX-Low 1
+                     ,
+                      carrierFreqs 
+                        startingARFCN 696,
+                        bandIndicator pcs1900,
+                        followingARFCNs explicitListOfARFCNs : 
+                       ,
+                      commonInfo 
+                        cellReselectionPriority 3,
+                        ncc-Permitted '11111111'B,
+                        q-RxLevMin 0,
+                        threshX-High 6,
+                        threshX-Low 1
+                     ,
+                      carrierFreqs 
+                        startingARFCN 648,
+                        bandIndicator dcs1800,
+                        followingARFCNs explicitListOfARFCNs : 
+                       ,
+                      commonInfo 
+                        cellReselectionPriority 3,
+                        ncc-Permitted '11111111'B,
+                        q-RxLevMin 0,
+                        threshX-High 6,
+                        threshX-Low 1
+                     ,
+                      carrierFreqs 
+                        startingARFCN 88,
+                        bandIndicator dcs1800,
+                        followingARFCNs explicitListOfARFCNs : 
+                            100,
+                            98,
+                            97,
+                            96,
+                            95,
+                            94,
+                            93,
+                            92,
+                            91,
+                            90,
+                            89
+                       ,
+                      commonInfo 
+                        cellReselectionPriority 3,
+                        ncc-Permitted '11111111'B,
+                        q-RxLevMin 0,
+                        threshX-High 6,
+                        threshX-Low 1
+                     ,
+                      carrierFreqs 
+                        startingARFCN 669,
+                        bandIndicator dcs1800,
+                        followingARFCNs explicitListOfARFCNs : 
+                       ,
+                      commonInfo 
+                        cellReselectionPriority 3,
+                        ncc-Permitted '11111111'B,
+                        q-RxLevMin 0,
+                        threshX-High 6,
+                        threshX-Low 7
+
+
+L3 Data in Hex : 
+    00 91 05 A6 3A 18 21 4A 13 4D
+    3C 30 42 94 22 52 51 8F C0 4F
+    FC 03 05 5C 40 4F FC 03 05 44
+    00 4F FC 03 04 2C 05 8C 83 10
+    C2 30 0B E2 F0 BA 2E 0B 62 D0
+    B3 3F F0 0C 15 3A 01 3F F0 0C
+    70
+
+
+
+
+19:38:30.837	67355853088	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:30.837 ]
+
+Msg sequence : 34813
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207116594
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11000010 11000100 00011000 11011110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11010010 10001000 11110000 10001010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 8C 2C 41 8D E0 C8 D2 88
+    F0 8A 00
+
+
+
+
+19:38:31.387	67357133087	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:31.387 ]
+
+Msg sequence : 34855
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207158537
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11110001 01010100 11001000 10110100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010000 01001110 00111100 11010001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8B 0F 15 4C 8B 40 D8 D0 4E
+    3C D1 00
+
+
+
+
+19:38:34.675	67359693115	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:34.675 ]
+
+Msg sequence : 34938
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207242424
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11110100 11010010 01001100 10011001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11010101 00100010 10101111 10011010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11111010 00001110 10011110 11111011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0E 8F 4D 24 C9 90 F0 D5 22
+    AF 9A 0B 0F A0 E9 EF B0
+
+
+
+
+19:38:35.957	67360973083	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:35.957 ]
+
+Msg sequence : 34999
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207284366
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11111010 00001110 10011110 11111011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11100001 01101110 00001111 11110001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8B 0F A0 E9 EF B0 D8 E1 6E
+    0F F1 00
+
+
+
+
+19:38:37.236	67362253082	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:37.236 ]
+
+Msg sequence : 35041
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207326309
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11111010 00001110 10011110 11111011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0B 0F A0 E9 EF B0
+
+
+
+
+19:38:38.515	67363533112	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:38.515 ]
+
+Msg sequence : 35083
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207368253
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11010001 01100010 01100000 00110011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0A 0D 16 26 03 30
+
+
+
+
+19:38:39.795	67364813110	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:39.795 ]
+
+Msg sequence : 35125
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207410196
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11011001 00011011 11011111 01100110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11111001 10110011 11110011 10101000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11100111 00001111 00111001 01100001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0D 8D 91 BD F6 60 F8 F9 B3
+    F3 A8 0A 0E 70 F3 96 10
+
+
+
+
+19:38:41.077	67366093170	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:41.077 ]
+
+Msg sequence : 35186
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207452141
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11100111 00001111 00111001 01100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001111 01011000 10111011 10110110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0A 0E 70 F3 96 10 D8 CF 58
+    BB B6 0A 0C 07 87 C6 10
+
+
+
+
+19:38:42.350	67367373169	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:42.350 ]
+
+Msg sequence : 35228
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207494084
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11100111 00001111 00111001 01100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11110100 10101101 11001010 00101110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11110110 01011111 01010110 11111011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0A 0E 70 F3 96 10 F8 F4 AD
+    CA 2E 0D 8F 65 F5 6F B0
+
+
+
+
+19:38:43.631	67368653076	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:43.631 ]
+
+Msg sequence : 35270
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207536024
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000110 00100100 11100000 00110010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11101110 00110010 00001001 10010001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8A 0C 62 4E 03 20 A0 EE 32
+    09 91 00
+
+
+
+
+19:38:44.910	67369933105	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:44.910 ]
+
+Msg sequence : 35313
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207577968
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11101000 01011001 01000001 11011000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011000 11010111 00011010 10010101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11001000 01001011 10100011 11001100'B
+               ,
+            cn-Domain cs
+
+
+L3 Data in Hex : 
+    41 0E 0E 85 94 1D 80 E8 D8 D7
+    1A 95 0F 0C 84 BA 3C C8
+
+
+
+
+19:38:46.191	67371213165	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:46.191 ]
+
+Msg sequence : 35357
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207619913
+nDataLength : 41
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11001000 01001011 10100011 11001100'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11001011 11001010 10111110 01110110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11001111 11010111 00001010 10100000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11011000 00001000 00010101 11101111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11001101 00000110 11100111 10101000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11111011 11101110 00001101 10001111'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 8F 0C 84 BA 3C C8 C0 CB CA
+    BE 76 0F 8C FD 70 AA 00 F0 D8
+    08 15 EF 0F 0C D0 6E 7A 80 F8
+    FB EE 0D 8F 00 00 00
+
+
+
+
+19:38:46.290	67372493164	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:46.290 ]
+
+Msg sequence : 35400
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207661856
+nDataLength : 41
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11001000 01001011 10100011 11001100'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11011000 00001000 00010101 11101111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11001101 00000110 11100111 10101000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011111 10101001 00000110 10101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11100000 01000111 01101110 01100001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 8F 0C 84 BA 3C C8 F0 D8 08
+    15 EF 0F 0C D0 6E 7A 80 E8 DF
+    A9 06 AD 0A 0C 07 87 C6 10 D8
+    E0 47 6E 61 00 00 00
+
+
+
+
+19:38:47.570	67373844635	<---	BCCH:BCH	LTE	LTE MasterInformationBlock
+
+PC Timestamp: [ 2024  Oct  15    19:38:47.570 ]
+
+Msg sequence : 35449
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207706141
+nDataLength : 7
+
+value BCCH-BCH-Message ::= 
+  message 
+    dl-Bandwidth n75,
+    phich-Config 
+      phich-Duration normal,
+      phich-Resource one
+     ,
+    systemFrameNumber '01010111'B,
+    schedulingInfoSIB1-BR-r13 0,
+    systemInfoUnchanged-BR-r15 FALSE,
+    spare '0000'B
+
+
+L3 Data in Hex : 
+    89 5C 00
+
+
+
+
+19:38:47.670	67373858124	<---	BCCH:DL SCH	LTE	LTE systemInformationBlockType1 - MCC : 470(Bangladesh) / MNC : 1(Grameenphone)
+
+PC Timestamp: [ 2024  Oct  15    19:38:47.670 ]
+
+Msg sequence : 35452
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207706583
+nDataLength : 22
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformationBlockType1 : 
+        cellAccessRelatedInfo 
+          plmn-IdentityList 
+              plmn-Identity 
+                mcc 
+                  4,
+                  7,
+                  0
+                 ,
+                mnc 
+                  0,
+                  1
+               ,
+              cellReservedForOperatorUse notReserved
+           ,
+          trackingAreaCode '11101011 11011110'B,
+          cellIdentity '00011001 00000101 00100000 1011'B,
+          cellBarred notBarred,
+          intraFreqReselection allowed,
+          csg-Indication FALSE
+         ,
+        cellSelectionInfo 
+          q-RxLevMin -64
+         ,
+        freqBandIndicator 3,
+        schedulingInfoList 
+            si-Periodicity rf16,
+            sib-MappingInfo 
+              sibType3
+           ,
+            si-Periodicity rf32,
+            sib-MappingInfo 
+              sibType5
+         ,
+        si-WindowLength ms40,
+        systemInfoValueTag 1,
+        nonCriticalExtension 
+          nonCriticalExtension 
+            cellSelectionInfo-v920 
+              q-QualMin-r9 -18
+
+
+L3 Data in Hex : 
+    48 51 C0 03 EB DE 19 05 20 B8
+    18 20 90 81 04 58 2A 40
+
+
+
+
+19:38:47.673	67373878235	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib2, sib3
+
+PC Timestamp: [ 2024  Oct  15    19:38:47.673 ]
+
+Msg sequence : 35512
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207707242
+nDataLength : 53
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib2 : 
+                  radioResourceConfigCommon 
+                    rach-ConfigCommon 
+                      preambleInfo 
+                        numberOfRA-Preambles n20,
+                        preamblesGroupAConfig 
+                          sizeOfRA-PreamblesGroupA n12,
+                          messageSizeGroupA b56,
+                          messagePowerOffsetGroupB dB10
+                       ,
+                      powerRampingParameters 
+                        powerRampingStep dB2,
+                        preambleInitialReceivedTargetPower dBm-104
+                       ,
+                      ra-SupervisionInfo 
+                        preambleTransMax n10,
+                        ra-ResponseWindowSize sf10,
+                        mac-ContentionResolutionTimer sf64
+                       ,
+                      maxHARQ-Msg3Tx 5
+                     ,
+                    bcch-Config 
+                      modificationPeriodCoeff n2
+                     ,
+                    pcch-Config 
+                      defaultPagingCycle rf128,
+                      nB oneT
+                     ,
+                    prach-Config 
+                      rootSequenceIndex 150,
+                      prach-ConfigInfo 
+                        prach-ConfigIndex 6,
+                        highSpeedFlag FALSE,
+                        zeroCorrelationZoneConfig 11,
+                        prach-FreqOffset 2
+                     ,
+                    pdsch-ConfigCommon 
+                      referenceSignalPower 10,
+                      p-b 1
+                     ,
+                    pusch-ConfigCommon 
+                      pusch-ConfigBasic 
+                        n-SB 4,
+                        hoppingMode interSubFrame,
+                        pusch-HoppingOffset 22,
+                        enable64QAM TRUE
+                       ,
+                      ul-ReferenceSignalsPUSCH 
+                        groupHoppingEnabled FALSE,
+                        groupAssignmentPUSCH 0,
+                        sequenceHoppingEnabled FALSE,
+                        cyclicShift 0
+                     ,
+                    pucch-ConfigCommon 
+                      deltaPUCCH-Shift ds1,
+                      nRB-CQI 1,
+                      nCS-AN 0,
+                      n1PUCCH-AN 18
+                     ,
+                    soundingRS-UL-ConfigCommon release : NULL,
+                    uplinkPowerControlCommon 
+                      p0-NominalPUSCH -67,
+                      alpha al07,
+                      p0-NominalPUCCH -115,
+                      deltaFList-PUCCH 
+                        deltaF-PUCCH-Format1 deltaF0,
+                        deltaF-PUCCH-Format1b deltaF3,
+                        deltaF-PUCCH-Format2 deltaF1,
+                        deltaF-PUCCH-Format2a deltaF2,
+                        deltaF-PUCCH-Format2b deltaF2
+                       ,
+                      deltaPreambleMsg3 4
+                     ,
+                    ul-CyclicPrefixLength len1,
+                    pusch-ConfigCommon-v1270 
+                      enable64QAM-v1270 true
+                   ,
+                  ue-TimersAndConstants 
+                    t300 ms1000,
+                    t301 ms200,
+                    t310 ms1000,
+                    n310 n10,
+                    t311 ms10000,
+                    n311 n1
+                   ,
+                  freqInfo 
+                    ul-Bandwidth n75,
+                    additionalSpectrumEmission 1
+                   ,
+                  timeAlignmentTimerCommon infinity
+                 ,
+              sib3 : 
+                  cellReselectionInfoCommon 
+                    q-Hyst dB4
+                   ,
+                  cellReselectionServingFreqInfo 
+                    s-NonIntraSearch 5,
+                    threshServingLow 3,
+                    cellReselectionPriority 6
+                   ,
+                  intraFreqCellReselectionInfo 
+                    q-RxLevMin -64,
+                    s-IntraSearch 29,
+                    presenceAntennaPort1 FALSE,
+                    neighCellConfig '01'B,
+                    t-ReselectionEUTRA 1,
+                    t-ReselectionEUTRA-SF 
+                      sf-Medium lDot0,
+                      sf-High oDot75
+                   ,
+                  s-IntraSearch-v920 
+                    s-IntraSearchP-r9 29,
+                    s-IntraSearchQ-r9 5
+                   ,
+                  s-NonIntraSearch-v920 
+                    s-NonIntraSearchP-r9 5,
+                    s-NonIntraSearchQ-r9 4
+                   ,
+                  q-QualMin-r9 -18
+
+
+L3 Data in Hex : 
+    00 80 54 11 18 6F E1 22 58 65
+    82 8C E2 D0 00 02 00 90 EE 31
+    6A A0 44 06 01 4D CC 30 1C 32
+    4A 3C A3 74 9E 02 82 77 4A 52
+    40 00 00 00 00 00 00 00 00
+
+
+
+
+19:38:47.673	67373916870	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib5
+
+PC Timestamp: [ 2024  Oct  15    19:38:47.673 ]
+
+Msg sequence : 35515
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207708508
+nDataLength : 26
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib5 : 
+                  interFreqCarrierFreqList 
+                      dl-CarrierFreq 40292,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 8,
+                      threshX-Low 6,
+                      allowedMeasBandwidth mbw100,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 7,
+                      neighCellConfig '01'B
+                     ,
+                      dl-CarrierFreq 40490,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 8,
+                      threshX-Low 6,
+                      allowedMeasBandwidth mbw100,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 7,
+                      neighCellConfig '01'B
+                     ,
+                      dl-CarrierFreq 40688,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 8,
+                      threshX-Low 6,
+                      allowedMeasBandwidth mbw100,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 7,
+                      neighCellConfig '01'B
+
+
+L3 Data in Hex : 
+    00 0C 84 4E B2 0C 50 6A E8 89
+    E2 A1 8A 0D 5D 11 3D E0 31 41
+    AB A0
+
+
+
+
+19:38:48.654	67374851440	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:48.654 ]
+
+Msg sequence : 35576
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207739132
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11000111 00011010 10101111 01101001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11011010 01110110 11100000 11101110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11011000 00001000 00010101 11101111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11100100 01010101 11101111 11100111'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8E 0C 71 AA F6 90 B0 DA 76
+    E0 EE 0F 0D 80 81 5E F0 F0 E4
+    55 EF E7 00 00 00
+
+
+
+
+19:38:50.682	67376131439	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:50.682 ]
+
+Msg sequence : 35618
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207781075
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11100000 01000111 11100101 01101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11100001 01101110 00001111 11110001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11110100 11010010 01001100 10011001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11011100 11010000 11000011 10000110'B
+               ,
+            cn-Domain cs
+
+
+L3 Data in Hex : 
+    41 8E 0E 04 7E 56 D0 D8 E1 6E
+    0F F1 0E 8F 4D 24 C9 90 D0 DC
+    D0 C3 86 80 00 00
+
+
+
+
+19:38:51.181	67377411438	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:51.181 ]
+
+Msg sequence : 35661
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207823018
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11011000 00001000 00010101 11101111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11100011 01110011 01011110 00101001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11101010 01111000 11111000 10101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11000111 10111111 10010011 10010000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8F 0D 80 81 5E F0 E0 E3 73
+    5E 29 0A 0E A7 8F 8A D0 C8 C7
+    BF 93 90 00 00 00
+
+
+
+
+19:38:53.675	67378691406	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:53.675 ]
+
+Msg sequence : 35724
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207864960
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11001110 11011110 00110101 11111111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8F 8C ED E3 5F F0 A0 C0 78
+    7C 61 00
+
+
+
+
+19:38:54.953	67379971405	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:54.953 ]
+
+Msg sequence : 35768
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207906903
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11011000 00001000 00010101 11101111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11110100 01010100 00001100 00101011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11100001 00100001 10001100 11101111'B
+               ,
+            cn-Domain cs
+
+
+L3 Data in Hex : 
+    41 0F 0D 80 81 5E F0 B0 F4 54
+    0C 2B 0D 8E 12 18 CE F8
+
+
+
+
+19:38:56.233	67381251434	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:56.233 ]
+
+Msg sequence : 35811
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207948847
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11100000 01000111 11100101 01101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11101001 11000101 11111010 11000010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 0E 04 7E 56 D0 F8 E9 C5
+    FA C2 00
+
+
+
+
+19:38:57.512	67382531433	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:38:57.512 ]
+
+Msg sequence : 35853
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2207990790
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11000110 10010000 11101000 11010111'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0B 8C 69 0E 8D 70
+
+
+
+
+19:39:00.073	67385091400	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:00.073 ]
+
+Msg sequence : 35956
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208074675
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11101011 10111010 00100010 10001001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0E 8E BB A2 28 90
+
+
+
+
+19:39:01.353	67386371429	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:01.353 ]
+
+Msg sequence : 35998
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208116619
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11000100 01010010 00011001 11000001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11001010 00000000 11100101 11001110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8F 0C 45 21 9C 10 B0 CA 00
+    E5 CE 00
+
+
+
+
+19:39:02.632	67387651459	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:02.632 ]
+
+Msg sequence : 36040
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208158563
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11101100 10001100 01010110 10001010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11101010 11100100 01101010 11110000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11011000 11111000 11100010 10011100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0E 8E C8 C5 68 A0 D0 EA E4
+    6A F0 0F 8D 8F 8E 29 C0
+
+
+
+
+19:39:03.911	67388931458	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:03.911 ]
+
+Msg sequence : 36101
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208200506
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11110110 00001110 10011001 11010100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11001111 00100101 00001101 10110000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11000111 00011010 10101111 01101001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0A 0F 60 E9 9D 40 B0 CF 25
+    0D B0 0E 0C 71 AA F6 90
+
+
+
+
+19:39:05.192	67390211426	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:05.192 ]
+
+Msg sequence : 36143
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208242448
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11100000 11101110 10110010 10100000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11011010 01110110 11100000 11101110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8F 8E 0E EB 2A 00 B0 DA 76
+    E0 EE 00
+
+
+
+
+19:39:06.472	67391491455	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:06.472 ]
+
+Msg sequence : 36185
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208284392
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11111101 01100000 11001001 01001101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11110010 11100111 10001111 01000011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11110100 00000101 11100111 10010000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0B 0F D6 0C 94 D0 B8 F2 E7
+    8F 43 0D 8F 40 5E 79 00
+
+
+
+
+19:39:07.749	67392771545	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:07.749 ]
+
+Msg sequence : 36246
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208326338
+nDataLength : 36
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11100000 01110101 00001110 11001011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11000111 00101000 10100010 00100011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11110100 11110110 11101001 10101100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11010110 10011110 11101101 00001000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 0A 0C 07 87 C6 10 A0 E0 75
+    0E CB 0E 0C 72 8A 22 30 D0 F4
+    F6 E9 AC 0F 8D 69 EE D0 80 00
+    00 00
+
+
+
+
+19:39:09.128	67395331482	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:09.128 ]
+
+Msg sequence : 36348
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208410222
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010101 00010001 10011000 00110000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 8D 51 19 83 00
+
+
+
+
+19:39:12.870	67397891449	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:12.870 ]
+
+Msg sequence : 36451
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2208494107
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111000 11111110 01010100 00111100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 8F 8F E5 43 C0 A0 C0 78
+    7C 61 00
+
+
+
+
+19:39:32.832	67418371521	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:32.832 ]
+
+Msg sequence : 36610
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209165198
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11000111 01001000 10011001 00110100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 8C 74 89 93 40
+
+
+
+
+19:39:35.983	67422211456	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:35.983 ]
+
+Msg sequence : 36849
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209291025
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11000100 10100111 00100110 10001110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0C 0C 4A 72 68 E0
+
+
+
+
+19:39:37.282	67423491516	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.282 ]
+
+Msg sequence : 36958
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209332970
+nDataLength : 36
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11000111 11110100 11101110 00111011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111111 10111100 11011110 10110010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010110 00011101 10101101 10011100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11110100 01010100 00001100 00101011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11000111 01001000 10011001 00110100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 0E 8C 7F 4E E3 B0 E8 FF BC
+    DE B2 0D 8D 61 DA D9 C0 B0 F4
+    54 0C 2B 0D 8C 74 89 93 40 00
+    00 00
+
+
+
+
+19:39:37.382	67423621979	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.382 ]
+
+Msg sequence : 36959
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209337245
+nDataLength : 12
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 9,
+                measResultPCell 
+                  rsrpResult 56,
+                  rsrqResult 8
+                 ,
+                measResultNeighCells measResultListEUTRA : 
+                      physCellId 46,
+                      measResult 
+                        rsrpResult 60,
+                        rsrqResult 15
+
+
+L3 Data in Hex : 
+    08 14 38 20 00 B9 BC 3C
+
+
+
+
+19:39:37.582	67423840118	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.582 ]
+
+Msg sequence : 36960
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209344393
+nDataLength : 11
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 1,
+                measResultPCell 
+                  rsrpResult 54,
+                  rsrqResult 4
+                 ,
+                measResultNeighCells measResultListEUTRA : 
+                      physCellId 46,
+                      measResult 
+                        rsrpResult 59
+
+
+L3 Data in Hex : 
+    08 10 36 10 00 B9 3B
+
+
+
+
+19:39:37.686	67423932251	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.686 ]
+
+Msg sequence : 36964
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209347412
+nDataLength : 53
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 1,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              mobilityControlInfo 
+                targetPhysCellId 46,
+                carrierFreq 
+                  dl-CarrierFreq 1600,
+                  ul-CarrierFreq 19600
+                 ,
+                t304 ms500,
+                newUE-Identity '00110000 00101100'B,
+                radioResourceConfigCommon 
+                  rach-ConfigCommon 
+                    preambleInfo 
+                      numberOfRA-Preambles n52,
+                      preamblesGroupAConfig 
+                        sizeOfRA-PreamblesGroupA n28,
+                        messageSizeGroupA b56,
+                        messagePowerOffsetGroupB dB10
+                     ,
+                    powerRampingParameters 
+                      powerRampingStep dB2,
+                      preambleInitialReceivedTargetPower dBm-104
+                     ,
+                    ra-SupervisionInfo 
+                      preambleTransMax n10,
+                      ra-ResponseWindowSize sf10,
+                      mac-ContentionResolutionTimer sf64
+                     ,
+                    maxHARQ-Msg3Tx 5
+                   ,
+                  prach-Config 
+                    rootSequenceIndex 30,
+                    prach-ConfigInfo 
+                      prach-ConfigIndex 6,
+                      highSpeedFlag FALSE,
+                      zeroCorrelationZoneConfig 11,
+                      prach-FreqOffset 6
+                   ,
+                  pdsch-ConfigCommon 
+                    referenceSignalPower 15,
+                    p-b 0
+                   ,
+                  pusch-ConfigCommon 
+                    pusch-ConfigBasic 
+                      n-SB 4,
+                      hoppingMode interSubFrame,
+                      pusch-HoppingOffset 22,
+                      enable64QAM TRUE
+                     ,
+                    ul-ReferenceSignalsPUSCH 
+                      groupHoppingEnabled FALSE,
+                      groupAssignmentPUSCH 0,
+                      sequenceHoppingEnabled FALSE,
+                      cyclicShift 0
+                   ,
+                  pucch-ConfigCommon 
+                    deltaPUCCH-Shift ds1,
+                    nRB-CQI 1,
+                    nCS-AN 0,
+                    n1PUCCH-AN 54
+                   ,
+                  soundingRS-UL-ConfigCommon setup : 
+                      srs-BandwidthConfig bw3,
+                      srs-SubframeConfig sc1,
+                      ackNackSRS-SimultaneousTransmission TRUE
+                     ,
+                  antennaInfoCommon 
+                    antennaPortsCount an4
+                   ,
+                  ul-CyclicPrefixLength len1,
+                  pusch-ConfigCommon-v1270 
+                    enable64QAM-v1270 true
+                 ,
+                rach-ConfigDedicated 
+                  ra-PreambleIndex 62,
+                  ra-PRACH-MaskIndex 0
+               ,
+              radioResourceConfigDedicated 
+                mac-MainConfig explicitValue : 
+                    drx-Config release : NULL,
+                    timeAlignmentTimerDedicated infinity,
+                    mac-MainConfig-v1020 
+                   ,
+                physicalConfigDedicated 
+                  pdsch-ConfigDedicated 
+                    p-a dB0
+                   ,
+                  cqi-ReportConfig 
+                    cqi-ReportModeAperiodic rm30,
+                    nomPDSCH-RS-EPRE-Offset 3,
+                    cqi-ReportPeriodic release : NULL
+                   ,
+                  soundingRS-UL-ConfigDedicated setup : 
+                      srs-Bandwidth bw2,
+                      srs-HoppingBandwidth hbw0,
+                      freqDomainPosition 6,
+                      duration TRUE,
+                      srs-ConfigIndex 207,
+                      transmissionComb 1,
+                      cyclicShift cs0
+                     ,
+                  antennaInfo explicitValue : 
+                      transmissionMode tm2,
+                      ue-TransmitAntennaSelection release : NULL
+                     ,
+                  schedulingRequestConfig setup : 
+                      sr-PUCCH-ResourceIndex 0,
+                      sr-ConfigIndex 46,
+                      dsr-TransMax n64
+               ,
+              securityConfigHO 
+                handoverType intraLTE : 
+                    securityAlgorithmConfig 
+                      cipheringAlgorithm eea2,
+                      integrityProtAlgorithm eia2
+                     ,
+                    keyChangeIndicator FALSE,
+                    nextHopChainingCount 2
+
+
+L3 Data in Hex : 
+    22 0B 24 5D 06 40 4C 90 86 05
+    9D A3 86 23 0D FC 83 C3 2C 34
+    B3 16 80 00 10 0D A6 38 08 80
+    C0 7C 01 54 E0 50 18 04 1F 37
+    18 34 CF 80 A0 00 BA 12 22
+
+
+
+
+19:39:37.686	67423939423	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.686 ]
+
+Msg sequence : 36967
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209347647
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 1,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    12 00
+
+
+
+
+19:39:37.686	67423951904	<---	BCCH:BCH	LTE	LTE MasterInformationBlock
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.686 ]
+
+Msg sequence : 36979
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209348056
+nDataLength : 7
+
+value BCCH-BCH-Message ::= 
+  message 
+    dl-Bandwidth n75,
+    phich-Config 
+      phich-Duration normal,
+      phich-Resource one
+     ,
+    systemFrameNumber '11111001'B,
+    schedulingInfoSIB1-BR-r13 0,
+    systemInfoUnchanged-BR-r15 FALSE,
+    spare '0000'B
+
+
+L3 Data in Hex : 
+    8B E4 00
+
+
+
+
+19:39:37.686	67423955627	<---	BCCH:DL SCH	LTE	LTE systemInformationBlockType1 - MCC : 470(Bangladesh) / MNC : 1(Grameenphone)
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.686 ]
+
+Msg sequence : 36980
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209348178
+nDataLength : 26
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformationBlockType1 : 
+        cellAccessRelatedInfo 
+          plmn-IdentityList 
+              plmn-Identity 
+                mcc 
+                  4,
+                  7,
+                  0
+                 ,
+                mnc 
+                  0,
+                  1
+               ,
+              cellReservedForOperatorUse notReserved
+           ,
+          trackingAreaCode '11101011 11011110'B,
+          cellIdentity '00011001 10001100 10010000 1100'B,
+          cellBarred notBarred,
+          intraFreqReselection allowed,
+          csg-Indication FALSE
+         ,
+        cellSelectionInfo 
+          q-RxLevMin -64
+         ,
+        freqBandIndicator 3,
+        schedulingInfoList 
+            si-Periodicity rf16,
+            sib-MappingInfo 
+              sibType3
+           ,
+            si-Periodicity rf32,
+            sib-MappingInfo 
+              sibType5
+           ,
+            si-Periodicity rf64,
+            sib-MappingInfo 
+              sibType6,
+              sibType7
+         ,
+        si-WindowLength ms40,
+        systemInfoValueTag 17,
+        nonCriticalExtension 
+          nonCriticalExtension 
+            cellSelectionInfo-v920 
+              q-QualMin-r9 -18
+
+
+L3 Data in Hex : 
+    48 51 C0 03 EB DE 19 8C 90 C8
+    18 21 10 81 04 4C 43 26 8A 90
+    00 00
+
+
+
+
+19:39:37.690	67423970917	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.690 ]
+
+Msg sequence : 37021
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209348679
+nDataLength : 17
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 2,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              radioResourceConfigDedicated 
+                mac-MainConfig explicitValue : 
+                    drx-Config setup : 
+                        onDurationTimer psf20,
+                        drx-InactivityTimer psf80,
+                        drx-RetransmissionTimer psf8,
+                        longDRX-CycleStartOffset sf320 : 200
+                       ,
+                    timeAlignmentTimerDedicated infinity
+                   ,
+                physicalConfigDedicated 
+                  cqi-ReportConfig 
+                    cqi-ReportModeAperiodic rm30,
+                    nomPDSCH-RS-EPRE-Offset 3,
+                    cqi-ReportPeriodic setup : 
+                        cqi-PUCCH-ResourceIndex 0,
+                        cqi-pmi-ConfigIndex 37,
+                        cqi-FormatIndicatorPeriodic widebandCQI : NULL,
+                        simultaneousAckNackAndCQI FALSE
+
+
+L3 Data in Hex : 
+    24 02 05 15 0D 92 C8 E0 23 72
+    00 01 28
+
+
+
+
+19:39:37.690	67423970947	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.690 ]
+
+Msg sequence : 37022
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209348680
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 2,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    14 00
+
+
+
+
+19:39:37.785	67424025787	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.785 ]
+
+Msg sequence : 37025
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209350477
+nDataLength : 74
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 3,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              radioResourceConfigDedicated 
+                physicalConfigDedicated 
+                  antennaInfo explicitValue : 
+                      transmissionMode tm4,
+                      codebookSubsetRestriction n4TxAntenna-tm4 : '11111111 11111111 11111111 11111111 11111111 11111111 11111111 11111111'B,
+                      ue-TransmitAntennaSelection release : NULL
+                     ,
+                  cqi-ReportConfig-r10 
+                    cqi-ReportAperiodic-r10 setup : 
+                        cqi-ReportModeAperiodic-r10 rm31,
+                        aperiodicCSI-Trigger-r10 
+                          trigger1-r10 '11000000'B,
+                          trigger2-r10 '01000000'B
+                       ,
+                    nomPDSCH-RS-EPRE-Offset 3,
+                    cqi-ReportPeriodic-r10 setup : 
+                        cqi-PUCCH-ResourceIndex-r10 0,
+                        cqi-pmi-ConfigIndex 37,
+                        cqi-FormatIndicatorPeriodic-r10 widebandCQI-r10 : 
+                           ,
+                        ri-ConfigIndex 161,
+                        simultaneousAckNackAndCQI FALSE,
+                        csi-ConfigIndex-r10 release : NULL
+                   ,
+                  pucch-ConfigDedicated-v1020 
+                    pucch-Format-r10 channelSelection-r10 : 
+                        n1PUCCH-AN-CS-r10 setup : 
+                            n1PUCCH-AN-CS-List-r10 
+                                2,
+                                4,
+                                6,
+                                8
+                               ,
+                                3,
+                                5,
+                                7,
+                                9
+               ,
+              nonCriticalExtension 
+                lateNonCriticalExtension 
+                  CONTAINING
+                    nonCriticalExtension 
+                      antennaInfoDedicatedPCell-v10i0 
+                        maxLayersMIMO-r10 fourLayers
+                   ,
+                nonCriticalExtension 
+                  nonCriticalExtension 
+                    sCellToAddModList-r10 
+                        sCellIndex-r10 1,
+                        cellIdentification-r10 
+                          physCellId-r10 46,
+                          dl-CarrierFreq-r10 275
+                         ,
+                        radioResourceConfigCommonSCell-r10 
+                          nonUL-Configuration-r10 
+                            dl-Bandwidth-r10 n75,
+                            antennaInfoCommon-r10 
+                              antennaPortsCount an4
+                             ,
+                            phich-Config-r10 
+                              phich-Duration normal,
+                              phich-Resource one
+                             ,
+                            pdsch-ConfigCommon-r10 
+                              referenceSignalPower 15,
+                              p-b 0
+                         ,
+                        radioResourceConfigDedicatedSCell-r10 
+                          physicalConfigDedicatedSCell-r10 
+                            nonUL-Configuration-r10 
+                              antennaInfo-r10 
+                                transmissionMode-r10 tm4,
+                                codebookSubsetRestriction-r10 '11111111 11111111 11111111 11111111 11111111 11111111 11111111 11111111'B,
+                                ue-TransmitAntennaSelection release : NULL
+                               ,
+                              pdsch-ConfigDedicated-r10 
+                                p-a dB0
+                             ,
+                            ul-Configuration-r10 
+                              cqi-ReportConfigSCell-r10 
+                                cqi-ReportModeAperiodic-r10 rm31,
+                                nomPDSCH-RS-EPRE-Offset-r10 0,
+                                cqi-ReportPeriodicSCell-r10 setup : 
+                                    cqi-PUCCH-ResourceIndex-r10 2,
+                                    cqi-pmi-ConfigIndex 52,
+                                    cqi-FormatIndicatorPeriodic-r10 widebandCQI-r10 : 
+                                       ,
+                                    ri-ConfigIndex 161,
+                                    simultaneousAckNackAndCQI FALSE
+                         ,
+                        antennaInfoDedicatedSCell-v10i0 
+                          maxLayersMIMO-r10 fourLayers
+
+
+L3 Data in Hex : 
+    26 02 81 80 4B 7F FF FF FF FF
+    FF FF FF E0 28 B8 A0 CE 60 20
+    4A 80 00 94 28 48 FC 01 00 40
+    0C 02 30 06 01 40 38 09 06 02
+    D4 51 E0 5C 02 26 12 52 C5 CC
+    D0 3F FF FF FF FF FF FF FF D0
+    46 86 80 08 34 0A 10 14 07 40
+
+
+
+
+19:39:37.786	67424025818	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.786 ]
+
+Msg sequence : 37026
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209350478
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 3,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    16 00
+
+
+
+
+19:39:37.786	67424059906	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.786 ]
+
+Msg sequence : 37027
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209351595
+nDataLength : 108
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 0,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              measConfig 
+                measObjectToRemoveList 
+                  1
+                 ,
+                measObjectToAddModList 
+                    measObjectId 2,
+                    measObject measObjectEUTRA : 
+                        carrierFreq 1600,
+                        allowedMeasBandwidth mbw50,
+                        presenceAntennaPort1 FALSE,
+                        neighCellConfig '01'B,
+                        offsetFreq dB0,
+                        cellsToAddModList 
+                            cellIndex 1,
+                            physCellId 46,
+                            cellIndividualOffset dB0
+                   ,
+                    measObjectId 3,
+                    measObject measObjectEUTRA : 
+                        carrierFreq 275,
+                        allowedMeasBandwidth mbw50,
+                        presenceAntennaPort1 FALSE,
+                        neighCellConfig '01'B,
+                        offsetFreq dB0
+                 ,
+                reportConfigToRemoveList 
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                 ,
+                reportConfigToAddModList 
+                    reportConfigId 10,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA3 : 
+                                a3-Offset 2,
+                                reportOnLeave FALSE
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms320
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity sameAsTriggerQuantity,
+                        maxReportCells 4,
+                        reportInterval ms240,
+                        reportAmount infinity,
+                        reportAddNeighMeas-r10 setup
+                   ,
+                    reportConfigId 11,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA3 : 
+                                a3-Offset 10,
+                                reportOnLeave TRUE
+                               ,
+                            hysteresis 4,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 8,
+                        reportInterval ms5120,
+                        reportAmount infinity,
+                        reportAddNeighMeas-r10 setup
+                   ,
+                    reportConfigId 12,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA1 : 
+                                a1-Threshold threshold-RSRP : 24
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 13,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA2 : 
+                                a2-Threshold threshold-RSRP : 21
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 14,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA1 : 
+                                a1-Threshold threshold-RSRP : 21
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 15,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA2 : 
+                                a2-Threshold threshold-RSRP : 17
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 16,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA2 : 
+                                a2-Threshold threshold-RSRP : 16
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 17,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType periodical : 
+                            purpose reportStrongestCells
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 6,
+                        reportInterval ms10240,
+                        reportAmount r16
+                   ,
+                    reportConfigId 18,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA6-r10 : 
+                                a6-Offset-r10 2,
+                                a6-ReportOnLeave-r10 FALSE
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity sameAsTriggerQuantity,
+                        maxReportCells 4,
+                        reportInterval ms10240,
+                        reportAmount r8
+                 ,
+                measIdToRemoveList 
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9
+                 ,
+                measIdToAddModList 
+                    measId 10,
+                    measObjectId 2,
+                    reportConfigId 10
+                   ,
+                    measId 11,
+                    measObjectId 2,
+                    reportConfigId 11
+                   ,
+                    measId 12,
+                    measObjectId 2,
+                    reportConfigId 12
+                   ,
+                    measId 13,
+                    measObjectId 2,
+                    reportConfigId 13
+                   ,
+                    measId 14,
+                    measObjectId 2,
+                    reportConfigId 14
+                   ,
+                    measId 15,
+                    measObjectId 2,
+                    reportConfigId 15
+                   ,
+                    measId 16,
+                    measObjectId 2,
+                    reportConfigId 16
+                   ,
+                    measId 17,
+                    measObjectId 2,
+                    reportConfigId 17
+                   ,
+                    measId 18,
+                    measObjectId 3,
+                    reportConfigId 18
+                 ,
+                quantityConfig 
+                  quantityConfigEUTRA 
+                    filterCoefficientRSRP fc6,
+                    filterCoefficientRSRQ fc6
+                 ,
+                s-Measure 0,
+                speedStatePars release : NULL
+
+
+L3 Data in Hex : 
+    20 10 3F A8 00 10 85 00 C8 0C
+    BC 00 17 3C 41 00 08 9B 2F 40
+    02 21 90 A6 3A 10 94 50 05 03
+    1E 05 01 40 52 2A 24 B7 B7 02
+    80 A0 2C 00 C0 AD 04 18 04 54
+    56 82 0D 00 2A 2B 41 07 01 11
+    15 A0 83 C0 88 0A D0 42 04 D7
+    91 10 00 30 02 B1 BB 40 02 21
+    90 A6 3A 10 90 A5 41 52 C2 B6
+    05 8D 0B 5C 17 3C 2F 80 61 11
+    45 19 8C 00
+
+
+
+
+19:39:37.787	67424059937	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.787 ]
+
+Msg sequence : 37028
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209351596
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 0,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    10 00
+
+
+
+
+19:39:37.787	67424072052	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib2, sib3
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.787 ]
+
+Msg sequence : 37031
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209351993
+nDataLength : 53
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib2 : 
+                  radioResourceConfigCommon 
+                    rach-ConfigCommon 
+                      preambleInfo 
+                        numberOfRA-Preambles n52,
+                        preamblesGroupAConfig 
+                          sizeOfRA-PreamblesGroupA n28,
+                          messageSizeGroupA b56,
+                          messagePowerOffsetGroupB dB10
+                       ,
+                      powerRampingParameters 
+                        powerRampingStep dB2,
+                        preambleInitialReceivedTargetPower dBm-104
+                       ,
+                      ra-SupervisionInfo 
+                        preambleTransMax n10,
+                        ra-ResponseWindowSize sf10,
+                        mac-ContentionResolutionTimer sf64
+                       ,
+                      maxHARQ-Msg3Tx 5
+                     ,
+                    bcch-Config 
+                      modificationPeriodCoeff n2
+                     ,
+                    pcch-Config 
+                      defaultPagingCycle rf128,
+                      nB oneT
+                     ,
+                    prach-Config 
+                      rootSequenceIndex 30,
+                      prach-ConfigInfo 
+                        prach-ConfigIndex 6,
+                        highSpeedFlag FALSE,
+                        zeroCorrelationZoneConfig 11,
+                        prach-FreqOffset 6
+                     ,
+                    pdsch-ConfigCommon 
+                      referenceSignalPower 15,
+                      p-b 0
+                     ,
+                    pusch-ConfigCommon 
+                      pusch-ConfigBasic 
+                        n-SB 4,
+                        hoppingMode interSubFrame,
+                        pusch-HoppingOffset 22,
+                        enable64QAM TRUE
+                       ,
+                      ul-ReferenceSignalsPUSCH 
+                        groupHoppingEnabled FALSE,
+                        groupAssignmentPUSCH 0,
+                        sequenceHoppingEnabled FALSE,
+                        cyclicShift 0
+                     ,
+                    pucch-ConfigCommon 
+                      deltaPUCCH-Shift ds1,
+                      nRB-CQI 1,
+                      nCS-AN 0,
+                      n1PUCCH-AN 54
+                     ,
+                    soundingRS-UL-ConfigCommon setup : 
+                        srs-BandwidthConfig bw3,
+                        srs-SubframeConfig sc1,
+                        ackNackSRS-SimultaneousTransmission TRUE
+                       ,
+                    uplinkPowerControlCommon 
+                      p0-NominalPUSCH -67,
+                      alpha al07,
+                      p0-NominalPUCCH -115,
+                      deltaFList-PUCCH 
+                        deltaF-PUCCH-Format1 deltaF0,
+                        deltaF-PUCCH-Format1b deltaF3,
+                        deltaF-PUCCH-Format2 deltaF1,
+                        deltaF-PUCCH-Format2a deltaF2,
+                        deltaF-PUCCH-Format2b deltaF2
+                       ,
+                      deltaPreambleMsg3 4
+                     ,
+                    ul-CyclicPrefixLength len1,
+                    pusch-ConfigCommon-v1270 
+                      enable64QAM-v1270 true
+                   ,
+                  ue-TimersAndConstants 
+                    t300 ms200,
+                    t301 ms200,
+                    t310 ms1000,
+                    n310 n10,
+                    t311 ms10000,
+                    n311 n1
+                   ,
+                  freqInfo 
+                    ul-Bandwidth n75,
+                    additionalSpectrumEmission 1
+                   ,
+                  timeAlignmentTimerCommon infinity
+                 ,
+              sib3 : 
+                  cellReselectionInfoCommon 
+                    q-Hyst dB4
+                   ,
+                  cellReselectionServingFreqInfo 
+                    s-NonIntraSearch 5,
+                    threshServingLow 3,
+                    cellReselectionPriority 6
+                   ,
+                  intraFreqCellReselectionInfo 
+                    q-RxLevMin -64,
+                    s-IntraSearch 29,
+                    allowedMeasBandwidth mbw50,
+                    presenceAntennaPort1 FALSE,
+                    neighCellConfig '01'B,
+                    t-ReselectionEUTRA 1,
+                    t-ReselectionEUTRA-SF 
+                      sf-Medium lDot0,
+                      sf-High oDot75
+                   ,
+                  s-IntraSearch-v920 
+                    s-IntraSearchP-r9 29,
+                    s-IntraSearchQ-r9 5
+                   ,
+                  s-NonIntraSearch-v920 
+                    s-NonIntraSearchP-r9 5,
+                    s-NonIntraSearchQ-r9 4
+                   ,
+                  q-QualMin-r9 -18
+
+
+L3 Data in Hex : 
+    00 80 5C 31 18 6F E1 20 78 65
+    86 96 62 D0 00 02 01 B4 C6 77
+    18 B5 50 22 03 00 26 E6 18 0E
+    19 25 1E 71 BA C9 E0 28 27 74
+    A5 24 00 00 00 00 00 00 00
+
+
+
+
+19:39:37.787	67424072083	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib2, sib3
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.787 ]
+
+Msg sequence : 37033
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209351994
+nDataLength : 53
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib2 : 
+                  radioResourceConfigCommon 
+                    rach-ConfigCommon 
+                      preambleInfo 
+                        numberOfRA-Preambles n52,
+                        preamblesGroupAConfig 
+                          sizeOfRA-PreamblesGroupA n28,
+                          messageSizeGroupA b56,
+                          messagePowerOffsetGroupB dB10
+                       ,
+                      powerRampingParameters 
+                        powerRampingStep dB2,
+                        preambleInitialReceivedTargetPower dBm-104
+                       ,
+                      ra-SupervisionInfo 
+                        preambleTransMax n10,
+                        ra-ResponseWindowSize sf10,
+                        mac-ContentionResolutionTimer sf64
+                       ,
+                      maxHARQ-Msg3Tx 5
+                     ,
+                    bcch-Config 
+                      modificationPeriodCoeff n2
+                     ,
+                    pcch-Config 
+                      defaultPagingCycle rf128,
+                      nB oneT
+                     ,
+                    prach-Config 
+                      rootSequenceIndex 30,
+                      prach-ConfigInfo 
+                        prach-ConfigIndex 6,
+                        highSpeedFlag FALSE,
+                        zeroCorrelationZoneConfig 11,
+                        prach-FreqOffset 6
+                     ,
+                    pdsch-ConfigCommon 
+                      referenceSignalPower 15,
+                      p-b 0
+                     ,
+                    pusch-ConfigCommon 
+                      pusch-ConfigBasic 
+                        n-SB 4,
+                        hoppingMode interSubFrame,
+                        pusch-HoppingOffset 22,
+                        enable64QAM TRUE
+                       ,
+                      ul-ReferenceSignalsPUSCH 
+                        groupHoppingEnabled FALSE,
+                        groupAssignmentPUSCH 0,
+                        sequenceHoppingEnabled FALSE,
+                        cyclicShift 0
+                     ,
+                    pucch-ConfigCommon 
+                      deltaPUCCH-Shift ds1,
+                      nRB-CQI 1,
+                      nCS-AN 0,
+                      n1PUCCH-AN 54
+                     ,
+                    soundingRS-UL-ConfigCommon setup : 
+                        srs-BandwidthConfig bw3,
+                        srs-SubframeConfig sc1,
+                        ackNackSRS-SimultaneousTransmission TRUE
+                       ,
+                    uplinkPowerControlCommon 
+                      p0-NominalPUSCH -67,
+                      alpha al07,
+                      p0-NominalPUCCH -115,
+                      deltaFList-PUCCH 
+                        deltaF-PUCCH-Format1 deltaF0,
+                        deltaF-PUCCH-Format1b deltaF3,
+                        deltaF-PUCCH-Format2 deltaF1,
+                        deltaF-PUCCH-Format2a deltaF2,
+                        deltaF-PUCCH-Format2b deltaF2
+                       ,
+                      deltaPreambleMsg3 4
+                     ,
+                    ul-CyclicPrefixLength len1,
+                    pusch-ConfigCommon-v1270 
+                      enable64QAM-v1270 true
+                   ,
+                  ue-TimersAndConstants 
+                    t300 ms200,
+                    t301 ms200,
+                    t310 ms1000,
+                    n310 n10,
+                    t311 ms10000,
+                    n311 n1
+                   ,
+                  freqInfo 
+                    ul-Bandwidth n75,
+                    additionalSpectrumEmission 1
+                   ,
+                  timeAlignmentTimerCommon infinity
+                 ,
+              sib3 : 
+                  cellReselectionInfoCommon 
+                    q-Hyst dB4
+                   ,
+                  cellReselectionServingFreqInfo 
+                    s-NonIntraSearch 5,
+                    threshServingLow 3,
+                    cellReselectionPriority 6
+                   ,
+                  intraFreqCellReselectionInfo 
+                    q-RxLevMin -64,
+                    s-IntraSearch 29,
+                    allowedMeasBandwidth mbw50,
+                    presenceAntennaPort1 FALSE,
+                    neighCellConfig '01'B,
+                    t-ReselectionEUTRA 1,
+                    t-ReselectionEUTRA-SF 
+                      sf-Medium lDot0,
+                      sf-High oDot75
+                   ,
+                  s-IntraSearch-v920 
+                    s-IntraSearchP-r9 29,
+                    s-IntraSearchQ-r9 5
+                   ,
+                  s-NonIntraSearch-v920 
+                    s-NonIntraSearchP-r9 5,
+                    s-NonIntraSearchQ-r9 4
+                   ,
+                  q-QualMin-r9 -18
+
+
+L3 Data in Hex : 
+    00 80 5C 31 18 6F E1 20 78 65
+    86 96 62 D0 00 02 01 B4 C6 77
+    18 B5 50 22 03 00 26 E6 18 0E
+    19 25 1E 71 BA C9 E0 28 27 74
+    A5 24 00 00 00 00 00 00 00
+
+
+
+
+19:39:37.886	67424094788	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.886 ]
+
+Msg sequence : 37034
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209352738
+nDataLength : 12
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 17,
+                measResultPCell 
+                  rsrpResult 58,
+                  rsrqResult 12
+                 ,
+                measResultNeighCells measResultListEUTRA : 
+                      physCellId 150,
+                      measResult 
+                        rsrpResult 56,
+                        rsrqResult 4
+
+
+L3 Data in Hex : 
+    08 18 3A 30 02 59 B8 10
+
+
+
+
+19:39:37.988	67424270386	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib5
+
+PC Timestamp: [ 2024  Oct  15    19:39:37.988 ]
+
+Msg sequence : 37076
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209358492
+nDataLength : 19
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib5 : 
+                  interFreqCarrierFreqList 
+                      dl-CarrierFreq 275,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 5,
+                      threshX-Low 11,
+                      allowedMeasBandwidth mbw50,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 6,
+                      neighCellConfig '01'B
+                     ,
+                      dl-CarrierFreq 300,
+                      q-RxLevMin -64,
+                      t-ReselectionEUTRA 1,
+                      threshX-High 5,
+                      threshX-Low 11,
+                      allowedMeasBandwidth mbw50,
+                      presenceAntennaPort1 FALSE,
+                      cellReselectionPriority 6,
+                      neighCellConfig '01'B
+
+
+L3 Data in Hex : 
+    00 0C 44 00 89 8C 4A B6 C8 80
+    12 C1 89 56 D9
+
+
+
+
+19:39:38.086	67424310760	<---	BCCH:DL SCH	LTE	LTE systemInformation - sib6, sib7
+
+PC Timestamp: [ 2024  Oct  15    19:39:38.086 ]
+
+Msg sequence : 37077
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209359815
+nDataLength : 22
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformation : 
+        criticalExtensions systemInformation-r8 : 
+            sib-TypeAndInfo 
+              sib6 : 
+                  carrierFreqListUTRA-FDD 
+                      carrierFreq 10638,
+                      cellReselectionPriority 4,
+                      threshX-High 6,
+                      threshX-Low 6,
+                      q-RxLevMin -58,
+                      p-MaxUTRA 24,
+                      q-QualMin -22
+                   ,
+                  t-ReselectionUTRA 1
+                 ,
+              sib7 : 
+                  t-ReselectionGERAN 1,
+                  carrierFreqsInfoList 
+                      carrierFreqs 
+                        startingARFCN 93,
+                        bandIndicator dcs1800,
+                        followingARFCNs explicitListOfARFCNs : 
+                       ,
+                      commonInfo 
+                        cellReselectionPriority 3,
+                        ncc-Permitted '11111111'B,
+                        q-RxLevMin 0,
+                        threshX-High 6,
+                        threshX-Low 7
+
+
+L3 Data in Hex : 
+    00 91 01 A6 3A 18 C1 4A 11 29
+    20 17 40 27 FE 01 8E 00
+
+
+
+
+19:39:38.185	67424439240	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:38.185 ]
+
+Msg sequence : 37081
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209364025
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11110110 00000000 11101010 11110001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001100 01101100 00110010 11000101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 0F 60 0E AF 10 D8 CC 6C
+    32 C5 00
+
+
+
+
+19:39:38.186	67424449158	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:38.186 ]
+
+Msg sequence : 37082
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209364350
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11110001 00010100 10101110 11010011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11100010 11101011 00110110 01100100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11110000 10001101 01010001 10000011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0A 0F 11 4A ED 30 F8 E2 EB
+    36 64 0F 8F 08 D5 18 30
+
+
+
+
+19:39:38.486	67424715515	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:38.486 ]
+
+Msg sequence : 37083
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209373078
+nDataLength : 14
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 14,
+                measResultPCell 
+                  rsrpResult 61,
+                  rsrqResult 15
+                 ,
+                measResultServFreqList-r10 
+                    servFreqId-r10 1,
+                    measResultSCell-r10 
+                      rsrpResultSCell-r10 52,
+                      rsrqResultSCell-r10 11
+
+
+L3 Data in Hex : 
+    08 26 BD 3C 32 00 34 22 D0 B0
+
+
+
+
+19:39:38.486	67424715546	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:38.486 ]
+
+Msg sequence : 37084
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209373079
+nDataLength : 14
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 12,
+                measResultPCell 
+                  rsrpResult 61,
+                  rsrqResult 15
+                 ,
+                measResultServFreqList-r10 
+                    servFreqId-r10 1,
+                    measResultSCell-r10 
+                      rsrpResultSCell-r10 52,
+                      rsrqResultSCell-r10 11
+
+
+L3 Data in Hex : 
+    08 25 BD 3C 32 00 34 22 D0 B0
+
+
+
+
+19:39:38.486	67424769287	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:38.486 ]
+
+Msg sequence : 37086
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209374840
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11010100 10010101 00100111 10100100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11001100 11010000 00000011 01011101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11010011 11010110 01101010 01010101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0B 8D 49 52 7A 40 B8 CC D0
+    03 5D 0F 8D 3D 66 A5 50
+
+
+
+
+19:39:38.686	67424889221	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:38.686 ]
+
+Msg sequence : 37087
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209378770
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11110100 01010100 00001100 00101011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0B 0F 45 40 C2 B0
+
+
+
+
+19:39:39.084	67425079254	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.084 ]
+
+Msg sequence : 37093
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209384997
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11001001 11010000 10100101 01111110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010001 01110001 10000111 01001110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8F 8C 9D 0A 57 E0 D8 D1 71
+    87 4E 00
+
+
+
+
+19:39:39.084	67425089142	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.084 ]
+
+Msg sequence : 37094
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209385321
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010101 01010010 11001100 11011101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11111101 10110000 10100001 00000110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8D 8D 55 2C CD D0 D0 FD B0
+    A1 06 00
+
+
+
+
+19:39:39.404	67425399231	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.404 ]
+
+Msg sequence : 37142
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209395482
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11000011 00011101 10001001 01010100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0F 0C 31 D8 95 40
+
+
+
+
+19:39:39.404	67425409241	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.404 ]
+
+Msg sequence : 37144
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209395810
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11001010 01100100 11110000 10110100'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001110 01001110 11110001 01000000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11100000 00011011 01111010 11000111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11100001 10111011 00110100 01010101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8E 0C A6 4F 0B 48 D8 CE 4E
+    F1 40 0A 0E 01 B7 AC 70 B8 E1
+    BB 34 55 00 00 00
+
+
+
+
+19:39:39.724	67425719269	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.724 ]
+
+Msg sequence : 37149
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209405969
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11100001 10010001 10101101 00001110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11110010 11001011 00111000 00101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11011111 01110100 11000111 01111101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11011111 01110100 11000111 01111101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8F 8E 19 1A D0 E0 B8 F2 CB
+    38 2D 0A 0D F7 4C 77 D0 A0 DF
+    74 C7 7D 00 00 00
+
+
+
+
+19:39:39.724	67425729218	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.724 ]
+
+Msg sequence : 37150
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209406295
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11010101 10111011 11010011 10001101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001111 01011111 10010111 10001101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8B 8D 5B BD 38 D0 D8 CF 5F
+    97 8D 00
+
+
+
+
+19:39:39.824	67426039246	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.824 ]
+
+Msg sequence : 37160
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209416454
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11011000 10110111 00110100 00111010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011101 11000100 11011011 10010011'B
+               ,
+            cn-Domain cs
+
+
+L3 Data in Hex : 
+    40 8F 8D 8B 73 43 A0 E8 DD C4
+    DB 93 80
+
+
+
+
+19:39:39.824	67426049225	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.824 ]
+
+Msg sequence : 37162
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209416781
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11101110 11011001 00011100 00000110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0B 8E ED 91 C0 60
+
+
+
+
+19:39:39.924	67426169250	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:39.924 ]
+
+Msg sequence : 37167
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209420714
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11110100 01010100 00001100 00101011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0B 0F 45 40 C2 B0
+
+
+
+
+19:39:40.124	67426359222	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:40.124 ]
+
+Msg sequence : 37172
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209426939
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11100011 00100100 00101101 10001100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0E 0E 32 42 D8 C0
+
+
+
+
+19:39:40.125	67426369232	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:40.125 ]
+
+Msg sequence : 37173
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209427267
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11011100 00001010 00000001 11010010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11100100 11001001 11010110 00010000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11011111 01110110 11101100 10111000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0D 8D C0 A0 1D 20 C0 E4 C9
+    D6 10 0E 0D F7 6E CB 80
+
+
+
+
+19:39:40.679	67426679230	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:40.679 ]
+
+Msg sequence : 37220
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209437425
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11101001 01001010 10010000 11000011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11111011 11101000 11110100 11111101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11110101 00010100 00011011 01010000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0B 0E 94 A9 0C 30 D0 FB E8
+    F4 FD 0F 0F 51 41 B5 00
+
+
+
+
+19:39:40.679	67426689209	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:40.679 ]
+
+Msg sequence : 37222
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209437752
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11110000 11100001 10100010 00101000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0C 8F 0E 1A 22 80
+
+
+
+
+19:39:40.779	67426999237	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:40.779 ]
+
+Msg sequence : 37232
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209447911
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11110010 11001011 00111000 00101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11011111 01110100 11000111 01111101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8B 8F 2C B3 82 D0 A0 DF 74
+    C7 7D 00
+
+
+
+
+19:39:40.780	67427009216	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:40.780 ]
+
+Msg sequence : 37233
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209448238
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11011011 11000111 00001011 01011110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 0D BC 70 B5 E0
+
+
+
+
+19:39:41.079	67427319244	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:41.079 ]
+
+Msg sequence : 37238
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209458397
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11011000 10110111 00110100 00111010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011101 11000100 11011011 10010011'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011101 11001010 11010101 10110101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11011111 11101010 11010011 11000011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8F 8D 8B 73 43 A0 E8 DD C4
+    DB 93 8E 8D DC AD 5B 50 F8 DF
+    EA D3 C3 00 00 00
+
+
+
+
+19:39:41.181	67427449249	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:41.181 ]
+
+Msg sequence : 37286
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209462657
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11110110 01011111 01010110 11111011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11111101 01100000 11001001 01001101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8D 8F 65 F5 6F B0 B0 FD 60
+    C9 4D 00
+
+
+
+
+19:39:41.379	67427639252	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:41.379 ]
+
+Msg sequence : 37291
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209468883
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11101111 01011110 10101010 11010101'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11111001 01010111 00000000 00110011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11001001 01110110 01001010 00000011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0D 8E F5 EA AD 58 D8 F9 57
+    00 33 0B 0C 97 64 A0 30
+
+
+
+
+19:39:41.380	67427649231	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:41.380 ]
+
+Msg sequence : 37292
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209469210
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11011100 00001010 00000001 11010010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 8D C0 A0 1D 20
+
+
+
+
+19:39:41.964	67427959229	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:41.964 ]
+
+Msg sequence : 37302
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209479368
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11101001 01001010 10010000 11000011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11010111 00011011 11010011 11011001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8B 0E 94 A9 0C 30 B0 D7 1B
+    D3 D9 00
+
+
+
+
+19:39:41.964	67427969238	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:41.964 ]
+
+Msg sequence : 37304
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209479696
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11110100 10001100 10010111 10110010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11001010 10111011 10010010 00010101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 8F 48 C9 7B 20 E8 CA BB
+    92 15 00
+
+
+
+
+19:39:42.257	67428279236	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.257 ]
+
+Msg sequence : 37309
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209489854
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11110010 11001011 00111000 00101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11011111 01110100 11000111 01111101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011010 11010010 10101111 11110010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0B 8F 2C B3 82 D0 A0 DF 74
+    C7 7D 0E 8D AD 2A FF 20
+
+
+
+
+19:39:42.257	67428289215	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.257 ]
+
+Msg sequence : 37310
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209490181
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11101011 10000000 10100100 10011111'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 0E B8 0A 49 F0
+
+
+
+
+19:39:42.356	67428599243	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.356 ]
+
+Msg sequence : 37357
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209500340
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11011000 10110111 00110100 00111010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011101 11000100 11011011 10010011'B
+               ,
+            cn-Domain cs
+
+
+L3 Data in Hex : 
+    40 8F 8D 8B 73 43 A0 E8 DD C4
+    DB 93 80
+
+
+
+
+19:39:42.357	67428609222	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.357 ]
+
+Msg sequence : 37359
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209500667
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11010110 01000001 00100101 00101001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11110110 00010110 11001111 10011000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8B 0D 64 12 52 90 E0 F6 16
+    CF 98 00
+
+
+
+
+19:39:42.457	67428729279	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.457 ]
+
+Msg sequence : 37364
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209504601
+nDataLength : 36
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111111 10111011 11011011 10100010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11000100 10100111 00100110 10001110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11101101 00011101 11011100 01101000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010101 00010001 10011000 00110000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111111 10111100 11011110 10110010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 0E 8F FB BD BA 20 C0 C4 A7
+    26 8E 0D 8E D1 DD C6 80 D8 D5
+    11 98 30 0E 8F FB CD EB 20 00
+    00 00
+
+
+
+
+19:39:42.657	67428919250	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.657 ]
+
+Msg sequence : 37369
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209510826
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11101111 01011110 10101010 11010101'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11010110 01100011 10011100 11010000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11011001 01101001 01101100 11101100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11100011 01001001 00010010 11010100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8D 8E F5 EA AD 58 F0 D6 63
+    9C D0 0D 8D 96 96 CE C0 A0 E3
+    49 12 D4 00 00 00
+
+
+
+
+19:39:42.657	67428929138	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.657 ]
+
+Msg sequence : 37370
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209511150
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11011100 00001010 00000001 11010010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11110100 01011101 11001111 10111010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8D 8D C0 A0 1D 20 E0 F4 5D
+    CF BA 00
+
+
+
+
+19:39:42.958	67429239227	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:42.958 ]
+
+Msg sequence : 37380
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209521311
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11101001 01001010 10010000 11000011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0B 0E 94 A9 0C 30
+
+
+
+
+19:39:43.058	67429249237	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:43.058 ]
+
+Msg sequence : 37382
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209521639
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11110000 11001111 00011111 01010010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010110 01100011 00000011 11010101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11000011 11001011 01110111 10000100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0C 0F 0C F1 F5 20 D8 D6 63
+    03 D5 0E 8C 3C B7 78 40
+
+
+
+
+19:39:43.341	67429569244	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:43.341 ]
+
+Msg sequence : 37430
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209532125
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11010000 01100101 11101110 11100101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11101011 11000011 10000010 10000010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8F 0D 06 5E EE 50 E8 EB C3
+    82 82 00
+
+
+
+
+19:39:43.697	67429879242	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:43.697 ]
+
+Msg sequence : 37435
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209542283
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11001000 00110011 11101111 00000100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11100111 11110000 01011110 10000001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11000101 01101110 01110110 01001100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11110011 00010101 10101010 11100110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8B 0C 83 3E F0 40 E8 E7 F0
+    5E 81 0B 0C 56 E7 64 C0 A0 F3
+    15 AA E6 00 00 00
+
+
+
+
+19:39:43.698	67429889191	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:43.698 ]
+
+Msg sequence : 37437
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209542609
+nDataLength : 36
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11010110 01000001 00100101 00101001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11011010 10111011 00110000 01110000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11111110 10100110 10001011 10111000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11010111 00000111 01011000 11010100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11000100 00001000 00011110 01100101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 0B 0D 64 12 52 90 B8 DA BB
+    30 70 0F 8F EA 68 BB 80 E0 D7
+    07 58 D4 0B 0C 40 81 E6 50 00
+    00 00
+
+
+
+
+19:39:43.879	67430009247	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:43.879 ]
+
+Msg sequence : 37447
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209546543
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11011111 10101001 00000110 10101101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000011 00100110 00000001 10110101'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 8D FA 90 6A D0 A0 C3 26
+    01 B5 00
+
+
+
+
+19:39:43.979	67430199249	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:43.979 ]
+
+Msg sequence : 37452
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209552769
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11101111 01011110 10101010 11010101'B
+               ,
+            cn-Domain cs
+
+
+L3 Data in Hex : 
+    40 0D 8E F5 EA AD 58
+
+
+
+
+19:39:44.278	67430519226	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.278 ]
+
+Msg sequence : 37456
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209563254
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001111 00110100 11001101 10001111'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 8C F3 4C D8 F0
+
+
+
+
+19:39:44.279	67430529175	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.279 ]
+
+Msg sequence : 37458
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209563580
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11111111 01101010 00111010 00111100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11001001 11010010 01000000 11011100'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8D 8F F6 A3 A3 C0 E8 C9 D2
+    40 DC 00
+
+
+
+
+19:39:44.479	67430675385	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.479 ]
+
+Msg sequence : 37498
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209568371
+nDataLength : 17
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 10,
+                measResultPCell 
+                  rsrpResult 47,
+                  rsrqResult 6
+                 ,
+                measResultNeighCells measResultListEUTRA : 
+                      physCellId 150,
+                      measResult 
+                        rsrpResult 51
+                   ,
+                measResultServFreqList-r10 
+                    servFreqId-r10 1,
+                    measResultSCell-r10 
+                      rsrpResultSCell-r10 44,
+                      rsrqResultSCell-r10 13
+
+
+L3 Data in Hex : 
+    08 34 AF 18 02 59 33 0C 80 0D
+    08 AC 34
+
+
+
+
+19:39:44.479	67430758636	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.479 ]
+
+Msg sequence : 37502
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209571099
+nDataLength : 59
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 1,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              mobilityControlInfo 
+                targetPhysCellId 150,
+                carrierFreq 
+                  dl-CarrierFreq 1600,
+                  ul-CarrierFreq 19600
+                 ,
+                t304 ms500,
+                newUE-Identity '10100011 11110100'B,
+                radioResourceConfigCommon 
+                  rach-ConfigCommon 
+                    preambleInfo 
+                      numberOfRA-Preambles n20,
+                      preamblesGroupAConfig 
+                        sizeOfRA-PreamblesGroupA n12,
+                        messageSizeGroupA b56,
+                        messagePowerOffsetGroupB dB10
+                     ,
+                    powerRampingParameters 
+                      powerRampingStep dB2,
+                      preambleInitialReceivedTargetPower dBm-104
+                     ,
+                    ra-SupervisionInfo 
+                      preambleTransMax n10,
+                      ra-ResponseWindowSize sf10,
+                      mac-ContentionResolutionTimer sf64
+                     ,
+                    maxHARQ-Msg3Tx 5
+                   ,
+                  prach-Config 
+                    rootSequenceIndex 150,
+                    prach-ConfigInfo 
+                      prach-ConfigIndex 6,
+                      highSpeedFlag FALSE,
+                      zeroCorrelationZoneConfig 11,
+                      prach-FreqOffset 2
+                   ,
+                  pdsch-ConfigCommon 
+                    referenceSignalPower 10,
+                    p-b 1
+                   ,
+                  pusch-ConfigCommon 
+                    pusch-ConfigBasic 
+                      n-SB 4,
+                      hoppingMode interSubFrame,
+                      pusch-HoppingOffset 22,
+                      enable64QAM TRUE
+                     ,
+                    ul-ReferenceSignalsPUSCH 
+                      groupHoppingEnabled FALSE,
+                      groupAssignmentPUSCH 0,
+                      sequenceHoppingEnabled FALSE,
+                      cyclicShift 0
+                   ,
+                  pucch-ConfigCommon 
+                    deltaPUCCH-Shift ds1,
+                    nRB-CQI 1,
+                    nCS-AN 0,
+                    n1PUCCH-AN 18
+                   ,
+                  soundingRS-UL-ConfigCommon release : NULL,
+                  antennaInfoCommon 
+                    antennaPortsCount an2
+                   ,
+                  ul-CyclicPrefixLength len1,
+                  pusch-ConfigCommon-v1270 
+                    enable64QAM-v1270 true
+                 ,
+                rach-ConfigDedicated 
+                  ra-PreambleIndex 26,
+                  ra-PRACH-MaskIndex 0
+               ,
+              radioResourceConfigDedicated 
+                mac-MainConfig explicitValue : 
+                    drx-Config release : NULL,
+                    timeAlignmentTimerDedicated infinity,
+                    mac-MainConfig-v1020 
+                   ,
+                physicalConfigDedicated 
+                  pdsch-ConfigDedicated 
+                    p-a dB-3
+                   ,
+                  antennaInfo explicitValue : 
+                      transmissionMode tm4,
+                      codebookSubsetRestriction n2TxAntenna-tm4 : '111111'B,
+                      ue-TransmitAntennaSelection release : NULL
+                     ,
+                  schedulingRequestConfig setup : 
+                      sr-PUCCH-ResourceIndex 1,
+                      sr-ConfigIndex 29,
+                      dsr-TransMax n64
+                     ,
+                  cqi-ReportConfig-r10 
+                    cqi-ReportAperiodic-r10 setup : 
+                        cqi-ReportModeAperiodic-r10 rm31
+                       ,
+                    nomPDSCH-RS-EPRE-Offset 2,
+                    cqi-ReportPeriodic-r10 release : NULL
+                   ,
+                  pucch-ConfigDedicated-v1020 
+               ,
+              securityConfigHO 
+                handoverType intraLTE : 
+                    securityAlgorithmConfig 
+                      cipheringAlgorithm eea2,
+                      integrityProtAlgorithm eia2
+                     ,
+                    keyChangeIndicator FALSE,
+                    nextHopChainingCount 3
+               ,
+              nonCriticalExtension 
+                lateNonCriticalExtension 
+                  CONTAINING
+                    nonCriticalExtension 
+                      antennaInfoDedicatedPCell-v10i0 
+                   ,
+                nonCriticalExtension 
+                  nonCriticalExtension 
+                    sCellToReleaseList-r10 
+                      1
+
+
+L3 Data in Hex : 
+    22 0B A5 2D 06 40 4C 90 94 7E
+    9D A2 82 23 0D FC 92 C3 2C 14
+    67 16 80 00 10 04 88 11 01 80
+    68 02 A9 C0 A0 30 18 0D 2D 7E
+    80 11 D8 05 04 14 19 46 00 24
+    47 80 B0 18 00
+
+
+
+
+19:39:44.480	67430765106	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.480 ]
+
+Msg sequence : 37505
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209571311
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 1,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    12 00
+
+
+
+
+19:39:44.579	67430773438	<---	BCCH:BCH	LTE	LTE MasterInformationBlock
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.579 ]
+
+Msg sequence : 37507
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209571584
+nDataLength : 7
+
+value BCCH-BCH-Message ::= 
+  message 
+    dl-Bandwidth n75,
+    phich-Config 
+      phich-Duration normal,
+      phich-Resource one
+     ,
+    systemFrameNumber '11100110'B,
+    schedulingInfoSIB1-BR-r13 0,
+    systemInfoUnchanged-BR-r15 FALSE,
+    spare '0000'B
+
+
+L3 Data in Hex : 
+    8B 98 00
+
+
+
+
+19:39:44.582	67430794769	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.582 ]
+
+Msg sequence : 37553
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209572283
+nDataLength : 24
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 2,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              radioResourceConfigDedicated 
+                mac-MainConfig explicitValue : 
+                    drx-Config setup : 
+                        onDurationTimer psf2,
+                        drx-InactivityTimer psf80,
+                        drx-RetransmissionTimer psf8,
+                        longDRX-CycleStartOffset sf320 : 17,
+                        shortDRX 
+                          shortDRX-Cycle sf20,
+                          drxShortCycleTimer 1
+                       ,
+                    timeAlignmentTimerDedicated infinity
+                   ,
+                physicalConfigDedicated 
+                  cqi-ReportConfig-r10 
+                    cqi-ReportAperiodic-r10 setup : 
+                        cqi-ReportModeAperiodic-r10 rm31
+                       ,
+                    nomPDSCH-RS-EPRE-Offset 2,
+                    cqi-ReportPeriodic-r10 setup : 
+                        cqi-PUCCH-ResourceIndex-r10 0,
+                        cqi-pmi-ConfigIndex 54,
+                        cqi-FormatIndicatorPeriodic-r10 widebandCQI-r10 : 
+                           ,
+                        ri-ConfigIndex 161,
+                        simultaneousAckNackAndCQI FALSE,
+                        csi-ConfigIndex-r10 release : NULL
+
+
+L3 Data in Hex : 
+    24 02 05 16 2D 92 11 50 F0 00
+    0A 10 20 32 8E A0 00 36 0A 10
+
+
+
+
+19:39:44.582	67430794800	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.582 ]
+
+Msg sequence : 37554
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209572284
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 2,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    14 00
+
+
+
+
+19:39:44.582	67430800323	<---	BCCH:DL SCH	LTE	LTE systemInformationBlockType1 - MCC : 470(Bangladesh) / MNC : 1(Grameenphone)
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.582 ]
+
+Msg sequence : 37556
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209572465
+nDataLength : 22
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformationBlockType1 : 
+        cellAccessRelatedInfo 
+          plmn-IdentityList 
+              plmn-Identity 
+                mcc 
+                  4,
+                  7,
+                  0
+                 ,
+                mnc 
+                  0,
+                  1
+               ,
+              cellReservedForOperatorUse notReserved
+           ,
+          trackingAreaCode '11101011 11011110'B,
+          cellIdentity '00011001 00000101 00100000 1011'B,
+          cellBarred notBarred,
+          intraFreqReselection allowed,
+          csg-Indication FALSE
+         ,
+        cellSelectionInfo 
+          q-RxLevMin -64
+         ,
+        freqBandIndicator 3,
+        schedulingInfoList 
+            si-Periodicity rf16,
+            sib-MappingInfo 
+              sibType3
+           ,
+            si-Periodicity rf32,
+            sib-MappingInfo 
+              sibType5
+         ,
+        si-WindowLength ms40,
+        systemInfoValueTag 1,
+        nonCriticalExtension 
+          nonCriticalExtension 
+            cellSelectionInfo-v920 
+              q-QualMin-r9 -18
+
+
+L3 Data in Hex : 
+    48 51 C0 03 EB DE 19 05 20 B8
+    18 20 90 81 04 58 2A 40
+
+
+
+
+19:39:44.583	67430820740	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.583 ]
+
+Msg sequence : 37559
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209573134
+nDataLength : 96
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 3,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              measConfig 
+                measObjectToRemoveList 
+                  2,
+                  3
+                 ,
+                measObjectToAddModList 
+                    measObjectId 1,
+                    measObject measObjectEUTRA : 
+                        carrierFreq 1600,
+                        allowedMeasBandwidth mbw75,
+                        presenceAntennaPort1 FALSE,
+                        neighCellConfig '01'B,
+                        offsetFreq dB0,
+                        cellsToAddModList 
+                            cellIndex 1,
+                            physCellId 150,
+                            cellIndividualOffset dB0
+                 ,
+                reportConfigToRemoveList 
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                 ,
+                reportConfigToAddModList 
+                    reportConfigId 1,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA3 : 
+                                a3-Offset 2,
+                                reportOnLeave FALSE
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms320
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity sameAsTriggerQuantity,
+                        maxReportCells 4,
+                        reportInterval ms240,
+                        reportAmount infinity
+                   ,
+                    reportConfigId 2,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA3 : 
+                                a3-Offset 10,
+                                reportOnLeave TRUE
+                               ,
+                            hysteresis 4,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 8,
+                        reportInterval ms5120,
+                        reportAmount infinity
+                   ,
+                    reportConfigId 3,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA1 : 
+                                a1-Threshold threshold-RSRP : 24
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 4,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA2 : 
+                                a2-Threshold threshold-RSRP : 21
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 5,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA1 : 
+                                a1-Threshold threshold-RSRP : 21
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 6,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA2 : 
+                                a2-Threshold threshold-RSRP : 17
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 7,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA2 : 
+                                a2-Threshold threshold-RSRP : 16
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 1,
+                        reportInterval ms480,
+                        reportAmount r1
+                   ,
+                    reportConfigId 8,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA2 : 
+                                a2-Threshold threshold-RSRP : 53
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity sameAsTriggerQuantity,
+                        maxReportCells 1,
+                        reportInterval ms240,
+                        reportAmount r1
+                   ,
+                    reportConfigId 9,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType periodical : 
+                            purpose reportStrongestCells
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity both,
+                        maxReportCells 6,
+                        reportInterval ms10240,
+                        reportAmount r16
+                 ,
+                measIdToRemoveList 
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18
+                 ,
+                measIdToAddModList 
+                    measId 1,
+                    measObjectId 1,
+                    reportConfigId 1
+                   ,
+                    measId 2,
+                    measObjectId 1,
+                    reportConfigId 2
+                   ,
+                    measId 3,
+                    measObjectId 1,
+                    reportConfigId 3
+                   ,
+                    measId 4,
+                    measObjectId 1,
+                    reportConfigId 4
+                   ,
+                    measId 5,
+                    measObjectId 1,
+                    reportConfigId 5
+                   ,
+                    measId 6,
+                    measObjectId 1,
+                    reportConfigId 6
+                   ,
+                    measId 7,
+                    measObjectId 1,
+                    reportConfigId 7
+                   ,
+                    measId 8,
+                    measObjectId 1,
+                    reportConfigId 8
+                   ,
+                    measId 9,
+                    measObjectId 1,
+                    reportConfigId 9
+                 ,
+                quantityConfig 
+                  quantityConfigEUTRA 
+                    filterCoefficientRSRP fc6,
+                    filterCoefficientRSRQ fc6
+                 ,
+                s-Measure 0,
+                speedStatePars release : NULL
+
+
+L3 Data in Hex : 
+    26 10 3F A8 42 20 00 28 06 40
+    85 E0 02 59 E8 4A 96 C6 B9 F0
+    8A 00 0A 00 A0 63 C2 0A 89 2D
+    ED C4 00 60 56 82 03 02 2A 2B
+    41 02 00 15 15 A0 81 40 88 8A
+    D0 40 C0 44 05 68 20 70 26 A2
+    B0 08 41 35 E2 12 A5 B1 AE 7C
+    22 80 00 01 00 44 01 0C 03 20
+    08 50 14 C0 31 C0 74 01 08 CC
+    60 00
+
+
+
+
+19:39:44.583	67430820770	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.583 ]
+
+Msg sequence : 37560
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209573135
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 3,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    16 00
+
+
+
+
+19:39:44.583	67430858002	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:44.583 ]
+
+Msg sequence : 37561
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209574355
+nDataLength : 8
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 9,
+                measResultPCell 
+                  rsrpResult 51,
+                  rsrqResult 12
+
+
+L3 Data in Hex : 
+    08 04 33 30
+
+
+
+
+19:39:45.264	67431517395	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:45.264 ]
+
+Msg sequence : 37575
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209595962
+nDataLength : 8
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 8,
+                measResultPCell 
+                  rsrpResult 48,
+                  rsrqResult 9
+
+
+L3 Data in Hex : 
+    08 03 B0 24
+
+
+
+
+19:39:45.264	67431517395	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:45.264 ]
+
+Msg sequence : 37576
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209595962
+nDataLength : 8
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 5,
+                measResultPCell 
+                  rsrpResult 48,
+                  rsrqResult 9
+
+
+L3 Data in Hex : 
+    08 02 30 24
+
+
+
+
+19:39:45.265	67431517426	--->	UL DCCH	LTE	LTE measurementReport
+
+PC Timestamp: [ 2024  Oct  15    19:39:45.265 ]
+
+Msg sequence : 37577
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209595963
+nDataLength : 8
+
+value UL-DCCH-Message ::= 
+  message c1 : measurementReport : 
+        criticalExtensions c1 : measurementReport-r8 : 
+              measResults 
+                measId 3,
+                measResultPCell 
+                  rsrpResult 48,
+                  rsrqResult 9
+
+
+L3 Data in Hex : 
+    08 01 30 24
+
+
+
+
+19:39:45.267	67431548767	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:45.267 ]
+
+Msg sequence : 37617
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209596990
+nDataLength : 38
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 0,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              measConfig 
+                measObjectToAddModList 
+                    measObjectId 2,
+                    measObject measObjectEUTRA : 
+                        carrierFreq 40292,
+                        allowedMeasBandwidth mbw100,
+                        presenceAntennaPort1 FALSE,
+                        neighCellConfig '01'B,
+                        offsetFreq dB-6
+                   ,
+                    measObjectId 3,
+                    measObject measObjectEUTRA : 
+                        carrierFreq 40688,
+                        allowedMeasBandwidth mbw100,
+                        presenceAntennaPort1 FALSE,
+                        neighCellConfig '01'B,
+                        offsetFreq dB-6
+                   ,
+                    measObjectId 4,
+                    measObject measObjectEUTRA : 
+                        carrierFreq 40490,
+                        allowedMeasBandwidth mbw100,
+                        presenceAntennaPort1 FALSE,
+                        neighCellConfig '01'B,
+                        offsetFreq dB-6
+                 ,
+                reportConfigToAddModList 
+                    reportConfigId 10,
+                    reportConfig reportConfigEUTRA : 
+                        triggerType event : 
+                            eventId eventA4 : 
+                                a4-Threshold threshold-RSRP : 24
+                               ,
+                            hysteresis 2,
+                            timeToTrigger ms640
+                           ,
+                        triggerQuantity rsrp,
+                        reportQuantity sameAsTriggerQuantity,
+                        maxReportCells 4,
+                        reportInterval ms240,
+                        reportAmount infinity
+                 ,
+                measIdToAddModList 
+                    measId 10,
+                    measObjectId 2,
+                    reportConfigId 10
+                   ,
+                    measId 11,
+                    measObjectId 3,
+                    reportConfigId 10
+                   ,
+                    measId 12,
+                    measObjectId 4,
+                    reportConfigId 10
+                 ,
+                measGapConfig setup : 
+                    gapOffset gp0 : 7
+
+
+L3 Data in Hex : 
+    20 10 15 40 82 10 4E B2 52 91
+    04 13 DE 14 A4 61 04 F1 55 29
+    02 41 8C 0A C6 3C 49 0A 54 24
+    AC 69 83 80
+
+
+
+
+19:39:45.267	67431548798	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:45.267 ]
+
+Msg sequence : 37618
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209596991
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 0,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    10 00
+
+
+
+
+19:39:46.265	67432451538	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:46.265 ]
+
+Msg sequence : 37630
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209626572
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11110010 10101110 01111000 10101010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001101 01000011 01101011 01110100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11101001 00001101 10100101 10011101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11001001 10010101 10100011 11111001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8D 0F 2A E7 8A A0 D8 CD 43
+    6B 74 0E 0E 90 DA 59 D0 B8 C9
+    95 A3 F9 00 00 00
+
+
+
+
+19:39:47.518	67433731476	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:47.518 ]
+
+Msg sequence : 37732
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209668513
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11001111 11010111 00001010 10100000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11000100 00100101 01100111 00100110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8F 8C FD 70 AA 00 F0 C4 25
+    67 26 00
+
+
+
+
+19:39:48.479	67434706787	<---	DL DCCH	LTE	LTE rrcConnectionReconfiguration
+
+PC Timestamp: [ 2024  Oct  15    19:39:48.479 ]
+
+Msg sequence : 37793
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209700472
+nDataLength : 14
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfiguration : 
+        rrc-TransactionIdentifier 1,
+        criticalExtensions c1 : rrcConnectionReconfiguration-r8 : 
+              measConfig 
+                measObjectToRemoveList 
+                  2,
+                  3,
+                  4
+                 ,
+                reportConfigToRemoveList 
+                  10
+                 ,
+                measIdToRemoveList 
+                  10,
+                  11,
+                  12
+                 ,
+                measGapConfig release : NULL
+
+
+L3 Data in Hex : 
+    22 10 2A 40 82 21 81 22 4A 96
+
+
+
+
+19:39:48.479	67434706818	--->	UL DCCH	LTE	LTE rrcConnectionReconfigurationComplete
+
+PC Timestamp: [ 2024  Oct  15    19:39:48.479 ]
+
+Msg sequence : 37794
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209700473
+nDataLength : 6
+
+value UL-DCCH-Message ::= 
+  message c1 : rrcConnectionReconfigurationComplete : 
+        rrc-TransactionIdentifier 1,
+        criticalExtensions rrcConnectionReconfigurationComplete-r8 : 
+
+
+L3 Data in Hex : 
+    12 00
+
+
+
+
+19:39:48.779	67435011505	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:48.779 ]
+
+Msg sequence : 37802
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209710457
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11011001 01010010 01111001 00011100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111111 10111100 11011110 10110010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11010000'B,
+                m-TMSI '11100001 11001101 00011010 10001110'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0F 0D 95 27 91 C0 E8 FF BC
+    DE B2 0D 0E 1C D1 A8 E0
+
+
+
+
+19:39:50.300	67436291473	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:50.300 ]
+
+Msg sequence : 37861
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209752399
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11110000'B,
+                m-TMSI '11111000 01101110 01101000 10000001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0F 0F 86 E6 88 10
+
+
+
+
+19:39:51.361	67437571503	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:51.361 ]
+
+Msg sequence : 37927
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209794343
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11110100 11010010 01001100 10011001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11100011 11111101 10011101 01011010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 8F 4D 24 C9 90 C0 E3 FD
+    9D 5A 00
+
+
+
+
+19:39:52.640	67438851501	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:52.640 ]
+
+Msg sequence : 38032
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209836286
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11010000 10010110 10100011 00001000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11010010 10001000 11110000 10001010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0E 8D 09 6A 30 80 A0 C0 78
+    7C 61 0C 8D 28 8F 08 A0
+
+
+
+
+19:39:54.139	67440131500	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:54.139 ]
+
+Msg sequence : 38098
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209878229
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11111101 00000111 01010011 00000101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11110010 11100111 10001111 01000011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8E 0F D0 75 30 50 B8 F2 E7
+    8F 43 00
+
+
+
+
+19:39:54.566	67440786682	<---	DL DCCH	LTE	LTE rrcConnectionRelease
+
+PC Timestamp: [ 2024  Oct  15    19:39:54.566 ]
+
+Msg sequence : 38113
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209899698
+nDataLength : 6
+
+value DL-DCCH-Message ::= 
+  message c1 : rrcConnectionRelease : 
+        rrc-TransactionIdentifier 0,
+        criticalExtensions c1 : rrcConnectionRelease-r8 : 
+              releaseCause other
+
+
+L3 Data in Hex : 
+    28 02
+
+
+
+
+19:39:55.110	67440853577	<---	BCCH:BCH	LTE	LTE MasterInformationBlock
+
+PC Timestamp: [ 2024  Oct  15    19:39:55.110 ]
+
+Msg sequence : 38158
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209901890
+nDataLength : 7
+
+value BCCH-BCH-Message ::= 
+  message 
+    dl-Bandwidth n75,
+    phich-Config 
+      phich-Duration normal,
+      phich-Resource one
+     ,
+    systemFrameNumber '11100010'B,
+    schedulingInfoSIB1-BR-r13 0,
+    systemInfoUnchanged-BR-r15 FALSE,
+    spare '0000'B
+
+
+L3 Data in Hex : 
+    8B 88 00
+
+
+
+
+19:39:55.115	67440881927	<---	BCCH:DL SCH	LTE	LTE systemInformationBlockType1 - MCC : 470(Bangladesh) / MNC : 1(Grameenphone)
+
+PC Timestamp: [ 2024  Oct  15    19:39:55.115 ]
+
+Msg sequence : 38218
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209902819
+nDataLength : 22
+
+value BCCH-DL-SCH-Message ::= 
+  message c1 : systemInformationBlockType1 : 
+        cellAccessRelatedInfo 
+          plmn-IdentityList 
+              plmn-Identity 
+                mcc 
+                  4,
+                  7,
+                  0
+                 ,
+                mnc 
+                  0,
+                  1
+               ,
+              cellReservedForOperatorUse notReserved
+           ,
+          trackingAreaCode '11101011 11011110'B,
+          cellIdentity '00011001 00000101 00100000 1011'B,
+          cellBarred notBarred,
+          intraFreqReselection allowed,
+          csg-Indication FALSE
+         ,
+        cellSelectionInfo 
+          q-RxLevMin -64
+         ,
+        freqBandIndicator 3,
+        schedulingInfoList 
+            si-Periodicity rf16,
+            sib-MappingInfo 
+              sibType3
+           ,
+            si-Periodicity rf32,
+            sib-MappingInfo 
+              sibType5
+         ,
+        si-WindowLength ms40,
+        systemInfoValueTag 1,
+        nonCriticalExtension 
+          nonCriticalExtension 
+            cellSelectionInfo-v920 
+              q-QualMin-r9 -18
+
+
+L3 Data in Hex : 
+    48 51 C0 03 EB DE 19 05 20 B8
+    18 20 90 81 04 58 2A 40
+
+
+
+
+19:39:55.212	67441411591	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:55.212 ]
+
+Msg sequence : 38241
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209920175
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11101100 01001101 01101000 01110111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11010000 10010110 10100011 00001000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8D 8E C4 D6 87 70 E8 D0 96
+    A3 08 00
+
+
+
+
+19:39:57.666	67442691528	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:57.666 ]
+
+Msg sequence : 38285
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2209962116
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11110001 10110100 10011111 00100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11101000 01000100 11001100 11101100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11001011 11001010 10111110 01110110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11110100 11010010 01001100 10011001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8E 8F 1B 49 F2 10 B0 E8 44
+    CC EC 0C 0C BC AB E7 60 E8 F4
+    D2 4C 99 00 00 00
+
+
+
+
+19:39:58.948	67443971558	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:39:58.948 ]
+
+Msg sequence : 38349
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210004060
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11011111 10101111 01010100 00000010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0C 8D FA F5 40 20
+
+
+
+
+19:40:00.227	67445251526	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:00.227 ]
+
+Msg sequence : 38394
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210046002
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11010101 00010001 10011000 00110000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8A 0C 07 87 C6 10 D8 D5 11
+    98 30 00
+
+
+
+
+19:40:01.508	67446531586	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:01.508 ]
+
+Msg sequence : 38458
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210087947
+nDataLength : 36
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11001001 10100111 01010100 10001011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11010000 10011000 01100110 11000000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11001001 11111100 00010001 00010000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11011100 10001100 01111100 01110110'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11101011 10111010 00100010 10001001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 0E 8C 9A 75 48 B0 E8 D0 98
+    66 C0 0C 0C 9F C1 11 00 F8 DC
+    8C 7C 76 8E 8E BB A2 28 90 00
+    00 00
+
+
+
+
+19:40:02.786	67447811523	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:02.786 ]
+
+Msg sequence : 38503
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210129888
+nDataLength : 36
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11111010 11101100 01111001 00111000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11100001 01100010 10000011 10110010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11011000 11111000 11100010 10011100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11100001 11110011 11110110 11100101'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11110011 10011100 00111001 10000011'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 0C 8F AE C7 93 80 B0 E1 62
+    83 B2 0F 8D 8F 8E 29 C0 E8 E1
+    F3 F6 E5 0F 8F 39 C3 98 30 00
+    00 00
+
+
+
+
+19:40:04.067	67449091553	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:04.067 ]
+
+Msg sequence : 38567
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210171832
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11111000 01011111 10100001 11111000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0D 8F 85 FA 1F 80
+
+
+
+
+19:40:05.346	67450371521	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:05.346 ]
+
+Msg sequence : 38612
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210213774
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10111000'B,
+                m-TMSI '11110110 10101100 11110100 10101010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11011010 01110110 11100000 11101110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10100000'B,
+                m-TMSI '11000000 01111000 01111100 01100001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0B 8F 6A CF 4A A0 B0 DA 76
+    E0 EE 0A 0C 07 87 C6 10
+
+
+
+
+19:40:05.447	67451651581	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:05.447 ]
+
+Msg sequence : 38676
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210255719
+nDataLength : 17
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11000111 00001111 01010111 11011001'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '10110000'B,
+                m-TMSI '11000111 00001111 01010111 11011001'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 8B 0C 70 F5 7D 90 B0 C7 0F
+    57 D9 00
+
+
+
+
+19:40:07.906	67452931549	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:07.906 ]
+
+Msg sequence : 38721
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210297661
+nDataLength : 41
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11111000'B,
+                m-TMSI '11100000 10111010 10110001 11001010'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11100101 11001001 00011010 11101111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11001001 11111100 00010001 00010000'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11001101 01000011 01101011 01110100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11001000 10000101 10101100 10110100'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11111111 10111100 11011110 10110010'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    42 8F 8E 0B AB 1C A0 C0 E5 C9
+    1A EF 0C 0C 9F C1 11 00 D8 CD
+    43 6B 74 0E 8C 88 5A CB 40 E8
+    FF BC DE B2 00 00 00
+
+
+
+
+19:40:10.466	67455491516	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:10.466 ]
+
+Msg sequence : 38828
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210381546
+nDataLength : 11
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11101000 01011001 01000001 11011000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    40 0E 0E 85 94 1D 80
+
+
+
+
+19:40:13.026	67458051544	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:13.026 ]
+
+Msg sequence : 38933
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210465433
+nDataLength : 22
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11110110 01011111 01010110 11111011'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11000000'B,
+                m-TMSI '11001011 11001010 10111110 01110110'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11000111 10111111 10010011 10010000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 0D 8F 65 F5 6F B0 C0 CB CA
+    BE 76 0C 8C 7B F9 39 00
+
+
+
+
+19:40:14.307	67459331543	<---	DL PCCH	LTE	LTE paging
+
+PC Timestamp: [ 2024  Oct  15    19:40:14.307 ]
+
+Msg sequence : 38995
+SUB_Command : 0x02(DM LTE Data Out Message)
+Command_Type : 0x52
+Time : 2210507376
+nDataLength : 30
+
+value PCCH-Message ::= 
+  message c1 : paging : 
+        pagingRecordList 
+            ue-Identity s-TMSI : 
+                mmec '11011000'B,
+                m-TMSI '11000110 01110010 11100101 00010111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11001000'B,
+                m-TMSI '11101101 11001000 00010001 11101111'B
+               ,
+            cn-Domain ps
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11101000'B,
+                m-TMSI '11001000 11010000 10110000 10011100'B
+               ,
+            cn-Domain cs
+           ,
+            ue-Identity s-TMSI : 
+                mmec '11100000'B,
+                m-TMSI '11000110 01101000 00000101 11011000'B
+               ,
+            cn-Domain ps
+
+
+L3 Data in Hex : 
+    41 8D 8C 67 2E 51 70 C8 ED C8
+    11 EF 0E 8C 8D 0B 09 C8 E0 C6
+    68 05 D8 00 00 00
+
+

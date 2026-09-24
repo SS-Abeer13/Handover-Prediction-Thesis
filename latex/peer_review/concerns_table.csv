@@ -1,0 +1,16 @@
+concern,alfa,bravo,charlie,delta
+Headline AUPRC/AUROC/ECE confidence intervals (Tables 5.4-5.5) use the same block-bootstrap method Section 5.3/5.4 shows to be anti-conservative on non-independent 180s blocks,True,False,True,True
+"Conformal risk-control '83% of 12 rotations' pseudoreplicates outcomes from only 4 independent campaigns, overstating its inferential weight",True,True,True,True
+Held-out (4th/highway) campaign is not a blind generalization test: the alignment-audit lag correction defining the feature pipeline was derived using contamination evidence pooled across all four campaigns,True,True,False,False
+"Small-subgroup point/percentage estimates (e.g., n=15 boundary-crossing test) are reported as precise without confidence intervals",True,False,True,False
+"No hyperparameter search space reported for non-tree learners; code/derived data deferred to release 'on acceptance', blocking independent verification",True,False,True,False
+"LightGBM designated 'primary model' post-hoc from a 7-learner comparison with mostly overlapping intervals, with no stated pre-registration of that choice",False,False,True,False
+"No multiplicity correction applied to the large number of full-dataset comparisons (splitting windows, cutoffs, definitional grids), conflated with the separate n=4-campaign multiplicity argument",False,False,True,True
+Blocked+purge splitting protocol recommended as a practical LOCO substitute despite the paper's own sensitivity analysis being unable to establish the direction of its bias,False,False,True,False
+"The 'freeze' of modelling decisions before the held-out campaign is attested only by private version history, not independently timestamped",False,True,False,False
+"Generalization claim (Objective O4) confounds corridor and speed regime, since the held-out campaign differs on both axes simultaneously",False,True,False,False
+"External-validity checks (the 'independent' dataset and RL comparator) share supervisor/department/instrument lineage, undercutting the 'independent' framing",False,True,False,False
+"Causal mechanism for the alignment defect is validated only on external, downsampled corpora, never confirmed via a native-rate re-export of the actual campaigns",False,True,False,False
+A stated 90.5% event-resolvability ceiling is never reconciled with a different 64.2% eligible-prediction-window figure used elsewhere for the same limitation,False,True,False,False
+"Novelty claim (no prior wireless conformal study addresses mobility-management) rests on an unspecified, undocumented literature screen",True,False,False,False
+"Internal hyperparameter-tuning split is drawn from within the same three training campaigns used for the final fit rather than a fourth independent unit, risking undetected tuning leakage",False,False,False,True

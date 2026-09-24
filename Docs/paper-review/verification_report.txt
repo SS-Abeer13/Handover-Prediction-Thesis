@@ -1,0 +1,64 @@
+PASS  hazards chain to prevalences (max abs diff < 1e-9)  max diff 2.22e-16
+PASS  prevalence table matches the hazard table  
+PASS  lift equals AUPRC / prevalence for every row  
+PASS  AUPRC lies inside its bootstrap interval  
+PASS  every AUPRC <= 1 and >= prevalence floor for the primary model  
+PASS  inflation = random/loco - 1  
+PASS  protocol ladder is ordered random >= chunk >= blocked >= loco for the primary model  0.236 / 0.180 / 0.166 / 0.160
+PASS  per-rotation feasibility matches the 1/(n+1) floor exactly  
+PASS  campaign rows sum to the pooled totals  
+PASS  conversion counts are consistent for unit 'per report (v1 unit)'  
+PASS  conversion counts are consistent for unit 'per trigger episode (any command within 2 s)'  
+PASS  conversion counts are consistent for unit 'per trigger episode (one-to-one, owns the co'  
+PASS  episode-to-command matching is one-to-one (owned episodes <= commands)  908 owned vs 957 commands
+PASS  commands owned equal the commands attributed to a report within 2 s  927 vs 927
+PASS  almost every owning episode owns exactly one command  18 of 908
+PASS  the loose episode rule claims more commands than exist  this is why the one-to-one unit is reported
+PASS  episodes <= reports  
+PASS  alignment audit: row t is far above the t-3 background  
+PASS  mechanism: no handover whose execution crosses t+1 contaminates its row  n = 15
+PASS  mechanism: contamination is far higher when the margin is positive  
+PASS  mechanism: the two prediction cells cover every audited handover  
+PASS  mechanism: margin equals 1 - delta - execution for every handover  
+PASS  mechanism: most residual cases are a one-row exporter lag  
+PASS  NUWiNS: end-of-second contamination exceeds start-of-second by more than 10x  0.932 vs 0.041
+PASS  NUWiNS: the row before the command is essentially clean  
+PASS  NUWiNS: every per-file contamination share is above 0.85  
+PASS  NUWiNS: contamination is monotone in the time left in the second  [1.0, 0.996, 0.982, 0.439, 0.0, 0.0]
+PASS  NUWiNS pooled n equals the sum over files  
+PASS  event detection never exceeds the 1 Hz grid ceiling  
+PASS  hazard arm has zero ordering violations (rows_violating_single_fit)  
+PASS  cumulative-max control also has zero violations (rows_violating_single_fit)  
+PASS  hazard arm has zero ordering violations (rows_violating_seed_mean)  
+PASS  cumulative-max control also has zero violations (rows_violating_seed_mean)  
+PASS  the quoted violation rate is the single-fit column, not the ensemble  
+PASS  isotonic raises violations relative to the raw control on the same basis  0.402 -> 0.459
+PASS  the ensemble column is uniformly lower than the single-fit column  
+PASS  exactly one REFERENCES heading  1 found
+PASS  exactly one reference list  1 lists
+PASS  every reference in refs.py reaches the document  41 entries vs 41 in refs.py
+PASS  the last reference is present  
+PASS  every section in the contents exists in the body  missing: []
+PASS  no section heading appears twice in the body  duplicated: []
+PASS  the contents list is non-trivial  60 entries parsed
+PASS  document quotes auprc1 = 0.179  
+PASS  document quotes auroc1 = 0.777  
+PASS  document quotes lag0_auprc1 = 0.600  
+PASS  document quotes ho_all = 957  
+PASS  document quotes a3_episodes = 2,361  
+PASS  document quotes rows_usable = 8,586  
+PASS  document quotes nw_n = 4,712  
+PASS  document quotes nw_t0 = 93%  
+PASS  document quotes mech_n_neg = 15  
+PASS  stale v1 figure '0.784' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '0.933' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '43.6' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '74 %' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '+74' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '62.9' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '0.874' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '34,000' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure 'twenty paired' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure '341 times' absent (or explained)  0 occurrence(s)
+PASS  stale v1 figure 'p < 0.0001' absent (or explained)  0 occurrence(s)
+PASS  every three-decimal number in the document appears in a generated table  orphans: []

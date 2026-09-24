@@ -1,0 +1,64 @@
+CHAPTER 7
+
+
+# CONCLUSIONS
+
+
+
+## 7.1 Summary of findings
+
+
+This thesis set out to determine whether the next LTE handover can be forecast from the measurements a handset already reports, how far in advance, and with what guarantee. On four drive-test campaigns conducted on a live commercial network in Dhaka and Gazipur — four continuous sessions, 10,260 samples and 957 handover commands whose ground truth is decoded from RRC signalling — the answer is a qualified yes, and the qualification is the first finding.
+
+The measurement grid must be aligned to the event clock before anything else is believed. In 76% of handovers the one-hertz export row stamped before the handover command already carries the post-handover serving cell. Lagging every export feature by one row moves the one-second AUPRC of the same model from 0.600 to 0.179, and the dwell feature's own AUROC from 0.873 to 0.664. The audit costs three lines of code and is the recommendation this thesis makes most strongly.
+
+The next handover is predictable, modestly. Gradient-boosted trees under a discrete-time hazard formulation reach AUPRC 0.179 at one second against a 6.8% floor (2.6x, AUROC 0.777) and AUPRC 0.475 at five seconds (1.8x), against AUPRC 0.116 for the deployed Event A3 rule scored as a predictor.
+
+The unit of splitting is worth more than the model. Against leave-one-campaign-out, random-row splitting inflates the one-second AUPRC by 48 % and random 180-second blocks of the same session by 13 %; the inflation is architecture-dependent, so a careless protocol reorders the leaderboard rather than merely raising it.
+
+A single hazard model makes the five horizons mutually consistent, and the correct comparison for that property is a monotone projection rather than raw independent classifiers. Independent heads violate ordering on 40.2% of rows; a cumulative-maximum projection, isotonic calibration composed with that projection, and the hazard model all reach zero. The hazard model calibrates better than the projections that cost nothing (0.036 against 0.047 at one second) and worse than the isotonic composite (0.016), which spends a calibration split this dataset cannot spare.
+
+The warning carries a guarantee whose assumption is testable, and was tested — and whose estimand turns out to be the binding question. Over rows, with calibration and test units drawn from the same pool of 180-second blocks, the realised per-unit miss rate sits at or below the target (0.168 at α = 0.20, at a 47% alarm rate); calibrating on one campaign and deploying on another it holds in 83% of rotations. Over handovers, which is what the objective promised, it cannot be certified at one second at any useful level, because 36.4% of commands have no usable row in their lead window and are missed whatever the threshold. The sampling rate of the instrument, not the model, is the binding constraint on what a study like this may promise.
+
+Two properties of the deployed network were characterised, both corrected against an earlier draft, and a third quantity was shown to have no unit-free value at all. The A3 conversion rate reads 63% declined per transmitted report, 30% per trigger episode when overlapping episodes may claim the same command, and 73% once each command is matched to exactly one episode; what survives every unit is the separation between the mobility configuration and the monitoring configurations (37% declined against 95%). Weighted by handovers rather than by configurations, 75% of A3-triggered handovers fire under a positive offset. And the ping-pong rate on one fixed set of 957 handover commands moves from 26.3% to 43.8% depending on three definitional choices that published work routinely leaves unstated.
+
+Underlying all of these is the most compact statement of what this work found: on drive-test data, the protocol and the timestamp semantics decide the result before the model does.
+
+
+## 7.2 Limitations
+
+
+The limits of the present study are restated here because they determine what follows from it.
+
+The evidence base is four continuous sessions, one operator, four days and one radio access technology. The deployed configuration is stable across all four campaigns, so the cross-regime transfer of Section 5.6 rests on a single configuration set; a second operator would test what a second corridor cannot. The one-hertz export caps event-level detection and fixes the information cut-off one sample period before the prediction instant, so every figure here is conservative by that margin and exact semantics await a native-rate export.
+
+No causal claim is made about the benefit of acting on the warning. The logging policy is deterministic — given the radio state and the configuration, Event A3 either fires or it does not — so the propensities required for off-policy evaluation take the values zero and one and the causal estimand is not identified. Only a counting upper bound was reported.
+
+Finally, the system is an offline predictor evaluated on recorded data. It has not been integrated into a network and no network key performance indicator has been measured with it in the loop.
+
+
+## 7.3 Recommendations for future work
+
+
+Six items follow from those limits, in the order the limits dictate.
+
+A native-rate export and a published alignment statement. The single most valuable follow-up is a re-export of the same captures at the message rate rather than at one hertz. Section 5.1 infers the write rule from its consequences and confirms the inference on a native-rate corpus collected elsewhere; a native-rate export of these captures would replace inference with observation and would allow horizons below one second to be modelled rather than approximated.
+
+More sessions, not more blocks. Eight to ten independent sessions across days, times and routes would make a paired test over units informative, tighten the conformal feasibility floor and give the block bootstrap something to be conditional on.
+
+A second operator. Four days on one network is sufficient for a careful study and insufficient to claim generality; a second operator would also break the single-configuration limitation, since the offsets reported in Section 3.5 are one operator's choice rather than a property of LTE.
+
+Linking the warning to a measured service outcome. The benefit reported here is a counting bound. Connecting the warning to a measured throughput or interruption effect — ideally in a testbed where the action taken on the warning can be varied — would convert that bound into an estimate.
+
+An experimental test of the time-to-trigger. Section 5.10 withdraws the claim that the time-to-trigger is the lever governing ping-pong, because the configuration set does not vary anywhere in this data and the claim is therefore unsupported rather than merely uncertain. It remains the most plausible lever on theoretical grounds, and varying it under controlled conditions while measuring the resulting return rate is the direct test. Such an experiment would also supply the treatment variation that the causal design above requires, and would break the confounding between speed, route and cell density that four campaigns cannot.
+
+Release of code and data. The protocol and alignment arguments of Sections 5.1 and 5.3 are claims about how results in this field should be produced, and such claims are only worth making if others can reproduce and contest them — Table 2.1 grades 22 published models on exactly that property, so this work's own two rows in it have to say something specific. On acceptance, the alignment audit, the four evaluation protocols, the feature construction and the table-generation pipeline are released as a versioned archive, together with the derived row-level frames and the decoded event streams. The raw vendor logs are not redistributable, which is stated rather than elided; the derived frames are sufficient to reproduce every number in Chapter 5.
+
+
+## 7.4 Concluding remark
+
+
+The contribution of this work is not a new learning algorithm, and it is worth closing by saying so directly. Gradient boosting, discrete-time survival analysis and conformal risk control are all established methods, and this thesis is explicit throughout about where each came from. What it offers is measurement-grade ground truth decoded from signalling, a formulation that makes multi-horizon outputs coherent by construction, an evaluation protocol whose unit is defended and whose alternatives are measured, a guarantee whose exchangeability assumption is tested in both directions, and an alignment audit that removed this project's own most impressive result. On the evidence of the protocol audit in Section 2.3, the parts of that list the field most consistently omits are the least novel ones.
+
+
+#

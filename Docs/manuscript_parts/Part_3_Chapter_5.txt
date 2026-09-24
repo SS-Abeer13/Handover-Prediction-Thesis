@@ -1,0 +1,137 @@
+The results of this study are presented and discussed in Chapter 5.
+
+This chapter presents the impacts of the system of Chapter 4 on the data of Chapter 3 and discuss each of the results in relation to the objectives set in Section 1.4. The main prediction result is reported in Section 5.1. The four results that have nothing to do with the score, but with the method are reported in sections 5.2 to 5.5: the ranking of models under an equal budget constraint; the measured cost of a careless evaluation protocol; the coherence and calibration results; the risk-control frontier. Generalisation in and out of the campaign is reported in Sections 5.6 and 5.7. The mechanism and the two network findings are reported in sections 5.8–5.10. The negative results are reported in Section 5.11, the results relative to the goals are discussed in Section 5.12, and the threats to validity are stated in Section 5.13.
+
+Unless otherwise indicated, all of the figures in this chapter are calculated out of fold by the grouped-drive rotation of Section 4.9.
+
+The main result of the prediction was:
+
+One second prior to the handover command, the model achieves a AUROC of 0.933 and an AUPRC of 0.784 with a prevalence floor of 6.7 % and a lift of 11.7× and an expected calibration error of 0.024. This is the main result of the thesis and answering the objective O1.
+
+Two points in Table 5.1 should be noted as they are easily misread. Firstly, the lift column shows that 11.7× at one second is actually less than the 5.0× at two seconds, and the prevalence is higher at 2 seconds, 0.627, than at 1 second, 0.784. The "without the floor" scenario is exactly the source of the problem mentioned in Section 2.3 of the comparator literature when reading AUPRC across rows. Second, the calibration error starts at 0.023 at ½ second and increases in a monotonic fashion to 0.141 at 5 seconds. Where the task is "sharp," the model is well calibrated; where the task is "diffuse," the model is calibrated as such, not hidden.
+
+The relevant operational comparison would be with the rule in operation. Event A3 is scored on the same data as a predictor and has an AUROC of 0.653 and detects 5.5 % of handovers one second before.
+
+At the event level (not the sample level), 44.7 % of handover events are detected one second in advance and 65.1 % are detected five seconds in advance, with a one-hertz sampling grid as detailed in Section 3.6 restricting the detection point to a maximum of 90.5 % of events. The ceiling is inherent to the instrument, whereas the range between 44.7 % and 90.5 % is inherent to the model.
+
+There are two perspectives about that outcome that need to be distinguished since they are answering two different questions. Figure 5.1 presents the location of the model in the receiver operating / precision-recall planes at each horizon, only in the low false-positive area that an operator would actually use. Figure 5.2 has no show of the sample level and plots the quantity an operator pays, the number of handover events caught against the number of false-alarm events raised per hour of driving.
+
+5.2 Comparison of models with same budget
+
+The ordering is by itself a discovery. LightGBM outperforms all four architectures using temporal memory and logistic regression, at all horizons. Again, this isn't to say that sequence models can't be used for this purpose; it is a statement about a particular 57-drive dataset. Given 10,260 samples and 938 events, the amount of data is not enough to train a sequence model to learn a temporal representation that is superior to the manually constructed rolling statistics, outlined in Section 4.6, and each of the four got the same twenty-trial budget in which to do so.
+
+The deployed A3 rule is at the bottom of the table by a country mile and this is not a criticism of the rule; the quantity it thresholds on is not a good predictor; this is the desired behavior of the rule, as Event A3 is a decision procedure, not an early decision procedure, and this is the mechanism as described in Section 5.8.
+
+5.3 Evaluation protocol is more important than the model
+
+The result in this section does not address the predictor, per se, but it is the most broadly applicable result for the comparator literature to date, in terms of the protocol.
+
+The type of experiment is a controlled substitution. All the things are fixed: data, feature, formulation, hyperparameters, seeds, etc. — the only thing that is different is the splitting rule, which is either whole drive or randomise rows. The resulting inflation is shown in Table 5.3.
+
+But the mechanism is simple once it is said. Two samples from the same drive, taken one second apart, are very close to identical: the serving cell is the same, the neighbour set is the same, and the rolling features overlap in the last 9 seconds. Thus, a random split puts nearly the same row on both sides of the split and the more temporal memory an architecture possesses, the more benefit it will obtain when it sees itself in the near-neighbour during training. There is no parameter for the A3 rule, and the score goes slightly in the other direction.
+
+The results are more severe than the well-known claim that a leaky protocol boosts scores. The inflation is architecture dependent and therefore causes a reordering of the ranking. The gated recurrent unit improves from 6th place under the comparator literature's default study protocol, grouped splitting, to a position it doesn't hold under random-row splitting, a study using the default protocol could determine that a sequence model is a winner on data where it isn't. This is the part of the thesis that addresses objective O2, and that's why the protocol is offered in this thesis as a contribution and not a housekeeping.
+
+5.4 Coherence and calibration
+
+There are no horizon-ordering violations in the hazard formulation, as follows from Equation (4.5); this is verified by checking that the implementation is consistent with this equation. The arm of the independent-classifier violates ordering on 43.6 % of samples.
+
+The isotonic control should be a separate sentence as it is the obvious objection to the entire formulation. The hazard formulation does not buy anything that is not achieved by a post-processing step if the outputs of the independent classifiers can be corrected by per-horizon calibration. The opposite is true of the measurement: isotonic regression per horizon results in decline in coherence (43.6 % to 48.7 % of samples) and increase in the biggest individual violation (0.495 to 0.596). The reason is that the K isotonic maps are fitted individually, and thus can be rearranged with respect to each other. The control can win on calibration error alone (it is a more expressive calibrator than temperature scaling), but can't win on both calibration and coherence, and incurs a held out split and 2-5 AUPRC points for attempting.
+
+The calibration of the hazard formulation is better at each horizon than against an uncalibrated baseline with p < .0001 for the twenty paired folds of Section 4.9.
+
+The folds are paired so an appropriate picture is a paired one. The difference between the two formulations is plotted in a line for each fold in figure 5.6, and, as can be seen, the calibration error on each fold is always negative, and this is the reason why the signed-rank test is meaningful on only eight observations. The same comparison is made along the horizon axis in figure 5.7 which also provides a result that bounds the range of the output: both formulations get worse beyond two seconds, so the five second probability should be interpreted as a ranking and not as a probability.
+
+An expected calibration error of 0.024 at the one-second horizon should be said outright, for one can easily report a calibration figure, and then forget it. It indicates that for the samples for which the system claims a probability close to 0.8, a handover occurs within one second on about 80 % of the time. That's what makes it possible to feed the output not only into sorting samples, but also into a decision rule, and something that no one of the 22 audited models in 2.3 reports. Together with Section 5.5 this answers objective O3.
+
+5.5a Risk-control frontier and its price.
+
+Three observations follow.
+
+To begin with, the guarantee is genuine and it costs very little to shoot an easy target. On 23 % of samples (well within the promise) the certified threshold alarms and at α = 0.20 achieves a miss rate of 12.6 % of which 82% of held-out drives are contained in the per-drive bound.
+
+Secondly, the guarantee is soon costlier. The alarm rate increases to 61 % of samples at α = 0.05, which is not a point that any operator would use. Reporting the whole frontier as opposed to a single flattering point is a conscious decision, and it is the honest face of a guaranteed performance claim; the guarantee does not come for free; its cost is the alarm rate.
+
+Third, and most importantly, the amount of calibration drives is independent of the model quality. For this sample size (n = 28), Equation (4.11) provides a minimum feasible value of α ≥ 0.034, meaning that no target smaller than around 3.4 % is possible, regardless of the accuracy of the predictor. To promise 2 %, a study should have at least 49 calibration drives. This turns a modelling question into one of campaign design, and is a practical realisation of the contribution stated in Section 1.6.
+
+5.6 Generalisation across corridors and speed regimes
+
+Objective O4 is asking the question: will the result stand the test of time beyond the data used to create it? Two experiments are conducted on it and they get further from the training distribution.
+
+The first is an entire campaign that is held, training on the other three. The result is shown in Table 5.6.
+
+When combined, the AUROC is in the range of 0.909-0.949 for all four, meaning that no one campaign is driving the pooled result. The least valuable row is the urban loop, and it's not because it's the most difficult, but simply because it's the smallest in terms of size: eight drives, 174 handovers and 24 minutes—it's the smallest campaign across the whole board, which means it contributes the least to the training partitions of the other rows, as well as having the least reliable test estimate of its own.
+
+The highway row is the row that contains a number that relates to the objective. This campaign was done after all the modeller's decision had been locked in and no modeller tuning was performed, and also differs with respect to the corridor and speed regime used. At the same time, it has AUROC of 0.927, the highest lift and the lowest calibration error among the four. When added to the combined data set it did not change the headline AUROC: 0.933 before vs 0.933 after. A fourth campaign which sees the headline result remaining unchanged is the strongest possible evidence that the first three were not being over-fitted.
+
+5.7 external validation on an independently collected dataset
+
+Even in the case of the leave-one-campaign-out experiment, the same operator, instrument and analyst are involved. The second generalisation experiment to evaluate the filter removes all three by using a drive-test dataset from a different group and a different network released publicly [33].
+
+The transferred model achieves an AUROC of 0.752 on unseen data, compared to a model trained on the other data set, which achieves an AUROC of 0.745. The two numbers are quite similar and the correct interpretation is that the difference lies within the range of the resampling variation, not that the transferred model is better — that is the fit which is transferred. This thesis provides a formulation and a feature construction that are not fitted to a model, but a fitted model is part of the network that it is fitted to.
+
+5.8 Mechanism: network is activated based on the weakest signal.
+
+Objective O5 does not require the score, it requires the mechanism and it is not comfortable for the deployed rule.
+
+The network's decision quantity is near the least informative input that it has. Dwell time (how long the handset has been attached to its current cell) achieves AUROC 0.874 by itself, and the serving-to-neighbour gap achieves 0.566, just above chance for one feature.
+
+The signalling gives the answer to why. Three out of five measurements reports are rejected by the network and 27.1 % of all samples have the gap condition A3 met. The difference is therefore a necessary, but far from sufficient, condition: meeting the difference alters the probability of a handover much more conservatively than the literature would have it believe it must be for a handover to be a feature.
+
+The interpretation is not a statement about the model, but about the rule. Gap means that handover is allowed, dwell time means that handover is imminent. The structural claim of Section 1.1 - that a trigger defined on permission, as opposed to tendency, will always fire late - can now be supported by measurement.
+
+5.9 The A3 report-conversion rate
+
+The first of the two network findings is what is done with a measurement report once it is sent. The fraction of Event A3 reports that is not followed by a handover command within 2 s is reported in Table 5.9.
+
+This number is accompanied by two qualifiers, both of which are expressed here, because either of them, if omitted, makes a great difference in the number. The measurement counts Event A3 reports only – taken across all the measurement report types together the decline rate is 68.7 %. It has a 2 second conversion window with a different window yielding a different number. Both qualifiers can only be computed after the configuration-timeline-correction of Section 3.3 otherwise report type cannot be determined reliably.
+
+The finding itself is a measurement report is not handover decision. Almost half of all the A3 reports received by this network are rejected, and the percentage of rejected reports increases as cell sizes increase. Any model that trains on the label "handover" as a proxy for an A3 report is thus learning on a label which is incorrect most of the time.
+
+5.10 Ping-pong: definitional instability and its real cause
+
+The second network finding is about ping-pong and has two components: the amount to which the rate reported is dependent on unstated definitional decisions, and where the phenomenon is actually located.
+
+There is a more than sixteen-percentage-point jump in the rate, despite not a single measurement change in the underlying measurement. This is the quantitative form of the observation, section 2.4 and for this reason this thesis quotes the strictest one of the four and states all three choices with it. It also shows how Amirova et al. [15] obtain 0.13 % on similar data: if you divide by the number of measurements instead of handovers, you introduce a correction of two orders of magnitude in the denominator.
+
+The window length is a fourth choice and Figure 5.18 shows the full grid, but not the single row in Table 5.10. In each of the three window lengths and four identity-and-return conventions, the same 938 handovers result in 12 defensible ping-pong rates varying between 19.5 % and 38.5 %. It is not that any of the numbers in that grid is incorrect, but that one of them is published without indicating which one.
+
+Two results follow. The percentage of ping-pong is almost entirely in intra-carrier handovers, as 31.0 % is nearly five times the 6.5 % across carriers. Specifically, it is not because of speed—the highway campaign has a speed three times that of the urban mean, yielding a 31.1 % rate, which is just above the pooled rate. The only lever an operator has, therefore, is the time-to-trigger of the dominant configuration profile, and not any sort of speed-dependent adaptation. This thesis does not go so far as to assert a causal effect from such a change for the reason mentioned in Section 5.13.
+
+The same conclusion can be obtained from another perspective by modelling the arrival stream as a self-exciting process. The requested Hawkes branching ratio is 0.605, with a 95 % interval of [0.524, 0.673] (per campaign: 0.649, 0.609, 0.567, 0.513, with the lowest value on the highway). The standard Hawkes kernel assumes the clustering has an exponential decay temporal form, but this is rejected by the Ogata residual test of Section 4.11 (D = 0.074, p = 7 × 10⁻⁴) and is reported rather than suppressed.
+
+5.11 Negative results
+
+Four strategies were used in good faith, measured and did not assist. They are reported because only if they were tried, is the notion that formulation and the protocol is what matters credible.
+
+The ping-pong classifier, dedicated for that purpose, is the most informative of the four. Despite the fact that at the population level ping-pong is highly structured, as will be seen in Section 5.10, the handset does not predict from these inputs whether a particular transfer will be reversed or not: seemingly this depends on the state of the target cell, which the handset cannot observe.
+
+The domain-adaptation null is not a sign of a problem with the implementation, but is consistent with published benchmarking. The results here can be compared to the benchmarking conducted by Ismail Fawaz, et al. [25] on nine unsupervised domain-adaptation algorithms on twelve time-series datasets: it turns out that several of the published algorithms are worse than source-only training, and that, in fact, the adaptation algorithm and not the backbone determines the performance.
+
+One more ablation should have its own figure, for its result is readily expressible in reverse order. As illustrated in Figure 5.23, the one-second AUPRC does not change at all with the addition of the thirteen signalling features (0.811 vs. 0.811), and with the other features alone, it is still around five times the prevalence floor (0.370). So the signalling block actually contains information about imminence, and the radio just has this information.
+
+Lastly, eliminating the signalling leakage guard of Section 4.6 significantly increases the apparent score, and this is the desired effect of signalling leakage, hence the guard. The results of that configuration are not reported anywhere in this thesis.
+
+5.12 Discussion in relation to objectives
+
+Objective O1 is met: The next handover is predicted 1 second ahead at AUROC 0.933 and AUPRC 0.784, 11.7× the prevalence floor, from quantities a handset already observes, compared with AUROC 0.653 for the rule currently deployed.
+
+Objective O2 is achieved and answer is bigger than expected. The range of grouped evaluation is from 4% to 74% depending on architecture, and since the evaluation depends on the architecture it is not only about how well do all the models appear to do, but about which model does best.
+
+Objective O3 is met on both its parts. Coherence is "exact by construction", as compared to 43.6 % violations for the obvious alternative, and the guarantee is reported along with the alarm rate it costs, and the feasibility floor set by the number of calibration drives.
+
+Objective O4 is satisfied for two distances: AUROC 0.927 on a corridor (where speed is not considered in any modelling decision) and AUROC 0.752 (with an independently collected public data set) against an AUROC of 0.745 (for a model trained with this data set).
+
+Objective O5 met: Produced the most interpretable finding in the thesis: A quantity the network thresholds on is almost the weakest predictor available, and a quantity the rule does not use at all is the strongest.
+
+5.13 Threats to validity
+
+There are four threats that apply to the results above and are deferred here.
+
+Scale and coverage. The evidence is based on 57 drives across four days on one operator. The cross-regime transfer of Section 5.6 is based on one single configuration pair only, since it is the same one across all four campaigns. A second operator would test what a second corridor can't.
+
+Instrument ceiling. With one-hertz export the event-level detectability is capped at 90.5 %. This does not impact on the row-level results, determined on the grid itself, but rather bounds all event-level results reported in Section 5.1.
+
+Causal identification. There is no causal statement and there is no benefit in acting on a warning, this is a matter of identification not an effort. This logging policy is deterministic in that whether the action A3 is taken depends on the radio state and the configuration; hence the propensity of the observed action can be 0 or 1, and the inverse-propensity weights that are required for off-policy evaluation do not exist. Only a counting upper bound on benefit is therefore reported and it peaks at an alarm budget of five percent and becomes negative by forty. In Section 7.3 the design that would enable the causal question to be answered on data already held is identified.
+
+Comparator availability. The closest comparator method on this network was a method based on reinforcement learning and developed on the same operator and instrument: this method was reimplemented from its description and scored as a predictor on this data where it had proved to be close to uninformative. That comparison is not expressed as a headline here because at the time of writing no publication record for the comparator could be found and a comparison with a reference that cannot be retrieved by the reader is of little value. However, the dataset published by the same authors is published under a citable identifier and is the external validation set used in Section 5.7.

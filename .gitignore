@@ -1,0 +1,60 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing & Cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Binaries & Executables
+*.exe
+*.dll
+*.so
+*.dylib
+tools/tectonic.exe
+
+# Raw scanner DRM files (proprietary binary captures, exceeding GitHub 100MB limit)
+*.drm
+
+# Large raw external CSV datasets exceeding GitHub 100MB limit
+pipeline/data/external/nuwins/atnt_d3_d1.csv
+pipeline/data/external/nuwins/tmobile_d3_d1.csv
+
+# Backups & Temporary files
+*.bak
+*.bak*
+*.bak_*
+*_backup_*
+*.tmp
+*~
+Handover Thesis.zip
+master-doc.zip
+scratch/
+
+# LaTeX auxiliary build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lot
+*.lof
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Operating System & IDE artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

@@ -1,0 +1,61 @@
+This version is more consistent, but it is not ready to freeze. Several earlier criticisms are addressed. The main remaining blockers are the provenance of the feature columns, the calibration split, and timing claims that still exceed the evidence.
+I compared the 105-page main (2).pdf with the previous version, inspected the revised tables, and checked the raw CSV headers. References below use printed page numbers.  main (2)
+1. Table B.1 introduces a source claim contradicted by your supplied CSVs — p. 89
+The table says that these three configuration parameters are “present in the raw export”:
+a3_offset_db, hysteresis_db, ttt_ms
+I checked all four supplied CSV headers. Each contains 113 columns. None contains these names or a header matching A3, hysteresis, TTT, offset or trigger.
+If these columns were derived from signalling and added to an intermediate dataset, say that. They are not raw CSV fields.
+There is a second unresolved question: Table B.1 says these parameters belong to the 109-column lagging experiment but are excluded from the primary model. Explain whether:
+Table 5.3 uses a different predictor input set; or
+the parameters are shifted in an intermediate table but never consumed by that model.
+Required fix: Generate the reconciliation from the actual feature-selection code. List the columns passed to the estimator in each ablation. Arithmetic reconciliation alone does not establish that the reported experiments used those features.
+2. The calibration split still does not explain where the model was trained — pp. 36 and 50
+The revision allocates approximately 43 calibration blocks and 14 test blocks from all 57 blocks, while saying calibration blocks are strictly separate from model fitting and tuning.
+That accounts for the whole dataset:
+\[ 43+14=57. \]
+Where are the fitting and tuning observations?
+This is not proof that the implementation leaked. It means the stated design is incomplete. If predictions came from multiple out-of-fold models, explain that procedure explicitly; it is different from calibrating one independently fitted model.
+Required fix: Provide a split diagram or table containing the exact fitting, tuning, calibration and test session/block IDs, including which fitted model generates each prediction.
+3. Table 5.9 contains a numerical error and an incomplete result — p. 50
+The stated mean feasibility floor is 0.067. For equally represented calibration campaigns:
+\[ \frac{1}{9}=0.11111,\quad \frac{1}{15}=0.06667,\quad \frac{1}{16}=0.06250,\quad \frac{1}{21}=0.04762. \]
+Therefore:
+\[ \text{mean floor} =\frac{0.11111+0.06667+0.06250+0.04762}{4} \approx \mathbf{0.07197}. \]
+Report the four floors individually; the average is not especially useful for threshold selection.
+The 5% row also still says “[Below floor]” across the cross-campaign result, although the footnote correctly says the sample-size condition permits selection in 25% of rotations. Report what happened in those rotations and identify fallback behaviour separately.
+4. Empirical performance is still described as satisfying a theoretical guarantee — abstract and p. 74
+The abstract says the empirical mean “satisfies the expected risk guarantee.” The conclusion still says the warning “carries a guarantee” and that it holds in 83% of rotations.
+An observed mean below the target does not establish the population expectation bound, particularly when exchangeability is not established. The CRC theorem concerns expected risk under its assumptions. Conformal Risk Control
+Use:
+The empirical mean miss loss was 0.153 at a target of 0.20. Cross-campaign results are descriptive because the required exchangeability assumption is not established.
+That statement preserves the result without overstating it.
+5. Timing corrections have not propagated throughout the manuscript — pp. 5, 39–42 and 87
+The main discussion now separates diagnostic completion from physical execution. However:
+p. 5 still says the signalling stream “times the execution,” describes the prediction as holding “without exception,” and calls the inferred quantity a serving-cell update delay.
+pp. 5 and 42 say a one-row lag “enforces” or “ensures” causal validity.
+p. 87 reintroduces “millisecond-accurate decoded signalling.”
+Replace accuracy with timestamp resolution unless independently verified. Describe the lag as a safeguard under the assumed export semantics, not proof of live availability.
+Also, p. 39 correctly distinguishes completion time from register commit, but the subsequent aggregation argument still uses completion time as the explanatory boundary. State explicitly that it is a proxy and test its limitations.
+6. The neighbour-handling specification needs an executable interpretation — pp. 85–88
+The new appendix is useful, but leaves three consequential ambiguities:
+Candidate identity: If nbr1 changes from cell A to cell B, its first difference combines different cells. Define whether differences track cell identity or rank position.
+Handover reset: The text immediately recomputes gaps using the newly committed serving cell’s RSRP. Which observed record supplies that RSRP, and when is it available? A completion message does not itself provide that radio measurement.
+Alignment: Appendix B says rolling features close at \(t-1\), while the hold rule selects reports through \(t\). Explain whether holding happens before the one-row shift.
+Excluding report age from the model is permissible. However, a missingness flag cannot distinguish a fresh held value from one nearly three seconds old. An age-feature ablation would be useful; it should not be described as already implemented without evidence.
+7. The baseline is still called the deployed rule in several places — pp. 32, 64 and 74
+Elsewhere, the manuscript correctly calls it an A3 signal-margin proxy, because the exported observations cannot reconstruct the full timer behaviour.
+Use that description consistently. The results establish superiority over the implemented proxy, not over the operator’s complete handover controller.
+Presentation: Table B.1 is readable. Table 5.9 has regressed: repeated “unexp-ressible” line breaks crowd the rows, and its footnote is very small. Replace those cells with an em dash and explain feasibility below the table.
+My assessment: The manuscript’s interpretation is improving faster than its verifiability. Before another prose revision, reconcile the actual model-input columns and split manifests with the reported experiments. The newly added 3-second expiry, report-age statistics and external-CSV characteristics also need traceable outputs. No updated executable pipeline accompanied this PDF, so I cannot confirm those implementation claims.
+
+
+--- Table 0 ---
+Earlier issue | Latest version | Assessment
+Lagging conflates leakage removal with feature ageing | Now explicitly acknowledged | Substantially improved
+One-second horizon confused with one-second warning | Now states “within the next second” and reports median lead | Improved
+Report age absent from the feature inventory | Now explicitly excluded from model inputs and retained for diagnostics | Text reconciled; implementation needs verification
+Neighbour holding undefined | Adds a 3-second expiry and handover handling | Improved, with unresolved details
+One calibration size used for all campaigns | Now gives 8, 14, 15 and 20 blocks | Improved, but table and arithmetic need correction
+Continuous alarm incorrectly bypasses blanking | Now acknowledges that the policy must change | Corrected in the methods
+Hawkes caption contradicts rejected model | Caption now qualifies the interpretation | Resolved
+Public dataset incorrectly described as having no radio CSV | Now describes specific incompatibilities | Better; new file-level claims need supporting evidence

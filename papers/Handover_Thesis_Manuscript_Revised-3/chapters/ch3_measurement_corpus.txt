@@ -1,0 +1,179 @@
+CHAPTER 3
+
+
+# MEASUREMENT CAMPAIGN AND GROUND TRUTH
+
+
+Every claim made in this thesis rests on the quality of the measurement underneath it, and this chapter describes how that measurement was obtained. Section 3.1 describes the instrumentation. Section 3.2 describes the four campaigns and the routes they cover. Section 3.3 describes the signalling-decoding procedure and the configuration-timeline correction that it required. Section 3.4 describes how continuous driving is segmented into drives and quality controlled. Section 3.5 reports the deployed mobility configuration recovered from the signalling, and Section 3.6 summarises the resulting dataset.
+
+
+## 3.1 Instrumentation
+
+
+Measurements were collected with a commercial drive-test handset running Accuver XCAL, which exposes the chipset diagnostic interface and produces two synchronised outputs: a tabular radio-measurement export sampled at one hertz, and a decoded control-plane log containing the RRC messages exchanged between the handset and the network. The use of this class of instrumentation for RRC extraction on live networks follows established practice in the measurement literature [5], [4].
+
+The radio export carries, per sample, the serving-cell physical cell identity (PCI), E-UTRA absolute radio frequency channel number (EARFCN), RSRP, RSRQ and signal-to-interference-plus-noise ratio (SINR), together with the corresponding quantities for each detected neighbour cell, and a Global Positioning System (GPS) fix with speed and heading. The signalling log carries the complete RRCConnectionReconfiguration, MeasurementReport and RRCConnectionReestablishment message sequence with millisecond timestamps.
+
+Using the signalling log rather than a vendor handover counter is a deliberate design choice and is the foundation of the ground truth used throughout. A counter reports that the vendor's internal logic considered a handover to have occurred; a decoded RRCConnectionReconfiguration carrying mobilityControlInfo is the handover command, timestamped at the instant it was transmitted. The difference matters for a prediction task, because the label instant defines what "one second ahead" means.
+
+
+## 3.2 The four campaigns
+
+
+Four campaigns were conducted on a single commercial LTE operator in September 2026, covering two distinct mobility regimes. Three cover urban corridors in Dhaka: an urban arterial road, an urban loop, and a dense urban area. The fourth covers the Uttara–Gazipur highway, at a mean speed of 50.9 km/h, roughly twice the mean urban speed. Each campaign is one continuous logging session, a fact that Section 3.4 and the evaluation protocol of Section 4.9 both depend on. Figure 3.1 shows the routes and the geographical distribution of the handover events for the three Dhaka campaigns; the highway corridor runs north-east beyond the mapped extent and is summarised in Table 3.2 rather than mapped.
+
+Figure 3.1 The three Dhaka campaigns on an OpenStreetMap background. Events cluster at particular junctions rather than distributing uniformly along the route. The 15 September highway campaign lies outside this extent. Map data © OpenStreetMap contributors.
+
+The clustering visible in Figure 3.1 is the first indication that the prediction signal is partly geometric, and it is also the first argument against random-row splitting: if handovers concentrate at identifiable locations, a random split allows a model to learn those locations from the training rows and recognise them in the test rows of the same drive.
+
+The fourth campaign occupies a particular position in the experimental design. It was driven after the modelling decisions of the first three campaigns had been recorded — the feature set, the formulation, the model family and the evaluation protocol — and it is the only campaign that differs in both corridor and speed regime, so it is reported as a held-out campaign throughout. Two qualifications are stated here rather than left for a reader to find. The freeze was recorded in the project's own version history between 13 and 15 September 2026, not registered with a third party, so it is auditable but not independently timestamped. And the alignment audit of Section 5.1, which is the single largest change in this work, was performed after all four campaigns, so no campaign is out of sample with respect to it.
+
+
+## 3.3 Signalling decoding and the configuration timeline
+
+
+
+### 3.3.1 The attribution chain
+
+
+Resolving a measurement report to the event that triggered it requires a chain of three objects defined in TS 36.331 [1]. A MeasurementReport carries a measId. The measId binds, through measIdToAddModList, a measurement object — which specifies the carrier frequency being measured — to a report configuration, which specifies the triggering event and its parameters. To determine that a given report is an A3 report, and the offset and time-to-trigger under which it fired, that chain must be followed.
+
+
+### 3.3.2 Why a flat parse is wrong
+
+
+The difficulty is that the configuration does not arrive as a single object. It is delivered incrementally across many RRCConnectionReconfiguration messages, with entries added, modified and removed over the lifetime of a connection. The bindings are held in the UE's VarMeasConfig and persist until modified or removed; they are not scoped to the message that carries them, as an earlier draft of this work stated. What is scoped to a message is the fragment, and a parser that resolves reports against the union of all fragments inherits every binding a message ever carried.
+
+Applied to this dataset, such a flat parse classified 99.4 % of all measurement reports as Event A3, including reports transmitted when no neighbour cell was present in the measurement export at all. Since Event A3 is defined on a neighbour quantity, a report attributed to A3 in the absence of any neighbour cannot be correct, and it was this impossible consequence that exposed the error. Correcting it is a bug fix rather than a contribution, and it is reported here as part of the method.
+
+
+### 3.3.3 The timeline
+
+
+The correction is to replay VarMeasConfig as a timeline: every fragment is timestamped and applied in order, so that for any instant t the exact set of bindings in force at t is available, and each MeasurementReport is resolved against the state at its own timestamp. Three elements of TS 36.331 that a first implementation of this replay omitted are applied here: the removal lists (measIdToRemoveList, reportConfigToRemoveList and measObjectToRemoveList, which account for 15,100 measId removals across the four logs, and where removing a report configuration or a measurement object removes every measId that links to it); the measId swap that clause 5.5.6.1 requires on an inter-frequency handover, which applies 187 times here; and the release of the whole configuration when the UE leaves RRC_CONNECTED, which occurs 56 times. Applying them changes the event type assigned to 18% of reports relative to the earlier replay, and every signalling quantity in Chapter 5 is computed after the correction.
+
+Figure 3.2 Measurement identifiers persist in VarMeasConfig until they are modified or removed. A flat parse resolves every report against the union of all configuration fragments; the timeline replays additions, modifications and removals in order and resolves each report against the configuration in force at its own timestamp.
+
+After the correction, between 39% and 45% of measurement reports resolve to Event A3, depending on the campaign, with the remainder distributed across A1, A2, A4, A5, A6 and periodic reporting. Every quantity reported in this thesis that depends on report classification — most importantly the report-conversion rate of Section 5.9 — is computed after the correction, and no pre-correction figure is quoted anywhere.
+
+
+## 3.4 Drive segmentation and quality control
+
+
+Continuous logging produces one long record per campaign. For analysis that record is cut into fixed 180-second blocks, and a block is retained if it carries a valid serving-cell attachment for at least sixty seconds of unbroken sample grid. This is a bookkeeping device and not a mobility unit: adjacent blocks of one campaign are contiguous in time and share cells, traffic and trajectory, so they are not independent of one another. Section 4.9 draws the evaluation consequence, and Section 5.3 measures what treating them as independent is worth. The four campaigns are 4 sessions, which is the number of genuinely independent units in this dataset; the 57 blocks are used for interval estimation within a campaign, never as if they were separate drives.
+
+Segmentation and quality control reduce the raw handover count from 957 commands to 938 that fall inside a retained block. Both counts are reported wherever a handover count appears: the event-level analyses of Sections 5.9 and 5.10 use all 957 commands, since the event stream does not depend on whether a sample row survived quality control, and the modelling of Sections 5.2 to 5.8 uses the 8,586 sample rows that carry a full five-second follow-up window and lie outside the two-second post-handover blank.
+
+Both counts are reported here because both are correct under their own definitions, and the distinction is stated explicitly wherever a handover count appears in this thesis. Every model reported in Chapter 5 is trained and scored against the 938 events that fall inside quality-controlled drives. The 957 figure is used only where the raw event stream is the appropriate object, which in this thesis occurs in exactly one place: the ungrouped variant of the ping-pong definition ladder in Section 5.9.
+
+
+## 3.5 The deployed configuration
+
+
+Replaying the configuration timeline across all four campaigns recovers the operator's deployed mobility parameters. Table 3.1 reports them in two ways: as the set of configurations present in the signalling, and weighted by the handovers each actually produced.
+
+Table 3.1 Deployed Event A3 configuration recovered from RRC signalling, weighted by the handovers each profile produced.
+
+
+[TABLE]
+
+Event A3 profile (offset, hysteresis, time-to-trigger) | Handovers attributed | Share of all handovers
+
++1 dB, Hys 1 dB, TTT 320 ms | 472 | 49.3 %
+
+-10 dB, Hys 2 dB, TTT 640 ms | 108 | 11.3 %
+
+-15 dB, Hys 1 dB, TTT 160 ms | 45 | 4.7 %
+
++2 dB, Hys 1 dB, TTT 320 ms | 12 | 1.3 %
+
+-6.5 dB, Hys 2 dB, TTT 640 ms | 6 | 0.6 %
+
+-15 dB, Hys 1 dB, TTT 320 ms | 5 | 0.5 %
+
+all other A3 profiles (1 of them) | 3 | 0.3 %
+
+triggered by A5 instead of A3 | 79 | 8.3 %
+
+triggered by A4 instead of A3 | 66 | 6.9 %
+
+triggered by A1 instead of A3 | 51 | 5.3 %
+
+triggered by A6 instead of A3 | 33 | 3.4 %
+
+triggered by none in 2 s instead of A3 | 30 | 3.1 %
+
+all other non-A3 triggers (3 of them) | 47 | 4.9 %
+
+Total handover commands | 957 | 100.0 %
+
+of which A3-triggered, under a positive offset | 487 of 651 A3 | 74.8 % of A3
+
+[/TABLE]
+
+
+Two features of Table 3.1 are worth comment, and the second corrects an earlier reading of the same data. First, the configuration set is stable across all four campaigns, which is what makes the leave-one-campaign-out experiment of Section 5.6 a test of corridor and speed rather than of configuration. Second, although negative offsets are present and are unusual against the +6 to +10 dB reported by Ghoshal et al. [4], they are not the offsets under which this network hands over: weighting by handovers, 74.8% of A3-triggered commands (487 of 651) follow a report sent under a positive offset. That share belongs to the positive-offset profiles collectively and not to any one of them, and an earlier draft of this work attributed it to the dominant profile alone. The A3 +1 dB, Hys 1 dB, TTT 320 ms profile accounts for 472 of those commands, which is 72.5% of A3-triggered handovers; the remaining 15 come from the other positive-offset profiles listed in Table 3.1. The negative-offset configurations are re-reporting configurations — long report intervals, mostly unconverted episodes — and are better read as neighbour-monitoring than as a mobility trigger.
+
+The practical consequence for the prediction literature is therefore narrower than an earlier draft of this work claimed, and it is stated in its corrected form: a study that assumes a textbook +3 dB offset assumes the right sign on this network but the wrong magnitude, and a study that reads the configuration table without weighting by handovers can conclude the opposite of what the network does.
+
+Figure 3.3 makes the same point graphically: the profile that produces almost half of all handovers is not the profile whose entry condition is satisfied most often, so whether the gap condition holds is a weak indicator of whether a handover is imminent.
+
+Figure 3.3 Handovers attributed to each configuration profile, weighted by the handovers each actually produced rather than by the number of configurations present. Blue bars are positive-offset A3 profiles, red bars negative-offset A3 profiles, grey bars other events.
+
+
+## 3.6 The dataset
+
+
+Table 3.2 summarises the resulting dataset.
+
+Table 3.2 The four measurement campaigns after quality control.
+
+
+[TABLE]
+
+Campaign (2026) | Sessions | 180 s blocks | Samples | Usable rows | Handover commands | Re-establishments | Duration | Mean speed
+
+10 Sept (urban arterial) | 1 | 15 | 2,700 | 2,178 | 307 | 113 | 45 min | 39.1 km/h
+
+12 Sept (urban loop) | 1 | 8 | 1,440 | 1,131 | 176 | 64 | 24 min | 25.0 km/h
+
+13 Sept (dense urban) | 1 | 20 | 3,600 | 3,072 | 297 | 159 | 60 min | 21.4 km/h
+
+15 Sept (highway) | 1 | 14 | 2,520 | 2,205 | 177 | 5 | 42 min | 50.9 km/h
+
+Pooled | 4 | 57 | 10,260 | 8,586 | 957 | 341 | 2.9 h | —
+
+[/TABLE]
+
+
+Table 3.3 Ground-truth integrity. Every handover command in the event set carries a decoded RRCConnectionReconfigurationComplete, so the label is a completed handover and not merely an issued command; the re-establishments recorded alongside are largely not consequent on it.
+
+
+[TABLE]
+
+Campaign | Commands | With a decoded Complete | Median interruption | Re-establishments | Commands followed by one within 5 s | Re-establishments within 2 s of a command
+
+10 Sept (urban arterial) | 307 | 307 (100%) | 1 ms | 113 | 19 | 30
+
+12 Sept (urban loop) | 176 | 176 (100%) | 0 ms | 64 | 8 | 12
+
+13 Sept (dense urban) | 297 | 297 (100%) | 1 ms | 159 | 5 | 13
+
+15 Sept (highway) | 177 | 177 (100%) | 1 ms | 5 | 4 | 0
+
+pooled | 957 | 957 (100%) | 1 ms | 341 | 36 | 55
+
+[/TABLE]
+
+
+The four campaigns cover 96 km of driving as recorded; the rows that survive to the modelling frame cover 78 km of that, and rates expressed per kilometre in Chapter 5 use the shorter figure, since that is the distance over which the model is scored. A handover command is issued on average once every 11 seconds, with a median inter-command gap of 3.7 seconds. Alongside the 957 commands, the signalling log records 341 RRC connection re-establishment procedures. Their causes matter and were decoded: 321 carry reconfigurationFailure, 17 otherFailure and 3 handoverFailure, and the median re-establishment occurs 8 seconds after the previous handover command. These are predominantly failures to apply a reconfiguration rather than radio link failures during mobility, and they are treated as a competing event in Section 5.8 rather than as a motivating statistic.
+
+A rate of one re-establishment per three handover commands invites the question whether the commands themselves succeeded, since a label that means only a command was issued would make every event-level figure in this thesis uncertain. They did. Every one of the 957 commands in the event set carries a decoded RRCConnectionReconfigurationComplete (100%), which is what defines the set; only 36 commands are followed by a re-establishment within five seconds, and only 55 of the 341 re-establishments fall within two seconds after a command. The re-establishments are therefore concurrent with the measurement campaign rather than consequent on the handovers it records, which is what the cause breakdown already implied and what this check establishes. Table 3.3 reports the completion rate per campaign. Figure 3.4 shows the distribution of samples and events across the campaigns.
+
+Three properties of this dataset bound what can be claimed from it, and they are stated here rather than in the conclusion.
+
+The dataset is small by machine-learning standards and ordinary by drive-test standards. Four campaigns give four independent units; the 57 blocks into which they are cut are not independent, and Section 5.3 measures the difference. Four units is enough to hold one out at a time and to see whether a result survives, and too few for any paired test over units to reach a small p-value: with four paired observations the smallest attainable two-sided sign-test p-value is 0.125, and this thesis reports effect sizes and per-campaign spreads rather than significance claims.
+
+The sampling rate caps event resolution and, more importantly, fixes the information cut-off. At one sample per second the earliest usable evidence for a handover at time tau is the row closing at or before the prediction instant; Section 5.1 shows what happens when that is not enforced. The fraction of events that have at least one usable row inside the one-second window before them is 64.6%, and event-level detection figures are reported against that ceiling rather than against 100 %.
+
+The dataset covers one operator and four days. The configuration in Table 3.1 is one operator's configuration, and the independent collection used in Section 5.7 is on the same operator, same city and same instrument, so it tests collection and route rather than network.

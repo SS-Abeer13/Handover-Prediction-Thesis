@@ -1,0 +1,685 @@
+CHAPTER 5
+
+
+# RESULTS AND DISCUSSION
+
+
+This chapter reports what the system of Chapter 4 achieves on the data of Chapter 3. Section 5.1 reports the alignment audit, because every number after it depends on the audit's outcome. Section 5.2 reports the primary prediction result and Section 5.3 the protocol ladder. Sections 5.4 and 5.5 report coherence, calibration and risk control. Sections 5.6 and 5.7 report generalisation across campaigns and to an independent collection. Section 5.8 reports what the model uses and where it works, Section 5.9 and 5.10 the two network characterisations, Section 5.11 the negative results, Section 5.12 the discussion against the objectives and Section 5.13 the threats to validity.
+
+All figures in this chapter are computed out of fold under the leave-one-campaign-out protocol of Section 4.9 unless stated otherwise, from features lagged as described in Section 4.6.
+
+
+## 5.1 The alignment audit and what it costs
+
+
+The first result of this chapter is not a prediction score. It is a property of the measurement export that determines what any prediction score on this data means.
+
+Table 5.1 The alignment audit: share of handovers whose target cell already serves in export rows around the command.
+
+
+[TABLE]
+
+Handovers considered | n | row t-3 | row t-2 | row t-1 | row t+0 | row t+1
+
+all handovers | 938 | 23.7 % | 21.7 % | 15.6 % | 75.9 % | 86.2 %
+
+isolated (previous > 8 s earlier) | 291 | 12.1 % | 12.1 % | 11.7 % | 74.6 % | 89.7 %
+
+[/TABLE]
+
+
+Table 5.2 What the one-row lag costs, with everything else held fixed.
+
+
+[TABLE]
+
+Feature alignment | AUPRC 1 s | AUROC 1 s | AUPRC 5 s | Dwell feature AUROC 1 s
+
+Export row stamped t used at t (v1) | 0.600 | 0.911 | 0.560 | 0.873
+
+Export row lagged one sample (this work) | 0.179 | 0.777 | 0.475 | 0.664
+
+Change | -70 % | -0.134 | -15 % | 
+
+[/TABLE]
+
+
+Table 5.2b Where the leak actually lives. One common row set of usable rows, identical folds, seeds and learner; only the set of columns shifted by one row changes. The serving-cell radio scalars are measured on whichever cell the export treats as serving, so after the end-of-second flip they describe the target rather than the source.
+
+
+[TABLE]
+
+What is lagged by one row | Columns | AUPRC 1 s | AUROC 1 s | AUPRC 5 s
+
+nothing (v1 alignment) | 0 | 0.607 | 0.911 | 0.558
+
+neighbour and gap columns only | 31 | 0.595 | 0.905 | 0.550
+
+serving-cell radio scalars only | 56 | 0.178 | 0.768 | 0.451
+
+every serving-relative column (GPS left at row t) | 92 | 0.159 | 0.748 | 0.439
+
+every export column (v2, as reported throughout) | 109 | 0.160 | 0.750 | 0.445
+
+control: Event A3 rule, same arms | - | 0.116 to 0.117 | - | -
+
+[/TABLE]
+
+
+The audit is simple. For each handover command at time tau, take the export row whose second contains tau — that is, the row stamped at floor(tau), strictly before the command — and ask whether its serving-cell identity is already the target of that command. If the row summarises the second before its timestamp, the answer should be no more often than chance.
+
+Table 5.1 and Figure 5.1 report the answer. Across all 938 handovers inside retained blocks the row stamped before the command already carries the target cell 75.9% of the time, and for handovers isolated from any other handover by more than eight seconds the figure is 74.6%. One row earlier the figure falls to 11.7% for isolated handovers, which is the background rate given by rows three seconds earlier (12.1%). The export row stamped t therefore describes the state at approximately t + 1: it is a window that closes after its own timestamp.
+
+The consequence for prediction is immediate. A model asked at time t for the probability of a handover in (t, t + 1] and given the row stamped t is being shown, most of the time, the answer. Table 5.2 quantifies it on the same model, the same folds and the same features: the one-second AUPRC falls from 0.600 to 0.179 and AUROC from 0.911 to 0.777 when every export feature is lagged one row. At five seconds, where one second of misalignment matters less, the same change costs 0.560 to 0.475. The single-feature effect is starker: serving dwell time computed from the export's serving-cell column reaches AUROC 0.873 on its own, and the same quantity computed from signalling timestamps reaches 0.664.
+
+Three points are worth stating plainly. First, this is not a defect of the instrument in the sense of a fault: a one-hertz export has to summarise a second, and a row that carries the state at the end of its second is a defensible choice. It is a defect of any analysis that assumes the opposite without checking. Second, the error is invisible to every check that does not involve the event clock — the features are causal in appearance, no future label is used, and grouped splitting does not remove it, because the leak is inside the row rather than between rows. In the taxonomy of Kaufman et al. [36] it is leakage in training examples rather than leakage in feature construction: no illegitimate feature was built, and no future row was consulted; the legitimate feature simply describes an interval that already contains the event. That class is the one their paper identifies as hardest to catch, because every syntactic check passes. Third, it is cheap to detect, and the audit above is the recommendation this thesis makes to anyone building a predictor on a drive-test export.
+
+Why the row behaves this way is not a mystery, and stating the reason turns the observation into a prediction that can be falsified. A handover command is issued at an arbitrary instant tau inside the second [t, t+1). Write delta = tau - floor(tau) for where inside the second the command falls, x for the time the handset takes to be served by the target and for that change to reach the serving-cell register, and
+
+m = 1 - delta - x     (5.1)
+
+for the margin by which that change beats the close of the second. If the exporter writes one row per second carrying the state as of the end of the second, the row stamped t shows the target cell when m > 0 and the source cell when m < 0. Nothing about the network enters: the defect is what end-of-second aggregation does to an event whose execution is two orders of magnitude faster than the grid.
+
+The prediction is testable on our own captures, because the signalling stream carries the RRCConnectionReconfigurationComplete message and therefore x for each handover (65% of commands record a non-zero interruption; the ninetieth percentile is 99 ms and the largest is 105 ms). Of the 15 handovers whose execution crosses the second boundary, m < 0, not one has the target cell on the row stamped t. Of the 923 with m > 0, the row shows the target cell 77.1% of the time. The same gradient appears in delta directly: on handovers isolated from any other by two seconds, contamination runs at 86.1% for commands in the first quarter of the second and falls to 67.0% for commands in the last quarter, where the margin is smallest. Panels (d) and (e) of Figure 5.1 show both.
+
+The residual matters for honesty about the size of the effect. In 22.5% of handovers the margin is positive and the row stamped t nevertheless shows the source cell; in 84% of those the row stamped t+1 carries the target instead. That is the exporter refreshing the serving-cell field one row late, not a second mechanism. Our export therefore shows an attenuated form of the defect, and the uncontaminated figure for it is not zero but about 24%.
+
+Two independent datasets test the account. The first is the control. The 4G/5G Irish drive-test traces of Raca et al. [37] are 59 driving traces logged at one hertz with a different tool, G-NetTrack Pro, on a different operator. That tool samples the modem rather than aggregating a second, so the account predicts no contamination at the level an aggregate produces, and there is none at that level: 29.4% of 1,175 cell changes have row t looking like the new cell, against 75.9% of handovers in our export and 93.2% under an end-of-second rule. That figure is not zero, and it is not claimed to be: with a ping-pong rate above a quarter the cell serving three rows earlier is often the cell about to serve again, so a sampled log has an elevated background for reasons unrelated to aggregation. The discriminating quantity is the shape rather than the level. The prediction test agrees. Using the row stamped t rather than the row before it is worth +38 % AUPRC on that dataset, but the step from t - 2 to t - 1 is worth +57 %, a larger gain. A contaminated final row shows up as an anomalous jump at the last step; a clean log shows the smooth decay with staleness that this dataset has.
+
+The second dataset does not replicate the defect on a third instrument; it does something narrower and more useful, by letting the aggregation rule be set rather than inferred. The NUWiNS multi-carrier corpus [40], collected with XCAL on two cross-United-States routes over three tier-one operators and released as raw exports at ten hertz [41], carries the handover event clock and the serving-cell register at native rate. Downsampling it to one hertz by keeping the last sample of each second reproduces the defect: over 4,712 cell-changing handovers in 12 files and 3 operators, the row stamped t carries the target cell 93.2% of the time (92.8% on the 3,160 isolated handovers), and the row stamped t - 1 carries it 0.1% of the time. Keeping the first sample of each second instead collapses contamination to 4.1% on the same handovers. One rule produces the defect and the other removes it, on data the network never saw differently. What this establishes is that end-of-second aggregation is sufficient to produce the artefact at the magnitude observed, and how large it is when present. It does not establish that XCAL's own one-hertz exporter aggregates that way, which remains inferred from its consequences and which only a native-rate re-export of these captures would settle; Section 5.13 carries that as a residual risk.
+
+The tail of the second then measures something the one-hertz grid was never supposed to resolve. Within a bin of delta, the row stamped t is contaminated precisely when the serving-cell register updates before the second closes, so the contamination share in that bin estimates the probability that the update delay is shorter than the time remaining. Over 903 handovers arriving in the last fifth of a second, contamination is 98.2% when 75 to 100 ms remain, 43.9% when 50 to 75 ms remain and 0% when less than 50 ms remain. The cliff is the distribution of the update delay, and it sits at roughly 60 ms — consistent with the native ten-hertz view of the same events, where the target is already serving at tau + 100 ms in 100% of handovers. Panel (f) of Figure 5.1 shows the curve. The alignment defect is therefore not only a hazard to be removed; read deliberately, it is a sub-second measurement recovered from a one-hertz export.
+
+Three conclusions follow. The alignment error is a property of the aggregation rule, not of the vendor and not of the network: the same tool produces it on three operators and two continents, and a tool that samples instead of aggregating does not. It is predictable, which means it can be audited in a few lines against any event clock, and the audit reports a mechanism rather than an anomaly. And it is consequential, because none of the 22 models audited in Section 2.3 reports such a check, and neither did the first version of this work.
+
+One objection has to be answered before the repair can be trusted, because it would change what the audit means. Lagging every export column removes the contaminated serving-cell assignment, but it also discards one second of radio and kinematic history that the aggregation rule cannot plausibly corrupt. On that reading the fall from 0.607 to 0.160 would measure the cost of a blunt repair rather than the size of the leak, and the honest correction would be a targeted one. Table 5.2b settles it. The four arms share one row set, one set of folds, one learner and one set of seeds; only the set of columns shifted by one row changes.
+
+The leak is carried almost entirely by the serving-cell radio scalars. Lagging the 31 neighbour and gap columns alone — the A3 condition itself, and the columns any analyst would suspect first — leaves the one-second AUPRC at 0.595, which is 2.5% of the total fall. Lagging the 56 serving-cell radio columns alone takes it to 0.178, which is 95.8% of it. And lagging the mobility block as well — the GPS speed, acceleration and bearing that no aggregation rule can contaminate — is worth 0.2% in the opposite direction, which is to say nothing at all. The repair is therefore not conservative: the blunt version and the targeted version cost the same, so the figure quoted throughout this thesis measures the leak and not the remedy.
+
+Why the radio scalars and not the cell identity is worth stating, because it is the part that transfers. A column named serving_rsrp is not a property of a cell; it is the reference signal power of whichever cell the export currently treats as serving. When the assignment flips inside the second, that column silently changes its referent and reports the target's power, which is by construction higher than the source's — an ordinary-looking radio scalar that is in fact the answer. The same is true of the RSRQ, SINR and CQI families and of every moving average and slope derived from them. The neighbour gap moves too, but it was already near its trigger threshold, so the flip adds little to it. The practical recommendation is therefore narrower and more useful than lag everything: on any export whose rows are aggregates, the columns to distrust are the ones defined relative to the serving-cell assignment, and they are not the ones that look like identifiers.
+
+Everything reported after this section uses the lagged features. The unlagged numbers are retained in Table 5.2 and in the ablation of Section 5.11 as a measurement of the effect, never as a result. Table 5.2b is reported under fixed hyper-parameters so that the five arms are comparable with one another; its levels are not comparable with Table 5.3, which reports the tuned arm.
+
+Figure 5.1 The alignment audit and its mechanism. (a) A handover command at tau inside the second [t, t+1) is carried by the row stamped t whenever the serving-cell register updates before the second closes, that is whenever the margin m = 1 - delta - x is positive. (b) The audit on our captures: rows around the command. (c) The same quantity on three datasets; the two aggregated exports are contaminated and the sampled log is not. (d) The falsification test: no handover whose execution crosses the second boundary contaminates its row. (e) Contamination against where the command falls inside the second, in both XCAL corpora. (f) In the last fifth of the second the contamination share becomes an estimator of the serving-cell update delay, which sits near 60 ms.
+
+Figure 5.2 Event-level cost of the warning at the 5 % false-positive operating point: share of handover commands detected against the 1 Hz grid ceiling, with the false-alarm episode rate per hour on the right axis.
+
+
+## 5.2 The primary prediction result
+
+
+Table 5.3 reports the performance of the primary model, LightGBM under the hazard formulation, at all five horizons, out of fold under leave-one-campaign-out.
+
+Figure 5.3 AUPRC lift over the prevalence floor by horizon for every learner, out of fold under leave-one-campaign-out. A lift of one is the floor itself.
+
+Table 5.3 Out-of-fold performance of LightGBM under the hazard formulation, leave-one-campaign-out. ARM A (tuned): nested random search of twenty trials per outer fold, averaged over three seeds. Tables 5.3, 5.4, 5.8 and A.1 are this arm, and every headline number in the abstract and Chapter 7 comes from it. Intervals are block-bootstrapped over 180 s blocks and are conditional on these four sessions.
+
+
+[TABLE]
+
+Horizon | Prevalence | AUPRC [95 % block-bootstrap CI] | Lift | AUROC | ECE | Brier
+
+0.5 s | 0.037 | 0.103 [0.086, 0.133] | 2.8× | 0.777 | 0.006 | 0.035
+
+1 s | 0.068 | 0.179 [0.159, 0.204] | 2.6× | 0.777 | 0.012 | 0.060
+
+2 s | 0.126 | 0.285 [0.254, 0.320] | 2.3× | 0.760 | 0.016 | 0.101
+
+3 s | 0.176 | 0.362 [0.323, 0.403] | 2.1× | 0.751 | 0.026 | 0.132
+
+5 s | 0.261 | 0.475 [0.428, 0.524] | 1.8× | 0.741 | 0.044 | 0.171
+
+[/TABLE]
+
+
+Table 5.4 Every learner under identical folds, features, formulation and tuning budget. ARM A (tuned): nested random search of twenty trials per outer fold, averaged over three seeds. Tables 5.3, 5.4, 5.8 and A.1 are this arm, and every headline number in the abstract and Chapter 7 comes from it.
+
+
+[TABLE]
+
+Learner | AUPRC 1 s [95 % CI] | Lift 1 s | AUROC 1 s | AUPRC 5 s | Lift 5 s
+
+LightGBM | 0.179 [0.159, 0.204] | 2.6× | 0.777 | 0.475 | 1.8×
+
+MLP | 0.173 [0.152, 0.202] | 2.5× | 0.755 | 0.467 | 1.8×
+
+TCN | 0.167 [0.146, 0.197] | 2.5× | 0.755 | 0.481 | 1.8×
+
+Transformer | 0.152 [0.135, 0.179] | 2.2× | 0.728 | 0.453 | 1.7×
+
+GRU | 0.130 [0.114, 0.153] | 1.9× | 0.710 | 0.438 | 1.7×
+
+Logistic regression | 0.130 [0.114, 0.152] | 1.9× | 0.671 | 0.417 | 1.6×
+
+Hawkes-kernel intensity (LR) | 0.120 [0.103, 0.138] | 1.8× | 0.666 | 0.403 | 1.5×
+
+Event A3 rule (deployed parameters) | 0.116 [0.103, 0.132] | 1.7× | 0.689 | 0.374 | 1.4×
+
+History block only (LightGBM) | 0.114 [0.098, 0.134] | 1.7× | 0.652 | 0.397 | 1.5×
+
+Dwell time only (LightGBM) | 0.105 [0.091, 0.120] | 1.6× | 0.637 | 0.367 | 1.4×
+
+Prevalence floor | 0.068 | 1.0× | 0.500 | 0.261 | 1.0×
+
+[/TABLE]
+
+
+One second before a handover command the model reaches AUPRC 0.179 against a prevalence floor of 6.8%, a lift of 2.6x, at AUROC 0.777 and an expected calibration error of 0.012. At five seconds it reaches AUPRC 0.475 against a 26.1% floor, a lift of 1.8x. The deployed Event A3 rule, scored on the same rows as a predictor, reaches AUPRC 0.116 at one second (1.7x) and AUROC 0.689. The model is therefore materially better than the deployed rule and materially worse than the same model was before the alignment audit; both statements belong in the same paragraph.
+
+Two features of Table 5.3 require comment. First, the lift falls with the horizon while the AUPRC rises, because the prevalence floor rises faster than the score does; reading AUPRC across rows without the floor is precisely the error Section 2.3 documents in the comparator literature. Second, the calibration error rises with the horizon, so the five-second output should be read as a ranking rather than as a probability.
+
+The interval on each AUPRC in Table 5.3 comes from a block bootstrap over 180-second blocks and is conditional on these four sessions. The per-campaign spread in Table 5.8 is wider than that interval, which is the honest measure of how much a fifth campaign could move these numbers.
+
+Figure 5.4 One-second AUPRC lift by learner, with each held-out campaign drawn separately. The spread across campaigns is wider than the spread across learners.
+
+
+## 5.3 Splitting protocol: what each unit is worth
+
+
+The result in this section concerns the protocol rather than the predictor, and it is the one with the widest implication for the comparator literature.
+
+The experiment is a controlled substitution. Everything is held fixed — the data, the lagged features, the formulation, the hyper-parameters, the seeds — and only the splitting rule changes, across the four-step ladder of Section 4.9. Table 5.5 reports the result at one second and Figure 5.5 across the ladder.
+
+Table 5.5 One-second AUPRC under four splitting protocols. ARM B (fixed hyper-parameters): one configuration per learner, held fixed across all four protocols so that the splitting rule is the only thing that varies. Because the learners are untuned, the levels in the leave-one-campaign-out column are NOT comparable with Tables 5.3, 5.4 and A.1, which report arm A; every percentage quoted from this table is a ratio within the table.
+
+
+[TABLE]
+
+Learner | Leave one campaign out | Blocks + 60 s purge | Random 180 s blocks | Random rows | Inflation, random rows vs LOCO
+
+lr | 0.167 | 0.162 | 0.168 | 0.179 | +7 %
+
+tcn | 0.165 | 0.151 | 0.165 | 0.181 | +10 %
+
+lgbm | 0.160 | 0.166 | 0.180 | 0.236 | +48 %
+
+mlp | 0.152 | 0.147 | 0.150 | 0.163 | +8 %
+
+transformer | 0.126 | 0.145 | 0.155 | 0.169 | +34 %
+
+gru | 0.125 | 0.111 | 0.126 | 0.150 | +19 %
+
+a3 | 0.116 | 0.116 | 0.116 | 0.116 | +0 %
+
+[/TABLE]
+
+
+Three readings follow. Random-row splitting inflates the one-second AUPRC of the primary model by 48 % over leave-one-campaign-out, and of the recurrent arm by 19 %. Splitting by random 180-second blocks — grouped splitting, and the protocol this work used before the audit — still inflates it by 13 %, because blocks of one continuous session are not independent of one another. Blocking contiguously in time with a 60-second purge removes most of that: it sits within 4 % of the leave-one-campaign-out figure, which is what makes it a usable protocol when only one session is available.
+
+The mechanism is straightforward once stated. Two samples one second apart on the same drive are near-duplicates. Two 180-second blocks of the same session are not duplicates, but they share cells, traffic and trajectory, so a model can recognise the session rather than the situation. The deployed A3 rule, which has no parameters to over-fit with, moves by +0 % across the whole ladder and is the control that shows the effect is over-fitting rather than a difference in test-set difficulty.
+
+Because the inflation is architecture-dependent, it reorders the ranking rather than raising it uniformly. Under leave-one-campaign-out the leading learner at one second is logistic regression; under random-row splitting it is LightGBM, whose inflation is 48 % against 7 % for the former. A study using the standard protocol of the comparator literature would therefore report a different winner on the same data. This is the answer to objective O2, and it is why the protocol is presented as a contribution rather than as housekeeping.
+
+
+## 5.4 Coherence and calibration
+
+
+Table 5.6 reports the coherence and calibration behaviour of the hazard formulation against the independent-classifier control and the three post-hoc repairs of Section 4.2.
+
+Table 5.6 Horizon coherence and calibration for the hazard formulation and its four controls. ARM C (coherence): fixed hyper-parameters, with an extra calibration block held out of every fold so the isotonic arms can be fitted; its AUPRC levels are therefore not comparable with arm A either, and only the comparison between arms within this table is meaningful. Violation rates are given for a single fitted system, which is what a deployment meets, and for the three-seed ensemble beside it; averaging predictions over seeds lowers the rate without removing its cause. Every violation figure quoted in the text is the single-fit rate.
+
+
+[TABLE]
+
+Arm | Rows violating ordering (one fit) | Rows violating (3-seed ensemble) | Mean violation | Largest violation | ECE 1 s [95 % CI] | ECE 5 s | AUPRC 1 s | Needs a held-out split
+
+independent | 40.2 % | 29.0 % | 0.025 | 0.521 | 0.047 [0.040, 0.056] | 0.135 | 0.158 | no
+
+independent + cumulative max | 0.0 % | 0.0 % | 0.000 | 0.000 | 0.047 [0.039, 0.055] | 0.135 | 0.157 | no
+
+independent + PAV | 0.0 % | 0.0 % | 0.000 | 0.000 | 0.047 [0.039, 0.055] | 0.134 | 0.158 | no
+
+independent + isotonic | 45.9 % | 33.4 % | 0.033 | 0.645 | 0.016 [0.013, 0.024] | 0.069 | 0.158 | yes
+
+independent + isotonic + PAV | 0.0 % | 0.0 % | 0.000 | 0.000 | 0.016 [0.013, 0.024] | 0.071 | 0.158 | yes
+
+hazard | 0.0 % | 0.0 % | 0.000 | 0.000 | 0.036 [0.031, 0.044] | 0.119 | 0.157 | no
+
+[/TABLE]
+
+
+Table 5.6b Paired differences between the hazard arm and each control, bootstrapped over the same resampled 180-second blocks so that the two arms are compared on identical data rather than through two overlapping marginal intervals. A positive ECE difference favours the control, since a lower calibration error is better; an interval containing zero means the ordering of the two point estimates is not supported.
+
+
+[TABLE]
+
+Control arm | Metric | Hazard − control | 95 % CI | Interval excludes zero
+
+independent | AUPRC 1 s | -0.001 | [-0.013, +0.010] | no
+
+independent | ECE 1 s | -0.010 | [-0.015, -0.006] | yes
+
+independent + cumulative max | AUPRC 1 s | +0.000 | [-0.012, +0.010] | no
+
+independent + cumulative max | ECE 1 s | -0.010 | [-0.014, -0.006] | yes
+
+independent + PAV | AUPRC 1 s | -0.000 | [-0.012, +0.010] | no
+
+independent + PAV | ECE 1 s | -0.010 | [-0.015, -0.006] | yes
+
+independent + isotonic | AUPRC 1 s | -0.001 | [-0.011, +0.011] | no
+
+independent + isotonic | ECE 1 s | +0.018 | [+0.008, +0.027] | yes
+
+independent + isotonic + PAV | AUPRC 1 s | -0.001 | [-0.011, +0.010] | no
+
+independent + isotonic + PAV | ECE 1 s | +0.018 | [+0.008, +0.028] | yes
+
+[/TABLE]
+
+
+The hazard formulation produces no horizon-ordering violations, which follows from Equation (4.5). The independent-classifier arm violates ordering on 40.2% of rows, with a mean violation of 0.025 and a maximum of 0.521 where it occurs. Every violation figure in this thesis is the rate of a single fitted system, which is what a deployment would meet; Table 5.6 reports beside it the rate of the three-seed ensemble, which is lower (29.0% for the same arm) because averaging predictions smooths violations away rather than removing their cause.
+
+The honest comparison, however, is not against the raw control. A per-row cumulative maximum removes every violation at no cost, needs no held-out split, and is two lines of code; the pool-adjacent-violators projection does the same. Both are reported in Table 5.6, and an earlier draft of this work omitted them, which overstated the case for the formulation. Isotonic calibration per horizon is the most expressive control: on its own it makes coherence worse (violations rise from 40.2% to 45.9%, because the K isotonic maps are fitted independently and may reorder the horizons), but composed with the monotone projection it reaches zero violations and the lowest calibration error of any arm (0.016 at one second against 0.036 for the hazard model). That composite is therefore the arm to beat, and the hazard formulation does not beat it on calibration.
+
+What the hazard formulation retains after that correction is narrower and worth stating exactly. It is the only arm that reaches coherence and competitive calibration from a single fit with no held-out calibration split: 0.036 at one second against 0.047 for raw independent heads and 0.047 for the cumulative-maximum control, none of which consume data, while the isotonic arms spend a calibration block that a four-session dataset can ill afford, and it estimates one model rather than five. Those calibration differences are small enough that reading them off two overlapping intervals would not be sound, so Table 5.6b reports them as paired differences bootstrapped over the same resampled blocks. On that basis the hazard arm's advantage over every no-split control is real — 0.010 against raw independent heads, 95 % interval [0.006, 0.015] — and so is the isotonic composite's advantage over the hazard arm, 0.018 [0.008, 0.028]. Two things the formulation does not retain should be said in the same breath. It does not rank better: its one-second AUPRC of 0.157 against 0.158 for the raw independent control is a paired difference of -0.001 with an interval of [-0.013, +0.010] that contains zero, as does every other AUPRC comparison in Table 5.6b; no ranking claim is made in either direction. And the censoring-aware likelihood of Section 4.4, sometimes cited as an advantage of the survival formulation, is inert here, because the row filter of Section 3.7 leaves no row censored inside the horizon grid; it is retained for generality, not counted as a benefit. On a larger dataset, isotonic calibration followed by a monotone projection would be the stronger choice, and this thesis says so.
+
+Figure 5.8 places the arms on the same axes: calibration error across the horizon on the left, violation rate on the right.
+
+Because only four campaigns are available, the paired comparison between formulations is over four observations. The hazard arm has the lower calibration error on 0 of the four held-out campaigns at one second; the exact two-sided sign-test p-value for four paired observations cannot fall below 0.125, so no significance is claimed and the per-campaign numbers are reported in full in Appendix A.
+
+Figure 5.6 Calibration error at one second, one line per held-out campaign, for independent classifiers against the hazard formulation.
+
+Figure 5.7 Calibration error against the horizon for every coherence arm (left) and the share of rows violating horizon ordering (right).
+
+Figure 5.8 Where the model earns its advantage: rows with no handover in the previous ten seconds against rows inside a burst.
+
+The operational meaning of an expected calibration error of 0.024 at the one-second horizon is worth stating plainly, because a calibration figure is easy to report and easy to ignore. It means that among the samples on which the system asserts a probability near 0.8, a handover follows within one second on approximately 80 % of occasions. That is what permits the output to enter a decision rule rather than merely to sort samples, and it is what none of the 22 audited models in Section 2.3 reports. Together with Section 5.5 this answers objective O3.
+
+
+## 5.5 The risk-control frontier and its price
+
+
+Table 5.7 reports conformal risk control in the two regimes described in Section 4.10.
+
+Table 5.7 Conformal risk control at the one-second horizon, in the exchangeable regime and across campaigns.
+
+
+[TABLE]
+
+Target α | Row loss, exchangeable: alarm rate | Row loss, exchangeable: realised | Row loss, across campaigns: realised | Row loss: rotations respecting the bound | Event loss, across campaigns: feasible rotations | Event loss: alarm rate | Event loss: realised
+
+0.05 (below the floor) | 86 % | 0.018 | not expressible | - | 0 % | - | not expressible
+
+0.10 | 65 % | 0.069 | 0.032 | 92 % | 0 % | - | not expressible
+
+0.15 | 55 % | 0.119 | 0.092 | 83 % | 0 % | - | not expressible
+
+0.20 | 47 % | 0.168 | 0.153 | 83 % | 0 % | - | not expressible
+
+0.30 | 36 % | 0.272 | 0.261 | 67 % | 25 % | 96 % | 0.333
+
+Feasibility floor with n = 14 units | α ≥ 0.067 |  |  |  | and α ≥ 0.364 for the event loss, the share of handovers with no usable row in the lead window |  | 
+
+[/TABLE]
+
+
+Four observations follow.
+
+First, in the exchangeable regime — calibration and test units drawn from the same pool of 180-second blocks — the realised mean per-unit miss rate sits at or below the target at every level tested. At α = 0.20 the certified threshold alarms on 47% of rows and realises a mean per-unit miss rate of 0.168.
+
+Second, in the regime an operator actually faces — calibrate on one campaign, deploy on another — the guarantee is not distribution-free any more, because the units are not exchangeable. Across the 12 campaign rotations the mean realised loss at α = 0.20 is 0.153 and the bound is respected in 83% of rotations. Reporting this is the point of the section: the procedure is only as good as the exchangeability assumption, and a campaign is a distribution shift.
+
+Third, the guarantee is expensive at tight targets, and the number of calibration units binds independently of model quality. At α = 0.05 the threshold alarms on 86% of rows, which is not an operating point any operator would deploy. And the campaigns differ in size: a calibration campaign of n blocks can express no target below 1/(n+1), so with 8 to 20 blocks per campaign the floor runs from 0.048 to 0.111, and only 25% of the rotations can express α = 0.05 at all.
+
+Fourth, and most consequentially for what may be promised, the estimand matters. Everything above certifies the row-level loss of Equation (4.9). What Section 1.3 promises, and what an operator would understand by a miss, is the event-level loss of Equation (4.11): a handover is caught if any usable row in its lead window alarms. The two are not interchangeable, because a command with no usable row in that window is missed at every threshold. At the one-second horizon 36.4% of commands are in that position, so no event-level target below that value is expressible at all, and none of the five targets in Table 5.7 is feasible in more than 25% of the rotations. At three seconds, where 12.0% of commands are unresolvable, the picture changes: α = 0.20 is feasible in 75% of rotations at a realised event loss of 0.169 and an alarm rate of 63%, and α = 0.30 in all of them at 0.266 and 48%.
+
+The conclusion is worth stating plainly, because it is a limit rather than a result. On this instrument the sampling rate, not the model and not the size of the calibration set, sets the tightest promise that can be made about handovers: at one second a distribution-free bound on the fraction of handover commands missed cannot be certified at any level an operator would accept, and a study on a one-hertz grid that claims such a bound is certifying rows and calling them events. At three seconds the promise becomes expressible, and costs an alarm on roughly half of all seconds. This reconciles Table 5.7 with the detection rates of Appendix A, which are event-level throughout and which no row-level guarantee bounds.
+
+Figure 5.9 puts both regimes on one pair of axes, with the realised risk against the nominal level and the guarantee boundary drawn as the diagonal; the second axis carries the alarm rate that compliance costs.
+
+Figure 5.9 Conformal risk control in both regimes. Left: realised mean per-unit miss rate against the target, with the guarantee boundary as the diagonal. Right: the alarm rate that compliance costs.
+
+
+## 5.6 Generalisation across corridors and speed regimes
+
+
+Objective O4 asks whether the result survives outside the data on which it was developed. Two experiments address it, at increasing distance from the training distribution.
+
+The first is the primary protocol itself: each campaign held out in turn. Table 5.8 reports the per-campaign numbers that the pooled result of Table 5.3 averages over.
+
+Table 5.8 Leave-one-campaign-out performance at the one-second horizon.
+
+
+[TABLE]
+
+Campaign held out | Rows | Prevalence | AUPRC | Lift | AUROC | ECE
+
+10 Sept (urban arterial) | 2,178 | 8.4 % | 0.196 | 2.4× | 0.765 | 0.018
+
+12 Sept (urban loop) | 1,131 | 8.0 % | 0.233 | 2.9× | 0.805 | 0.021
+
+13 Sept (dense urban) | 3,072 | 6.5 % | 0.203 | 3.1× | 0.789 | 0.012
+
+15 Sept (highway) | 2,205 | 5.1 % | 0.132 | 2.6× | 0.769 | 0.033
+
+Pooled out of fold | 8,586 | 6.8 % | 0.179 | 2.6× | 0.777 | 0.012
+
+[/TABLE]
+
+
+The spread across campaigns is the useful quantity. At one second the AUPRC lift runs from 2.4x to 3.1x across the four held-out campaigns, and AUROC from 0.765 to 0.805. The weakest campaign is 15 Sept (highway), and the highway campaign — the one that differs in both corridor and speed regime — reaches AUROC 0.769. No campaign carries the pooled result, and none of them is close to the figure this work reported before the alignment audit.
+
+The honest reading of the spread is that a fifth campaign could plausibly land anywhere inside it, and that four units are too few to say more than that. That is a statement about the size of the study, not about the method.
+
+Figure 5.10 Leave-one-campaign-out on four metrics. Each bar holds one campaign out entirely and trains on the other three; the dashed line is the pooled out-of-fold value. The highway campaign is in red.
+
+
+## 5.7 An independent collection on the same network
+
+
+The second generalisation experiment uses a publicly released LTE drive-test dataset [38]. Its provenance is stated exactly, because an earlier draft of this work described it as a different network: it was collected by a different group of people on a different route two years earlier, using the same operator, the same city and the same XCAL licence, in the same department of the same institution. It is an independent collection on the same network, and it tests collection, route and time — not operator, and not radio access technology.
+
+Because the public dataset publishes measurement-report exports rather than a periodic radio export, both domains are rebuilt here from the L3 signalling alone, on the same feature construction, so that the comparison varies the dataset and nothing else. That construction also sidesteps the alignment problem of Section 5.1 by using millisecond report timestamps directly. Table 5.9 reports the four directions with bootstrap intervals over runs.
+
+
+[TABLE]
+
+Setting | Rows | Prevalence | AUROC [95 % CI] | AUPRC | Lift
+
+ours, leave-one-capture-out | 7,284 | 7.9 % | 0.730 [0.711, 0.754] | 0.183 | 2.3×
+
+public, leave-one-file-out | 1,455 | 6.3 % | 0.711 [0.653, 0.767] | 0.148 | 2.3×
+
+ours -> public (no refit) | 1,455 | 6.3 % | 0.760 [0.709, 0.813] | 0.212 | 3.3×
+
+public -> ours (no refit) | 7,284 | 7.9 % | 0.679 [0.624, 0.724] | 0.149 | 1.9×
+
+[/TABLE]
+
+
+The transferred model reaches AUROC 0.760 on the public data without refitting, against 0.711 for a model trained on that dataset itself and 0.730 for our own leave-one-capture-out result on the same signalling-only feature set. The intervals overlap. The reading is that the formulation and the feature construction transfer to another collection on this network, which is a weaker and more defensible claim than the one made in the earlier draft.
+
+One limitation of this experiment has to be stated at full strength rather than left for a reader to infer, because it bounds every generalisation claim in this thesis. Both arms of Table 5.9 are signalling-only. The public dataset does not publish a periodic radio export, so the radio and mobility blocks — 89 and 17 of the 112 features the primary model uses, and the source of essentially all of its signal — cannot be constructed on it at all. What Table 5.9 therefore tests is the transfer of a 6-feature signalling model, not of the system reported in Section 5.2. The primary model has never been evaluated outside the four campaigns it was built on, and no experiment in this thesis establishes that it would transfer. That is a limitation of the available public data rather than a choice, and it is the single strongest argument for the second-operator collection proposed in Section 7.3; until such data exist, the external evidence in this thesis covers the formulation and the feature construction, not the predictor.
+
+Figure 5.11 Transfer to an independently collected dataset on the same network, with both domains built from L3 signalling alone. Bars are 95 % bootstrap intervals over runs.
+
+
+## 5.8 What the model uses, and where it works
+
+
+Objective O5 asks for the mechanism rather than the score. With the alignment corrected, the answer is less dramatic than the earlier draft claimed and more useful.
+
+Table 5.10 reports the strongest single features, each evaluated alone at the one-second horizon on the lagged export.
+
+Table 5.10 Single-feature AUROC at the one-second horizon on the lagged export.
+
+
+[TABLE]
+
+Feature (lagged one row) | AUROC alone at 1 s | Direction
+
+sig_s_since_a3 | 0.723 | lower -> more likely
+
+serving_sinr | 0.723 | lower -> more likely
+
+sig_a3_prev5s | 0.704 | higher -> more likely
+
+sig_a3_prev2s | 0.696 | higher -> more likely
+
+serving_sinr_mean3 | 0.696 | lower -> more likely
+
+serving_sinr_mean5 | 0.683 | lower -> more likely
+
+t_since_prev_ho_s | 0.664 | lower -> more likely
+
+gap_serving_best_nbr | 0.618 | lower -> more likely
+
+speed_kmh | 0.584 | higher -> more likely
+
+Full model, same rows | 0.777 | 
+
+[/TABLE]
+
+
+Table 5.11 Performance inside and outside handover bursts.
+
+
+[TABLE]
+
+Stratum | Learner | Rows | Prevalence 1 s | AUPRC 1 s | Lift 1 s | Lift 5 s
+
+in burst (handover 2-10 s earlier) | Event A3 rule (deployed parameters) | 3,068 | 11.2 % | 0.147 | 1.3× | 1.2×
+
+in burst (handover 2-10 s earlier) | History block only (LightGBM) | 3,068 | 11.2 % | 0.133 | 1.2× | 1.2×
+
+in burst (handover 2-10 s earlier) | LightGBM | 3,068 | 11.2 % | 0.212 | 1.9× | 1.4×
+
+quiet (no handover in previous 10 s) | Event A3 rule (deployed parameters) | 5,518 | 4.3 % | 0.085 | 2.0× | 1.6×
+
+quiet (no handover in previous 10 s) | History block only (LightGBM) | 5,518 | 4.3 % | 0.061 | 1.4× | 1.2×
+
+quiet (no handover in previous 10 s) | LightGBM | 5,518 | 4.3 % | 0.133 | 3.1× | 2.0×
+
+[/TABLE]
+
+
+Figure 5.12 Single-feature discriminative power at one second on the lagged export. No single feature approaches the full model.
+
+Four results follow. No single feature is close to the model: the strongest reaches AUROC 0.723 against 0.777 for the full model, so the signal is distributed rather than concentrated in one clock. The strongest single quantity is the time since the last Event A3 report (sig_s_since_a3, AUROC 0.723), which is a signalling quantity the network holds in real time and which the main feature set deliberately excludes; the strongest export feature is serving SINR (0.723). Serving dwell time computed from signalling timestamps reaches 0.664, ahead of chance and far behind its unlagged counterpart. And the serving-to-neighbour gap on which Event A3 is defined reaches 0.618, which is the one part of the earlier mechanism claim that survives: the quantity the rule thresholds on is a weak predictor of imminence, because it is a permission condition and not a tendency.
+
+Where the model works matters as much as what it uses. Handover commands arrive in bursts — the median gap between consecutive commands is 3.7 seconds — and a predictor can score well by recognising that it is inside a burst. Table 5.11 therefore splits the out-of-fold rows into those with no handover in the previous ten seconds and those inside a burst. At one second the lift is 3.1x on quiet rows and 1.9x on in-burst rows, against prevalence floors of 4.3% and 11.2%. A history-only model reaches a lift of 1.7x pooled, so burst membership alone does not account for the result, but the radio block earns most of its advantage on the quiet rows, which is where an operator would want the warning.
+
+Figure 5.12 ranks the single features and Figure 5.13 gives the dose-response relation between the time since the previous command and the probability of the next one, which is monotone up to about twenty seconds and flat thereafter.
+
+Two further sensitivities are reported here rather than buried. Censoring the 93 model rows whose next event is a re-establishment rather than a handover command — a count of rows in the horizon grid, not of the 341 re-establishment events themselves — moves the one-second lift by +0.03x, so the competing risk of Section 3.6 does not drive the result. And adding the signalling block of Section 4.6 to the radio, mobility and history blocks moves the one-second AUPRC from 0.179 to 0.168; the signalling block on its own reaches 0.123.
+
+Figure 5.13 Probability of a handover command within one and five seconds against the time since the previous command, computed from signalling timestamps.
+
+
+## 5.9 The A3 report-conversion rate and the unit it is counted in
+
+
+The first of the two network characterisations concerns what happens to a measurement report after it is sent, and it is reported here in a corrected form. Event A3 report configurations on this network carry reportInterval and reportAmount values that cause a triggered condition to be re-reported periodically until it ceases: the modal configuration re-reports every 240 ms with reportAmount infinity. Counting transmitted reports therefore counts re-reports of the same trigger, and an earlier draft of this work did exactly that.
+
+Table 5.12 Event A3 report conversion, counted per transmitted report and per trigger episode.
+
+
+[TABLE]
+
+Unit | Stratum | n | Followed by a command within 2 s | Declined
+
+per report (v1 unit) | pooled | 8,136 | 3006 | 63 %
+
+per report (v1 unit) | 10 Sept (urban arterial) | 2,287 | 980 | 57 %
+
+per report (v1 unit) | 12 Sept (urban loop) | 1,857 | 716 | 61 %
+
+per report (v1 unit) | 13 Sept (dense urban) | 2,215 | 806 | 64 %
+
+per report (v1 unit) | 15 Sept (highway) | 1,777 | 504 | 72 %
+
+per report (v1 unit) | inter-frequency | 93 | 34 | 63 %
+
+per report (v1 unit) | intra-frequency | 8,043 | 2972 | 63 %
+
+per trigger episode (any command within 2 s) | pooled | 2,361 | 1647 | 30 %
+
+per trigger episode (any command within 2 s) | 10 Sept (urban arterial) | 726 | 531 | 27 %
+
+per trigger episode (any command within 2 s) | 12 Sept (urban loop) | 476 | 349 | 27 %
+
+per trigger episode (any command within 2 s) | 13 Sept (dense urban) | 740 | 480 | 35 %
+
+per trigger episode (any command within 2 s) | 15 Sept (highway) | 419 | 287 | 32 %
+
+per trigger episode (any command within 2 s) | inter-frequency | 49 | 28 | 43 %
+
+per trigger episode (any command within 2 s) | intra-frequency | 2,312 | 1619 | 30 %
+
+per trigger episode (one-to-one, owns the command) | pooled | 2,361 | 635 | 73 %
+
+per trigger episode (one-to-one, owns the command) | 10 Sept (urban arterial) | 726 | 210 | 71 %
+
+per trigger episode (one-to-one, owns the command) | 12 Sept (urban loop) | 476 | 110 | 77 %
+
+per trigger episode (one-to-one, owns the command) | 13 Sept (dense urban) | 740 | 197 | 73 %
+
+per trigger episode (one-to-one, owns the command) | 15 Sept (highway) | 419 | 118 | 72 %
+
+per trigger episode (one-to-one, owns the command) | inter-frequency | 49 | 12 | 76 %
+
+per trigger episode (one-to-one, owns the command) | intra-frequency | 2,312 | 623 | 73 %
+
+command multiplicity | A3 episodes | 2,361 | 1647 claimed, 635 owned | x2.59 over-counting
+
+command multiplicity | all episodes | 9,819 | 4391 claimed, 908 owned | x4.84 over-counting
+
+per trigger episode, by profile | +1 dB, Hys 1, TTT 320, RI 240 x infinity | 734 | 717 claimed, 463 owned | 2.3 % / 36.9 % one-to-one
+
+per trigger episode, by profile | -15 dB, Hys 1, TTT 160, RI 5120 x infinity | 543 | 274 claimed, 26 owned | 49.5 % / 95.2 % one-to-one
+
+per trigger episode, by profile | -10 dB, Hys 2, TTT 640, RI 5120 x infinity | 431 | 315 claimed, 71 owned | 26.9 % / 83.5 % one-to-one
+
+per trigger episode, by profile | -10 dB, Hys 2, TTT 640, RI 5120 x r1 | 278 | 113 claimed, 19 owned | 59.4 % / 93.2 % one-to-one
+
+per trigger episode, by profile | -15 dB, Hys 1, TTT 160, RI 2048 x infinity | 242 | 141 claimed, 19 owned | 41.7 % / 92.1 % one-to-one
+
+[/TABLE]
+
+
+Figure 5.14 A3 report conversion under three units. Counting transmitted reports counts periodic re-reports of one trigger; counting trigger episodes loosely lets several overlapping episodes claim the same command; the one-to-one unit matches each command to exactly one episode.
+
+Table 5.12 reports the conversion rate under three units, because the quantity has no unit-free value. Grouping consecutive reports of one measId whose spacing is consistent with the configured reportInterval into a single trigger episode reduces 8,136 transmitted A3 reports to 2,361 episodes, an average of 3.4 reports per episode. Counted per report, 63% of A3 reports are not followed by a handover command within two seconds. Counted per episode, asking only whether some command falls in the two seconds after the episode ends, the figure is 30%.
+
+That second figure is not a conversion rate, and an earlier version of this work reported it as though it were. Several measIds monitor different neighbours and fire within the same approach to a cell boundary, so the 2,361 episodes claim 1,647 commands between them out of the 957 that exist: the same command is counted by 2.6 episodes on average. Matching each command to exactly one episode — the one containing the report it is attributed to under the rule of Section 3.5 — leaves 635 episodes owning a command, so 73% of episodes are declined. Perversely, a configuration that re-reports on several identities scores a lower decline rate under the loose rule precisely because it is verbose, which inverts the interpretation the rate is used for.
+
+The instability is the finding. It is the same lesson as Section 5.10: a rate quoted without its unit is a statement about bookkeeping and not about the network, and the decline rate of a mobility trigger moves by a factor of two and a half between two defensible definitions of a single trial. The one direction that is well defined is the command side, where each command has exactly one attributed report: 651 of 957 handover commands are attributed to an A3 report.
+
+The per-profile breakdown, also in Table 5.12, is where the substantive result survives, and it survives more clearly under the stricter unit. The dominant mobility profile — +1 dB offset, 1 dB hysteresis, 320 ms time-to-trigger, 240 ms report interval — is declined on 36.9% of its episodes one-to-one, against 95.2% for the dominant negative-offset configuration. Under the loose unit the same pair reads 2.3% against 49.5%: the separation is present either way, and the strict unit widens it, because the monitoring configurations turn out to own almost no commands at all. That is what identifies them as neighbour-monitoring rather than mobility triggers.
+
+The conclusion for the literature is therefore not a corrected percentage. It is that a study using A3 reports as proxy labels for handovers must state its unit, must not let overlapping trigger episodes claim the same command, and must separate the mobility configuration from the rest before it counts anything.
+
+
+## 5.10 Ping-pong: definitional instability and its actual source
+
+
+The second network finding concerns ping-pong, and it has two parts: how much the reported rate depends on unstated definitional choices, and where the phenomenon actually concentrates.
+
+Table 5.13 reports the same fixed set of 957 handover commands under four definitions that differ only in choices the literature routinely leaves unstated, and Figure 5.15 extends that ladder to the full grid of window lengths.
+
+Table 5.13 The ping-pong rate on one fixed set of handover commands under four definitions.
+
+
+[TABLE]
+
+Definition | Handovers | Rate
+
+Return to the immediately previous cell, identified by PCI and carrier, within 15 s | 957 | 26.3 %
+
+The same, with the cell identified by PCI alone | 957 | 31.2 %
+
+Any return within the window, not only to the previous cell | 957 | 43.8 %
+
+Return to the immediately previous cell, restricted to commands inside retained blocks | 938 | 28.7 %
+
+[/TABLE]
+
+
+The rate moves by 17 percentage points — from 26.3% to 43.8% — without a single change to the underlying measurement. This is the quantitative form of the observation in Section 2.4, and it is why this thesis quotes the strictest of the four and states all three choices alongside it. It also explains how Amirova et al. [15] arrive at 0.13 % on comparable data: dividing by measurement records rather than by handovers changes the denominator by two orders of magnitude.
+
+The window length is a fourth choice, and Figure 5.15 reports the full grid rather than the single row of Table 5.13. Across three window lengths and three identity-and-return conventions the same 957 commands yield nine defensible ping-pong rates between 21.0% and 43.8%. No cell in that grid is wrong; what is wrong is publishing one of them without saying which.
+
+Figure 5.15 The ping-pong rate over the full definitional grid: three return windows against three conventions for cell identity and return, computed on one unchanging set of handover commands.
+
+Table 5.14 reports where the phenomenon concentrates.
+
+Table 5.14 Ping-pong rate by carrier relationship and mobility regime.
+
+
+[TABLE]
+
+Stratum | Handovers | Ping-pongs | Ping-pong rate
+
+intra-frequency handovers | 748 | 233 | 31.1 %
+
+inter-frequency handovers | 209 | 19 | 9.1 %
+
+highway campaign | 177 | 57 | 32.2 %
+
+urban campaigns | 780 | 195 | 25.0 %
+
+all commands | 957 | 252 | 26.3 %
+
+[/TABLE]
+
+
+Figure 5.16 Where ping-pong concentrates. The dominant axis is the carrier relationship, not the mobility regime.
+
+Figure 5.16 separates the strata, and Table 5.14 gives the counts as well as the rates so that the two stratifications can be seen to partition the same 252 returns. Both are computed by flagging each command once on the full sequence and then partitioning the flags. Flagging inside a stratum instead — which an earlier version of this analysis did, and which is the natural way to write the loop — redefines “the immediately previous cell” as the previous cell *within the stratum*, and made the carrier rows and the regime rows disagree by 34 returns on one fixed command set.
+
+One contrast is large and one is not what it appears to be. Ping-pong concentrates in intra-frequency handovers, at 31.1% against 9.1% across carriers, a factor of roughly three: a return to the cell just left is overwhelmingly a return within the same carrier, which is what the A3 entry condition on a single frequency makes easy. The speed contrast points the other way from the intuitive account and cannot be resolved here. The highway campaign, at roughly twice the urban mean speed, returns at 32.2% against 25.0% on the urban campaigns — higher, not lower. With one campaign per regime, speed is completely confounded with route, cell density, carrier mix and time of day, so this thesis does not claim that speed drives ping-pong and does not claim to have ruled it out; it reports that the fastest campaign is also the most return-prone, which is the opposite of what a speed-protective account would predict.
+
+An earlier version of this section named the time-to-trigger and offset of the dominant configuration profile as the lever available to an operator. That claim is withdrawn. Section 3.5 establishes that the configuration set is stable across all four campaigns: there is no time-to-trigger or offset variation anywhere in this data, so neither parameter can be associated with the return rate from these measurements at all, in either direction. The time-to-trigger remains the most plausible lever on theoretical grounds and the obvious candidate for the controlled experiment proposed in Section 7.3, but nothing measured here bears on it.
+
+Modelling the arrival stream as a self-exciting process characterises the clustering from a different direction. The fitted Hawkes branching ratio is 0.653 on the pooled stream, with per-campaign estimates from 0.487 to 0.675. The physical reading of that quantity — the expected number of direct offspring per event — belongs to the exponential-kernel model, and the Ogata residual test of Section 4.11 rejects that kernel on this data. The rejection is reported rather than suppressed, and it limits what the number may be used for: the branching ratio is taken here as a comparable summary statistic of how strongly arrivals cluster, not as a count of triggered handovers. The clustering itself is not in doubt, and it is the reason Section 5.8 separates quiet rows from rows inside a burst.
+
+Figure 5.17 Hawkes branching ratio estimated on each campaign separately and on the pooled stream, with bootstrap intervals.
+
+Figure 5.18 Self-excitation in the handover arrival stream. The clustering is real; the Ogata residual test rejects the exponential kernel, so its temporal shape is not exponential.
+
+
+## 5.11 Negative results and the cost of the audit
+
+
+Five approaches were implemented in good faith, measured, and did not help; they are reported because a claim that the formulation and the protocol are what matter is credible only if the alternatives were tried. Table 5.15 lists them.
+
+Table 5.15 Approaches implemented and measured that produced no improvement.
+
+
+[TABLE]
+
+Approach | Outcome
+
+A dedicated ping-pong classifier | AUROC 0.51 at the one-second horizon — chance
+
+Deep CORAL and a second unsupervised domain-adaptation method | No gain over source-only training
+
+Sequence models (GRU, TCN, Transformer) on the same features | No gain over gradient-boosted trees; best sequence AUPRC at 1 s 0.167 against 0.179
+
+The signalling feature block added to the main set | AUPRC at 1 s 0.168 against 0.179 without it
+
+The unlagged (v1) feature alignment | AUPRC at 1 s 0.600, an artefact of the export row semantics (Section 5.1)
+
+[/TABLE]
+
+
+Figure 5.19 Feature-block, alignment and censoring ablations at one and five seconds, out of fold under leave-one-campaign-out, with the spread over three seeds.
+
+Table 5.15 lists them and Figure 5.19 sets each against the configuration that was retained. The dedicated ping-pong classifier is the most informative: ping-pong is highly structured at the population level, as Section 5.10 shows, and yet whether a particular transfer will be reversed is close to unpredictable from these inputs, which is consistent with it depending on the state of the target cell that the handset does not observe.
+
+The domain-adaptation null is consistent with published benchmarking rather than indicative of a faulty implementation. Ismail Fawaz et al. [25] benchmark nine unsupervised domain-adaptation algorithms over twelve time-series datasets and find several published methods performing worse than source-only training, with the adaptation technique rather than the backbone driving the outcome; the result here has the same shape.
+
+The largest negative result in this thesis is the alignment audit of Section 5.1, and it is recorded here as such: the strongest configuration this project measured — AUPRC 0.600 at one second — was an artefact of a one-second misalignment between the measurement grid and the event clock, and the corrected figure is 0.179. Retaining that result would have produced a more impressive thesis and a false one.
+
+Finally, removing the signalling leakage guard of Section 4.6 raises the apparent score substantially, which is the expected behaviour of a leak and is the reason the guard exists. That configuration is not reported as a result anywhere in this thesis.
+
+
+## 5.12 Discussion against the objectives
+
+
+Objective O1 is met in a qualified form: the next handover command is predicted one second ahead at AUPRC 0.179 against a 6.8% floor (2.6x) and AUROC 0.777, from quantities a handset observes strictly before the prediction instant, against AUPRC 0.116 for the rule presently deployed. The qualification is that this is a modest signal, well short of what an uncorrected protocol reports on the same data.
+
+Objective O2 is met, and the answer is larger than the modelling differences the thesis reports. Between the leakiest and the soundest protocol the one-second AUPRC of the primary model moves by 48 %, and a one-row misalignment moves it by 236 % — both larger than the gap between the best and worst learner under a fixed protocol.
+
+Objective O3 is met in part. Coherence is exact by construction, and the guarantee is reported with the alarm rate it costs, the feasibility floor set by the number of calibration units, and the measured behaviour in the non-exchangeable regime. The part that is not met is the estimand: the bound certified here is over rows, and the per-handover bound the objective asks for cannot be certified at one second on a one-hertz grid at all, because 36.4% of commands have no usable row in their lead window. It becomes expressible at three seconds, at an alarm rate near one second in two.
+
+Objective O4 is met at two distances: leave-one-campaign-out AUROC between 0.765 and 0.805, including 0.769 on the highway corridor, and AUROC 0.760 on an independent collection on the same network.
+
+Objective O5 is met in corrected form. The single strongest lesson is methodological — the alignment audit — and the substantive one is that the quantity Event A3 thresholds on is a weak predictor of imminence (AUROC 0.618 alone), while no single available feature replaces it.
+
+
+## 5.13 Threats to validity
+
+
+Five threats bear on the results above and are stated here rather than deferred.
+
+Scale and coverage. The evidence is four continuous sessions on one operator over four days. Four units bound what any paired test can say, and the block bootstrap intervals quoted alongside are conditional on those four sessions. A second operator would test what a second corridor cannot.
+
+Residual alignment risk. The audit of Section 5.1 establishes that a one-row lag is necessary and, on the evidence of the isolated-handover baseline, sufficient on this export. It does not establish the exact semantics of the XCAL row timestamp, which the vendor documentation does not state; a native-rate export would settle it. Every result here is therefore conservative by one sample period rather than exact. The mechanism of Section 5.1 narrows the residual risk but does not remove it: it accounts for the sign and the intra-second gradient of the effect, and for the 22% of handovers where the export refreshes its serving-cell field a row late, but a one-row lag remains a conservative repair chosen without vendor confirmation of the write rule.
+
+Instrument ceiling. The one-hertz export caps event-level detection at 64.6% at one second, which bounds every event-level figure in Section 5.2.
+
+Causal identification. No causal claim is made about the benefit of acting on a warning, and this is a matter of identification rather than of effort. The logging policy is deterministic: given the radio state and the configuration, Event A3 either fires or it does not, so the propensity of the observed action is zero or one and the inverse-propensity weights required for off-policy evaluation are undefined. Only a counting upper bound on benefit is therefore reported, and it peaks at a five-percent alarm budget and turns negative by forty. Section 7.3 identifies the design that would make the causal question answerable on data already held.
+
+Comparator availability. The nearest comparator method on this network is a reinforcement-learning formulation of the handover decision [39] developed in the same department on the same operator and instrument, whose released dataset is the one used in Section 5.7. It was reimplemented from its method description and scored as a predictor, where it proved close to uninformative — which is expected, since it optimises a decision rather than forecasting an event. The comparison is reported in Section 5.11 rather than as a headline, and its provenance is stated here because the two works share an institution and a supervisor.

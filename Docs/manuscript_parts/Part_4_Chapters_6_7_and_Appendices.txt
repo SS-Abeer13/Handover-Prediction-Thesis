@@ -1,0 +1,115 @@
+We came up with the idea of using outcome based education in our school.We decided to implement outcome based education in our school.
+
+This chapter illustrates how the work described in the previous chapters (1 through 5) meets the course outcomes, program outcomes, knowledge profiles and complex engineering problem and activity attributes as required for a capstone project in EEE 4700/4800. Claims here refer to specific sections of the thesis and do not suggest that the work has an attribute that it does not in fact have; claims about attributes that the thesis does not in fact address are marked as such.
+
+6.1 Introduction
+
+Outcome Based Education demands that the capstone project be evaluated based on what the student can do when the project is over, not on how much the student has done. The following sections align the activities of this project with the previously defined outcomes; course outcomes in Section 6.2, aspects of program outcomes in Section 6.3, knowledge profiles in Section 6.4, the use of complex engineering problems in Section 6.5, the socio-cultural, environmental and ethical impact in Section 6.6, and the attributes of complex engineering problem solving in Section 6.7 and complex engineering activities in Section 6.8.
+
+6.2 Course outcomes addressed
+
+6.3 elements of program results covered
+
+6.4 Knowledge profiles addressed
+
+6.5 Use of complex engineering problems
+
+The problem studied here has several independent aspects that meet the criteria for a complex engineering problem.
+
+Without some deep and analytically motivated understanding the problem cannot be worked out: without the survival formulation of Section 4.3, it is impossible to see that the class reweighting of that formulation is inadmissible, Section 4.5, which comes from a compounding argument, without knowing it analytically.
+
+It represents competing technical needs, which cannot be decided a priori but have to be solved numerically. The most obvious is the warning trade-off of Section 5.5: the more early and sensitive the warning, the more useful it is to the network, and also the more expensive; and the frontier from a 20 % certified miss rate at a 23 % alarm rate to a 5 % target at a 61 % alarm rate is measured, not assumed.
+
+There's no standard procedure for it. The evaluation protocol commonly used in the comparator literature—independent, random-row cross validation—is clearly incorrect on this data, and Section 5.3 quantifies the extent of the error and its direction.
+
+It involves several sub-disciplines: the LTE control plane, radio propagation, statistical survival analysis, distribution-free inference, point-process modelling and software engineering - none of which is enough on its own.
+
+6.6 Socio-cultural, environmental and ethical impact
+
+Societal. Bangladesh, and Dhaka in particular, supports one of the highest mobile subscriber densities in the world and on the routes covered in this study, the average period for a handover was 11 seconds. In this context mobile connectivity is not a luxury but an infrastructure that financial services, transport and emergency communication relies on. A warning, 1-2 seconds prior to a handover, will allow the network to prepare the target cell in advance of an interruption, rather than after an interruption, which will impact the continuity of these services.
+
+Environmental and sustainability. The argument about the environment presented here is limited to what was measured. As demonstrated in Section 5.10, 24.5 % of all handovers observed were to the cell which was just handed over within 15 seconds and the handover phenomenon was confined to intra-carrier handovers under one dominant configuration profile. Such pair are each signaling work, radio resource occupancy and processing load expended for no change in serving cell. In order to reduce a fraction, one first has to identify it. This thesis does not make a measured energy saving claim, as it is not a measurement of energy saving and Section 5.13 explains why this is not possible in this kind of data.
+
+Health. No health claims are made. This project included no exposure measurements and no experiment bearing on health and no human subjects. This is a statement of the ethical stance: the "temptation" in a thesis that is dealing with radio transmission is to make a statement that fewer transmissions must be better, and that statement is not supported by anything in the experience of chapters 3-5.
+
+Ethical and legal. There were three ethical issues, which were addressed explicitly. The data were gathered from the author's personal handset and subscription; no data from third-party users were recorded; there are no third-party user identifiers anywhere within the data set. The operator name is not included in this report as the findings in Section 3.5 describe a deployed configuration and the intention of their reporting is scientific, not comparative. Negative results were not omitted: Section 5.11 lists four approaches that were tried and failed: one, the ping-pong classifier, would have been a welcome addition to the book had it proved successful.
+
+Cultural. The measurement campaigns were carried out in public roads in normal traffic conditions and the driving was also in accordance with the local traffic regulation. There was no need for access to private premises or to restricted infrastructure.
+
+6.7 Attributes of complex engineering problem solving addressed
+
+6.8 Attributes of complex engineering activities addressed
+
+Project management, resources and budget 6.9
+
+The project took place during two terms of school. The first term was spent identifying the problems, conducting the literature screening of Section 2.3, the first two measurement campaigns, and the construction of the decoding pipeline. The second term was spent formulating and modelling the second & third campaigns (Chapter 4) and evaluating the fourth campaign (Chapter 5) and preparing this report. The fourth campaign was specifically planned following the freeze of all modelling decisions, and is a scheduling decision with a methodological reason: the out-of-sample nature of the result for the highway presented in Section 5.6 relies on this.
+
+The cost is within the departmental group budget of BDT 15,000 per group. This has to do with the fact that the dominant cost in this type of work is field data collection, not computation, and that's why the feasibility floor of Section 5.5 is really an economic rather than a statistical constraint: buy a tighter guarantee, buy more driving.
+
+CHAPTER 7: CONCLUSIONS
+
+7.1 Summary of findings
+
+The objective of this thesis was to see if the next LTE handover can be predicted based on the data already reported by the handset, when, and with what certainty. The answer is that it can, and the five key findings are from 57 drive-test campaigns on a live commercial network in Dhaka and Gazipur – 10,260 samples and 938 handovers, for which ground truth is decoded out of the RRC signalling.
+
+The following handover can be forecast one second ahead of time. Gradient-boosted trees with a discrete-time hazard representation achieve AUROC 0.933 and AUPRC 0.784 with an expected calibration error of 0.024 on the quantities that are only seen at the time of prediction by a handset, but with a base prevalence of 6.7 % only. The AUROC of the deployed Event A3 rule, which is based on the same data as a predictor, is 0.653, with 5.5 % of handovers being detected one second in advance.
+
+The five horizons are consistent with each other when using a single hazard model. By construction, any learner whose output is in the unit interval has ordered horizons, since the probabilities of horizons are recovered as products of per-interval hazards. Measured consequence: 0 % horizon-ordering violations versus 43.6 % (literature of the comparators – five independent classifiers) from one fit, no held-out calibration split and no post-hoc repair. The clear alternative repair (per-horizon isotonic calibration) was applied and it has the effect of increasing rather than decreasing the coherence.
+
+The winner of the models, in the sense of the evaluation protocol, is a model which seems to be used more than others. Grouped-drive splitting is replaced by the standard random-row splitting in the comparator literature, resulting in a 74% and 4% larger AUPRC for one second for a gated recurrent unit and logistic regression, respectively. Since the inflation is proportional to the amount of temporal memory that an architecture possesses, an uncareful protocol just moves the leaderboard up instead of just inflating it. This is a statement concerning the evidence base in the field, not just these models.
+
+The result is generalisable beyond the data it has been developed upon. AUROC is still in the range of 0.909-0.949 holding out each campaign 100% of the time. The highway campaign, which was conducted after all modelling decisions were finalised, achieves the highest lift and lowest calibration error amongst the 4 campaigns and did not affect the headline figure when added to the pool. By using an independently collected public drive-test dataset, the transferred model achieves AUROC 0.752, while the one trained on that dataset gets AUROC 0.745, which suggests that it is the formulation that is being transferred, not the fit.
+
+The warning includes a guarantee, a price. Lastly, conformal risk control is certified on 28 held-out drives, and the full drive is the exchangeable unit. The expected miss rate per drive is kept below a fixed miss rate target: a 20 % target costs 23 % alarm rate and realises 12.6 % misses; a 5 % target costs 61 %. This gives a minimum value of the feasibility floor for the model, namely, α ≥ 1/(n+1) = 0.034 here.
+
+In addition to these, two properties of the deployed network were characterised that have not been modeled in the literature of prediction. The report-conversion rate for A3 is 62.9 % in 2 seconds over 7,385 reports, and is a poor proxy label for a handover since it increases with cell size. And the ping-pong rate on one fixed set of 938 handovers varies between 24.5 % and 41.3 % depending on three choices of definition routinely made in published work, the focus of the work (the carrier relationship: 31.0 % intra-carrier vs 6.5 % inter-carrier) and not the mobility regime (the highway at three times the urban mean speed returns at 31.1 %).
+
+All of these involve the following mechanistic discovery of Section 5.8, the most succinct description of the thesis result: the network responds to the weakest available signal. The AUROC values for dwell time alone are 0.874 and for the serving-to-neighbour gap that Event A3 thresholds on, are 0.566. The difference between the two means that a handover is allowed; the difference between the two and the dwell time means that a handover is imminent; and a permission rule, not a tendency rule, is structurally late.
+
+7.2 Limitations
+
+The restraints of the present study are restated here as they can only determine what can be deducted from the study.
+
+The evidence base is 57 drives, one operator, four days and one radio access technology. The deployed configuration is the same for all four campaigns, so the cross-regime transfer of Section 5.6 is based on a single configuration pair, a second operator will test what a second corridor cannot. The measurement export of 1Hz limits event level detection to 90.5 % and therefore sets an upper limit on each event level measurement reported.
+
+No causal inference is made regarding the benefit of the warning action to be taken. The logging policy is deterministic (meaning that, with a radio state and a configuration, either Event A3 will or will not happen), so that the propensities needed for off-policy evaluation can only be zero or one and the causal estimand is not identified. Only an upper bound for the number of counts was reported.
+
+Finally, the system is an offline predictor that is assessed on recorded data. It has not yet been integrated into a network, and no network KPI has been measured with it in the network.
+
+7.3 Future work recommendations
+
+Five items are derived from those limits, in the order that the limits specify.
+
+A fuzzy regression-discontinuity design at the A3 boundary. This is the first since only it tackles the identification issue, and it's executable on data collected. Event A3 is a sharp threshold on an observable running variable; that is, the treatment is the same locally at the threshold, but systematically everywhere else. This should be achieved through a fuzzy regression-discontinuity design at the boundary, which would identify the local causal effect of the handover decision without having to intervene in a live network.
+
+A second corridor and a second operator. Four days on one network are enough to make a careful study and not enough to make a claim of generality. A second operator would also remove the restriction on a single configuration pair—this is the choice of a single operator, not of LTE itself, and is what the negative A3 offsets reported in Section 3.5 are.
+
+Connecting the warning with a metric of service outcome. The benefit reported here is a counting bound. Tying the warning to a measured throughput or interruption effect – preferably in a testbed in which the action taken on the warning can be varied – would turn that bound into an estimate.
+
+A test for the time to trigger, which is experimental. It has ruled out speed as the driving factor, and has identified time-to-trigger of the dominant configuration profile as the lever for ping-pong, in Section 5.10. The direct test of that inference is varying that parameter under controlled conditions and measuring the resulting rate of return, and it would also provide the treatment variation the above causal design calls for.
+
+Code/data released. Section 5.3's protocol argument is a statement about the way in which results in this field should be obtained and it would be pointless to make such a statement if other people were unable to then reproduce and challenge it. Out of the 22 models audited in Section 2.3, two models release code, and one releases data, the minimum consistent with the argument made by this thesis.
+
+7.4 Concluding remark
+
+This paper does not present a novel learning algorithm, and so it is worth emphasizing right off the bat. Gradient boosting, discrete-time survival analysis and conformal risk control are all well-known methods, and the origin of these methods is clearly stated throughout the thesis. What is new is the combination and the discipline imposed on it: measurement-grade ground truth decoded from signalling instead of counters, which makes multi-horizon outputs coherent by construction, instead of by correction; an evaluation protocol that holds out the mobility unit, and whose value is measured instead of asserted; a guarantee whose exchangeability unit is identified, and whose validity is defended; and a set of results tested on a corridor and a dataset the model has never seen. The protocol audit in Section 2.3 shows that these two ingredients, combination of grouped split and calibration curve and reported false-alarm rate, have not been put together before for this problem, and the least novel ingredients, the grouped split and the calibration curve and the reported false-alarm rate, are the things the field has most consistently ignored.
+
+The Feature Inventory is included in Appendix B.
+
+After Section 4.6's degenerate-feature filter, there are 107 features organised as follows. All rolling statistics are calculated over backward-looking windows that close at the prediction time.
+
+Radio block (83 features). For each of: serving RSRP, serving RSRQ, serving SINR and the corresponding best-neighbour quantities: the instantaneous value, the rolling mean, the rolling standard deviation, the rolling range and the rolling first difference over 3, 5 and 10 second rolling windows, and the serving-to-neighbour gap in each of these quantities and the corresponding rolling statistics over the same windows.
+
+Mobility block (17 features). GPS speed, rolling mean and standard deviation of speed over 3, 5 and 10 s intervals; GPS heading, absolute heading change over the same time intervals; longitudinal acceleration, rolling mean and standard deviation of longitudinal acceleration over the same time intervals; stationarity indicator based on the speed trace.
+
+Signalling block (13 features). Counts the number of measurements reported for each event type in the previous 5 and 10 s; time elapsed since the last measurement reported for each event type (with leakage guard as in Section 4.6); the identifier of the report configuration in effect; and the offset and time-to-trigger values it contains.
+
+History block (7 features). Serving dwell time, time since last handover command, number of handover commands in last 30 and 60 s, number of different serving cells in last 60 s, and indication of previous handover being a return to previous cell.
+
+Reproduction notes are provided in Appendix C.
+
+The analysis pipeline is structured as a series of numbered stages, each of which stores its results in a versioned directory, and stores the configuration it was executed with. The steps are: signalling decoding and configuration-timeline construction, drive segmentation and quality control, feature construction, long-format expansion for the hazard formulation, model fitting under the grouped rotation, calibration, conformal threshold certification, event-level scoring, transfer and external validation, and point-process fitting with residual testing.
+
+There are two conventions observed throughout which should be noted as they are the cause of most failures in reproduction of work such as this. Firstly, no stage can read a file created by a subsequent stage, so the dependency order is a directed acyclic graph which can be checked mechanistically. Second, all tables listed in Chapters 4 and 5 are redone from the stage output instead of copied, so that if any stage output changed the table is automatically updated instead of silently disregarding the change.
+
+The modelling choices made prior to the fourth measurement campaign are specified in a manifest which fixes the set of features, the formulation, the family of models, the hyperparameter search space and the evaluation protocol. The out-of-sample status of the highway result in Section 5.6 is based on that manifest.

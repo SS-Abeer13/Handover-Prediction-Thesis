@@ -1,0 +1,115 @@
+\chapter{Feature Inventory and Reconciliation}\label{app:B}
+\renewcommand{\_}{\textunderscore\allowbreak}
+
+This appendix provides the exhaustive inventory of features, reconciles column counts across all manuscript tables, and specifies the zero-order hold and expiration rules applied to event-triggered neighbour measurements.
+
+\section{Exhaustive Inventory of the 112 Main Features}
+
+The primary predictive model uses 112 features, partitioned into three blocks: 89 radio features, 17 mobility features, and 6 session-level history features. All rolling statistics are computed strictly backward-looking per drive/campaign, closing at the lagged prediction instant $t-1$.
+
+\subsection{Radio Block (89 Features)}
+Because the vendor diagnostic CSV export omits periodic neighbour-cell logging (all candidate \texttt{Best\_N} columns in the raw export are unpopulated), radio features combine synchronous 1~Hz serving RF measurements with causally projected neighbour measurements decoded from RRC \texttt{MeasurementReport} messages.
+
+\begin{enumerate}
+    \item \textbf{Serving RF Features (55 features):} For each of the five serving-cell radio scalars---RSRP (\texttt{serving\_}\allowbreak\texttt{rsrp}), RSRQ (\texttt{serving\_}\allowbreak\texttt{rsrq}), SINR (\texttt{serving\_}\allowbreak\texttt{sinr}), RSSI (\texttt{serving\_}\allowbreak\texttt{rssi}), and CQI (\texttt{serving\_}\allowbreak\texttt{cqi})---the model computes 11 causal transforms:
+    \begin{itemize}
+        \item Instantaneous scalar value (5 features);
+        \item First difference ($d_1 = x_t - x_{t-1}$) and second difference ($d_2 = d_{1,t} - d_{1,t-1}$) (10 features);
+        \item Causal rolling mean over backward windows of 3~s, 5~s, and 10~s (15 features);
+        \item Causal rolling standard deviation over backward windows of 3~s, 5~s, and 10~s (15 features);
+        \item 10-second least-squares causal slope (5 features);
+        \item 3-second fading range ($\max_{3\text{s}} - \min_{3\text{s}}$) (5 features).
+    \end{itemize}
+
+    \item \textbf{Per-Candidate Neighbour Features (18 features):} For the top-3 candidate neighbours ranked by RSRP in the most recent valid measurement report:
+    \begin{itemize}
+        \item Projected neighbour RSRP (\texttt{nbr1\_rsrp}, \texttt{nbr2\_rsrp}, \texttt{nbr3\_rsrp}) (3 features);
+        \item Serving-to-neighbour RSRP gap ($\text{RSRP}_{\text{serving}} - \text{RSRP}_{\text{nbr},i}$) (3 features);
+        \item First difference of neighbour RSRP ($d_1$) (3 features), tracking the \emph{rank position} (the difference between the $i$-th ranked candidate slot across successive time steps, rather than tracking a fixed physical cell identity);
+        \item First difference of serving-to-neighbour gap ($d_1$) (3 features), likewise tracking the rank position;
+        \item Rolling mean gap over 3~s and 5~s windows for each candidate (6 features).
+    \end{itemize}
+
+    \item \textbf{Candidate Summary Features (10 features):} Summary statistics evaluated across all active candidates:
+    \begin{itemize}
+        \item Best candidate RSRP (\texttt{nbr\_best\_rsrp}) and mean candidate RSRP (\texttt{nbr\_mean\_rsrp}) (2 features);
+        \item Candidate spread ($\text{RSRP}_{\text{best}} - \text{RSRP}_{\text{worst}}$) (\texttt{nbr\_spread\_rsrp}) (1 feature);
+        \item Serving-to-best neighbour gap ($\text{RSRP}_{\text{serving}} - \text{RSRP}_{\text{best}}$) (\texttt{gap\_serving\_best\_nbr}) (1 feature);
+        \item First difference of serving-to-best gap ($d_1$) (1 feature);
+        \item Rolling mean of serving-to-best gap over 3~s, 5~s, and 10~s windows (3 features);
+        \item Duration of the A3-like lead streak, measuring how many consecutive seconds the best candidate has exceeded the serving cell (\texttt{nbr\_better\_streak\_s}) (1 feature);
+        \item Serving cell rank among candidate cells (\texttt{serving\_rank\_among\_cands}) (1 feature).
+    \end{itemize}
+
+    \item \textbf{Missingness Indicator Masks (6 features):}
+    \begin{itemize}
+        \item Binary missingness flags for serving RSRP, RSRQ, and SINR (3 features, constant zero on this corpus but retained so feature construction is independent of dataset completeness);
+        \item Binary missingness flags for candidate 1, candidate 2, and candidate 3 RSRP (3 features, active when no valid neighbour report exists within the expiration window).
+    \end{itemize}
+\end{enumerate}
+Total for Radio block: $55 + 18 + 10 + 6 = 89$ features.
+
+\paragraph{Diagnostic Staleness Tracking vs.\ Model Inputs.}
+During dataset ingestion and signalling merging, the pipeline derives two continuous staleness features: \texttt{mr\_age\_s} (time elapsed since the most recent \texttt{MeasurementReport} of any type) and \texttt{nbr\_age\_s} (time elapsed since the most recent report carrying neighbour measurements). These columns are used exclusively for quality control, audit characterisation (e.g., verifying that 56\% of sample rows carry neighbour reports within 3.0~s, with median age 0.27~s), and case-study visualisation. They are omitted from the primary 89-dimensional radio feature vector, which relies instead on the explicit missingness masks and causal rolling gaps. The binary missingness mask operates as a coarse expiration gate; continuous decay weighting remains an area for future investigation.
+
+\subsection{Mobility Block (17 Features)}
+Constructed from the 1~Hz GPS kinematic stream, lagged one row:
+\begin{enumerate}
+    \item Instantaneous speed in km/h (\texttt{speed\_kmh}) and longitudinal acceleration (\texttt{accel\_kmh\_s}) (2 features);
+    \item Causal rolling mean and standard deviation of speed over 3~s, 5~s, and 10~s windows (6 features);
+    \item Sine and cosine of vehicle bearing angle (\texttt{bearing\_sin}, \texttt{bearing\_cos}) (2 features);
+    \item Heading angular difference (\texttt{bearing\_change\_deg}) and rolling mean of absolute heading change over 10~s (\texttt{bearing\_change\_}\allowbreak\texttt{abs\_mean}) (2 features);
+    \item Cumulative distance travelled in drive (\texttt{dist\_travelled\_m}) (1 feature);
+    \item Stationarity indicator ($\text{speed} < 2\text{ km/h}$) (\texttt{is\_stopped}) and stationary duration streak (\texttt{stop\_duration\_s}) (2 features);
+    \item Mobility speed regime indicators: mid-speed ($15 < v \le 40\text{ km/h}$) and fast ($v > 40\text{ km/h}$) (2 features).
+\end{enumerate}
+Total for Mobility block: 17 features.
+
+\subsection{History Block (6 Features)}
+Constructed from millisecond-resolution decoded signalling over the full continuous session:
+\begin{enumerate}
+    \item Time elapsed since the most recent completed handover command (\texttt{t\_since\_prev\_ho\_s}) (1 feature);
+    \item Prior handover indicator (\texttt{has\_prev\_ho}), set to 1 if a prior command exists in the session, 0 otherwise (1 feature);
+    \item Time elapsed since the second-most-recent completed handover command (\texttt{t\_since\_prev2\_ho\_s}) (1 feature);
+    \item Handover command count within the preceding 30~s (\texttt{ho\_count\_30s}) and 60~s (\texttt{ho\_count\_60s}) (2 features);
+    \item Return-to-source indicator (\texttt{last\_ho\_}\allowbreak\texttt{was\_return}), indicating whether the current serving cell matches the cell occupied two handovers prior (1 feature).
+\end{enumerate}
+Total for History block: 6 features.
+
+\section{Neighbour Hold, Staleness, and Expiration Rules}
+Because neighbour cell readings are event-triggered rather than periodic, they are held across the 1~Hz grid according to the following deterministic rules:
+\begin{itemize}
+    \item \textbf{Zero-Order Hold Window:} Each 1~Hz sample grid point $t$ takes the candidate measurements from the most recent preceding \texttt{MeasurementReport} carrying neighbour cells, provided the report timestamp $\tau_{\text{MR}} \le t$ falls within a backward tolerance window of $\text{tolerance\_s} = 3.0\text{ s}$.
+    \item \textbf{Expiration Policy:} When no report carrying candidate neighbour cells has occurred within the preceding 3.0~s, the held neighbour readings expire. All neighbour RSRP and gap features revert to NaN (subsequently imputed with baseline constants), and the corresponding neighbour missingness indicators (\texttt{mask\_nbr*\_rsrp}) are set to 1.
+    \item \textbf{Serving Cell Handover Reset:} When an \texttt{RRCConnectionReconfiguration} with \texttt{mobilityControlInfo} completes, the serving cell changes. All serving-to-neighbour gaps are evaluated against \texttt{serving\_rsrp} provided by the 1~Hz synchronous measurement stream. When a handover completes, the newly committed serving cell supplies subsequent serving measurements; if the new serving cell was previously ranked as a neighbour candidate, candidate rankings are updated to prevent circular self-referencing.
+    \item \textbf{Pipeline Alignment Order:} Zero-order holding operates on the synchronous 1~Hz grid \emph{prior} to the one-row shift. When the one-row lag is applied to remove end-of-second aggregation leakage, the entire held vector is shifted by $+1$ sample interval ($t-1$), ensuring that all held neighbour values, differences, and rolling statistics close strictly at or before $t-1$.
+\end{itemize}
+
+\section{Column Reconciliation Across Tables}
+To prevent ambiguity between the raw CSV export, the lagged feature subsets, and the final design matrix, Table~\ref{tab:B_reconcile} presents the exact column mapping across all chapters. 
+
+We emphasize two essential provenance distinctions:
+First, the raw vendor diagnostic CSV exports contain 113 columns of physical RF and GPS telemetry, without A3 offsets, hysteresis, or time-to-trigger fields. The three configuration parameters (\texttt{a3\_offset\_db}, \texttt{hysteresis\_db}, \texttt{time\_to\_trigger\_ms}) were decoded from Layer~3 RRC \texttt{measConfig} signalling messages and merged during preprocessing into intermediate feature matrices (\texttt{features.parquet}). 
+Second, in the 109-column lagging experiment (Table~\ref{tab:5_2b}), all 109 columns present in the intermediate table (89 radio + 17 mobility + 3 decoded configuration parameters) were shifted by one row to evaluate the spatial and semantic scope of the aggregation leak across feature subsets. In contrast, the primary prediction model (Table~\ref{tab:5_3} and Sections~\ref{sec:5_2}--\ref{sec:5_7}) is trained strictly on the 112-feature vector spanning \texttt{rf} (89), \texttt{mobility} (17), and session \texttt{history} (6). The three configuration parameters were shifted in intermediate storage during the lagging experiment but excluded from the primary predictor's input set; they enter only as part of the 10-feature control-plane signalling block in the ablation of Section~\ref{sec:5_8} ($112 + 10 = 122$ total columns).
+
+\begin{table}[htbp]
+\centering
+\caption{Reconciliation of feature counts across manuscript tables.}
+\label{tab:B_reconcile}
+\vspace{0.4em}
+\singlespacing
+\small
+\begin{tabularx}{\linewidth}{l c X}
+\toprule
+\textbf{Designation} & \textbf{Count} & \textbf{Exact Composition and Table Reference} \\
+\midrule
+Lagged Export Columns & 109 & Total columns lagged in Table~\ref{tab:5_2b}: 89 radio + 17 mobility + 3 configuration parameters decoded from RRC \texttt{measConfig} and merged into the intermediate feature matrix (\texttt{a3\_offset\_db}, \texttt{hysteresis\_db}, \texttt{time\_to\_trigger\_ms}; absent from raw 113-column vendor CSVs). \\
+Serving-Relative Radio Columns & 56 & The 55 serving RF features plus \texttt{serving\_rank\_among\_cands} lagged in Table~\ref{tab:5_2b}. \\
+Neighbour and Gap Columns & 31 & The 18 per-candidate neighbour features + 9 candidate summary features + 1 \texttt{serving\_rank\_among\_cands} + 3 decoded configuration parameters lagged in Table~\ref{tab:5_2b}. \\
+Serving-Relative Subset & 92 & 89 radio features + 3 decoded configuration parameters lagged in Table~\ref{tab:5_2b} (mobility left unlagged). \\
+Main Feature Set & 112 & Primary input vector for all models in Sections~\ref{sec:5_2}--\ref{sec:5_7}: 89 radio + 17 mobility + 6 session history. (The 3 intermediate configuration parameters are shifted during the lagging experiment but excluded from this primary vector). \\
+Full Design Matrix on Disk & 122 & 112 main features + 10 control-plane signalling/configuration features (the 3 configuration parameters re-enter here alongside 7 signalling history counters in Section~\ref{sec:5_8}). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+

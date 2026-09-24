@@ -1,0 +1,746 @@
+=== PAGE 10 ===
+8  
+14.  Rubrics  
+ 
+The undergraduate capstone project will be graded by the members of the examination 
+committee including the project supervisor and members from IAP. The set of rubrics shown in the 
+following table can be used as a sample for grading.   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Criteria 
+                                                           Level of Achievement 
+Excellent 
+5 
+Good 
+4 
+Marginally 
+satisfactory 
+3 
+Needs 
+improvement 
+2 
+Poor 
+≦1 
+Project 
+Synopsis 
+(10%) 
+[CO1, CO2,] 
+       [PO1- 5% 
+PO2- 5%] 
+ 
+ 
+The description is completely 
+clear, succinct, simple, and 
+persuasive. 
+ 
+The description is clear and 
+convincing, however there 
+are some minor issues. 
+The description is 
+sufficient but requires 
+additional clarity, and it 
+does not provide a 
+comprehensive 
+explanation of the project 
+with a clear overview. 
+Few features of the 
+idea are evident, 
+whereas the majority 
+are obscure. 
+It is not really 
+apparent what the 
+proposal is. 
+Appraising the 
+state of the art 
+(10%) 
+[CO1, CO2, CO12] 
+        [PO1- 2.5% 
+PO2- 2.5% 
+ PO12- 5%] 
+There is an adequate analysis 
+of a sufficient number of 
+exactly relevant and 
+contemporary works. 
+a greater quantity of existing 
+works that are precisely 
+relevant but are not recent 
+are reviewed. 
+There is a greater focus 
+on reviewing a larger 
+quantity of existing 
+advancement that are 
+broadly pertinent but are 
+not recent. 
+Only a few works 
+that are widely 
+relevant are 
+reviewed. 
+No analysis of the 
+current advancement 
+of the relevant work 
+available has been 
+conducted. 
+Design 
+competence 
+and economic 
+viability 
+(25%) 
+  [CO3, CO4, CO5, 
+CO6, CO9] 
+ 
+         [PO4- 5% 
+PO8- 2.5% 
+PO5- 2.5% 
+PO11- 5% 
+PO3-10%] 
+ 
+ 
+ 
+The necessary tools, 
+procedures and workflows are 
+clearly stated and absolutely 
+feasible, the design looks 
+economically practical. 
+The necessary tools, 
+procedures and workflows 
+are stated and feasible, the 
+design can be economically 
+practical. 
+It seems that the project's 
+execution methods and 
+procedures are feasible, 
+yet there exists ambiguity 
+from an economical point 
+of view.. 
+The necessary tools, 
+procedures and 
+workflows are 
+vaguely described, 
+the design appears 
+economically 
+impractical. 
+Absence of 
+workflows, 
+impractical design 
+
+=== PAGE 11 ===
+9  
+ 
+ 
+Criteria 
+                                                           Level of Achievement 
+Excellent 
+5 
+Good 
+4 
+Marginally 
+satisfactory 
+3 
+Needs 
+improvement 
+2 
+Poor 
+≦1 
+Project 
+Implementation 
+and Outcome 
+(20%) 
+[CO3, CO5, CO9, 
+CO10] 
+        [PO4- 5% 
+PO5- 5% 
+         PO3- 5% 
+         PO9- 5%] 
+The hypothesis to be 
+explored, probable outcomes, 
+and how they will be 
+distinguished have all been 
+fully and precisely described 
+by the student and both the 
+existing and the proposed 
+models are accomplished 
+successfully 
+The hypothesis to be 
+explored, probable 
+outcomes, and how they will 
+be distinguished have all 
+been fully described by the 
+student and the existing 
+model is implemented and a 
+large portion of the new 
+model is also accomplished. 
+The hypothesis to be 
+explored, probable 
+outcomes, and how they 
+will be distinguished have 
+all been adequately 
+described by the student 
+and the existing model is 
+implemented for 
+benchmarking purposes. 
+The proposed model 
+lacks accurate 
+identification of its 
+individual modules 
+and the hypothesis 
+to be explored, 
+probable outcomes, 
+and how they will be 
+distinguished have 
+been poorly 
+described by the 
+student. 
+No identification of 
+different modules of 
+the project has been 
+done and students 
+have failed to clarify 
+the question to be 
+answered, the 
+possible results, or 
+how they will be 
+distinguished. 
+Socio - 
+Cultural, 
+environmental 
+and ethical 
+impact 
+(15%) 
+ [CO7, CO8] 
+[PO6- 7.5% 
+PO7- 7.5%] 
+The proposed project has a 
+high impact on the 
+environment, society, or 
+culture and also has decent 
+ethical significance. 
+The proposed project has a 
+high impact on the 
+environment, society, or 
+culture but has no ethical 
+significance. 
+The proposed project has 
+a moderate impact on the 
+environment, society, or 
+culture but has no ethical 
+significance. 
+The proposed 
+project has a 
+relatively mild impact 
+on the environment, 
+society, or culture 
+but has no ethical 
+significance. 
+The proposed project 
+has no effect on the 
+environment, society, 
+or culture, and has no 
+ethical significance. 
+Project 
+presentation/p
+oster/defense 
+(10%) 
+[CO10, CO11] 
+          [PO9- 5% 
+PO10- 5%] 
+Students exhibit a superior 
+Capstone Project with an 
+investigation, service learning, 
+or innovative methodologies 
+and present an advanced 
+project poster/defense. 
+Student’s responses clearly 
+show thorough 
+comprehension and depth of 
+the problem beyond the 
+presentation 
+Students exhibit a moderate 
+Capstone Project with an 
+investigation, service 
+learning, or innovative 
+methodologies and present 
+an adequate project 
+poster/defense. 
+Student’s responses show 
+adequate comprehension 
+and depth of the problem 
+beyond the presentation 
+Students exhibit a 
+Capstone Project with an 
+investigation or 
+innovative methodologies 
+and present a project 
+poster/defense properly. 
+Student’s responses show 
+moderate comprehension 
+and depth of the problem 
+beyond presentation 
+Students exhibit a 
+Capstone Project 
+with an investigation 
+of methodologies 
+and present a project 
+poster/defense 
+which lacks proper 
+justification. 
+Student’s responses 
+show inadequate 
+comprehension and 
+depth of the 
+problem beyond the 
+presentation 
+Students fail to 
+present the 
+defense/poster of the 
+project with any kind 
+of justification. 
+Responses from 
+students fail to reveal 
+a depth of insight or 
+comprehension of the 
+issue. 
+Project Report 
+(10%) 
+[CO11] 
+[PO10-10%] 
+Advanced degrees of 
+comprehension and 
+application of the experience 
+are shown in the capstone 
+project report.  The Capstone 
+Project Report demonstrates 
+exceptional knowledge and/or 
+inventiveness. 
+Proper degrees of 
+comprehension and 
+application of the experience 
+are shown in the capstone 
+project report.  The 
+Capstone Project Report 
+demonstrates proper 
+knowledge. 
+Degrees of 
+comprehension and 
+application of the 
+experience are shown in 
+the capstone project 
+report.  The Capstone 
+Project Report 
+demonstrates proper 
+knowledge. 
+Degrees of 
+comprehension and 
+application of the 
+experience are 
+shown in the 
+capstone project 
+report, which lacks 
+the demonstration of 
+proper knowledge. 
+Students fail to 
+generate report for 
+the capstone project 
+ 
+ 
+ 
+ 
+ 
+ 
+
+=== PAGE 12 ===
+10  
+ 
+15. Course Outcomes (COs) and their Mapping with Program Outcomes 
+(POs) 
+ 
+COs CO Statement POs 
+CO1 Apply knowledge of electrical and electronic engineering to the 
+solution of complex engineering problems. PO1 
+CO2 Identify a contemporary real life problem related to electrical and 
+electronic engineering by reviewing and analyzing existing 
+research works. 
+PO2 
+CO3 Determine functional requirements of the problem considering 
+feasibility and efficiency through analysis and synthesis of 
+information. 
+PO4 
+CO4 Select a suitable solution and determine its method considering 
+professional ethics, codes and standards. PO8 
+CO5 
+ 
+Adopt modern engineering resources and tools for the solution of 
+the problem.  PO5 
+CO6 Prepare management plan and budgetary implications for the 
+solution of the problem. PO11 
+CO7 Analyze the impact of the proposed solution on health, safety, 
+culture and society. PO6 
+CO8 Analyze the impact of the proposed solution on environment and 
+sustainability. PO7 
+CO9 Develop a viable solution considering health, safety, cultural, 
+societal and environmental aspects. PO3 
+CO10 Work effectively as an individual and as a team member for the 
+accomplishment of the solution. PO9 
+CO11 Prepare various technical reports, design documentation, and 
+deliver effective presentations for demonstration of the solution. PO10 
+CO12 Recognize the need for continuing education and participation in 
+professional societies and meetings. PO12 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+16.  Organization of the Report 
+ 
+The organization of report will contain the following pages: 
+ 
+Title Page 
+Declaration Page 
+Approval Page 
+Acknowledgements 
+Abstract 
+
+=== PAGE 13 ===
+11  
+Contents Page 
+List of Figures 
+List of Tables 
+Chapter 1: Introduction 
+Chapter 2: Literature Review & Methodology 
+Chapter 3: Main Work (may be extended 2 to 3 chapters) 
+Chapter 4: Results and Discussions 
+Chapter 5: Conclusions 
+References 
+Appendices 
+ 
+ 
+17. Contents of the Chapters 
+ 
+Chapter 1: Introduction 
+A brief description of the background, motivation, and objectives should be placed in this 
+chapter. The organization of this report shall also be included here. 
+ 
+Chapter 2: Literature Review & Methodology 
+A review of the literature found in the research area, with particular emphasis on theories and 
+debates on the subject should be included in this chapter. A review of the methods used to carry 
+out this research with a discussion of the strengths and weaknesses of the approach followed and 
+the approaches rejected will also be placed here. This will place the research into a  broader 
+academic context and may give a theory or hypothesis that someone wishes to test in empirical 
+research. 
+ 
+Chapter 3: Main Work (Design, Implementation, Experimentation, Simulation, etc.) 
+A detailed analysis of theoretical studies and experiments (if any) to carry out this research should 
+be placed in this chapter. 
+ 
+Chapter 4: Results and Discussions 
+An account of what was found from this study and a more critical analysis of the results in 
+which someone discusses the results in the context of the original aims should be placed in this 
+chapter. 
+ 
+ 
+Chapter 5: Conclusions 
+A brief summary of the findings and recommendations for future work should be included in 
+this chapter. 
+ 
+ 
+18.  Format of the Report 
+ 
+I. GENERAL DOCUMENT GUIDELINES 
+ 
+Paper: The project must be printed on good quality white paper on both sides of the paper. 
+
+=== PAGE 14 ===
+12  
+ 
+Length: Minimum length is 40 pages, which only includes the main text and excludes the 
+endnotes and appendices. There is no Maximum number of pages. The project will be evaluated 
+based on quality instead of length. 
+ 
+Margins: Left Margin – 3 cm, Right Margin – 2.5 cm, Top Margin – 2.5 cm, Bottom Margin 
+– 2.5 cm, Header 1 cm, Footer 1 cm. 
+ 
+Font Size and Type: 12-point Times New Roman font. 
+ 
+Line Spacing: Documents should be 1.5-line spacing throughout, except for the text of the table 
+having more than two lines in a cell. 
+ 
+Paragraph Indentions: 1 cm 
+ 
+Order of Materials: Title Page, Declaration Page, Approval Page, Acknowledgments, 
+Abstract, Table of Contents, List of Figures, List of Tables, the Text of the Project, List of 
+References, Appendix. (see the template) 
+Numbering of Pages: Page numbers must be centered 1.5 cm below the bottom margin as set 
+by the footer. There is no heading to the left or right of the page number. The placement of page 
+numbers must be consistent throughout the project. Pages should be numbered sequentially 
+throughout the chapter. Preliminary pages are numbered as follows: 
+ The title page is counted as page i (assumed, do not print number) 
+ The remaining preliminary pages are numbered with lowercase Roman numerals (ii, iiii, 
+etc). 
+ The main body of the text and the reference section are consecutively numbered with 
+Arabic numerals beginning on page “1” and continuing throughout, including text, 
+illustrative materials, a list of references, and appendices. 
+ 
+ 
+II. PRELIMINARY PAGES 
+ 
+The preliminary pages include the title page, declaration page, signature page, 
+acknowledgments, abstract, table of contents, list of figures, and list of tables. No page numbers 
+should be shown for the title page but it is assumed to be page i. Then s tarting from the 
+declaration page until the abstract pages will be numbered with lowercase Roman numerals and 
+considered to be page ii to ix. 
+ 
+ 
+ 
+Title page: (see the template) 
+1. Logo of Islamic University of Technology, Bangladesh. 
+2. Name of Islamic University of Technology, Bangladesh: Title case, Bold, Times New 
+Roman, 14- point, Centered. 
+3. Title of Project: Title case, Bold, Times New Roman, 20-point font, Centered. 
+4. Student’s Name and ID: Title case, Times New Roman, 14-point font, Centered. 
+5. Statement of presentation in the form: “in Consideration of Partial Fulfillment for the 
+Requirements of the Degree of BACHELOR OF SCIENCE IN ELECTRICAL AND 
+ELECTRONIC ENGINEERING”; Times New Roman, 12-point font, Centered. 
+6. Name of the Department: Title case, Times New Roman 14-point font, Centered. 
+3. The term and Year of project submission: Title case, Times New Roman, 14-point font, 
+
+=== PAGE 15 ===
+13  
+Centered. 
+ 
+Declaration page: (see the template) 
+1. The word “DECLARATION” in  uppercase, Bold, Times New Roman, 16-point 
+font, Centered. 
+2. The declaration “I do hereby …… an academic qualification/certificate/diploma or 
+degree: Title case, Times New Roman 12-point font, justified. 
+3. Student’s Name and ID: Title case, Times New Roman, 12-point font, Centered. 
+4. Signature of students with date: Title case, Times New Roman, 12-point font, Centered. 
+The original signature of the students must be put above the name and ID. 
+ 
+Approval Page: (see the template) 
+1. Title of Project: Title case, Bold, Times New Roman, 16-point font, Centered. 
+2. Student’s Name and ID: Title case, Times New Roman, 14-point font, Centered. 
+3. Approval from project supervisor in the form: lower case, Times New Roman, 12-point 
+font, Centered. 
+4. Supervisor’s name with title and Academic Position: Times New Roman, 12-point font, 
+Centered. 
+5. Original Signature of t h e  project supervisor in the final copy is required (if 
+submitting electronically, the signature page is left unsigned) 
+ 
+Acknowledgments (see the template) : This page is to thank those who have helped in the 
+process of obtaining the degree. Permission to quote copyrighted material is listed here, as well 
+as acknowledgments for grants and special funding if any. This should occupy a single page 
+and be 1.5-line spaced. 
+ 
+Abstract (see the template) : The project must contain an abstract. An abstract is a concise 
+account of the project or dissertation and should state the problem, describe the procedure or 
+method used, and summarize the conclusions reached. Paragraphs are formatted with the same 
+layout used in the document. This should occupy a single page and be 1.5-line spaced. 
+ 
+Table of Contents (see the template): Follow the format of the abbreviated sample included in 
+these instructions. For clarity, use 12 -point font. All chapter titles, headings, and subheadings 
+should appear in the Table of Contents. The font style of items listed within the  Table of 
+Contents should be the same as the font used within the text (e.g. headings listed within the 
+Table of Contents are in the same font style as in the body of the project). 
+ 
+List of Figures and List of Tables (see the template): The list of figures/ tables must conform 
+to the examples provided in the template and include all tables or figures (i.e. illustrations, 
+photographs, pie/bar charts, and maps) within the body of the project li sted by table/figure 
+number and table/figure caption. The figure number should be placed below the figure followed 
+by the figure caption and be centered. The table number should be placed above the table 
+followed by the table caption and be centered. 
+ 
+ 
+III. BODY OF THE REPORT: 
+ 
+Page numbering: The body of the project and appendices are numbered in Arabic numerals 
+starting with 1 and continuing until the last page of the project. 
+ 
+Chapter: The first line of the first chapter will be “CHAPTER 1”, uppercase, 20-point bold. 
+
+=== PAGE 16 ===
+14  
+The title of the chapter in capital letters and centered appears two lines below. Use an inverted 
+pyramid and 1.5 line spacing succeeding lines of the title if it is longer than one line. Three lines 
+below the chapter title, place the first line of text. Succeeding chapters, “ CHAPTER 2”, etc., 
+should follow this same format. Do not use terminal punctuation on any chapter headings. Each 
+chapter should begin on a new page. An example is shown on the following page. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CHAPTER 1 
+INTRODUCTION 
+ 
+ 
+The first level of chapter 1 will be placed here. 
+ 
+ 
+Headings and Subheadings of Chapters: The subdivision within a chapter or section does not 
+begin on a new page unless the preceding page is filled. If there is no room for the complete 
+
+=== PAGE 17 ===
+15  
+heading and at least two lines of text at the bottom of a page, the new subdivision should begin 
+on the next page. All chapter titles and headings should follow the following example. 
+Example 
+ 
+1.1 First level heading: Sentence case, Bold, 12 point. 
+You would indent and start writing the text here 
+ 
+1.1.1 Second level heading: Sentence case, Bold, 12 point. 
+You would start writing the text here after the period and keep wrapping around 
+underneath the subheading like this. 
+ 
+1.1.1.1. Third level heading: Lower case, Italic, 12 point. 
+You would start writing the text here after the period and keep wrapping around 
+underneath the subheading like this. 
+ 
+Captioning and Numbering the Figures: The numbering of figures will start with the chapter 
+number followed by the numbers in Arabic numerals by placing a decimal point in between. 
+For example, figure numbers in chapter 2 will start as Figure 2.1, Figure 2.2, and so on. The 
+figure caption will follow the figure number and should be placed at the bottom of each figure. 
+Below is an example of a figure caption and number. 
+ 
+ 
+Captioning and Numbering the Tables: The numbering of tables will start with the chapter 
+number followed by the numbers in capital Roman by placing a hyphen in between. For 
+example, table numbers in ch apter 3 will start as Table 3.1, Table 3.2, and so on. The Table 
+caption will follow the Table number and should be placed at the top of each Table. Below is 
+an example of a figure caption and number. 
+ 
+Table 3.1 Circuit parameters of proposed immittance circuit 
+ 
+Components Values 
+V1 200 [volt] 
+L1 = L2 23.6 mH 
+C 15.6 F 
+r1 = r2 0.28  
+ 
+ 
+ 
+IV. REFERENCES 
+ 
+
+
+=== PAGE 18 ===
+16  
+Be sure that if a work is cited in the text, it must be in the references and vice versa. The 
+references must be cited in the text in ascending order as they are listed and be single-line 
+spaced. Concerning the format of the references, using a hanging indent i.e. the first line of the 
+reference is flushed to the left margin and the rest of the reference is indented ½ cm. The first 
+and middle names (if given) of the author(s) are listed in initials only. The title of the work  
+should be placed within double inverted commas followed by the journal title/conference name 
+(in italic), issue/volume number, page numbers, and year of publication in parentheses except 
+for books, electronic resources, and company reports. The above rules for listing references  of 
+journal articles, conference proceedings, books, and electronic sources (websites) are presented 
+with examples as follows: 
+ 
+1. For Journal Articles 
+[1] A. Vaskuri, H. Baumgartner, P. Kärhä, G. Andor, and E. Ikonen, "Modeling the spectral 
+shape of InGaAlP-based red light-emitting diodes," Journal of Applied Physics, vol. 118, no. 
+20, pp. 203103-1–203103-7, Jul. 2015 
+ 
+2. For Conference Proceedings 
+[2] Mingyue Yu, Anfeng Liu, Neal N. Xiong, Tian Wang, "An Intelligent Game -Based 
+Offloading Scheme for Maximizing Benefits of IoT -Edge-Cloud Ecosystems", IEEE 
+Internet of Things Journal, vol.9, no.8, pp.5600-5616, 2022. 
+ 
+3. For Dissertation/Project 
+[3] Knight, K. A., “Media epidemics: Viral structures in literature and new media”, A Doctoral 
+Dissertation presented at University of California, Santa Barbara (January, 2011). 
+ 
+4. For Internship Report 
+[4] Alejandro Maria, “Development of a GUI for a SAXS data analysis modeling program for 
+modeling proteins in solution”, An internship report presented at Joseph Fourier University, 
+France (December, 2009). 
+ 
+5. For Books 
+[5] D Jennings, A. Flint, Introduction to Medical Electronics Applications, John Wiley and Sons, 
+4th Edition (2010). 
+ 
+6. For Electronic Resources (websites) 
+[6] http://www.neural-semiconductor.com/home accessed on 23 October, 2022. 
+ 
+7. For Company/Industry/Organization Report 
+[7] NSL Annual report, July, 2022. 
+ 
+ 
+V. APPENDICES 
+ 
+Appendices may include data tables, source codes, analytical procedures, survey forms, or any 
+other supplementary material provided by the supervisory committee. Each Appendix begins 
+on a separate page. Each Appendix is labeled with ascending letters (e.g. A, B, C, etc.) and a title. 
+Pages should be numbered in sequence with the rest of the project. The same margins and line 
+spacing should be maintained as used in the body of the text. 
+ 
+ 
+ 
+
+=== PAGE 19 ===
+17  
+HARDBOUND COPY 
+ 
+A hardbound copy cover (top and side views) is given on the following 2 pages. 
+  
+
+=== PAGE 20 ===
+18  
+ 
+ 
+ 
+ISLAMIC UNIVERSITY OF TECHNOLOGY  
+ 
+ 
+
+
+=== PAGE 21 ===
+19  
+ 
+ 
+ 
+ 
+ 
+ 
+
+

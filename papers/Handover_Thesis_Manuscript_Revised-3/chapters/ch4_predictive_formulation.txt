@@ -1,0 +1,277 @@
+CHAPTER 4
+
+
+# PREDICTIVE FORMULATION AND SYSTEM DESIGN
+
+
+This chapter develops the predictive system. Section 4.1 formalises the task and fixes notation. Section 4.2 presents the obvious formulation, the independent multi-horizon classifier, and shows why it is structurally defective. Section 4.3 presents the discrete-time survival formulation adopted in its place, and Section 4.4 gives its likelihood under censoring. Section 4.5 explains why class reweighting, the standard reflex on a rare-event task, is inadmissible under this formulation. Sections 4.6 and 4.7 describe the features and the models. Section 4.8 describes calibration, Section 4.9 the evaluation protocol, Section 4.10 the risk-control procedure, and Section 4.11 the point-process analysis used to characterise handover clustering.
+
+Each modelling subsection is presented in the same order: the problem that motivates the component, the design of the component, and the technical advantage it confers over the alternative it replaces.
+
+
+## 4.1 Problem formalisation
+
+
+Let a drive d consist of samples indexed by t on a uniform one-second grid. At each sample the handset observes a feature vector xt constructed from measurements available at or before t. Let Tt denote the time remaining from t until the next handover command on the same drive.
+
+The task is to estimate, for a set of horizons h1 &lt; h2 &lt; … &lt; hK, the cumulative incidence
+
+F_k(x_t) = P( T_t ≤ h_k │ x_t ),   k = 1 … K	(4.1)
+
+with K = 5 and horizons of 0.5, 1, 2, 3 and 5 seconds. Samples for which the drive ends before the next handover occurs are right-censored: the event is known not to have occurred within the observed window, but its eventual time is unknown. The formulation that follows handles such samples, and Section 4.4 gives the likelihood that does so. It should be said immediately, however, that on this dataset the machinery is exercised by nothing: the row filter of Section 3.7 keeps only rows carrying a full five-second follow-up window inside their own campaign, so no retained row is censored inside the horizon grid. The censoring treatment is therefore developed because the formulation is not specific to these four campaigns — a longer horizon grid or a shorter session would make it bind — and it is not counted anywhere in this thesis as an advantage the measurements demonstrate.
+
+Table 4.1 reports the resulting positive-class prevalence at each horizon, computed on the row set used for every experiment in this thesis: rows with a full five-second follow-up window inside their own campaign and outside the two-second post-handover blank. Using one row set for all five horizons is what makes the prevalence table of Table 4.1 and the hazard table of Table 4.2 two views of the same numbers.
+
+Table 4.1 Positive-class prevalence by horizon on the common row set, and the accuracy obtained by a constant negative prediction.
+
+
+[TABLE]
+
+Horizon | Prevalence | Accuracy of a constant “no handover”
+
+0.5 s | 3.7 % | 96.3 %
+
+1 s | 6.8 % | 93.2 %
+
+2 s | 12.6 % | 87.4 %
+
+3 s | 17.6 % | 82.4 %
+
+5 s | 26.1 % | 73.9 %
+
+[/TABLE]
+
+
+Table 4.1 is the reason accuracy is not reported anywhere in this thesis. At the one-second horizon a model that never predicts a handover already scores 93.2%, which exceeds several of the headline accuracies reported in the audited literature of Section 2.3.
+
+
+## 4.2 The multi-horizon binary formulation and its defect
+
+
+Motivation. The most direct approach to Equation (4.1) is to define, for each horizon, a binary label yt,k = 1{ Tt ≤ hk } and fit K independent classifiers. This is the formulation implied by every model in the audit of Section 2.3 that predicts at more than one horizon, and it requires no special machinery.
+
+The defect. The K classifiers are fitted independently and are therefore free to produce estimates that violate the ordering implied by their own definitions. Because the event { T_t ≤ h1 } is contained in { T_t ≤ h2 } whenever h1 < h2, the probabilities must satisfy F1 ≤ F2 ≤ … ≤ FK at every sample. Independent fits do not enforce this, and Section 5.4 measures how often they violate it: on 40.2% of rows.
+
+A violation is not a small numerical irregularity. It is an assertion that a handover is more likely within one second than within three, which is impossible, and it destroys the interpretation of the output as a probability. An operator presented with such a pair of numbers cannot act on either.
+
+Why post-hoc repair is not free, and where it is. The defect can be repaired after the fact by projecting the K outputs onto the monotone cone — a per-row cumulative maximum, or the pool-adjacent-violators projection — or by calibrating each horizon separately with the isotonic regression of Zadrozny and Elkan [34], which is the standard non-parametric alternative to the temperature scaling of Guo et al. [33] and is preferred here because temperature scaling is monotone in the score and so cannot change a horizon ordering at all. All three repairs are implemented and reported in Section 5.4 as controls, and the first two need no held-out split and reach zero violations by construction, exactly as the hazard formulation does. What remains of the case for the hazard formulation, after the concessions this section and Section 5.4 make, is narrow and should be stated as such: it achieves coherence from one fit rather than five, and it calibrates better than the projected controls at the horizons where the output is usable as a probability. Two advantages claimed for it elsewhere in the literature do not apply to this data and are withdrawn here. It does not rank better — Section 5.4 measures the hazard arm slightly below the independent control, well inside the per-campaign spread. And it does not inherit any benefit from the censoring treatment of Section 4.4, because no row in this dataset is censored inside the horizon grid; the censoring-aware likelihood is correct and general, and on these four campaigns it is inert. That leaves a convenience argument and a calibration argument, and the abstract and Chapter 7 now say so.
+
+
+## 4.3 The discrete-time survival formulation
+
+
+Motivation. The ordering constraint is a consequence of the definition of cumulative incidence, so the natural remedy is to estimate a quantity from which ordering follows automatically, rather than to estimate the ordered quantities directly and repair them.
+
+Design. Partition the time axis into K bins whose upper edges are exactly the horizons of interest:
+
+B_1 = (0, h_1],  B_2 = (h_1, h_2],  …,  B_K = (h_{K−1}, h_K]
+
+and define the discrete-time hazard as the probability that the event falls in bin k given that it has not occurred by the start of that bin:
+
+λ_k(x) = P( T ∈ B_k │ T > h_{k−1}, x )	(4.2)
+
+The survival function is the product of per-bin survivals,
+
+S_k(x) = Π_{j=1..k} ( 1 − λ_j(x) ) = P( T > h_k │ x )	(4.3)
+
+and the cumulative incidence required by Equation (4.1) is its complement, which is the product-limit identity:
+
+F_k(x) = P( T ≤ h_k │ x ) = 1 − Π_{j=1..k} ( 1 − λ_j(x) )	(4.4)
+
+Technical advantage. Monotonicity is now a theorem rather than a hope. Since λj ∈ [0,1], every factor (1 − λj) lies in [0,1], so
+
+S_{k+1} = S_k · ( 1 − λ_{k+1} ) ≤ S_k   ⟹   F_{k+1} ≥ F_k	(4.5)
+
+The argument uses no property of the learner beyond the range of its output. Any model that emits a value in [0,1] per bin produces a coherent set of horizon probabilities under Equation (4.4). This is why the coherence result reported in Section 5.4 is learner-independent while the calibration result is not, and it is the single most important structural property of the system developed here.
+
+Figure 4.1 illustrates the two formulations side by side.
+
+Figure 4.1 illustrates the two formulations side by side.
+
+
+## 4.4 The likelihood under censoring
+
+
+Let kt be the bin in which the event occurs for sample t, and let ct be the last bin fully survived before censoring. Define the at-risk set Rt = {1 … min(kt, ct)} — the bins the sample actually entered — and the per-bin indicator zt,k = 1{ k = kt }. The discrete-time survival log-likelihood then collapses into a single expression covering both the censored and uncensored cases:
+
+ℓ = Σ_t Σ_{k ∈ R_t} [ z_{t,k} log λ_k(x_t) + (1 − z_{t,k}) log(1 − λ_k(x_t)) ]	(4.6)
+
+Equation (4.6) is exactly a binary cross-entropy over the expanded set of (sample × at-risk bin) pairs. The practical consequence is that fitting a discrete-time survival model requires no specialised software: the data are expanded from wide to long format, the bin index k is appended as a feature so that the model can learn the shape of the baseline hazard, and a single binary classifier is fitted. A censored sample contributes a (1 − λk) term for every bin it survived rather than being discarded.
+
+On this dataset the expansion takes the 8,586 usable rows to 39,435 (sample, bin) pairs. Because every retained row carries a full five-second follow-up window inside its own campaign, no row is censored inside the horizon grid, and the measured per-bin hazards chain exactly to the prevalences of Table 4.1 by Equation (4.4). Table 4.2 reports both, side by side, as an arithmetic check on the implementation.
+
+Table 4.2 Measured discrete-time hazard by bin, and the cumulative incidence it implies, against the prevalence of Table 4.1. The two agree exactly by construction.
+
+
+[TABLE]
+
+Bin | Interval | At risk | Events | Hazard | F(h) from hazards | Prevalence (Table 4.1)
+
+1 | (0, 0.5] s | 8,586 | 319 | 0.0372 | 0.0372 | 0.0372
+
+2 | (0.5, 1] s | 8,267 | 264 | 0.0319 | 0.0679 | 0.0679
+
+3 | (1, 2] s | 8,003 | 497 | 0.0621 | 0.1258 | 0.1258
+
+4 | (2, 3] s | 7,506 | 433 | 0.0577 | 0.1762 | 0.1762
+
+5 | (3, 5] s | 7,073 | 730 | 0.1032 | 0.2612 | 0.2612
+
+[/TABLE]
+
+
+
+## 4.5 Why class reweighting is inadmissible here
+
+
+The standard response to a rare-event task is to reweight the positive class, for example through the scale_pos_weight parameter of a gradient-boosting implementation. That response must not be used in the hazard arm, for a reason specific to Equation (4.4).
+
+Reweighting the positive class by a factor w transforms the fitted probability monotonically,
+
+λ̃ = w λ / ( w λ + (1 − λ) )	(4.7)
+
+Ranking metrics are invariant under this transformation, since AUPRC and AUROC depend only on the order of scores. The probability scale, however, is not. Writing the reweighted hazards as λ̃_k ≈ w λ_k for small λ_k, the survival function is transformed as
+
+S̃_k = Π_j (1 − w λ_j) ≈ (S_k)^w,   so   F̃_k ≈ 1 − (1 − F_k)^w	(4.8)
+
+Equation (4.8) replaces a compounding claim made in an earlier draft of this work, which stated that a per-bin multiplicative error ε grows as (1+ε)^k with the horizon. That is not what the product-limit identity does: for small hazards the relative distortion of F_k is bounded by w and is largest at the shortest horizon, while the absolute distortion grows with F_k and is therefore largest at the longest. Either way the calibrated interpretation is destroyed while the ranking is untouched, which is the reason both the hazard arm and the independent-classifier control arm are fitted unweighted, and the fairness of the comparison between them is a secondary benefit.
+
+
+## 4.6 Feature construction
+
+
+Motivation. The system must predict from quantities a handset actually possesses at the instant of prediction. Two constraints follow: no feature may use information from the future, and no feature may use information from a different drive.
+
+Design. The feature vector at the prediction instant t has three blocks and 112 columns in total: 89 radio, 17 mobility and 6 history. The radio and mobility blocks are built from the one-hertz export; the history block is built from the decoded signalling. A further 10 signalling and configuration columns are built but withheld from every learner outside the ablation of Section 5.8, so the design matrix on disk has 122 columns while the main feature set has 112; Table 4.3 gives the reconciliation, and every count quoted anywhere in this thesis is generated from it. Two rules govern the construction of the blocks, and the first is the single most consequential decision in this thesis.
+
+Alignment. An export row stamped t summarises an interval that ends after t, not before it: Section 5.1 shows that in 76% of handovers the row stamped inside the second before the handover command already carries the post-handover serving cell, against a background rate of 12% three rows earlier. Every export-derived feature is therefore lagged by one row, so that a prediction made at t uses only the row closing at or before t. Nothing else in this thesis changes as much as this does.
+
+History from the event clock, not from the export. Time since the previous handover command, the number of commands in the previous 30 and 60 seconds, and whether the previous command was a return are computed from the decoded signalling, whose timestamps are exact to the millisecond, and over the whole continuous session rather than within a 180-second block. Computing them per block left a third of every block with a truncated history, and computing dwell time from the export's serving-cell column imports the alignment error described above: that single substitution moves the dwell feature's own AUROC from 0.873 to 0.664.
+
+
+[TABLE]
+
+Block | Count | Source | Content
+
+Radio | 89 | 1 Hz export, lagged one row | Serving and neighbour RSRP, RSRQ, SINR, RSSI, CQI; rolling mean, standard deviation, range, slope and first difference over 3, 5 and 10 s; serving-to-neighbour gaps; missingness indicators
+
+Mobility | 17 | 1 Hz export, lagged one row | GPS speed, heading change, acceleration, stop duration and mobility state, with their rolling statistics
+
+History | 6 | decoded signalling, session-level | Time since the previous and second-previous handover command, command counts in the previous 30 and 60 s, whether the previous command was a return
+
+Main feature set | 112 |  | used by every learner in Sections 5.2 to 5.8
+
+Signalling (ablation only) | 10 | decoded signalling | A3 and all-event report counts in (t−w, t], time since the last A3 report, A3 hold time, and the offset, hysteresis and time-to-trigger in force
+
+Design matrix as built | 122 |  | the main set plus the signalling block; learners outside Section 5.8 are given the main set only
+
+[/TABLE]
+
+
+Every rolling window is strictly backward-looking and closes at the lagged row, and window computation is performed per campaign so that no window spans a session boundary. Scalers, imputation values, thresholds and calibrators are fitted inside the training partition of each fold only.
+
+The signalling block is reported as an ablation rather than used in the main arm. It counts measurement reports by event type in the windows (t − w, t] for w in {1, 2, 5} seconds, the time since the most recent A3 report, how long the A3 entry condition has held, and the offset, hysteresis and time-to-trigger in force. These are quantities the network itself holds at t, so using them is legitimate; they are separated out because a handset-side predictor may not have them, and because their contribution is worth reporting on its own (Section 5.8).
+
+
+## 4.7 Models compared
+
+
+Seven learners are compared under identical folds, identical seeds, the identical hazard formulation and the identical feature matrix. The last of those is a change from an earlier draft, in which the sequence models consumed raw per-second measurements while the tabular models received the engineered features and the history block; under that arrangement the comparison varied the inputs as well as the learner. Here the sequence models consume windows of the ten most recent feature vectors — the same vectors, lagged the same way — so the only thing that varies between arms is the learner.
+
+The Event A3 rule. The deployed rule is scored as if it were a predictor, using the recovered configuration of Table 3.1 to determine when the entry condition of Equation (2.1) holds. This is the most important baseline in the thesis because it is what is presently running in the network.
+
+Logistic regression. A regularised linear model over the 107 features, included as the simplest learner that can use the full feature set.
+
+Gradient-boosted trees. LightGBM [30] is the primary model. It is chosen for a tabular task with heterogeneous, partly missing features of mixed scale, where axis-aligned splits and native missing-value handling are well matched to the data.
+
+Multi-layer perceptron. A feed-forward network over the same tabular features, included to separate the contribution of non-linearity from that of temporal memory.
+
+Sequence models. A temporal convolutional network, a Transformer encoder and a gated recurrent unit, each consuming a window of raw per-second measurements rather than the engineered summary features. These arms test whether a model that learns its own temporal representation outperforms one given hand-constructed rolling statistics.
+
+Every arm receives the same tuning budget: twenty random-search trials per outer fold, scored on a calibration block held out of that fold's training data and separated from it by a 60-second purge. The search is therefore nested inside the evaluation, and the budget is equal by construction rather than by assertion. Section 5.2 reports the outcome.
+
+What that nesting does and does not protect against should be stated, because the totals involved are large: twenty trials across seven learners, four protocols, four outer folds and three seeds, on a row set carrying roughly six hundred positive rows at the one-second horizon. What it protects against is selection on the test campaign: no held-out campaign is ever scored during a search, so the reported metric for any one arm is not an optimised quantity. What it does not remove is selection across arms. The best of seven learners is reported beside the other six, and when the best and the second-best differ by less than the width of their own bootstrap intervals — which Section 5.2 shows is the usual case — the ranking between them is not a finding, and this thesis does not treat it as one. No multiplicity correction is applied, because with four independent units none would be informative; the reader is given the full table and the intervals instead, and every claim in Chapter 5 that turns on a comparison is stated as a paired difference with an interval rather than as an ordering of point estimates.
+
+
+## 4.8 Calibration
+
+
+Ranking quality is insufficient for the task stated in Section 1.3, which requires the asserted probability to correspond to an empirical frequency. Three calibration treatments are evaluated.
+
+Temperature scaling [31] fits a single scalar on a held-out partition, dividing the logits before the sigmoid. It is the least expressive treatment and cannot alter the ranking.
+
+Isotonic regression [32] fits a non-decreasing step function per horizon. It is more expressive and can correct a wider class of miscalibration, but it consumes a held-out split and, applied per horizon, is free to reorder the horizons relative to one another.
+
+The monotone projection repairs an incoherent set of horizon outputs by projecting them onto the monotone cone. It is implemented for the control arm only, since the hazard formulation makes it unnecessary.
+
+Calibration quality is reported as the expected calibration error, computed as the weighted mean absolute difference between confidence and empirical frequency across equal-mass bins, with the Brier score reported alongside it.
+
+
+## 4.9 Evaluation protocol
+
+
+Motivation. The protocol is the component most likely to invalidate a result on data of this kind, for two reasons that are usually conflated. Adjacent one-second samples within a session are near-duplicates, so a random row split places nearly the same row on both sides of it. But 180-second blocks of one continuous session are not independent either: they share cells, traffic, weather, device state and driver. Section 5.3 measures both.
+
+Design. The evaluation protocol has five elements, and a ladder of four splitting rules is reported rather than one.
+
+Units. The primary protocol is leave-one-campaign-out: each of the four campaigns is held out in turn and the model is trained on the other three. A campaign is one continuous session, which is the only unit in this dataset whose independence can be defended. Figure 4.2 illustrates the ladder.
+
+Figure 4.2 The splitting ladder. Leave-one-campaign-out holds out a whole continuous session; blocked cross-validation holds out a contiguous stretch of each session with a 60-second purge on either side; the two leaky protocols draw 180-second blocks, or rows, at random.
+
+Secondary protocols. Three further rules are run on the same data with everything else fixed: contiguous time blocks within each campaign with a 60-second purge between train and test (the blocked cross-validation standard for temporally structured data, following the recommendation of Roberts et al. [35]); random 180-second blocks stratified by campaign, which is the protocol this work used before the audit; and random rows, which is the protocol most of the comparator literature uses. Section 5.3 reports all four.
+
+Repetition and uncertainty. Stochastic learners are run over three seeds and their predictions averaged. Intervals on pooled out-of-fold metrics come from a bootstrap that resamples whole 180-second blocks within each campaign; that interval is conditional on these four sessions and does not include between-day variation, so the per-campaign spread is always reported beside it. Comparisons between learners are reported as per-campaign differences over four paired observations, with the exact sign-test p-value quoted only to show its own resolution limit (0.125 at best). No significance claim is made from four units.
+
+Fold hygiene. The feature scaler, the decision threshold, the probability calibrator and the conformal threshold are fitted inside the training or calibration partition of each fold only, and the calibration partition is separated from the training partition by the same 60-second purge.
+
+Metrics. Four families are reported. Ranking quality is reported as AUPRC, always with the prevalence floor and the lift over it, together with AUROC. Calibration is reported as expected calibration error over fifteen equal-mass bins and Brier score. Coherence is reported as the fraction of rows on which the horizon ordering is violated, with the magnitude of the violations. Event-level cost is reported as the fraction of handover commands detected, the number of false-alarm episodes per hour and per kilometre, and the distribution of lead times. Reporting all four families is deliberate: Wagner et al. [30] show that no single aggregate metric for event detection satisfies all desirable properties.
+
+
+## 4.10 Distribution-free risk control
+
+
+Motivation. A probability is not yet an operating point. Converting the model output into a warning requires a threshold, and an operator is entitled to know what that threshold guarantees on drives it has not seen.
+
+Design. Let λ ∈ Λ index a family of alarm thresholds ordered by decreasing strictness and let R(λ) be a bounded, non-increasing risk. Conformal risk control [20] selects
+
+λ̂ = inf { λ : ( n·R̂(λ) + B ) / ( n + 1 ) ≤ α }	(4.9)
+
+where R̂(λ) is the empirical risk over n exchangeable calibration units and B bounds the loss, here B = 1. The guarantee is that E[Rn+1(λ̂)] ≤ α for a fresh exchangeable unit, distribution-free, with no assumption on the model or on the data-generating process beyond exchangeability.
+
+The exchangeable unit and the loss. The risk is defined per driving unit, not per sample. For a unit d and threshold λ the row-level loss is the fraction of that unit's positive rows scored below the threshold,
+
+R_d(λ) = |{ t ∈ d : y_t = 1 and p̂_t < λ }| / max(|{ t ∈ d : y_t = 1 }|, 1),     (4.9)
+
+which lies in [0, 1] and is non-decreasing in λ, so B = 1 and the bound of Equation (4.10) applies; a unit with no positive row contributes zero. This is a statement about rows, and it is not the statement Section 1.3 promises. A network operator misses a *handover*, not a row, and a handover occupies several rows of its lead window. The event-level loss is therefore also carried through: writing E_d for the handover commands whose lead window lies in unit d, a command at τ is caught at horizon h if some usable row in [τ − h, τ) alarms, and
+
+R_d^ev(λ) = |{ τ ∈ E_d : max_{t ∈ [τ−h, τ)} p̂_t < λ }| / max(|E_d|, 1).     (4.11)
+
+A command with no usable row in its window is counted as missed rather than dropped from the denominator, which is what makes this loss comparable with the detection rate of Appendix A rather than with the row-level miss rate. Section 5.5 reports both, because they differ and because the difference is the interesting part.
+
+R̂(λ) averages the chosen loss over calibration units. The choice of unit is the substantive part of the claim, and it is tested rather than asserted. Section 5.5 reports the procedure twice: once with calibration and test units drawn from the same pool of 180-second blocks, where exchangeability is plausible and the bound should hold; and once with calibration on one whole campaign and the guarantee claimed for a different campaign, where exchangeability is not plausible and the bound is not expected to hold. Reporting the second case is the point: a guarantee whose assumption fails silently is worse than no guarantee.
+
+R_d(λ) = 	{ t ∈ d : y_t = 1 ∧ p̂_t < λ }
+
+and R̂(λ) averages over calibration drives rather than over samples.
+
+Technical advantage, and a design rule that follows from it. Equation (4.9) can be satisfied only if its left-hand side can reach α at all. At the most permissive threshold R̂ = 0, so the smallest attainable value is B/(n+1), giving the feasibility floor
+
+α ≥ 1/(n+1)   ⟺   n ≥ 1/α − 1	(4.11)
+
+Equation (4.12) is a campaign-design rule and a direct corollary of the bound in [21] rather than a new result: a study that wishes to promise a 5 % miss rate needs at least 19 calibration units and one promising 2 % needs 49, whatever the model does. With the 14 calibration blocks available in a held-out campaign here, the tightest expressible target is α ≥ 0.067. The rule is worth stating in a mobility context because campaign size is the binding constraint on what such a study can promise, and because it converts a modelling question into a data-collection question.
+
+A second floor binds the event-level loss, and it comes from the instrument rather than from the calibration set. A command with no usable row in its lead window is missed whatever the threshold, and at the one-second horizon 36.4% of commands are in that position against 12.0% at three seconds. No event-level target below those values is expressible at any threshold, so the sampling rate of the export, and not the model, sets the tightest promise a study on this instrument can make about handovers.
+
+
+## 4.11 Point-process analysis of handover arrivals
+
+
+Motivation. The ping-pong behaviour of Section 5.9 suggests that handovers do not arrive independently. Quantifying that clustering requires a model of the arrival process itself rather than of the per-sample probability.
+
+Design. The handover arrival stream on each drive is modelled as a self-exciting Hawkes process [21], [22] with conditional intensity
+
+μ(t) = μ_0 + Σ_{t_i < t} α · exp( −β ( t − t_i ) )	(4.12)
+
+in which each arrival raises the intensity of subsequent arrivals by α and the excitation decays at rate β. The branching ratio α/β is the expected number of direct offspring per event and summarises the strength of the clustering.
+
+Validation. A fit alone is not evidence of self-excitation. Following the networking precedent of Price-Williams and Heard [24], the fit is validated by the residual analysis of Ogata [23]: the time axis is rescaled by the fitted compensator, and the transformed inter-arrival times are tested against a unit-rate exponential distribution by a Kolmogorov–Smirnov test on held-out drives. Section 5.10 reports both the branching ratio and the outcome of that test, including the respect in which the test rejects the fitted kernel.

@@ -1,0 +1,88 @@
+TOTAL PARAGRAPHS: 69
+TOTAL TABLES: 2
+
+[0] (Normal) This version is substantially cleaner, but it is not yet scientifically consistent enough for final submission. Several corrections are now stated properly in the methods, while the abstract, figures and conclusions still repeat the earlier claims.
+[1] (Normal) I reviewed the PDF’s methods, results, feature inventory, reproduction notes and selected rendered figures and tables. This evaluates the revised manuscript; it does not verify a revised implementation, because no updated notebooks or processing code accompany it. Page references below use the thesis’s printed page numbers.
+[2] (Normal) 1. The neighbor-measurement explanation is improved, but its consequences have not been carried through
+[3] (Normal) Section 4.6, p. 30, now explicitly acknowledges that the CSV neighbor columns are empty. It describes projecting RRC MeasurementReport observations onto the prediction grid using a zero-order hold, with mr_age_s and missingness indicators.
+[4] (Normal) That is a reasonable proposed construction. It answers the earlier question about where neighbor inputs could originate.
+[5] (Normal) However:
+[6] (List Paragraph) Section 3.1, p. 18, still says the radio export contains measurements for detected neighbors and heading.
+[7] (List Paragraph) Section 5.11, p. 63, says the main model avoids reliance on signalling decoding.
+[8] (List Paragraph) Table 4.3 and Appendix B describe neighbor RSRQ and SINR, whereas the new explanation specifically establishes neighbor RSRP.
+[9] (List Paragraph) The feature total remains 112, but no explicit list shows where the newly described age feature fits.
+[10] (Normal) The main model already uses signalling-derived history and now explicitly uses signalling-derived neighbor measurements. The extra ten-feature ablation therefore tests additional signalling features, not whether signalling is needed.
+[11] (Normal) Fix: reconcile the source descriptions throughout, publish the exact feature names, and verify that the reported scores were produced by this construction. Adding the explanation to the manuscript does not establish that the existing results used it.
+[12] (Normal) 2. The physical timing claims remain the largest scientific problem
+[13] (Normal) The manuscript still says:
+[14] (List Paragraph) The decoded command is timestamped at its transmission instant: §3.1, p. 18.
+[15] (List Paragraph) Signalling timestamps are “exact to the millisecond”: §4.6, p. 31.
+[16] (List Paragraph) Command-to-completion timing supplies the execution/update delay \(x\): §5.1, p. 39.
+[17] (List Paragraph) A transition curve recovers an update delay around 60 ms: p. 41.
+[18] (Normal) But §3.6, p. 24, correctly acknowledges that the 0–1 ms intervals reflect logging behavior rather than user-plane interruption.
+[19] (Normal) These statements cannot all support the same physical interpretation. Millisecond timestamp precision is not millisecond event-time accuracy.
+[20] (Normal) The raw audit established a mismatch between the CSV and signalling records. It did not establish how much comes from CSV aggregation, delayed signalling timestamping, buffering or differences between clocks.
+[21] (Normal) Fix: retain the observed mismatch and performance sensitivity. Withdraw the physical-delay estimate unless the event clock and serving-register clock are independently validated. Describe one-row lagging as an empirical correction whose sufficiency remains uncertain.
+[22] (Normal) The LTE protocol specification defines message procedures; it does not validate XCAL’s timestamp semantics. 3GPP TS 36.331
+[23] (Normal) 3. The corrected explanation of blanking still contradicts the conclusion
+[24] (Normal) Section 3.6, pp. 24–25, now correctly explains that blanking and exclusions leave 64.2% eligible coverage, with 35.8% missing.
+[25] (Normal) Yet:
+[26] (List Paragraph) §5.13, p. 66, calls 64.6% an “instrument ceiling.”
+[27] (List Paragraph) §7.1, p. 74, says the instrument’s sampling rate is the binding constraint.
+[28] (List Paragraph) The abstract makes a broad claim about what cannot be expressed on a one-hertz grid.
+[29] (Normal) Our raw-data check found a timestamp in the preceding one-second window for every one of the 957 commands. Applying the two-second blank removed that opportunity for 343 commands.
+[30] (Normal) Fix: describe this consistently as a policy-dependent eligible-window limit. Reconcile 64.2%, 64.6% and the chunk-based figures using explicit denominators.
+[31] (Normal) Also, stability of AUPRC lift across blank durations does not demonstrate stability of event detection: blanking changes which events can receive a warning.
+[32] (Normal) 4. The conformal section is better, but its numerical implementation remains unresolved
+[33] (Normal) Section 5.5 now correctly distinguishes expected risk from requiring every rotation to meet the target. It reports mean loss 0.153 at target 0.20, alongside 83% of rotations meeting that target.
+[34] (Normal) However, the abstract and conclusion still describe a guarantee whose assumption was “tested.” Observed compliance does not establish exchangeability, and twelve overlapping rotations are not twelve independent experiments.
+[35] (Normal) The fallback discrepancy also remains:
+[36] (List Paragraph) With \(n=14\), the smallest corrected empirical bound is \(1/(14+1)=0.0667\).
+[37] (List Paragraph) Thus a target of 0.05 cannot satisfy that inequality.
+[38] (List Paragraph) Under the stated fallback, threshold zero alarms on every eligible row and produces zero row-level miss loss.
+[39] (List Paragraph) Table 5.9 instead reports 86% alarms and 0.018 loss.
+[40] (Normal) Different calibration-unit counts could explain different behavior, but the table must identify them explicitly. Currently, the equation, fallback and reported row do not reconcile.
+[41] (Normal) Fix: reproduce the threshold calculation for each setting and publish calibration-unit counts, fallback usage and realized losses. Keep the claim exploratory where assumptions are not justified. Conformal Risk Control
+[42] (Normal) 5. Held neighbor values cannot establish continuous radio crossings
+[43] (Normal) The new feature description uses irregular reports held between observations. Yet §5.11, p. 63, interprets the case-study curves as showing that neighbors “genuinely overtook” the serving cell and the network declined a handover.
+[44] (Normal) A held neighbor value and a fresher serving measurement are not necessarily simultaneous observations. Their curves crossing can reflect measurement age.
+[45] (Normal) Fix: show report observation markers, measurement age and gaps. Describe the figures as comparisons of available recorded measurements. They cannot reconstruct the continuous A3 condition or prove a declined network decision.
+[46] (Normal) 6. Several modelling descriptions still disagree
+[47] (Normal) The Hawkes discussion itself is improved: it now acknowledges that model rejection may reflect background-rate variation or missing covariates. The caption undermines that correction.
+[48] (Normal) 7. The literature and external-validation problems remain
+[49] (Normal) Section 2.3 says Kabeer and Mandapati were excluded from the audit counts, but Appendix D includes them as entries 2 and 6.
+[50] (Normal) Section 5.7 also repeats that the public dataset does not publish a periodic radio export. Its public description lists raw CSV radio measurements, velocity, cell IDs and signalling. That does not establish compatibility, but it requires inspecting the files before asserting absence. Dataset description
+[51] (Normal) The PDF correctly limits external validation to a six-feature signalling model. Retain that distinction.
+[52] (Normal) A separate citation error: §4.7 cites [30] for LightGBM, but reference [30] is Wagner’s anomaly-detection metrics paper.
+[53] (Normal) 8. Presentation and cross-references need a systematic correction
+[54] (Normal) The overall typography is readable, but several tables are not:
+[55] (List Paragraph) Table 3.3, p. 23: approximately 4.5-point text.
+[56] (List Paragraph) Table 5.9, p. 50: approximately 3.1-point text.
+[57] (List Paragraph) Table 5.14, p. 57: approximately 6.1-point text.
+[58] (Normal) Split these tables or use landscape pages. Do not shrink them further.
+[59] (Normal) Other visible problems include:
+[60] (List Paragraph) Figure 3.4 uses counts 290, 174, 297, 177, while Table 3.2 uses 307, 176, 297, 177. These may represent filtered versus raw events, but the distinction is not explicit.
+[61] (List Paragraph) References to “Table 5.2b” remain although the corresponding table is numbered 5.3.
+[62] (List Paragraph) The transfer discussion refers to Table 5.9 while the transfer table is 5.11.
+[63] (List Paragraph) The negative-results introduction refers to Table 5.15 while the actual table is 5.17.
+[64] (List Paragraph) Duplicate paragraphs remain in Chapter 2.
+[65] (List Paragraph) Stray “APPENDIX C” and “APPENDIX D” labels appear before their actual opening pages.
+[66] (Normal) My recommendation: retain the research direction, but do not treat this PDF as final. First verify that the report-derived neighbor construction and timing rules actually produced the reported results. Then reconcile the risk-control calculations. Finally, regenerate the abstract, conclusions, captions and references from those verified results.
+[67] (Normal) The revision has improved the explanations. It has not yet demonstrated that the implementation and all headline claims agree with those explanations.
+
+--- TABLE 0 ---
+['Area', 'Assessment']
+['Research direction', 'Defensible as a measurement and evaluation study']
+['Description of neighbor inputs', 'Improved, but conflicts remain']
+['Timing validity', 'Major unresolved issue']
+['Evaluation and risk control', 'Better explanations, inconsistent conclusions']
+['Reproducibility', 'Still unverified']
+['Presentation', 'Several tables are effectively unreadable']
+
+--- TABLE 1 ---
+['Location', 'Remaining conflict', 'Required correction']
+['§4.7, pp. 32–33', 'Sequence models first consume engineered feature vectors, then “raw per-second measurements”', 'State the actual model inputs']
+['§4.7', 'Ten feature vectors versus one tabular vector described as identical information', 'Give tabular models equivalent history or qualify the comparison']
+['Table 4.3 versus Appendix B', 'Different history definitions and signalling window lengths', 'Generate both from the actual feature list']
+['§5.10, p. 60', '“No time-to-trigger or offset variation anywhere”', 'Distinguish a stable set of profiles from variation between profiles']
+['Figure 5.17, p. 61', 'Caption says branching ratios “confirm strong self-excitation”', 'Match the qualified, noncausal interpretation in the body']

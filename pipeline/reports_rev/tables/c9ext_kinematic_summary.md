@@ -1,0 +1,3 @@
+|   traces |   traces_where_forward_fits_better |   share_forward |   median_abs_err_forward_m |   median_abs_err_backward_m |   median_corr_forward |   median_corr_backward |
+|---------:|-----------------------------------:|----------------:|---------------------------:|----------------------------:|----------------------:|-----------------------:|
+|       59 |                                  4 |          0.0678 |                     9.4444 |                      9.4444 |                0.1704 |                 0.1693 |

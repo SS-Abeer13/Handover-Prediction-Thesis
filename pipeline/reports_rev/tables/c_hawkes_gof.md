@@ -1,0 +1,3 @@
+| test                                     |   n_residuals |   ks_statistic_D |   p_value |   mean_residual | rejects_exponential_kernel_at_0.05   |
+|:-----------------------------------------|--------------:|-----------------:|----------:|----------------:|:-------------------------------------|
+| Ogata time-rescaling residuals vs Exp(1) |           953 |           0.0647 |    0.0007 |          0.9911 | True                                 |

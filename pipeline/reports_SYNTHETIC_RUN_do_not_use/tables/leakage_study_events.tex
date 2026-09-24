@@ -1,0 +1,38 @@
+\begin{tabular}{lllllrrrrrrr}
+\toprule
+model & condition & regime & feature\_set & variant & horizon\_s & n\_events & event\_detection\_rate & median\_lead\_time\_s & false\_alarms\_per\_hour & false\_alarms\_per\_km & threshold \\
+\midrule
+lgbm & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 1.0000 & 1650 & 0.0824 & 1.0000 & 22.4883 & 0.8206 & 0.0406 \\
+lgbm & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 2.0000 & 1650 & 0.1836 & 2.0000 & 22.4758 & 0.8203 & 0.1823 \\
+lgbm & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 3.0000 & 1650 & 0.2927 & 2.0000 & 22.3936 & 0.8177 & 0.3325 \\
+lgbm & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 5.0000 & 1650 & 0.4479 & 3.0000 & 20.5287 & 0.7496 & 0.4839 \\
+gru & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 1.0000 & 1650 & 0.0964 & 1.0000 & 25.0658 & 0.9147 & 0.7686 \\
+gru & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 2.0000 & 1650 & 0.1952 & 2.0000 & 23.1862 & 0.8462 & 0.8326 \\
+gru & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 3.0000 & 1650 & 0.2721 & 2.0000 & 22.1994 & 0.8106 & 0.8262 \\
+gru & random\_row & topology\_agnostic & rf\_mob\_hist\_qoe & base & 5.0000 & 1650 & 0.4164 & 3.0000 & 20.2039 & 0.7377 & 0.8003 \\
+lgbm & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 1.0000 & 1650 & 0.0824 & 1.0000 & 22.4883 & 0.8206 & 0.0406 \\
+lgbm & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 2.0000 & 1650 & 0.1836 & 2.0000 & 22.4758 & 0.8203 & 0.1823 \\
+lgbm & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 3.0000 & 1650 & 0.2927 & 2.0000 & 22.3936 & 0.8177 & 0.3325 \\
+lgbm & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 5.0000 & 1650 & 0.4479 & 3.0000 & 20.5287 & 0.7496 & 0.4839 \\
+gru & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 1.0000 & 1650 & 0.0964 & 1.0000 & 25.0658 & 0.9147 & 0.7686 \\
+gru & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 2.0000 & 1650 & 0.1952 & 2.0000 & 23.1862 & 0.8462 & 0.8326 \\
+gru & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 3.0000 & 1650 & 0.2721 & 2.0000 & 22.1994 & 0.8106 & 0.8262 \\
+gru & random\_row & context\_rich & rf\_mob\_hist\_qoe & base & 5.0000 & 1650 & 0.4164 & 3.0000 & 20.2039 & 0.7377 & 0.8003 \\
+lgbm & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 1.0000 & 288 & 0.5833 & 1.0000 & 46.2207 & 1.7532 & 0.0397 \\
+lgbm & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 2.0000 & 288 & 0.7188 & 2.0000 & 36.9633 & 1.4024 & 0.2257 \\
+lgbm & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 3.0000 & 288 & 0.8090 & 3.0000 & 29.9096 & 1.1352 & 0.3991 \\
+lgbm & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 5.0000 & 288 & 0.8611 & 5.0000 & 25.1250 & 0.9540 & 0.6156 \\
+gru & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 1.0000 & 288 & 0.6215 & 1.0000 & 4.8457 & 0.1838 & 0.7910 \\
+gru & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 2.0000 & 288 & 0.6840 & 2.0000 & 6.7206 & 0.2550 & 0.8524 \\
+gru & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 3.0000 & 288 & 0.7500 & 3.0000 & 5.2342 & 0.1987 & 0.8340 \\
+gru & grouped\_drive & topology\_agnostic & rf\_mob\_hist\_qoe & base & 5.0000 & 288 & 0.8229 & 5.0000 & 7.1250 & 0.2705 & 0.8114 \\
+lgbm & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 1.0000 & 288 & 0.5833 & 1.0000 & 46.2207 & 1.7532 & 0.0397 \\
+lgbm & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 2.0000 & 288 & 0.7188 & 2.0000 & 36.9633 & 1.4024 & 0.2257 \\
+lgbm & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 3.0000 & 288 & 0.8090 & 3.0000 & 29.9096 & 1.1352 & 0.3991 \\
+lgbm & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 5.0000 & 288 & 0.8611 & 5.0000 & 25.1250 & 0.9540 & 0.6156 \\
+gru & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 1.0000 & 288 & 0.6215 & 1.0000 & 4.8457 & 0.1838 & 0.7910 \\
+gru & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 2.0000 & 288 & 0.6840 & 2.0000 & 6.7206 & 0.2550 & 0.8524 \\
+gru & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 3.0000 & 288 & 0.7500 & 3.0000 & 5.2342 & 0.1987 & 0.8340 \\
+gru & grouped\_drive & context\_rich & rf\_mob\_hist\_qoe & base & 5.0000 & 288 & 0.8229 & 5.0000 & 7.1250 & 0.2705 & 0.8114 \\
+\bottomrule
+\end{tabular}

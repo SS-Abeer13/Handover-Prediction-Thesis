@@ -1,0 +1,34 @@
+| dataset                   | export_mode                   | subset                            |    n |   row t-3 |   row t-2 |   row t-1 |   row t+0 |   row t+1 |
+|:--------------------------|:------------------------------|:----------------------------------|-----:|----------:|----------:|----------:|----------:|----------:|
+| AT&T (drive 2, day 1)     | 1 Hz (start-of-second sample) | all handovers                     |  390 |     0.046 |     0.023 |     0.008 |     0.033 |     0.99  |
+| AT&T (drive 2, day 1)     | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  219 |     0.005 |     0     |     0.005 |     0.05  |     0.991 |
+| AT&T (drive 3, day 1)     | 1 Hz (start-of-second sample) | all handovers                     |  408 |     0.022 |     0.01  |     0.002 |     0.051 |     0.988 |
+| AT&T (drive 3, day 1)     | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  282 |     0     |     0     |     0     |     0.043 |     0.982 |
+| AT&T (drive 3, day 2)     | 1 Hz (start-of-second sample) | all handovers                     |  464 |     0.039 |     0.028 |     0.009 |     0.037 |     0.991 |
+| AT&T (drive 3, day 2)     | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  340 |     0.006 |     0.006 |     0     |     0.041 |     0.991 |
+| AT&T (drive 3, day 3)     | 1 Hz (start-of-second sample) | all handovers                     |  421 |     0.024 |     0.012 |     0.005 |     0.04  |     1     |
+| AT&T (drive 3, day 3)     | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  343 |     0.003 |     0     |     0     |     0.032 |     1     |
+| AT&T (drive 3, day 4)     | 1 Hz (start-of-second sample) | all handovers                     |  669 |     0.035 |     0.021 |     0.004 |     0.046 |     0.994 |
+| AT&T (drive 3, day 4)     | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  470 |     0.004 |     0     |     0     |     0.053 |     0.994 |
+| T-Mobile (drive 2, day 1) | 1 Hz (start-of-second sample) | all handovers                     |   18 |     0.222 |     0.167 |     0.056 |     0     |     1     |
+| T-Mobile (drive 2, day 1) | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |    7 |     0     |     0     |     0     |     0     |     1     |
+| T-Mobile (drive 3, day 1) | 1 Hz (start-of-second sample) | all handovers                     |   76 |     0.105 |     0.066 |     0.026 |     0.079 |     0.987 |
+| T-Mobile (drive 3, day 1) | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |   45 |     0     |     0     |     0     |     0.067 |     0.978 |
+| T-Mobile (drive 3, day 2) | 1 Hz (start-of-second sample) | all handovers                     |  215 |     0.052 |     0.038 |     0.009 |     0.033 |     1     |
+| T-Mobile (drive 3, day 2) | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  132 |     0     |     0     |     0     |     0.03  |     1     |
+| Verizon (drive 2, day 1)  | 1 Hz (start-of-second sample) | all handovers                     |  408 |     0.039 |     0.029 |     0.017 |     0.049 |     0.99  |
+| Verizon (drive 2, day 1)  | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  286 |     0.007 |     0.003 |     0     |     0.045 |     0.993 |
+| Verizon (drive 3, day 1)  | 1 Hz (start-of-second sample) | all handovers                     |  505 |     0.084 |     0.064 |     0.026 |     0.042 |     0.992 |
+| Verizon (drive 3, day 1)  | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  318 |     0.003 |     0     |     0     |     0.041 |     0.994 |
+| Verizon (drive 3, day 2)  | 1 Hz (start-of-second sample) | all handovers                     |  601 |     0.092 |     0.079 |     0.035 |     0.032 |     0.993 |
+| Verizon (drive 3, day 2)  | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  359 |     0.003 |     0     |     0     |     0.028 |     0.997 |
+| Verizon (drive 3, day 3)  | 1 Hz (start-of-second sample) | all handovers                     |  537 |     0.062 |     0.036 |     0.013 |     0.041 |     0.991 |
+| Verizon (drive 3, day 3)  | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  359 |     0.011 |     0.006 |     0.003 |     0.033 |     0.992 |
+| AT&T (all files)          | 1 Hz (start-of-second sample) | all handovers                     | 2352 |     0.033 |     0.019 |     0.006 |     0.042 |     0.993 |
+| AT&T (all files)          | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) | 1654 |     0.004 |     0.001 |     0.001 |     0.044 |     0.992 |
+| T-Mobile (all files)      | 1 Hz (start-of-second sample) | all handovers                     |  309 |     0.075 |     0.052 |     0.016 |     0.042 |     0.997 |
+| T-Mobile (all files)      | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) |  184 |     0     |     0     |     0     |     0.038 |     0.995 |
+| Verizon (all files)       | 1 Hz (start-of-second sample) | all handovers                     | 2051 |     0.072 |     0.054 |     0.023 |     0.04  |     0.992 |
+| Verizon (all files)       | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) | 1322 |     0.006 |     0.002 |     0.001 |     0.036 |     0.994 |
+| pooled                    | 1 Hz (start-of-second sample) | all handovers                     | 4712 |     0.053 |     0.036 |     0.014 |     0.041 |     0.993 |
+| pooled                    | 1 Hz (start-of-second sample) | isolated (previous > 8 s earlier) | 3160 |     0.004 |     0.002 |     0.001 |     0.041 |     0.993 |

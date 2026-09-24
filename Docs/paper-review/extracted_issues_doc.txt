@@ -1,0 +1,179 @@
+TOTAL PARAGRAPHS: 160
+TOTAL TABLES: 3
+
+[0] (Title) LTE handover research review
+[1] (Normal) Issues questions and proposed corrections
+20 September 2026
+[2] (Normal) The research direction remains defensible: predict future handover commands from measurements genuinely available before the command. The present evidence does not yet validate every reported feature, physical warning time or statistical guarantee. Resolve data provenance and timing before treating the final model scores as settled.
+[3] (Normal) This document consolidates the discussion of the revised thesis, both Python notebooks and eight collected data files. It records confirmed findings, unresolved questions and proposed solutions. No model was retrained and no manuscript or notebook was modified during this review.
+[4] (Heading 2) Evidence and scope
+[5] (Normal) Reviewed: Handover_Thesis_Manuscript_Revised.docx, with the earlier Revised-4 version used for comparison; handover_pipeline.ipynb; results_visualisation.ipynb; and the CSV and signalling TXT files for 10, 12, 13 and 15 September 2026. Notebook cell references below are zero-based.
+[6] (Heading 2) What is already supported
+[7] (Normal) The raw audit independently finds 957 reconfiguration messages containing mobilityControlInfo and 341 re-establishment requests. All 957 commands have a subsequent transaction-ID-matching completion within two seconds in file order. This reduces the earlier concern that completion filtering concealed extra unmatched commands in these texts. It does not prove the capture contains every physical attempt.
+[8] (Heading 2) Priority order
+[9] (Normal) First resolve timing and the origin of neighbor features. Next rebuild a reproducible feature table and evaluation. Then regenerate results and remove conflicting manuscript passages. New architectures and stronger claims should wait until these checks pass.
+[11] (Heading 1) 1 Timing questions and prediction validity
+[12] (Heading 2) One second sampling and delayed event labels
+[13] (Normal) Confirmed: the CSV is approximately one hertz. A raw PCI-only check finds the target PCI already in the command-second row for 728 of 957 commands, or 76.1%. This supports a mismatch in recorded timing, but does not identify its sole cause.
+[14] (Normal) Question: Does the CSV summarize later measurements, does PC signalling time lag the event, or do both happen?
+[15] (Normal) Solution: Verify timestamp semantics separately for each source. Report the empirical mismatch now; treat end-of-second aggregation and delayed signalling as candidate explanations until independently checked.
+[16] (Heading 2) Physical prediction versus prediction of a delayed log entry
+[17] (Normal) Unresolved: actual event time and logging/availability time may differ. Hypothetically, an event at 0.2 s, a post-event feature at 0.4 s and a label at 0.7 s create an apparent 0.3 s warning even though the event already happened.
+[18] (Normal) Question: At what time could the intended live predictor obtain each input, and what exact event does its label represent?
+[19] (Normal) Solution: Define the target as command issuance, completion or another explicit event. Store event time and availability time separately when recoverable. Features must be available at the decision time. Evaluate physical lead time only against a validated event clock.
+[20] (Heading 2) The internal counter and compressed PC timestamps
+[21] (Normal) Confirmed: 742 of 957 ordered command/completion matches are only 0–1 ms apart in PC time. Multiple messages share timestamps. The internal Time counter has an observed elapsed rate near 32,768 units per second; its semantics have not been established.
+[22] (Normal) Question: Is the counter a suitable event clock? Are there resets, wraparounds, drift or variable PC delay?
+[23] (Normal) Solution: Compare counter increments with PC time within sessions, preserve file order for timestamp ties, and obtain counter/export documentation or native-rate evidence. Event-driven recording does not imply that the underlying clock advances only at events. Do not infer physical interruption or 50–75 ms update delays from unvalidated PC timing.
+[24] (Heading 2) Whether lagging one row is sufficient
+[25] (Normal) Unresolved: a one-row lag removes much suspicious information but also makes valid information older. The score drop alone cannot separate those effects.
+[26] (Normal) Question: Does the lag cover the largest relevant timing mismatch for every feature family?
+[27] (Normal) Solution: Run fixed-fold sensitivity analyses using several feature lags and plausible event-time offsets. Select the alignment from independent timing evidence, not the highest prediction score. Present unresolved timing as a limitation; longer horizons do not automatically eliminate leakage.
+[29] (Heading 1) 2 Irregular measurements and missing fields
+[30] (Heading 2) Whether machine learning needs continuous measurements
+[31] (Normal) Clarification: ML does not require continuous or equally spaced measurements. It requires a causal record of what was known at each prediction time. Signalling messages naturally arrive irregularly.
+[32] (Normal) Question: Can a prediction be made when no new signalling message has arrived?
+[33] (Normal) Solution: Yes. Use a one-second decision grid with the latest available observations, their ages and missingness flags. Update report counts and time-since-event features causally. No new report means no newer observation; it does not prove unchanged radio conditions. Never interpolate using a future report.
+[34] (Heading 2) Neighbor feature provenance
+[35] (Normal) Confirmed: all Best_N1, Best_N2 and Best_N3 fields are empty in every supplied CSV. The user reports that their XCAL setup cannot record these periodic neighbor measurements. Manuscript §4.6 nevertheless assigns neighbor features to the one-hertz export.
+[36] (Normal) Question: What generated the 31 neighbor/gap features, the gap AUROC, A3 baseline and neighbor curves in Figures 1.1 and 5.20?
+[37] (Normal) Solution: Trace each field to its actual source. If reconstructed from measurement reports, label it report-derived, use past reports only, retain observation age and reset or expire stale values after relevant state changes. If no source exists, remove the feature and its interpretations and rerun affected results. Report-derived neighbors also change the meaning of the claimed signalling-free main model.
+[38] (Heading 2) Duplicate radio field names
+[39] (Normal) Confirmed: RSRP, RSRQ, RSSI and RI appear twice in the CSV header. The two RSRP columns differ on 7,124 of 10,106 jointly populated rows, about 70.5%.
+[40] (Normal) Question: Which occurrence feeds training, the baseline and the plots, and what does each represent?
+[41] (Normal) Solution: Assign unique names using original column position and documented measurement meaning. Keep an explicit source-to-feature dictionary. Do not let parser defaults silently select a family or average different measurement types.
+[42] (Heading 2) Sentinels and mobility measurement quality
+[43] (Normal) Confirmed: the Ant1 LL1 RSSI field contains 351 values of −204. Other antenna fields contain extreme values. GPS is absent for the first 170 rows on 12 September and 82 rows on 15 September. Heading is not an explicit CSV column. Some coordinate steps imply speeds above 150 km/h.
+[44] (Normal) Question: Are unavailable antenna values treated as signals? Are GPS gaps filled with future values or interpreted as stops?
+[45] (Normal) Solution: Verify sentinel meanings and convert unavailable values to missing. Use bounded causal filling, age indicators and quality flags. Derive heading from valid past fixes and suppress unreliable estimates near stationarity. Do not bridge large GPS gaps or smooth using future coordinates.
+[47] (Heading 1) 3 Labels configuration and network interpretations
+[48] (Heading 2) Configuration replay starts with incomplete knowledge
+[49] (Normal) Confirmed: 2, 14, 1 and 4 reports occur before the first captured measConfig fragment on the four respective days. A first fragment may itself be incomplete.
+[50] (Normal) Question: How are those reports classified, and how does replay handle removals, inter-frequency changes and connection resets?
+[51] (Normal) Solution: Maintain an unresolved category. Never resolve an early report using a later binding as if it were known earlier. Replay identifiers and removals in order with explicit connection context and apply the relevant TS 36.331 rules [1]. Retain a trace showing which configuration classified each report.
+[52] (Heading 2) A3 reports are not identical to new handover opportunities
+[53] (Normal) Confirmed: the TXT includes repeated reporting, reportAmount infinity and reportOnLeave TRUE. The profile at 15 September 12:28:30.111 includes positive and negative A3 offsets with different reporting behavior.
+[54] (Normal) Question: Does an episode represent an entry, repeated reports, a leave report or overlapping observations of several cells?
+[55] (Normal) Solution: Define episodes by documented configuration and cell context, with time-gap sensitivity checks. Decode offset and hysteresis units correctly. Do not call the lack of an exported neighbor proof that A3 was impossible; periodic neighbor fields are empty throughout these files. TS 36.331 defines reporting behavior and half-decibel parameter scaling [1].
+[56] (Heading 2) Report association does not establish a network decision
+[57] (Normal) Unresolved: matching the most recent report within two seconds does not prove it caused the command. The reported 1,647 loose claims, 635 owning episodes and 651 associated commands use different units.
+[58] (Normal) Question: Does the associated report contain the target cell and carrier? How are ties and multiple commands per episode handled?
+[59] (Normal) Solution: Use target and carrier consistency where possible; retain ambiguous and unmatched cases. Publish the matching rule and reconcile reports, episodes and unique commands. Replace “declined”, “triggered by” and “monitoring purpose” with descriptive association wording unless independent evidence supports intent or causality.
+[60] (Heading 2) Cell identity failures and service benefit
+[61] (Normal) Confirmed: re-establishment causes are 321 reconfigurationFailure, 17 otherFailure and 3 handoverFailure. The highway TXT also contains GSM/EGPRS traffic. Global cell identity and RRC-state CSV fields are sparse.
+[62] (Normal) Question: Are state histories carried across releases or RAT changes? Does a return to a PCI actually identify the same cell and an unnecessary transfer?
+[63] (Normal) Solution: Reconstruct connection episodes and censor or reset history at gaps. Use PCI plus carrier at minimum and global identity where resolvable; document remaining ambiguity. Distinguish observed returns from unnecessary handovers, and command prediction from failure prevention. Empty RTT fields and one-second throughput cannot establish brief service interruptions or saved latency.
+[65] (Heading 1) 4 Evaluation population and operating cost
+[66] (Normal) Confirmed policy effect: every one of the 957 commands has a raw CSV timestamp in its preceding one-second window. The audit below applies only a two-second post-command blank; it does not reproduce all model feature-validity or block-boundary exclusions.
+[67] (Heading 2) The eligible window ceiling
+[68] (Normal) Confirmed: blanking alone removes the one-second prediction opportunity for 343/957 commands, or 35.8%. This is close to the manuscript’s missing-event share, but uses a different raw population.
+[69] (Normal) Question: How much exclusion comes from blanking, missing inputs, history requirements and boundaries separately?
+[70] (Normal) Solution: Publish a row and event exclusion ledger. Call this an eligible-window limit under the selected policy. Report detection over all events and eligible events, and compare blank durations. Do not call it an intrinsic one-hertz or physical predictability ceiling.
+[71] (Heading 2) Campaign independence and the highway test
+[72] (Normal) Confirmed: there are four collected sessions, not 57 independent drives. Carrier mix, missingness and other-RAT traffic differ between campaigns. The alignment audit used all four days.
+[73] (Normal) Question: Was the highway session genuinely untouched by every modelling and analysis choice? What does the version history establish?
+[74] (Normal) Solution: Use campaign-level outer evaluation and tune only inside training campaigns. Treat adjacent blocks as dependent. State exactly what was frozen and what changed later. Describe highway transfer across multiple changing conditions; the experiment does not isolate speed. Obtain an untouched session for stronger confirmation.
+[75] (Heading 2) Comparisons and operational usefulness
+[76] (Normal) Reported results: AUPRC 0.179 at 1 s and 0.475 at 5 s; event detection about 34% at 179 false alarms/hour and 42.5% at 69.6/hour. These were not independently retrained.
+[77] (Normal) Question: Are all comparisons on identical rows, folds and tuning budgets? Are alarms actionable at these costs?
+[78] (Normal) Solution: Keep experiment arms separate. Specify whether false-positive rate is per row, alarm episode or event; define cooldown and matching rules. Compare at equal alarm cost and report lead-time distributions. A one-hertz A3 margin is a proxy, not a reconstruction of a 160–640 ms timer. Sequence models using ten rows need a tabular history comparator with equivalent information.
+[80] (Heading 1) 5 Calibration risk control and statistical claims
+[81] (Heading 2) Calibration and baseline value
+[82] (Normal) Concern: a low pooled ECE does not guarantee reliable high-probability predictions or calibration on every campaign. At the reported 1 s prevalence of 0.068, a constant predictor has Brier score 0.068 × 0.932 = 0.063376; the reported 0.060 is about a 5.3% reduction.
+[83] (Normal) Question: Where are probabilities reliable, and does calibration hold across days and operating thresholds?
+[84] (Normal) Solution: Show campaign-level reliability plots with bin counts, Brier skill against a prevalence baseline and threshold-specific precision. Keep tuning, probability calibration and risk-control calibration roles explicit. Check whether reuse of calibration labels violates the claimed procedure.
+[85] (Heading 2) Conformal risk control is conditional on its assumptions
+[86] (Normal) Concern: the theorem controls expected risk under its stated conditions. It does not promise that every campaign meets a target. Block dependence and campaign shift need justification. The revised threshold direction is improved, but an “83% guarantee failure” interpretation remains inappropriate without a valid test.
+[87] (Normal) Question: What is the loss, exchangeable unit, threshold direction and fallback? Do all satisfy the theorem?
+[88] (Normal) Solution: Specify the mathematical procedure and its assumptions before reporting a guarantee. Distinguish empirical campaign compliance from theoretical expected-risk control. An empirical 1/(n+1) correction is not a universal impossibility floor when a valid fallback exists. Reference the actual theorem [2].
+[89] (Heading 2) Fallback and event coverage are different questions
+[90] (Normal) Concern: the stated all-alarm fallback at threshold zero should yield zero miss loss on eligible rows under the stated rule, yet the manuscript table reports about 86% alarms and 0.018 loss in a below-floor case. No eligible alarm time also prevents detecting some events under that policy.
+[91] (Normal) Question: Do the implementation, table and text use the same threshold convention, denominator and loss?
+[92] (Normal) Solution: Trace the fallback on actual predictions and reconcile the numbers. Report row risk separately from event detection. An all-alarm rule over eligible rows cannot fix events excluded from all eligible windows; that requires changing the prediction policy.
+[93] (Heading 2) Hawkes models uncertainty and small sample inference
+[94] (Normal) Concern: an estimated branching ratio describes the fitted process; it does not prove that individual handovers caused later handovers. Residual rejection challenges fit but does not uniquely diagnose exponential decay. Four sessions offer weak support for broad uncertainty claims.
+[95] (Normal) Question: Could route variation, cell layout, ping-pong or changing exposure produce the clustering?
+[96] (Normal) Solution: Use descriptive clustering language and compare appropriate alternatives. Preserve session boundaries and gaps. Report per-campaign estimates and sensitivity. Explain bootstrap units and limitations rather than assuming 180 s blocks are independent. Horizon coherence is useful structure, not proof of calibration or superior forecasting; horizon aggregation can also change rankings after reweighting or calibration.
+[98] (Heading 1) 6 Notebook implementation and reproducibility
+[99] (Heading 2) The saved execution does not reproduce the final study
+[100] (Normal) Confirmed in handover_pipeline.ipynb: the executed early section reports an older dataset with 81 drives and 6,515 handovers. The later Part II and Part III sections have no saved execution evidence. Cell 86 imports the revision runner and previews CSVs, but does not call the runner.
+[101] (Normal) Question: Was the final analysis run elsewhere, and which code, inputs and configuration produced the final tables?
+[102] (Normal) Solution: Create one clean final notebook with a reproducible run command and an explicit dataset/experiment manifest. Supply src/hoproj, configs, dependencies, seeds, fold assignments, final tables and out-of-fold predictions. Archive historical experiments separately. Unexecuted cells do not prove the final work was never run; they mean these notebooks do not demonstrate it.
+[103] (Heading 2) Hardcoded and mixed plotting results
+[104] (Normal) Confirmed in results_visualisation.ipynb: cell 40 hardcodes a zero-contamination annotation despite a saved synthesis result of 11.7%; cell 48 combines 0.607 and 0.179 from different experiment arms; cell 36 plots fixed scores 0.489 and 0.921 after merely checking data exists.
+[105] (Normal) Question: Which plotted quantities are calculated from the final result files?
+[106] (Normal) Solution: Remove numerical hardcoding. Use the same arm, cohort and configuration for paired comparisons. Bind annotations to the plotted values and regenerate every figure from authoritative tables. The controlled manuscript pairs discussed were 0.600 versus 0.179 and 0.607 versus 0.160, not a cross-arm pair.
+[107] (Heading 2) Silent missing inputs and output paths
+[108] (Normal) Confirmed: loaders can return empty data frames when files are missing. The common finish function continues using the original figure directory after newer directory variables are declared. Cell 44 maps every non-AT&T dataset to T-Mobile.
+[109] (Normal) Question: Can a clean run silently omit a result, mislabel a carrier or overwrite a historical plot?
+[110] (Normal) Solution: Fail clearly when a required input is absent. Pass output directories explicitly to plot saving. Derive carrier labels from metadata and validate expected datasets. Save a run manifest and list the exact figure files inserted into the manuscript.
+[111] (Heading 2) Validation limits and remaining code checks
+[112] (Normal) Confirmed: code cells parsed syntactically, but the required hoproj package and final source/configuration files were not available for reproduction. Non-interactive Matplotlib warnings alone do not establish failed computation.
+[113] (Normal) Question: Do configuration replay, causal joins, feature lags and calibration splits behave as the manuscript describes?
+[114] (Normal) Solution: Run from a clean environment after providing the missing code. Add focused checks for timestamp ties, duplicate columns, missing sources, state resets, label horizons and calibration separation. Verify meaningful data invariants rather than adding tests that merely repeat the implementation.
+[116] (Heading 1) 7 Manuscript corrections and research direction
+[117] (Heading 2) The revision still contains conflicting generations of text
+[118] (Normal) Confirmed: literal placeholders remain, including {N['ceiling1']:.1%}, {N['a3_ho']} and {N['ho_all']}; 3540.1% appears in the coverage discussion. Old and new paragraphs coexist in several sections.
+[119] (Normal) Question: Which experiment and manuscript generation is authoritative?
+[120] (Normal) Solution: Remove duplicate passages and regenerate numerical claims from a single result table. Fix placeholders, percentages, captions and cross-references before further interpretation. Several figures and feature-count summaries were improved in the revision; retain those corrections.
+[121] (Normal) Specific conflicts to resolve: Hawkes 0.653 versus 0.605; transfer AUROC 0.760/0.711 versus 0.752/0.745; current ten signalling features versus stale thirteen-feature passages; four campaigns versus “eight grouped-drive folds”; 957-event nine-definition ping-pong analysis versus older 938-event twelve-definition text; and the stale 24.5% return figure in Chapter 6. §§3.2–3.3 also retain incompatible freeze and parser descriptions.
+[122] (Heading 2) Event populations feature counts and interpretation
+[123] (Normal) Concern: 957 raw commands, 938 retained-block commands, 10,260 retained samples and 8,586 usable rows are distinct populations. The original 28.7% of 938 return claim implied about 269 returns, exceeding the full-set count of 252 under an identical definition.
+[124] (Normal) Question: Does every result identify its numerator, denominator, feature set and experiment arm?
+[125] (Normal) Solution: Use a population ledger throughout. Retire stale results rather than blending them. Keep 112 primary features, ten additional signalling features and any historical feature sets clearly separate. A feature count is not evidence that all listed measurements existed.
+[126] (Heading 2) Novelty external validation and causal wording
+[127] (Normal) Unresolved: the literature screen includes inconsistent counts and exclusions. The public dataset description lists radio exports, whereas the thesis says only report exports are available. External six-feature signalling transfer does not validate the 112-feature main model.
+[128] (Normal) Question: What exactly was screened, downloaded and tested? Which claims are descriptive, predictive or causal?
+[129] (Normal) Solution: Audit the literature matrix and dataset contents [3]. Narrow novelty to the supported comparison. State external validation’s feature scope. Replace claims that a target is necessarily stronger, a return is unnecessary, an episode was declined or a performance drop is 96% causally attributable with interpretations supported by the experiment. Ablation effects are not generally additive causal contributions.
+[130] (Heading 2) Recommended research claim
+[131] (Normal) A defensible contribution is a signalling-grounded evaluation of handover-command forecasting from sparse measurements, with explicit timing audits, causal feature construction, campaign-level testing and measured alarm costs. Claims of precise physical advance warning, guaranteed performance under shift or prevented service failures require further evidence.
+[133] (Heading 1) 8 Correction workflow and acceptance questions
+[134] (Heading 2) Questions that must have documented answers
+[135] (List Bullet) What is the intended deployment point: handset, network or PC logger? What input latency does that imply?
+[136] (List Bullet) What does each CSV timestamp label, and what does the signalling Time counter actually measure?
+[137] (List Bullet) Can the uncertainty in relative timing be bounded tightly enough for the claimed warning time?
+[138] (List Bullet) What produced every neighbor feature and curve, given empty periodic neighbor columns?
+[139] (List Bullet) Which duplicate radio fields were used, and were sentinel values handled before rolling statistics?
+[140] (List Bullet) How are unknown initial configurations, timestamp ties, releases and RAT transitions handled?
+[141] (List Bullet) Why is the two-second blank necessary, and what happens to detection when it changes?
+[142] (List Bullet) Can a clean run reproduce every final table, caption and model score from the supplied inputs?
+[143] (Heading 2) Completion standard
+[144] (Normal) The correction is complete when every reported feature and result is traceable, no future observation enters a prediction, timing limitations are quantified or explicitly retained, comparisons use consistent populations, and the manuscript agrees with a reproducible final run. A successful training run alone does not establish these conditions.
+[146] (Heading 1) 9 Sources and interpretation notes
+[147] (Heading 2) Primary project evidence
+[148] (Normal) The manuscript references in this document refer to Handover_Thesis_Manuscript_Revised.docx as supplied for the second review. Earlier issues are included only when relevant to the revision history or unresolved interpretation. The notebooks are handover_pipeline.ipynb and results_visualisation.ipynb. Cell numbers refer to zero-based positions in the supplied files.
+[149] (Normal) Raw CSV sources: test 10 sept-M1.csv; test 12 sept.csv; test 13 sept.csv; test 15 sept.csv. Signalling sources: test_10_sept_signalling.txt; test 12 sept signalling(1).txt; test 13 sept signalling.txt; test 15 sept signalling(1).txt.
+[150] (Normal) Raw audit calculations count decoded handover commands, ordered transaction-ID-matching completions and timestamp coverage. The 76.1% alignment result is PCI-only on all 957 commands; it is not identical to the thesis’s filtered-cohort audit and is not a direct measurement of logging latency. The blanking table isolates one policy effect and does not claim to reproduce the final training cohort.
+[151] (Heading 2) Public technical references
+[152] (Normal) [1] 3GPP TS 36.331, version 17.6.0, published as ETSI TS 136 331. Consult §5.5 for measurement configuration and reporting, including Event A3, and the information-element definitions for reportOnLeave, offsets and hysteresis. This specification does not define the timing semantics of an XCAL CSV or PC log.
+[153] (Normal) https://www.etsi.org/deliver/etsi_ts/136300_136399/136331/17.06.00_60/ts_136331v170600p.pdf
+[154] (Normal) [2] Angelopoulos and colleagues, Conformal Risk Control. Use the theorem’s actual assumptions and expected-risk statement when specifying the calibration procedure. This reference does not independently establish exchangeability for these drive-test sessions.
+[155] (Normal) https://arxiv.org/html/2208.02814v4
+[156] (Normal) [3] Mendeley Data, dataset record n2pvmtyn2j, version 1. The public description lists radio and signalling material. Inspect the downloadable files before asserting the absence or comparability of a periodic radio export.
+[157] (Normal) https://data.mendeley.com/datasets/n2pvmtyn2j/1
+[158] (Heading 2) What remains unknown
+[159] (Normal) The exact event-to-PC logging delay, original CSV aggregation semantics, final neighbor-feature construction and end-to-end reproduction of the reported model metrics remain unresolved. Proposed solutions in this document are work to perform, not corrections already implemented. None of the observed inconsistencies alone establishes misconduct or makes the collected logs unusable.
+
+--- TABLE 0 ---
+['Campaign', 'Raw CSV rows', 'HO commands', 'Re-establishments', 'Missing GPS rows']
+['10 Sept', '2756', '307', '113', '22']
+['12 Sept', '1469', '176', '64', '171']
+['13 Sept', '3605', '297', '159', '23']
+['15 Sept', '2576', '177', '5', '96']
+['Total', '10406', '957', '341', '312']
+
+--- TABLE 1 ---
+['Window', 'No raw timestamp', 'No timestamp after blank']
+['0.5 s', '454 / 957', '634 / 957']
+['1 s', '0 / 957', '343 / 957']
+['2 s', '0 / 957', '245 / 957']
+['5 s', '0 / 957', '49 / 957']
+
+--- TABLE 2 ---
+['Order', 'Work', 'Evidence needed before proceeding']
+['1', 'Freeze the reviewed inputs', 'File hashes, session identifiers, raw counts and one experiment manifest.']
+['2', 'Resolve clocks and feature sources', 'Source-to-feature dictionary, clock audit, explicit event and availability times, unresolved fields flagged.']
+['3', 'Rebuild labels and causal features', 'Configuration replay trace, connection boundaries, ordered command matching, missingness handling and exclusion ledger.']
+['4', 'Repeat the core evaluation', 'Same campaign folds and cohorts across comparisons; training-only tuning; separate calibration roles; lag and blanking sensitivity.']
+['5', 'Generate results and manuscript', 'One authoritative table set, clean executed notebook, automatic figure annotations and no conflicting prose.']
+['6', 'Strengthen the final claim', 'An untouched campaign, preferably with verified native-rate timing, evaluated using the frozen pipeline.']

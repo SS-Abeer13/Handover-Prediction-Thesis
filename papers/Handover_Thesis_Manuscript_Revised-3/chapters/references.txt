@@ -1,0 +1,271 @@
+REFERENCES
+
+
+[1] 3GPP, "Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification," 3GPP TS 36.331, Release 17, 2022.
+
+[2] 3GPP, "Evolved Universal Terrestrial Radio Access (E-UTRA) and Evolved Universal Terrestrial Radio Access Network (E-UTRAN); Overall description; Stage 2," 3GPP TS 36.300, Release 17, 2022.
+
+[3] H. Deng, C. Peng, A. Fida, J. Meng, and Y. C. Hu, "Mobility support in cellular networks: a measurement study on its configurations and implications," in Proc. ACM Internet Measurement Conference (IMC), 2018, doi:10.1145/3278532.3278546.
+
+[4] M. Ghoshal, I. Khan, P. Dinh, Z. J. Kong, O. Basit, S. Wang, Y. Feng, Y. C. Hu, and D. Koutsonikolas, "Handover configurations in operational 5G networks: diversity, evolution, and impact on performance," arXiv:2511.03116, 2025.
+
+[5] A. Hassan, A. Narayanan, A. Zhang, W. Ye, R. Zhu, S. Jin, J. Carpenter, Z. M. Mao, F. Qian, and Z.-L. Zhang, "Vivisecting mobility management in 5G cellular networks," in Proc. ACM SIGCOMM, 2022, pp. 86–100, doi:10.1145/3544216.3544217.
+
+[6] "M2HO: Mitigating the adverse effects of 5G handovers on TCP," in Proc. ACM MobiCom, 2024, doi:10.1145/3636534.3690680. [Author list to be completed from the ACM record before submission.]
+
+[7] T. Ankome and E. Hanada, "Reactive to predictive mobility management: a systematic review of ML-driven handover optimization in 5G and beyond," Machine Learning and Knowledge Extraction, vol. 8, no. 5, art. 133, 2026, doi:10.3390/make8050133.
+
+[8] B. Saoud, I. Shayea, M. A. Alnakhli, and H. Mohamad, "Mobility and handover management in 5G/6G networks: challenges, innovations, and sustainable solutions," Technologies, vol. 13, no. 8, art. 352, 2025, doi:10.3390/technologies13080352.
+
+[9] C. Chabira, I. Shayea, G. Nurzhaubayeva, L. Aldasheva, D. Yedilkhan, and S. Amanzholova, "AI-driven handover management and load balancing optimization in ultra-dense 5G/6G cellular networks," Technologies, vol. 13, no. 7, art. 276, 2025, doi:10.3390/technologies13070276.
+
+[10] K. Nguyen Dang Dinh, P. Fazio, and M. Voznak, "A proposed mobility and resource prediction method for seamless handover and service continuity in 5G small cell networks," PLOS ONE, vol. 21, no. 8, art. e0355372, 2026, doi:10.1371/journal.pone.0355372.
+
+[11] J. M. Sánchez-Martín, J. L. Bejarano-Luque, C. Gijón, M. Toril, and S. Luna-Ramírez, "GRIMCELL: a graph neural network to predict the impact of new cells in mobile networks," Machine Learning and Knowledge Extraction, vol. 8, no. 9, art. 260, 2026, doi:10.3390/make8090260.
+
+[12] N. Mehregan and R. E. De Grande, "GCN-based throughput-oriented handover management in dense 5G vehicular networks," arXiv:2505.04894, IEEE DCOSS-IoT, 2025.
+
+[13] A. Graser, A. Jalali, J. Lampert, A. Weißenfeld, and K. Janowicz, "MobilityDL: a review of deep learning from trajectory data," GeoInformatica, vol. 29, no. 1, pp. 115–147, 2025, doi:10.1007/s10707-024-00518-8.
+
+[14] D. Zidic, T. Mastelic, I. Nizetic Kosovic, M. Cagalj, and J. Lorincz, "Analyses of ping-pong handovers in real 4G telecommunication networks," Computer Networks, vol. 227, art. 109699, 2023.
+
+[15] Amirova et al., "Data-driven and machine learning-based analysis of handover behavior and network stability in mobile networks," Future Internet, vol. 18, no. 6, art. 290, 2026, doi:10.3390/fi18060290. [Full author list to be completed from the MDPI record before submission.]
+
+[16] S. Wiegrebe, P. Kopper, R. Sonabend, B. Bischl, and A. Bender, "Deep learning for survival analysis: a review," Artificial Intelligence Review, vol. 57, no. 3, art. 65, 2024, doi:10.1007/s10462-023-10681-3.
+
+[17] H.-C. Thorsen-Meyer, D. Placido, B. S. Kaas-Hansen, et al., "Discrete-time survival analysis in the critically ill: a deep learning approach using heterogeneous data," npj Digital Medicine, vol. 5, art. 142, 2022, doi:10.1038/s41746-022-00679-6.
+
+[18] E. J. Candès, L. Lei, and Z. Ren, "Conformalized survival analysis," Journal of the Royal Statistical Society Series B, vol. 85, no. 1, pp. 24–45, 2023, doi:10.1093/jrsssb/qkac004.
+
+[19] K. M. Cohen, S. Park, O. Simeone, and S. Shamai (Shitz), "Calibrating AI models for wireless communications via conformal prediction," arXiv:2212.07775, 2022.
+
+[20] O. Simeone, S. Park, and M. Zecchin, "Conformal calibration: ensuring the reliability of black-box AI in wireless systems," arXiv:2504.09310, 2025.
+
+[21] A. N. Angelopoulos, S. Bates, A. Fisch, L. Lei, and T. Schuster, "Conformal risk control," in Proc. International Conference on Learning Representations (ICLR), 2024.
+
+[22] S. Bates, A. Angelopoulos, L. Lei, J. Malik, and M. I. Jordan, "Distribution-free, risk-controlling prediction sets," Journal of the ACM, vol. 68, no. 6, 2021, doi:10.1145/3478535.
+
+[23] A. G. Hawkes, "Spectra of some self-exciting and mutually exciting point processes," Biometrika, vol. 58, no. 1, pp. 83–90, 1971.
+
+[24] P. J. Laub, Y. Lee, P. K. Pollett, and T. Taimre, "Hawkes models and their applications," Annual Review of Statistics and Its Application, vol. 12, pp. 233–258, 2025.
+
+[25] Y. Ogata, "Statistical models for earthquake occurrences and residual analysis for point processes," Journal of the American Statistical Association, vol. 83, no. 401, pp. 9–27, 1988.
+
+[26] M. Price-Williams and N. A. Heard, "Nonparametric self-exciting models for computer network traffic," Statistics and Computing, vol. 30, no. 2, pp. 209–220, 2020.
+
+[27] H. Ismail Fawaz, G. Del Grosso, T. Kerdoncuff, A. Boisbunon, and I. Saffar, "Deep unsupervised domain adaptation for time series classification: a benchmark," arXiv:2312.09857, 2023.
+
+[28] B. Sun and K. Saenko, "Deep CORAL: correlation alignment for deep domain adaptation," in Computer Vision – ECCV 2016 Workshops, LNCS vol. 9915, pp. 443–450, 2016.
+
+[29] Y. Shi, X. Ying, and J. Yang, "Deep unsupervised domain adaptation with time series sensor data: a survey," Sensors, vol. 22, no. 15, art. 5507, 2022.
+
+[30] D. Wagner, A. Nair, B. J. Franks, et al., "Formally exploring time-series anomaly detection evaluation metrics," arXiv:2510.17562, 2025.
+
+[31] S. Deb, M. Rathod, R. Balamurugan, S. K. Ghosh, R. K. Singh, and S. Sanyal, "Performance evaluation of conditional handover in 5G systems under fading scenario," arXiv:2403.04379, 2024.
+
+[32] G. Ke, Q. Meng, T. Finley, T. Wang, W. Chen, W. Ma, Q. Ye, and T.-Y. Liu, "LightGBM: a highly efficient gradient boosting decision tree," in Advances in Neural Information Processing Systems 30, 2017, pp. 3146–3154.
+
+[33] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, "On calibration of modern neural networks," in Proc. ICML, 2017, pp. 1321–1330.
+
+[34] B. Zadrozny and C. Elkan, "Transforming classifier scores into accurate multiclass probability estimates," in Proc. ACM SIGKDD, 2002, pp. 694–699.
+
+[35] D. R. Roberts et al., "Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure," Ecography, vol. 40, no. 8, pp. 913–929, 2017, doi:10.1111/ecog.02881.
+
+[36] S. Kaufman, S. Rosset, C. Perlich, and O. Stitelman, "Leakage in data mining: formulation, detection, and avoidance," ACM Transactions on Knowledge Discovery from Data, vol. 6, no. 4, art. 15, 2012, doi:10.1145/2382577.2382579.
+
+[37] D. Raca, D. Leahy, C. J. Sreenan, and J. J. Quinlan, "Beyond throughput, the next generation: a 5G dataset with channel and context metrics," in Proc. ACM Multimedia Systems Conference (MMSys), 2020, pp. 303–308, doi:10.1145/3339825.3394938. Dataset: github.com/uccmisl/5Gdataset (GPL-3.0).
+
+[38] M. M. S. Shafi, K. M. Istiaque, S. S. Sowad, and M. T. Kawser, "Drive-test-based LTE handover dataset for cellular mobility studies in urban Bangladesh," Mendeley Data, version 1, 2025, doi:10.17632/n2pvmtyn2j.1. [The files used are the "ver 2" release folder; confirm the version DOI before submission.]
+
+[39] M. M. S. Shafi, K. M. Istiaque, S. S. Sowad, and M. T. Kawser, "Handover optimization in LTE networks using contextual bandit reinforcement learning and real-world data," manuscript, Islamic University of Technology, 2025. [Venue to be confirmed; a ResearchGate record exists.]
+
+[40] F. Chen, M. Ghoshal, E. Nan, P. Dinh, I. Khan, Z. J. Kong, Y. C. Hu, and D. Koutsonikolas, "A large-scale study of the potential of multi-carrier access in the 5G era," in Passive and Active Measurement (PAM), LNCS vol. 15567, 2025, pp. 469–484, doi:10.1007/978-3-031-85960-1_19. Dataset: github.com/NUWiNS/pam2025-multi-carrier-dataset.
+
+[41] M. Ghoshal, I. Khan, Z. J. Kong, P. Dinh, J. Meng, Y. C. Hu, and D. Koutsonikolas, "Performance of cellular networks on the wheels," in Proc. ACM Internet Measurement Conference (IMC), 2023, doi:10.1145/3618257.3624814.
+
+[42] D. Hong and S. S. Rappaport, "Traffic model and performance analysis for cellular mobile radio telephone systems with prioritized and nonprioritized handoff procedures," IEEE Transactions on Vehicular Technology, vol. 35, no. 3, pp. 77–92, 1986.
+
+[43] X. Lin, R. K. Ganti, P. J. Fleming, and J. G. Andrews, "Towards understanding the fundamentals of mobility in cellular networks," IEEE Transactions on Wireless Communications, vol. 12, no. 4, pp. 1686–1698, 2013, arXiv:1204.3447. [Volume, issue and page range to be confirmed against the IEEE record before submission.]
+
+[44] S. Sadr and R. S. Adve, "Handoff rate and coverage analysis in multi-tier heterogeneous networks," IEEE Transactions on Wireless Communications, vol. 14, no. 5, pp. 2626–2638, 2015, arXiv:1501.01668. [Volume, issue and page range to be confirmed against the IEEE record before submission.]
+
+APPENDIX A
+
+
+# FULL PER-HORIZON RESULTS
+
+
+Table A.1 gives the per-horizon AUPRC of every learner compared in Section 5.2, against the prevalence floor of each horizon. Table A.2 gives the event-level operating characteristics of the primary model at the certified operating point of Section 5.5.
+
+Table A.1 Per-horizon AUPRC for every learner under leave-one-campaign-out, against the prevalence floor.
+
+
+[TABLE]
+
+Learner | 0.5 s | 1 s | 2 s | 3 s | 5 s
+
+LightGBM | 0.103 | 0.179 | 0.285 | 0.362 | 0.475
+
+MLP | 0.101 | 0.173 | 0.280 | 0.359 | 0.467
+
+TCN | 0.104 | 0.167 | 0.281 | 0.367 | 0.481
+
+Transformer | 0.090 | 0.152 | 0.256 | 0.338 | 0.453
+
+GRU | 0.075 | 0.130 | 0.237 | 0.321 | 0.438
+
+Logistic regression | 0.072 | 0.130 | 0.224 | 0.299 | 0.417
+
+Hawkes-kernel intensity (LR) | 0.070 | 0.120 | 0.210 | 0.285 | 0.403
+
+Event A3 rule (deployed parameters) | 0.068 | 0.116 | 0.204 | 0.272 | 0.374
+
+History block only (LightGBM) | 0.066 | 0.114 | 0.203 | 0.277 | 0.397
+
+Dwell time only (LightGBM) | 0.062 | 0.105 | 0.190 | 0.258 | 0.367
+
+Prevalence floor | 0.037 | 0.068 | 0.126 | 0.176 | 0.261
+
+[/TABLE]
+
+
+Table A.2 Event-level operating characteristics of the primary model at the 5 % false-positive operating point.
+
+
+[TABLE]
+
+Horizon | Events | Resolvable on the 1 Hz grid | Detected | Detection rate | False alarms / h | False alarms / km | Median lead time
+
+0.5 s | 934 | 34.2 % | 203 | 21.7 % | 277.6 | 8.45 | 0.25 s
+
+1 s | 935 | 64.6 % | 318 | 34.0 % | 179.0 | 5.45 | 0.47 s
+
+2 s | 935 | 74.8 % | 314 | 33.6 % | 124.1 | 3.78 | 1.24 s
+
+3 s | 936 | 88.2 % | 344 | 36.8 % | 91.8 | 2.80 | 1.96 s
+
+5 s | 937 | 95.3 % | 398 | 42.5 % | 69.6 | 2.12 | 3.31 s
+
+[/TABLE]
+
+
+Table A.3 The alignment audit of Section 5.1 across three datasets and two instruments. The defect follows the row-aggregation rule, not the vendor and not the network: it is present wherever a row summarises the second that ends at its timestamp, absent where rows are instantaneous samples, and it disappears from the same NUWiNS handovers when the downsampling rule is changed to the start of the second.
+
+
+[TABLE]
+
+Property | This work | Irish 4G/5G (MMSys 2020) | US tier-1 (NUWiNS PAM 2025)
+
+Instrument | XCAL, 1 Hz export produced by the tool | G-NetTrack Pro, ~1 Hz application log | XCAL, native 10 Hz export downsampled here
+
+Network and region | One operator, Dhaka and Gazipur | One operator, Ireland (Raca et al., MMSys 2020) | 3 tier-1 operators, two cross-US routes (NUWiNS, PAM 2025)
+
+Event clock | RRC signalling: command and complete | serving-cell identifier changes only | XCAL handover event column
+
+Row semantics | aggregate over the second, written at its end | instantaneous sample | set by us: last, or first, sample of the second
+
+Handovers audited | 938 | 1,175 cell changes | 4,712 in 12 files
+
+Row t shows the target cell | 75.9 % | 29.4 % | 93.2 %
+
+Isolated handovers only | 74.6 % (n = 291) | not separable (no signalling clock) | 92.8 % (n = 3,160)
+
+Row t-1 shows the target cell | 15.6 % | no step across the integer boundary | 0.1 %
+
+Same rows, start-of-second rule | not available (the tool aggregates) | not applicable (rows are samples) | 4.1 %
+
+Update delay observed | p90 99 ms from RRC complete messages | not observable on a 1 Hz grid | 50-75 ms, recovered from the contamination cliff (98 % at 75-100 ms left, 44 % at 50-75 ms, 0 % below 50 ms)
+
+Verdict | defect present, attenuated by a one-row KPI refresh lag | no defect: sampled rows are not aggregates | defect present under end-of-second, absent under start-of-second
+
+[/TABLE]
+
+
+APPENDIX B
+
+
+# FEATURE INVENTORY
+
+
+The 107 features retained after the degenerate-feature filter of Section 4.6 are organised as follows. All rolling statistics are computed per drive over backward-looking windows closing at the prediction instant.
+
+Radio block (83 features). For each of serving RSRP, serving RSRQ, serving SINR and the corresponding best-neighbour quantities: the instantaneous value; the rolling mean, standard deviation, range and first difference over 3, 5 and 10 second windows; and the serving-to-neighbour gap in each quantity together with its rolling statistics over the same windows.
+
+Mobility block (17 features). GPS speed and its rolling mean and standard deviation over 3, 5 and 10 s; heading and absolute heading change over the same windows; longitudinal acceleration and its rolling statistics; and a stationarity indicator derived from the speed trace.
+
+Signalling block (13 features). Counts of measurement reports by event type within the preceding 5 and 10 s; time since the most recent report of each type, subject to the leakage guard of Section 4.6; the identifier of the report configuration in force; and the offset and time-to-trigger values it carries.
+
+History block (7 features). Serving dwell time; time since the previous handover command; the count of handover commands within the preceding 30 and 60 s; the number of distinct serving cells within the preceding 60 s; and an indicator of whether the previous handover was a return to the cell before it.
+
+APPENDIX C
+
+
+# REPRODUCTION NOTES
+
+
+The analysis pipeline is organised as a sequence of numbered stages, each of which writes its outputs to a versioned directory and records the configuration under which it ran. The stages are, in order: signalling decoding and configuration-timeline construction; drive segmentation and quality control; feature construction; long-format expansion for the hazard formulation; model fitting under the grouped rotation; calibration; conformal threshold certification; event-level scoring; transfer and external validation; and point-process fitting with residual testing.
+
+Two conventions are enforced throughout and are worth recording because they are the source of most reproduction failures in work of this kind. First, no stage may read a file written by a later stage, which makes the dependency order a directed acyclic graph that can be verified mechanically. Second, every table reported in Chapters 4 and 5 is regenerated from the stage outputs rather than transcribed, so that a change in an upstream stage propagates to the report rather than silently disagreeing with it.
+
+The modelling decisions frozen before the fourth measurement campaign are recorded in a manifest fixing the feature set, the formulation, the model family, the hyperparameter search space and the evaluation protocol. The out-of-sample status of the highway result in Section 5.6 rests on that manifest.
+
+APPENDIX D
+
+
+# THE 22 AUDITED MODELS
+
+
+Table D.1 lists every model audited in Section 2.3, so that each row of Table 2.1 can be checked. The screening set was 108 publications; these 22 are those presenting a learned or analytical model that predicts handover, radio-link failure or next-cell occupancy.
+
+Table D.1 The 22 audited prediction models.
+
+
+[TABLE]
+
+# | Model | Year | Venue | Data | Split protocol | Prevalence-aware metric | Calibration
+
+1 | Chou et al., Learning-based RLF Prediction (Railway) | 2026 | arXiv:2511.08851 | REAL-MEASURED | NOT STATED | no | no
+
+2 | Kabeer et al., Sequence-Based DL for Handover Optimization | 2025 | arXiv:2510.02958 | REAL-MEASURED | NOT STATED | no | no
+
+3 | Dzaferagic et al., ML-Based HO Prediction over Real O-RAN | 2024 | IEEE TNSM | REAL TESTBED | NOT STATED | precision/recall | no
+
+4 | Panitsas et al., Predictive Handover Strategy in 6G | 2024 | arXiv:2404.08113 | SIMULATED | 80/20 with 10-fold CV (title changed between versions) | precision/recall | no
+
+5 | Boutiba et al., Radio Link Failure Prediction in 5G | 2021 | IEEE GLOBECOM | REAL TESTBED | two separate sets, unspecified | precision/recall | no
+
+6 | Mandapati, Meta-Continual Mobility Forecasting | 2025 | arXiv:2512.11841 | HYBRID (GeoLife + ray trace) | spatial zone hold-out | no | no
+
+7 | Chien et al., Privacy-Preserving HO Optimization (FL+LSTM) | 2024 | Sensors 24(20):6685 | UNVERIFIED "real-world" | NOT STATED | no | no
+
+8 | Wadud et al., AI-Driven Multi-Modal Adaptive HO Control | 2026 | arXiv:2603.17158 | SIMULATED | NOT STATED for the ML components | precision/recall | CI over 30 runs
+
+9 | Amirova et al., Data-Driven ML Analysis of HO Behavior | 2026 | Future Internet 18(6):290 | REAL-MEASURED | device-level hold-out | YES (PR curve + AUC CI) | bootstrap CI on AUC only
+
+10 | Bartsioka et al., Intelligent Dynamic Handover via AI Signal Quality | 2025 | arXiv:2510.14832 | SIMULATED | random 80/20 | n/a (regression) | no
+
+11 | Sun et al., Proactive HO Type Prediction and Parameter Optimization | 2025 | IEEE TWC 24(4) | SIMULATED | NOT VERIFIED | not verified | not verified
+
+12 | Gonzalez Bermudez et al., GNNs for O-RAN Mobility Management | 2025 | arXiv:2502.02170 | REAL-OPERATOR (Huawei) | random 80/10/10 edge split, structure-preserving | yes (AP alongside AUC) | threshold tuning for imbalance only
+
+13 | Hasan, Trappenberg & Haque, Generalized Transformer RLF Prediction | 2024 | arXiv:2407.05197 (journal version IEEE Xplore 11018489) | REAL-OPERATOR (Turkcell) | rolling-origin temporal, 5 folds | no (F1 only) | no
+
+14 | Santana & Dias, Open RAN-Enabled DL-Assisted Mobility Management | 2024 | arXiv:2412.21161 | SIMULATED (OMNeT++/Simu5G) + real traces for seeding | NOT STATED | no | no
+
+15 | Narayana et al., AI-Native Mobility in 6G (dataset paper) | 2026 | arXiv:2605.12453 | REAL-MEASURED (commercial 5G SA, n78) | n/a - no models trained | nan | nan
+
+16 | Wu et al., DL for Moving Blockage Prediction (real mmWave) | 2022 | arXiv:2101.06886 / IEEE ICC | REAL-MEASURED (mmWave testbed) | NOT STATED | no | no
+
+17 | Lee et al., Prediction-Based Conditional Handover (5G mm-Wave) | 2020 | IEEE Veh. Technol. Magazine 15(1):54-62 | SIMULATED | NOT STATED | no | no
+
+18 | Mehregan & De Grande, TH-GCN Throughput-Oriented Handover (GCN) | 2025 | arXiv:2505.04894 (IEEE DCOSS-IoT 2025) | SIMULATED | NOT STATED | no | no
+
+19 | Dinh, Fazio & Voznak, Mobility and Resource Prediction for 5G Small Cells | 2026 | PLOS ONE 21(8):e0355372 | SIMULATED (SUMO over a real Singapore map) | hold-out by travel day | n/a (regression) | no
+
+20 | Safiullin et al., RL-Based Handover Algorithm for 5G/6G AI-RAN | 2026 | Inventions 11(1):8 | SIMULATED (ns-3) | n/a (RL) | nan | no
+
+21 | Deb et al., Conditional Handover under Fading | 2024 | arXiv:2403.04379 | ANALYTICAL + SIMULATED (Python + ns-3) | n/a (no learning) | nan | nan
+
+22 | Sanchez-Martin et al., GRIMCELL (GNN for new-cell impact) | 2026 | MAKE 8(9):260 | REAL-OPERATOR (commercial LTE-A Pro) | hold-out over deployment events | n/a (regression) | no
+
+[/TABLE]

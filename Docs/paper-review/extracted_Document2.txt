@@ -1,0 +1,29 @@
+TOTAL PARAGRAPHS: 19
+TOTAL TABLES: 1
+
+[0] (Normal) The timing issue remains unresolved in this PDF. The problem is whether the model’s inputs actually precede the handover, not simply that the CSV records once per second.
+[1] (Normal) The manuscript currently contradicts itself on these points.
+[2] (List Paragraph) Page 18: calls the command timestamp its transmission instant.
+[3] (List Paragraph) Page 24: acknowledges that command–completion intervals reflect logging behavior.
+[4] (List Paragraph) Page 31: calls signalling timestamps “exact to the millisecond.”
+[5] (List Paragraph) Page 39: nevertheless uses command–completion intervals as execution/update timing.
+[6] (List Paragraph) Page 41: interprets a transition curve as a physical update delay around 60 ms.
+[7] (Normal) A timestamp printed to three decimal places does not establish millisecond accuracy. The 60 ms interpretation requires clock validation that the supplied evidence does not provide.
+[8] (Normal) Consider a hypothetical case:
+[9] (List Paragraph) The actual handover occurs at 10.2 s.
+[10] (List Paragraph) A radio measurement reflects the new cell at 10.4 s.
+[11] (List Paragraph) The logger assigns the command a timestamp of 10.7 s.
+[12] (Normal) The model appears to predict 0.3 seconds ahead, although its input comes 0.2 seconds after the event. That is false advance warning.
+[13] (Normal) What this means for your results
+[14] (Normal) The reported 0.47-second median lead time is particularly vulnerable: without a bound on relative timestamp error, it cannot confidently be interpreted as physical warning time.
+[15] (Normal) The score drop from 0.600 to 0.179 demonstrates sensitivity to alignment. It does not, by itself, prove that 0.179 is completely free of timing leakage. Likewise, using a five-second horizon does not automatically solve the problem.
+[16] (Normal) Required correction: validate the internal counter against PC timestamps and establish the CSV’s timing convention. Then evaluate several plausible relative offsets while keeping the model comparison fixed. Until that is done, describe the results as forecasting recorded handover-command timestamps under the chosen alignment, and remove claims of exact physical lead time or recovered physical update delay.
+[17] (Normal) The LTE standard defines the protocol sequence, but it does not establish XCAL’s logging-clock accuracy. 3GPP TS 36.331
+
+--- TABLE 0 ---
+['Timing issue', 'What your evidence establishes', 'What remains uncertain']
+['CSV alignment', 'The command-second row often already contains the target PCI', 'When the measurements inside that row were acquired and available']
+['Signalling timestamps', 'Many messages share PC timestamps; 742/957 command–completion pairs are only 0–1 ms apart', 'How PC time relates to actual message transmission or reception']
+['Internal Time counter', 'Its elapsed rate appears consistent with a running counter', 'Its precise meaning and mapping to CSV time']
+['One-row lag', 'It substantially reduces the reported score', 'Whether it removes all timing leakage']
+['Report-derived neighbors', 'The revised method holds the last reported value', 'Its actual observation age and availability relative to the other inputs']
