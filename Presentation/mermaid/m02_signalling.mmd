@@ -1,0 +1,12 @@
+flowchart LR
+  S["RRC signalling<br/>one 60-min capture"] --> P{"How is<br/>measConfig<br/>parsed?"}
+  P -->|"flat dictionary"| W1["Later definitions<br/>overwrite earlier ones"]
+  W1 --> W2["28 configs kept,<br/>100% of them A3"]
+  W2 --> W3["99.4% of reports → A3<br/><b>impossible:</b> 43% of reports<br/>carry no neighbour"]
+  P -->|"configuration timeline"| R1["1,057 measConfig updates;<br/>29 of 30 ids change event type"]
+  R1 --> R2["Each report resolved at<br/>its own moment in the log"]
+  R2 --> R3["97% of 761 handovers attributed<br/>to the profile that fired them<br/><b>-15, -10, +1 dB · TTT 160-640 ms</b>"]
+  classDef bad fill:#f4f4f4,stroke:#9a9a9a,stroke-width:1.5px,color:#5a5a5a;
+  classDef good fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  class W1,W2,W3 bad;
+  class R1,R2,R3 good;

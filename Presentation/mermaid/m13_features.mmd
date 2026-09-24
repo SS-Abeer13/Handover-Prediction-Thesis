@@ -1,0 +1,18 @@
+%%{init: {"flowchart": {"wrappingWidth": 340}}}%%
+flowchart LR
+  A["1 Hz wide CSV<br/>RSRP RSRQ RSSI SINR CQI<br/>PCI EARFCN GPS speed"] --> RF["<b>RF block - 83</b><br/>rolling mean, std, range over 3/5/10 s<br/>1st and 2nd differences<br/>top-3 neighbour gaps + missingness mask"]
+  A --> MOB["<b>Mobility block - 17</b><br/>speed, acceleration, heading change<br/>along-track coordinate on the corridor axis"]
+  A --> HIS["<b>History block - 7</b><br/>serving dwell time, log dwell<br/>time since last handover, handover count"]
+  B["RRC signalling log<br/>measConfig, MeasurementReport,<br/>handover command"] --> SIG["<b>Signalling block - 13</b><br/>A3 hold time / TTT clock<br/>report counts over 1/2/3/5 s, closed at t − Δ<br/>RF slopes in dB/s"]
+  RF --> C["152 columns built"]
+  MOB --> C
+  HIS --> C
+  SIG --> C
+  C --> D["degenerate filter<br/>zero variance or &gt;50% missing<br/>on TRAINING rows only"]
+  D --> E["<b>107 features</b><br/>robust scaler: median and IQR,<br/>clipped at ±8, fitted per fold<br/>on training rows only"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
+  classDef win fill:#f3f0e8,stroke:#8a6d00,stroke-width:1.5px,color:#5c4900;
+  class E mid;
+  class HIS win;
+  class SIG hi;

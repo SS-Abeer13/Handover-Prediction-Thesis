@@ -1,0 +1,18 @@
+flowchart LR
+  subgraph CAP[" 1 · Capture "]
+    A["XCAL wide CSV<br/>1 Hz serving RF, GPS, speed<br/><br/>RRC signalling export<br/>measConfig · reports<br/>HO commands · RLF"]
+  end
+  subgraph PREP[" 2 · Construction "]
+    B["Configuration timeline<br/>resolve measId at each timestamp<br/><br/>QC + drive segmentation<br/>43 drives · 7,740 samples<br/>761 handovers"]
+  end
+  subgraph MOD[" 3 · Modelling inputs "]
+    C["Labels 0.5 / 1 / 2 / 3 / 5 s<br/>+ discrete hazard bins<br/><br/>Features 107<br/>RF · mobility · history · signalling"]
+  end
+  subgraph EVAL[" 4 · Evaluation "]
+    D["Grouped 5-fold rotation<br/>every drive tested once<br/><br/>AUPRC vs prevalence floor · ECE<br/>FA/hour · conformal risk control"]
+  end
+  A --> B --> C --> D
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
+  class B,D hi;
+  class C mid;

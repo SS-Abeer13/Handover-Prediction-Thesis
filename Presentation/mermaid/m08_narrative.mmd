@@ -1,0 +1,7 @@
+flowchart LR
+  A["The deployed A3 rule<br/>acts only after the radio<br/>has already changed"] --> B["Can the next handover be<br/>predicted, how far ahead,<br/>and with what guarantee?"]
+  B --> C["Measurement-grade truth<br/>RRC signalling, 761 handovers<br/>+<br/>ML-grade protocol<br/>grouped splits, prevalence floors,<br/>calibration, event-level costs"]
+  C --> E["AUROC 0.933 at 1 s<br/>11x the prevalence floor<br/><br/>coherent multi-horizon hazard<br/>distribution-free miss-rate bound<br/>mechanism: dwell time, not the gap"]
+  E --> I["A warning a network<br/>could act on"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  class E,I hi;

@@ -1,0 +1,11 @@
+%%{init: {"flowchart": {"wrappingWidth": 430}}}%%
+flowchart TB
+  A["MEASUREMENT STUDIES<br/>Deng 2018, Ghoshal 2025<br/>operator configurations<br/>from decoded signalling<br/><br/>Gap: build no predictor"] --> X
+  B["PREDICTION STUDIES<br/>22 audited papers<br/>handover, RLF, next cell<br/><br/>Gap: 10 state no split,<br/>0 calibration, 0 lead time"] --> X
+  C["SURVIVAL AND POINT PROCESS<br/>Wiegrebe 2024, Kvamme 2021<br/>Laub 2025, Price-Williams 2020<br/><br/>Gap: never pointed<br/>at a drive test"] --> X
+  D["CONFORMAL IN WIRELESS<br/>Cohen 2022, Simeone 2025<br/>prediction sets, i.i.d. in frame<br/><br/>Gap: no mobility case,<br/>no exchangeability unit"] --> X
+  X["THIS WORK &nbsp;&nbsp;signalling ground truth &nbsp;+&nbsp; coherent hazard across horizons &nbsp;+&nbsp; exchangeability by whole drive &nbsp;+&nbsp; event-level cost"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79;
+  class X hi;
+  class A,B,C,D mid;

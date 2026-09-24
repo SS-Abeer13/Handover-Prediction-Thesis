@@ -1,0 +1,9 @@
+flowchart LR
+  A["22 calibration drives<br/>held out from training<br/><br/>sweep threshold lambda,<br/>measure per-drive miss rate"] --> C["Pick the smallest lambda whose<br/>upper confidence bound keeps<br/>per-drive risk below alpha"]
+  C --> E["Apply the certified threshold<br/>to unseen drives"]
+  E --> F["At alpha = 0.20 the bound holds<br/>on 95% of test drives<br/><br/>Price: alarms on 27% of samples,<br/>misses 11.5% of handovers"]
+  H["Exchangeable unit is the DRIVE, not the sample<br/>n &ge; 1/alpha - 1  ⇒  22 drives put alpha &ge; 0.044"] -.-> C
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
+  class F hi;
+  class H mid;

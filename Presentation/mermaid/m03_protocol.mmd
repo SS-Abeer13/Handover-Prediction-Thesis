@@ -1,0 +1,10 @@
+flowchart LR
+  D["57 drives, four captures<br/>grouped 4-fold rotation<br/>stratified by capture day"] --> T1["TEST fold<br/>~14 drives<br/>untouched"]
+  D --> T2["TRAIN / VAL / CALIB<br/>~43 drives<br/><br/>fit INSIDE the fold only:<br/>scaler · model · threshold<br/>temperature · isotonic"]
+  T1 --> A["Apply, then pool<br/>out-of-fold predictions<br/>over all 57 drives"]
+  T2 --> A
+  A --> M["Score once<br/>cluster bootstrap over drives<br/><br/>5 seeds x 4 folds<br/>= 20 paired observations"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
+  class T1,A hi;
+  class T2 mid;

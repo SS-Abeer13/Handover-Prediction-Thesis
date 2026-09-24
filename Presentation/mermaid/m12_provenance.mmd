@@ -1,0 +1,17 @@
+%%{init: {"flowchart": {"wrappingWidth": 430}}}%%
+flowchart TB
+  L1["Wiegrebe 2024 review<br/>Thorsen-Meyer 2022"] --> T1["Discrete-time hazard<br/>one fit, all horizons"]
+  L2["Laub 2025 review<br/>Price-Williams 2020"] --> T2["Self-excitation fitted<br/>AND residual-tested"]
+  L3["Angelopoulos 2024<br/>Cohen 2022, Simeone 2025"] --> T3["Conformal risk control<br/>exchangeable BY DRIVE"]
+  L4["Sun and Saenko 2016<br/>Ismail Fawaz 2023"] --> T4["CORAL transfer arm<br/>measured null, not a bug"]
+  L5["Wagner 2025<br/>Saito 2015"] --> T5["Event-level cost beside<br/>row-level AUPRC"]
+  T1 --> R
+  T2 --> R
+  T3 --> R
+  T4 --> R
+  T5 --> R
+  R["Borrowed, not invented. &nbsp;What is new is the pairing: each method meets signalling ground truth for the first time."]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79;
+  class R hi;
+  class T1,T2,T3,T4,T5 mid;

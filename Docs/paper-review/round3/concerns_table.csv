@@ -1,0 +1,41 @@
+id,concern,status_vs_round2,delta,echo,foxtrot
+S1,"Contribution 6 reads '1,647 of 957 commands' - numerator exceeds denominator",regression,1,0,1
+S2,Table 5.12 prints 'x650.00 / x927.00 inflation'; correct values are x2.59 / x4.84,regression,1,1,1
+S3,Headline 1 s AUPRC printed as 0.179 / 0.160 / 0.157 for the same described estimand,known-open,1,1,1
+S4,Leaderboard reordering holds only in Table 5.5 and contradicts Table 5.4 / A.1,known-open,1,1,1
+S5,Abstract's 48% is computed against 0.160 but attached to 0.179,known-open,0,1,1
+S6,1 s ECE printed as 0.012 / 0.036 / 0.024,known-open,1,1,1
+S7,Hazard arm loses calibration on 0 of 4 campaigns while winning pooled,known-open,1,1,1
+S8,The one-row lag confounds leakage with one second of legitimate information; selective-lag ablation missing,new,0,1,1
+S9,"NUWiNS downsample is tautological, not a distinguishing test of this instrument",known-open,0,1,0
+S10,"n=15 falsification test is the delta-gradient counted twice, not independent evidence",new,1,1,0
+S11,m<0 count (15) does not reconcile with the reported delta and x distributions,known-open,1,1,0
+S12,Raca control at 29.4% is 2.5x the paper's own background yet called 'no contamination',known-open,1,1,1
+S13,CRC certifies a row-level miss rate while the text promises an event-level one,new,0,0,1
+S14,"CRC loss as printed is an unnormalised cardinality, not a bounded risk with B=1",new,0,0,1
+S15,alpha=0.05 row printed below the paper's own feasibility floor with 100% compliance,known-open,1,1,1
+S16,No measured operating point supports the target-cell-preparation motivation,known-open,1,1,1
+S17,Appendix A prose and Table A.2 caption name two different operating points,new,0,0,1
+S18,"Event-level detection is non-monotone in horizon (34.0% at 1 s, 33.6% at 2 s)",new,1,1,1
+S19,341 re-establishments vs 957 commands threatens the event set; 93 vs 341 unreconciled,new,1,0,1
+S20,Censoring machinery is inert (4.4: no row censored) yet claimed as an advantage,new,0,1,1
+S21,Hazard arm AUPRC (0.157) is below the raw independent control (0.158),new,0,1,1
+S22,Literature screen returns no pre-2020 work and misses the cell-sojourn-time literature,new,1,0,1
+S23,Prognos excluded from the audit by definition and never benchmarked numerically,known-open,1,1,1
+S24,Appendix D row 9 contradicts two '0/22' rows of Table 2.1,known-open,1,1,1
+S25,"Reference [36] (Kaufman, leakage) is in the bibliography and cited nowhere",new,1,1,0
+S26,"Table 3.1 is silently truncated: printed rows sum to 907, A3 rows to 648 vs stated 651",known-open,1,1,1
+S27,Table 5.14's two stratifications give different ping-pong totals (22.8% vs 26.3%),new,1,0,0
+S28,Ping-pong 'lever' claim concerns a parameter the study never varied; speed not ruled out,known-open,1,1,1
+S29,Hawkes branching ratio interpreted physically from a kernel the residual test rejects,known-open,1,1,1
+S30,"'Independent' dataset shares operator, city, instrument, department and supervisor",known-open,1,1,1
+S31,"Both arms of Table 5.9 are signalling-only, so the primary model is never externally tested",new,1,0,1
+S32,Promised comparator reimplementation is absent from Section 5.11 and Table 5.15,known-open,1,0,1
+S33,Five irreconcilable feature counts (152/112/106/107/120),known-open,1,1,1
+S34,Citation numbering broken from [18] onward; [18] denotes two works in adjacent sections,known-open,1,1,1
+S35,Code and data still 'Planned' in a table grading 22 papers on release,known-open,1,1,1
+S36,No uncertainty on tables whose 0.005-0.012 differences carry conclusions,new,1,0,1
+S37,"Protocol ladder is not a controlled substitution (nested tuning, unmatched train size)",new,1,0,0
+S38,"A3 baseline scored from the lagged 1 Hz export, not at native rate; no ranking rule stated",new,0,1,0
+S39,"Table 3.2 sample counts are exactly 180 x block count, contradicting the 957->938 QC story",new,1,1,0
+S40,Section 5.1 does not label which dataset each n belongs to (903 read as 'our export'),new,1,0,0

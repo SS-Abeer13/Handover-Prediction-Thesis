@@ -1,0 +1,15 @@
+flowchart LR
+  S["SOURCE domain<br/>drives held out globally"] --> T["Fit scaler + LightGBM<br/>on source only"]
+  T --> A1["none<br/>source statistics"]
+  T --> A2["per-drive z-scoring<br/>each drive by its own<br/>robust location and scale"]
+  T --> A3["CORAL<br/>whiten by target covariance,<br/>recolour by source"]
+  A1 --> E["Score on held-out<br/>TARGET drives"]
+  A2 --> E
+  A3 --> E
+  E --> R1["Untreated: 0.865 / 0.642"]
+  E --> R2["CORAL: 0.771 / 0.534"]
+  E --> R3["z-scoring: 0.699 / 0.567"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef bad fill:#f4f4f4,stroke:#9a9a9a,stroke-width:1.5px,color:#5a5a5a;
+  class R1 hi;
+  class R2,R3 bad;

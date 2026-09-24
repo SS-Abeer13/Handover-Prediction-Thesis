@@ -1,0 +1,11 @@
+%%{init: {"flowchart": {"wrappingWidth": 260}}}%%
+flowchart LR
+  A["<b>01 &nbsp; Measure</b><br/>1 Hz RF, GPS and speed<br/>+ decoded RRC signalling<br/>4 captures, 57 drives"] --> B["<b>02 &nbsp; Ground the labels</b><br/>configuration timeline resolves<br/>message-scoped measId<br/>938 handover commands,<br/>timestamped to 1 ms"]
+  B --> C["<b>03 &nbsp; Represent</b><br/>107 features from four blocks<br/>every window backward-looking<br/>report counts stop at t − Δ"]
+  C --> D["<b>04 &nbsp; Predict as a hazard</b><br/>one discrete-time fit<br/>five horizons, coherent<br/>by the product-limit identity"]
+  D --> E["<b>05 &nbsp; Certify and score</b><br/>conformal threshold on held-out<br/>drives; ranking, calibration<br/>and event-level warning cost"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
+  class B hi;
+  class D hi;
+  class E mid;

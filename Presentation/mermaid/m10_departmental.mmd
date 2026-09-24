@@ -1,0 +1,6 @@
+flowchart LR
+  A["Published method on this network<br/>contextual-bandit Q-learning<br/>5-D state, hand-written reward"] --> B["Reimplemented from its method<br/>section and reward algorithm,<br/>run on OUR data, scored by its<br/>full learned advantage"]
+  B --> C["Their split: day 1 → day 2<br/>Our split: grouped drive rotation<br/><br/>same ordering under both"]
+  C --> F["Their agent 0.489<br/>Their reward ranked directly, with<br/>NO reinforcement learning 0.624<br/>Our learner on their 5 features 0.766<br/>This work, 107 features 0.921"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  class F hi;

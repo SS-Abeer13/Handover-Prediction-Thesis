@@ -1,0 +1,12 @@
+flowchart LR
+  X["Sample x<br/>at time t"] --> H["ONE gradient-boosted fit<br/>discrete-time hazard<br/>lambda_k(x) per bin"]
+  H --> S["Survival<br/>S_k = &prod; (1 - lambda_j)"]
+  S --> F["Incidence F_k = 1 - S_k<br/><b>the reported probability</b>"]
+  F --> G1["Monotone in k<br/>BY CONSTRUCTION"]
+  F --> G2["Calibrated and ranked<br/>from the same fit"]
+  F --> G3["No calibration<br/>split spent"]
+  B["Alternative:<br/>five independent heads"] -.-> V["43.6% of rows non-monotone<br/>max violation 0.50"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef bad fill:#f4f4f4,stroke:#9a9a9a,stroke-width:1.5px,color:#5a5a5a;
+  class H,F,G1 hi;
+  class B,V bad;

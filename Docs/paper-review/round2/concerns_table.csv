@@ -1,0 +1,29 @@
+id,concern,alfa,bravo,charlie
+R1,Headline 1 s AUPRC printed as 0.179 / 0.160 / 0.157 across tables labelled identically,1,1,1
+R2,Headline 1 s ECE printed as 0.012 / 0.036 / 0.024,1,1,1
+R3,Ordering-violation rate 40.2% in prose/abstract vs 29.0% in Table 5.6; 'rise from 40.2 to 33.4' is a fall,1,1,1
+R4,Leaderboard-reordering claim contradicted by the primary results table (holds only in the untuned arm),1,1,1
+R5,"A3 rule invariant across all four protocols by construction, so it has no power as the ladder's control",0,1,1
+R6,"Mechanism evidence is consistent-with, not distinguishing; NUWiNS downsample is self-constructed",0,1,1
+R7,Raca/G-NetTrack control is confounded and its event clock cannot separate the hypotheses,0,1,1
+R8,"n=15 falsification test does not reconcile with the reported interruption distribution (p90 99 ms, 65% non-zero)",1,1,1
+R9,A3 episode 'conversion rate' has more converting episodes (1647) than commands (957): many-to-one,1,0,1
+R10,Two incompatible reference lists; refs [35]-[41] absent from the final bibliography; unstable in-text numbering,1,1,1
+R11,"Sections 5.12, 5.13, 6.1-6.4, 7.3 in the ToC and cross-referenced but absent from the body",1,1,1
+R12,Feature counts irreconcilable (152/112/106/107/120); seeds 5 vs 3; sequence-model description self-contradictory,1,1,1
+R13,No artefact released ('Planned') while auditing 22 papers on the same criterion,1,1,1
+R14,CRC alpha=0.05 row printed below the paper's own feasibility floor; n per row undisclosed; 14/28/57 unit confusion,1,1,1
+R15,"CRC evaluates per-rotation frequency rather than the expectation the bound guarantees; risk not a bounded [0,1] loss",0,0,1
+R16,"Event-level operating point (34% detection, 179 FA/h, 0.47 s median lead) buried in an appendix and contradicts the motivation",1,1,1
+R17,'Independent' external dataset shares department and supervisor co-authorship; COI not declared,1,1,1
+R18,Transfer AUROC (0.760) exceeds both in-domain results; unexplained,1,1,1
+R19,"External check evaluates a signalling-only feature set the paper's results never use, so it cannot answer O4",1,0,0
+R20,Inference from n=4 fully confounded campaigns; block bootstrap uses the unit Section 5.3 proves is dependent,1,0,1
+R21,LOCO does not close spatial / cell-identity leakage; no PCI overlap between folds reported,1,0,0
+R22,Prognos named as the closest prior system and never scored; promised RL comparator reimplementation absent,1,1,1
+R23,Novelty overstated: alignment leakage is a known bug class; sojourn-time/survival mobility literature uncited,1,1,1
+R24,'None of 22' audit not reproducible from Appendix D; unverified entries coded as non-compliant; denominator includes non-predictive papers,1,0,1
+R25,Dataset accounting: 957 vs 938; 78 km vs 95 km; Table 3.1 printed rows sum to 907 of 957,1,1,1
+R26,Ping-pong range quoted three ways; 'not driven by speed' contradicted by the table beneath it,1,1,1
+R27,Hawkes branching ratio interpreted quantitatively under a kernel the paper's own residual test rejects,1,1,1
+R28,Row t-3 is not a chance baseline: ping-pong inflates it,0,0,1

@@ -1,0 +1,23 @@
+id,major_concern,alfa,bravo,charlie
+C1,"Drive is a fixed 180-sample chunk, not an independent/exchangeable unit (undermines grouped CV, bootstrap, CRC)",TRUE,TRUE,TRUE
+C2,"+74% GRU inflation is arithmetically impossible given Table 5.2; random-split scores and ranking not shown",TRUE,TRUE,TRUE
+C3,"Fold counts contradict (8 vs 20); p<0.0001 unattainable; pseudo-replicated paired test; tuning not nested",TRUE,TRUE,TRUE
+C4,"Table 4.2 hazards do not reconcile with Table 4.1 prevalences; long-format size 34k vs ~47k",TRUE,TRUE,TRUE
+C5,"Negative-offset claim contradicted by Table 3.1 (+1 dB profile carries 72.4% of handovers)",TRUE,TRUE,TRUE
+C6,"External dataset independence contradicted (5.7 vs 5.13); AUROC-only; conclusion does not follow",TRUE,TRUE,TRUE
+C7,"A3 decline rate counts periodic re-reports, not trigger episodes; cell-size claim unsupported",TRUE,TRUE,TRUE
+C8,"Alternative explanation: model predicts follow-on handovers in bursts; dwell direction unshown; no dwell-only baseline or burst stratification",TRUE,TRUE,TRUE
+C9,"1 Hz timestamp alignment leakage path unexamined; 1 s AUPRC spike; 0.5 s horizon below grid",TRUE,TRUE,TRUE
+C10,"CRC under-specified: one realised point, n=28 unexplained, 82% statistic misleading, floor is a known corollary",TRUE,TRUE,TRUE
+C11,"Coherence comparison is a strawman: projection control absent, no violation magnitudes, no control-arm ECE/AUPRC, Eq. 4.8 wrong",TRUE,TRUE,TRUE
+C12,"Novelty over-attributed: Prognos (ref [5]) omitted as comparator; 22-paper audit unlisted; conformalized survival not engaged",TRUE,TRUE,TRUE
+C13,"Timeline and freeze claim not credible or auditable (dates vs two terms; no hashed manifest)",TRUE,TRUE,TRUE
+C14,"Mechanism claim (triggers on weakest signal) unsupported: faulty A3 reconstruction, Hys/Ocn missing, sampling artefact",TRUE,TRUE,TRUE
+C15,"341 re-establishments unexplained and untreated as competing risk/censoring",TRUE,TRUE,TRUE
+C16,"Reference integrity: wrong titles/authors for [6], [15], [29]; [33] version/DOI mismatch; [34] uncited; [4] is a 5G study",TRUE,TRUE,TRUE
+C17,"Sequence models denied history/dwell features: unfair arm, confounded 'no temporal model wins' finding",FALSE,TRUE,TRUE
+C18,"Promised metrics absent (false alarms/h, lead time, Brier); 0.811 vs 0.784; Table A.2 event detection vs miss rate irreconcilable",TRUE,TRUE,TRUE
+C19,"Single-best-slice reporting: every experiment shown only at 1 s; selective metrics, strata, features and operating points",FALSE,FALSE,TRUE
+C20,"Configuration timeline misdescribes TS 36.331 (VarMeasConfig persistence); Contribution 4 contradicts section 2.2",TRUE,FALSE,FALSE
+C21,"A3 baseline is a strawman; no trend-extrapolation, report-observed or reproduced published baseline",TRUE,TRUE,TRUE
+C22,"Reproducibility: code/data only planned; hyperparameters, window lengths, definitions and transfer procedure missing",TRUE,TRUE,TRUE

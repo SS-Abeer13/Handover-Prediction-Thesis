@@ -1,0 +1,9 @@
+flowchart LR
+  A["Outer fold k<br/>test drives held out<br/>and never entering a search"] --> B["Inner GroupKFold(3)<br/>over TRAINING drives only<br/><br/>20 Optuna trials, the SAME<br/>budget for every model<br/>objective: inner AUPRC at 2 s"]
+  B --> F["Refit the winning parameters<br/>on the whole outer-train,<br/>score once on the outer fold"]
+  F --> H["Tuned arm"]
+  A --> I["Coded defaults,<br/>same folds and seed"] --> J["Default arm"]
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
+  class B,H hi;
+  class J mid;

@@ -1,0 +1,10 @@
+flowchart LR
+  A["UE sends an A3<br/>measurement report<br/>6,354 reports, 43 drives"] --> B{"Does the network<br/>act within 2 s?"}
+  B -->|"39.1%"| C["Handover<br/>command issued"]
+  B -->|"60.9%"| D["No handover<br/>report declined"]
+  C --> E["NEW TASK: predict the network's<br/>decision from the radio state<br/>at the moment of the report<br/><br/>AUPRC 0.731 · AUROC 0.777<br/>lift 1.87x over a 39.1% floor"]
+  D --> E
+  classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
+  classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
+  class E hi;
+  class C mid;
