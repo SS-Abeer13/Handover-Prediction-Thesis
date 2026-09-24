@@ -1,0 +1,10 @@
+window_s,convention,rate
+5,"previous cell, PCI+carrier",0.21003134796238246
+5,"previous cell, PCI only",0.2476489028213166
+5,"any recent cell, PCI+carrier",0.3124346917450366
+10,"previous cell, PCI+carrier",0.24869383490073146
+10,"previous cell, PCI only",0.29571577847439917
+10,"any recent cell, PCI+carrier",0.3949843260188088
+15,"previous cell, PCI+carrier",0.26332288401253917
+15,"previous cell, PCI only",0.3124346917450366
+15,"any recent cell, PCI+carrier",0.4378265412748171

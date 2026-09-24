@@ -1,0 +1,22 @@
+unit,stratum,n,converted,declined_share
+per report (v1 unit),pooled,8136,3006,0.6305309734513274
+per report (v1 unit),10 Sept (urban arterial),2287,980,0.5714910362920858
+per report (v1 unit),12 Sept (urban loop),1857,716,0.6144318793753365
+per report (v1 unit),13 Sept (dense urban),2215,806,0.636117381489842
+per report (v1 unit),15 Sept (highway),1777,504,0.7163759144625774
+per report (v1 unit),inter-frequency,93,34,0.6344086021505376
+per report (v1 unit),intra-frequency,8043,2972,0.6304861370135522
+per trigger episode (any command within 2 s),pooled,2361,1647,0.30241423125794153
+per trigger episode (any command within 2 s),10 Sept (urban arterial),726,531,0.26859504132231404
+per trigger episode (any command within 2 s),12 Sept (urban loop),476,349,0.2668067226890757
+per trigger episode (any command within 2 s),13 Sept (dense urban),740,480,0.3513513513513513
+per trigger episode (any command within 2 s),15 Sept (highway),419,287,0.315035799522673
+per trigger episode (any command within 2 s),inter-frequency,49,28,0.4285714285714286
+per trigger episode (any command within 2 s),intra-frequency,2312,1619,0.29974048442906576
+"per trigger episode (one-to-one, owns the command)",pooled,2361,635,0.7310461668784414
+"per trigger episode (one-to-one, owns the command)",10 Sept (urban arterial),726,210,0.7107438016528926
+"per trigger episode (one-to-one, owns the command)",12 Sept (urban loop),476,110,0.76890756302521
+"per trigger episode (one-to-one, owns the command)",13 Sept (dense urban),740,197,0.7337837837837837
+"per trigger episode (one-to-one, owns the command)",15 Sept (highway),419,118,0.7183770883054892
+"per trigger episode (one-to-one, owns the command)",inter-frequency,49,12,0.7551020408163265
+"per trigger episode (one-to-one, owns the command)",intra-frequency,2312,623,0.7305363321799307

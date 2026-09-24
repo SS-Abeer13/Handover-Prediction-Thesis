@@ -1,0 +1,5 @@
+capture,sessions,chunks_180s,rows_qc,rows_usable,handovers_all,handovers_in_qc_chunks,reestablishments,duration_min,km_driven,km_usable,mean_speed_kmh
+10 Sept (urban arterial),1,15,2700,2178,307,290,113,45.0,29.7,22.6,39.1
+12 Sept (urban loop),1,8,1440,1131,176,174,64,24.0,9.1,7.8,25.0
+13 Sept (dense urban),1,20,3600,3072,297,297,159,60.0,23.3,17.4,21.4
+15 Sept (highway),1,14,2520,2205,177,177,5,42.0,34.2,30.5,50.9

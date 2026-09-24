@@ -1,0 +1,6 @@
+stratum,n_handovers,n_pingpong,rate
+intra-frequency handovers,748,233,0.3114973262032086
+inter-frequency handovers,209,19,0.09090909090909091
+highway campaign,177,57,0.3220338983050847
+urban campaigns,780,195,0.25
+all commands,957,252,0.26332288401253917

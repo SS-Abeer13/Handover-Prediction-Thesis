@@ -1,0 +1,41 @@
+{
+  "rule|grouped_drive|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {},
+    "best_epoch": null,
+    "best_val_metric": null
+  },
+  "lgbm|grouped_drive|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 153600
+    },
+    "best_epoch": null,
+    "best_val_metric": null
+  },
+  "gru|grouped_drive|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 130500,
+      "n_trainable": 130500,
+      "state_size_mb": 0.4978179931640625
+    },
+    "best_epoch": 3,
+    "best_val_metric": 0.5932382261055944
+  },
+  "tcn|grouped_drive|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 101764,
+      "n_trainable": 101764,
+      "state_size_mb": 0.3881988525390625
+    },
+    "best_epoch": 4,
+    "best_val_metric": 0.5747335438555323
+  },
+  "transformer|grouped_drive|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 169572,
+      "n_trainable": 169572,
+      "state_size_mb": 0.8343658447265625
+    },
+    "best_epoch": 3,
+    "best_val_metric": 0.5864666873432168
+  }
+}

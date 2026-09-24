@@ -1,0 +1,50 @@
+# Adapter for the curated drive-test export (DRIVETEST_LOGS_1.csv + HANDOVER_LOG_1.csv)
+adapter:
+  name: curated_v1
+  samples:
+    path_key: samples
+    time:
+      column: Time
+      format: "%m/%d/%Y %H:%M:%S.%f"
+      tz: null
+    rename:
+      Longitude: lon
+      Latitude: lat
+      "Speed(km/h)": speed_kmh
+      "LTE-S_PCell PCI": serving_pci
+      "LTE-S_PCell EARFCN": serving_earfcn
+      "LTE-S_Band": serving_band
+      "LTE-S_eNB-ID": serving_enb
+      "LTE-S_PLMN ID": plmn
+      "LTE-S_Cell Name": serving_cell_name
+      "LTE-S_PCell RSRP": serving_rsrp
+      "LTE-S_PCell RSRQ": serving_rsrq
+      "LTE-S_PCell RSSI": serving_rssi
+      "LTE-S_PCell SINR": serving_sinr
+      "LTE-S_PCell CQI": serving_cqi
+      "LTE-S_Best_N1_Cell_ID": nbr1_id
+      "LTE-S_Best_N1_RSRP": nbr1_rsrp
+      "LTE-S_Best_N2_Cell_ID": nbr2_id
+      "LTE-S_Best_N2_RSRP": nbr2_rsrp
+      "LTE-S_Best_N3_Cell_ID": nbr3_id
+      "LTE-S_Best_N3_RSRP": nbr3_rsrp
+      "LTE-S_Total Phy DL TP(Kbps)": phy_dl_kbps
+      "LTE-S_Total Phy UL TP(Kbps)": phy_ul_kbps
+      "Round Trip Time": rtt_ms
+      "Rx TCP/UDP Throughput": dl_tp_kbps
+      "Tx TCP/UDP Throughput": ul_tp_kbps
+      "Packet Loss (%)": pkt_loss_pct
+  handovers:
+    path_key: handovers
+    time: {column: timestamp, format: "%m/%d/%Y %H:%M:%S.%f"}
+    rename:
+      corridor: route_id
+      handover_type: ho_type
+      from_pci: from_pci
+      to_pci: to_pci
+      from_cell_name: from_cell_name
+      to_cell_name: to_cell_name
+      latitude_at_handover: lat
+      longitude_at_handover: lon
+      serving_rsrp_just_before_dbm: rsrp_before
+      serving_rsrp_just_after_dbm: rsrp_after

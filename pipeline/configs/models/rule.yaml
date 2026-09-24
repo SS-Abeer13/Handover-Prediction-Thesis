@@ -1,0 +1,1 @@
+model: {name: rule, kind: snapshot, params: {mode: rf_gap, gap_db: 2.0, trend_db_per_s: -1.0}}

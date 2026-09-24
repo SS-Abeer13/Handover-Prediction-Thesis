@@ -1,0 +1,7 @@
+Property / Metric,This Work (Grameenphone),Irish Operator (MMSys 2020),US Operators (NUWiNS PAM 2025)
+Instrument & Export Resolution,XCAL 1 Hz export (Dhaka/Gazipur),G-NetTrack Pro ~1 Hz (Ireland),XCAL 10 Hz raw -> 1 Hz export (US Tier-1)
+Row t+0: Target Cell Serving Share (All Handovers),75.9 % (n=938),29.4 % (n=1175) [closer to new],91.9 % (n=408)
+Row t+0: Target Cell Serving Share (Isolated Handovers),74.6 % (n=291),N/A (no signalling clock),91.1 % (n=282)
+Row t-1: Target Cell Serving Share (One Second Lagged),11.7 %,No contamination across integer step,0.0 %
+Native Sub-Second Execution Duration,Unobserved (1 Hz export grid only),Unobserved (1 Hz grid only),40 - 80 ms (target serves at tau + 100 ms)
+Alignment Defect Replication Status,Observed (+276% AUPRC inflation),Does NOT replicate (G-NetTrack Pro),REPLICATES EXACTLY on XCAL 1 Hz export

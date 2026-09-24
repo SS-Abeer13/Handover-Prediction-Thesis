@@ -1,0 +1,7 @@
+# Principal experiment: multi-horizon HO forecasting, grouped drive evaluation.
+experiment:
+  name: main
+  models: [rule, logreg, lgbm, mlp, gru, tcn, transformer]
+  regimes: [topology_agnostic]
+  feature_sets: [rf_mob_hist_qoe]
+  conditions: [grouped_drive]

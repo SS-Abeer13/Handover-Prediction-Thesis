@@ -1,0 +1,24 @@
+profile,report_relation,handovers,share_of_all_handovers
+"A3 +1 dB, Hys 1 dB, TTT 320 ms",intra-frequency,464,0.48484848484848486
+"A3 -10 dB, Hys 2 dB, TTT 640 ms",intra-frequency,106,0.11076280041797283
+A5,inter-frequency,78,0.08150470219435736
+A4,inter-frequency,65,0.06792058516196448
+A1,intra-frequency,51,0.05329153605015674
+"A3 -15 dB, Hys 1 dB, TTT 160 ms",intra-frequency,43,0.04493207941483804
+A6,inter-frequency,32,0.03343782654127482
+none in 2 s,,30,0.03134796238244514
+periodical,intra-frequency,20,0.02089864158829676
+unresolved,unknown,15,0.01567398119122257
+"A3 +2 dB, Hys 1 dB, TTT 320 ms",intra-frequency,12,0.012539184952978056
+A2,intra-frequency,10,0.01044932079414838
+"A3 +1 dB, Hys 1 dB, TTT 320 ms",inter-frequency,8,0.008359456635318705
+"A3 -6.5 dB, Hys 2 dB, TTT 640 ms",intra-frequency,6,0.006269592476489028
+"A3 -15 dB, Hys 1 dB, TTT 320 ms",intra-frequency,5,0.00522466039707419
+"A3 +2 dB, Hys 1 dB, TTT 640 ms",intra-frequency,3,0.003134796238244514
+"A3 -10 dB, Hys 2 dB, TTT 640 ms",inter-frequency,2,0.0020898641588296763
+"A3 -15 dB, Hys 1 dB, TTT 160 ms",inter-frequency,2,0.0020898641588296763
+A2,inter-frequency,1,0.0010449320794148381
+A4,intra-frequency,1,0.0010449320794148381
+A5,intra-frequency,1,0.0010449320794148381
+A6,intra-frequency,1,0.0010449320794148381
+periodical,inter-frequency,1,0.0010449320794148381

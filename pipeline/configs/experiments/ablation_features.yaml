@@ -1,0 +1,12 @@
+# R13: feature-regime ablation.
+experiment:
+  name: ablation_features
+  models: [lgbm, gru]
+  regimes: [topology_agnostic, context_rich]
+  feature_sets: [rf, rf_mob, rf_mob_hist, rf_mob_hist_qoe]
+  conditions: [grouped_drive]
+feature_sets:
+  rf: [rf]
+  rf_mob: [rf, mobility]
+  rf_mob_hist: [rf, mobility, history]
+  rf_mob_hist_qoe: [rf, mobility, history, qoe]

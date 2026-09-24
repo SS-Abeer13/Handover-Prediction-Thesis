@@ -1,0 +1,13 @@
+model,condition,regime,feature_set,variant,horizon_s,n_events,event_detection_rate,median_lead_time_s,false_alarms_per_hour,false_alarms_per_km,threshold
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,single_task,1.0,288,0.6215277777777778,1.0,4.845723752329675,0.18380172303433828,0.7909780144691467
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,single_task,2.0,288,0.6840277777777778,2.0,6.72059738643435,0.2549744613916044,0.8524155616760254
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,single_task,3.0,288,0.75,3.0,5.234188389240836,0.1986528789955426,0.8339670896530151
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,single_task,5.0,288,0.8229166666666666,5.0,7.125,0.27054353277174353,0.811370849609375
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_ho_qoe,1.0,288,0.6111111111111112,1.0,5.591219714226548,0.21207891119346725,0.7939786911010742
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_ho_qoe,2.0,288,0.6944444444444444,2.0,5.22713130056005,0.19831346997124788,0.838351309299469
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_ho_qoe,3.0,288,0.7638888888888888,3.0,4.112576591546371,0.1560844049250692,0.8283209204673767
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_ho_qoe,5.0,288,0.8472222222222222,5.0,7.125,0.27054353277174353,0.8191245794296265
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_all,1.0,288,0.6215277777777778,1.0,6.33671567612342,0.24035609935259622,0.8069261908531189
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_all,2.0,288,0.7152777777777778,2.0,5.9738643434972,0.22664396568142614,0.8551734089851379
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_all,3.0,288,0.7430555555555556,3.0,4.860317790009347,0.18446338763871814,0.8375874161720276
+gru,grouped_drive,topology_agnostic,rf_mob_hist_qoe,mt_all,5.0,288,0.8125,5.0,9.0,0.3417391992906234,0.8317373991012573

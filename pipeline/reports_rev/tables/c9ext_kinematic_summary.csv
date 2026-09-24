@@ -1,0 +1,2 @@
+traces,traces_where_forward_fits_better,share_forward,median_abs_err_forward_m,median_abs_err_backward_m,median_corr_forward,median_corr_backward
+59,4,0.06779661016949153,9.444444444444445,9.444444444444445,0.17040657781715715,0.16927601558446295

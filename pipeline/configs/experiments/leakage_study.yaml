@@ -1,0 +1,7 @@
+# R10/R25: quantify inflation from random row-level splitting.
+experiment:
+  name: leakage_study
+  models: [lgbm, gru]
+  regimes: [topology_agnostic, context_rich]
+  feature_sets: [rf_mob_hist_qoe]
+  conditions: [random_row, grouped_drive, external_route]

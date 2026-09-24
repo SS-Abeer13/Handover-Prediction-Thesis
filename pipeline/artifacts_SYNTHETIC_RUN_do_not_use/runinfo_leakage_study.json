@@ -1,0 +1,66 @@
+{
+  "lgbm|random_row|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 153600
+    },
+    "best_epoch": null,
+    "best_val_metric": null
+  },
+  "gru|random_row|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 130500,
+      "n_trainable": 130500,
+      "state_size_mb": 0.4978179931640625
+    },
+    "best_epoch": 3,
+    "best_val_metric": 0.635043194695603
+  },
+  "lgbm|random_row|context_rich|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 153600
+    },
+    "best_epoch": null,
+    "best_val_metric": null
+  },
+  "gru|random_row|context_rich|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 130500,
+      "n_trainable": 130500,
+      "state_size_mb": 0.4978179931640625
+    },
+    "best_epoch": 3,
+    "best_val_metric": 0.635043194695603
+  },
+  "lgbm|grouped_drive|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 153600
+    },
+    "best_epoch": null,
+    "best_val_metric": null
+  },
+  "gru|grouped_drive|topology_agnostic|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 130500,
+      "n_trainable": 130500,
+      "state_size_mb": 0.4978179931640625
+    },
+    "best_epoch": 3,
+    "best_val_metric": 0.5859935230312441
+  },
+  "lgbm|grouped_drive|context_rich|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 153600
+    },
+    "best_epoch": null,
+    "best_val_metric": null
+  },
+  "gru|grouped_drive|context_rich|rf_mob_hist_qoe|base": {
+    "footprint": {
+      "n_parameters": 130500,
+      "n_trainable": 130500,
+      "state_size_mb": 0.4978179931640625
+    },
+    "best_epoch": 3,
+    "best_val_metric": 0.5859935230312441
+  }
+}

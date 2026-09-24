@@ -1,0 +1,29 @@
+{
+  "gru|grouped_drive|topology_agnostic|rf_mob_hist_qoe|single_task": {
+    "footprint": {
+      "n_parameters": 130500,
+      "n_trainable": 130500,
+      "state_size_mb": 0.4978179931640625
+    },
+    "best_epoch": 3,
+    "best_val_metric": 0.5859935230312441
+  },
+  "gru|grouped_drive|topology_agnostic|rf_mob_hist_qoe|mt_ho_qoe": {
+    "footprint": {
+      "n_parameters": 136968,
+      "n_trainable": 136968,
+      "state_size_mb": 0.522491455078125
+    },
+    "best_epoch": 2,
+    "best_val_metric": 0.5818553941608287
+  },
+  "gru|grouped_drive|topology_agnostic|rf_mob_hist_qoe|mt_all": {
+    "footprint": {
+      "n_parameters": 152010,
+      "n_trainable": 152010,
+      "state_size_mb": 0.5798721313476562
+    },
+    "best_epoch": 2,
+    "best_val_metric": 0.5819361355803772
+  }
+}

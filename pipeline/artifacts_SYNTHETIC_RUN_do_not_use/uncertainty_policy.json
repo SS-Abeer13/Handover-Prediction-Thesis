@@ -1,0 +1,18 @@
+{
+  "model": "gru",
+  "condition": "grouped_drive",
+  "ensemble_size": 2,
+  "calibration": "temperature",
+  "primary_ood_score": "ensemble_disagreement",
+  "taus": {
+    "1.0": 0.2641997002065182,
+    "0.95": 0.05022347858175635,
+    "0.9": 0.03311578300781548,
+    "0.8": 0.017515074461698532,
+    "0.7": 0.009197667241096497,
+    "0.6": 0.0034471452236175537,
+    "0.5": 0.0010576969907560851
+  },
+  "operating_threshold": 0.7308119280482548,
+  "reference_horizon_s": 2.0
+}

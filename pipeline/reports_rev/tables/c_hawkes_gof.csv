@@ -1,0 +1,2 @@
+test,n_residuals,ks_statistic_D,p_value,mean_residual,rejects_exponential_kernel_at_0.05
+Ogata time-rescaling residuals vs Exp(1),953,0.0646566535094005,0.0006598051163562559,0.9911435052520933,True

@@ -1,0 +1,13 @@
+variant,model,violating_rows_frac,violating_pairs_frac,max_violation,mean_violation_when_violating
++ self-excitation,hazard LGBM,0.0,0.0,0.0,0.0
++ self-excitation,hazard MLP,0.0,0.0,0.0,0.0
++ self-excitation,multi-head LGBM,0.4702,0.1473,0.4787,0.0208
++ self-excitation,multi-head LGBM + isotonic,0.4982,0.1515,0.5664,0.0527
++ self-excitation,multi-head LGBM + isotonic + monotone,0.0,0.0,0.0,0.0
++ self-excitation,multi-head MLP,0.6215,0.2063,0.8616,0.0633
+rf+mobility+history,hazard LGBM,0.0,0.0,0.0,0.0
+rf+mobility+history,hazard MLP,0.0,0.0,0.0,0.0
+rf+mobility+history,multi-head LGBM,0.4731,0.1475,0.4558,0.0209
+rf+mobility+history,multi-head LGBM + isotonic,0.4903,0.1488,0.5731,0.0551
+rf+mobility+history,multi-head LGBM + isotonic + monotone,0.0,0.0,0.0,0.0
+rf+mobility+history,multi-head MLP,0.6099,0.2011,0.8504,0.057

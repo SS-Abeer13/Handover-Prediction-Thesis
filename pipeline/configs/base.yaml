@@ -1,0 +1,165 @@
+# ============================================================================
+# Base configuration - Uncertainty-Aware Multi-Horizon LTE Handover / QoE
+# Every number here is a protocol decision. Freeze this file at stage R2.
+# ============================================================================
+project:
+  name: lte-ho-forecast
+  seed: 1337
+  paths:
+    raw: data/raw
+    interim: data/interim
+    processed: data/processed
+    artifacts: artifacts
+    reports: reports
+
+# ---------------------------------------------------------------- ingestion
+data:
+  adapter: curated_v1          # see configs/adapters/*.yaml
+  sources:
+    # HANDOVER_LOG_1.csv was NOT regenerated with the fixed sample export - it
+    # describes a different set of cells (zero names in common). The log below
+    # is rebuilt from this sample file's own serving-cell transitions by
+    # `python -m hoproj.data.event_log`, so the two are the same capture by
+    # construction. See reports/tables/authenticity_audit_fixed.csv.
+    samples: "DRIVETEST_LOGS_1_fixed.csv"
+    handovers: "HANDOVER_LOG_REGENERATED.csv"
+  # sessions are split where the sample clock jumps by more than this
+  session_gap_s: 5.0
+  # resample / regularise the sample grid to this period (s). null = keep native
+  target_period_s: 1.0
+  max_interpolate_gap_s: 3.0   # longer gaps are left as holes + masked
+
+# ------------------------------------------------------- quality control (R7)
+qc:
+  require_gps: true
+  max_gps_gap_s: 5.0
+  max_speed_kmh: 140.0
+  min_drive_duration_s: 90.0
+  min_drive_samples: 90
+  max_missing_frac_core: 0.25   # reject drive if core RF missingness exceeds
+  core_fields: [serving_rsrp, serving_rsrq, lat, lon, speed_kmh]
+
+# ------------------------------------------- drive segmentation (pseudo-drives)
+segmentation:
+  method: along_track_runs      # along_track_runs | fixed_duration | session
+  smooth_window_s: 15           # median smoothing of along-track coordinate
+  min_traverse_frac: 0.45       # a run must cover >= this fraction of route extent
+  min_run_duration_s: 120
+  fixed_duration_s: 600         # fallback chunk size
+  route_from: handover_log      # corridor label source: handover_log | config
+
+# ---------------------------------------------------------------- labels (R8)
+labels:
+  # The proposal asks for ~0.5/1/2/3/5 s. A horizon shorter than one sample
+  # period cannot carry a single positive label, so horizons below
+  # data.target_period_s are dropped automatically with a warning.
+  # At the 1 Hz capture rate that removes 0.5 s; re-enable it only once a
+  # sub-second XCAL export is available.
+  horizons_s: [1.0, 2.0, 3.0, 5.0]
+  horizons_requested_s: [0.5, 1.0, 2.0, 3.0, 5.0]
+  handover:
+    source: handover_log        # handover_log | serving_cell_change
+    match_tolerance_s: 1.5
+    post_event_blank_s: 2.0     # samples this soon after a HO are masked out
+    exclude_trace_tail: true    # mask samples whose horizon runs past drive end
+    pingpong_return_window_s: 10.0
+    short_stay_s: 8.0
+    stable_dwell_s: 60.0
+  target_cell:
+    n_candidates: 3             # Best_N1..N3
+    require_candidate_match: true   # drop events whose target is not a candidate
+  dwell:
+    clip_s: 180.0
+    log_transform: true
+  qoe:
+    # thresholds are percentiles fitted on TRAIN drives only (leakage-safe)
+    dl_tp_low_pct: 10.0
+    rtt_high_pct: 90.0
+    loss_high_pct: 90.0
+    min_rules_triggered: 1      # 1 = union of rules, 2 = at least two rules
+    interruption_dl_kbps: 50.0  # below this for >=1 s counts as interruption
+
+# ------------------------------------------------------------- features (R9)
+features:
+  regime: topology_agnostic     # topology_agnostic (A) | context_rich (B)
+  blocks: [rf, mobility, history, qoe]     # context added by regime B
+  rolling_windows_s: [3, 5, 10]
+  derivative_orders: [1, 2]
+  neighbour_k: 3
+  keep_missing_masks: true
+  scaler: robust                # robust | standard | none
+  impute: median                # median | ffill_then_median
+  clip_sigma: 8.0
+
+# -------------------------------------------------------------- windows (R9)
+windows:
+  length_s: 10.0                # L, tuned only inside the development domain
+  stride_s: 1.0
+  min_valid_frac: 0.7           # window rejected if more than 30% imputed
+
+# --------------------------------------------------------------- splits (R12)
+splits:
+  external_route: kuril_badda_rampura_malibagh   # LOCKED - never touched before R15
+  optional_external: []                          # e.g. other operator / device
+  # train fits parameters, val drives early stopping and thresholds, calib is
+  # reserved for calibration/conformal/abstention, test is the grouped holdout.
+  dev_fractions: {train: 0.55, val: 0.15, calib: 0.15, test: 0.15}
+  group_key: drive_id
+  stratify_on: [route_id, direction]
+  n_group_folds: 5
+  leakage_conditions: [random_row, grouped_drive, external_route]
+
+# --------------------------------------------------------------- models (R11-12)
+train:
+  device: auto
+  batch_size: 256
+  epochs: 60
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+  grad_clip: 1.0
+  early_stop_patience: 8
+  early_stop_metric: val_auprc_mean
+  pos_weight: auto              # auto = inverse prevalence per horizon, capped
+  pos_weight_cap: 20.0
+  num_workers: 0
+  amp: false
+tasks:
+  handover: {enabled: true,  weight: 1.0}
+  qoe:      {enabled: false, weight: 0.3}
+  dwell:    {enabled: false, weight: 0.1}
+  target:   {enabled: false, weight: 0.3}
+
+# ----------------------------------------------------- uncertainty (R14)
+uncertainty:
+  ensemble_size: 5
+  calibration: temperature      # temperature | isotonic | none
+  conformal:
+    enabled: true
+    alpha: 0.1
+    blocks: drive               # calibrate on whole drives (no exchangeability abuse)
+  ood:
+    scores: [ensemble_disagreement, mahalanobis, knn]
+    knn_k: 20
+    knn_subsample: 20000
+  abstention:
+    target_coverages: [1.0, 0.95, 0.9, 0.8, 0.7, 0.6, 0.5]
+    select_on: val_and_calib    # never the external route
+
+# -------------------------------------------------------------- evaluation (R23)
+eval:
+  primary_metric: auprc
+  fixed_fpr: [0.01, 0.05, 0.10]
+  event:
+    warn_horizon_s: 5.0         # window before a HO in which a warning counts
+    operating_point: recall_at_fpr   # threshold rule for event metrics
+    operating_fpr: 0.05
+  bootstrap:
+    n: 1000
+    unit: drive_id
+    ci: 0.95
+  tests: [paired_permutation, wilcoxon]
+  multiple_comparison: holm
+deploy:
+  profile_batch_sizes: [1, 32, 256]
+  profile_repeats: 50
+  export_onnx: false

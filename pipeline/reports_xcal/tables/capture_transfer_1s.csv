@@ -1,0 +1,5 @@
+held_out,label,horizon_s,n,prevalence,auprc,lift,auroc,ece
+XCAL10Sept,10 Sept urban arterial,1.0,2055,0.084,0.826,9.9,0.949,0.027
+XCAL12Sept,12 Sept urban loop,1.0,1083,0.077,0.718,9.4,0.909,0.04
+XCAL13Sept,13 Sept dense urban,1.0,2911,0.063,0.832,13.2,0.943,0.019
+XCAL15Sept,15 Sept highway,1.0,2082,0.051,0.761,14.9,0.927,0.018

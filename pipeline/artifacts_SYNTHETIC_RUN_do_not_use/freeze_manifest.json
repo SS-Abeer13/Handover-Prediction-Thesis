@@ -1,0 +1,21 @@
+{
+  "config_fingerprint": "046a214f20ca",
+  "frozen_model": "gru",
+  "external_route": "kuril_badda_rampura_malibagh",
+  "horizons_s": [
+    1.0,
+    2.0,
+    3.0,
+    5.0
+  ],
+  "window_length_s": 10.0,
+  "feature_regime": "topology_agnostic",
+  "feature_blocks": [
+    "rf",
+    "mobility",
+    "history",
+    "qoe"
+  ],
+  "uncertainty_policy": null,
+  "notes": "frozen from the notebook run"
+}

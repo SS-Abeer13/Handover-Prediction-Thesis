@@ -1,0 +1,11 @@
+# R20: single-task vs shared-encoder multi-task. Negative transfer is reportable.
+experiment:
+  name: multitask
+  models: [gru]
+  regimes: [topology_agnostic]
+  feature_sets: [rf_mob_hist_qoe]
+  conditions: [grouped_drive]
+  variants:
+    single_task: {tasks: {handover: {enabled: true}, qoe: {enabled: false}, dwell: {enabled: false}, target: {enabled: false}}}
+    mt_ho_qoe:   {tasks: {handover: {enabled: true}, qoe: {enabled: true},  dwell: {enabled: false}, target: {enabled: false}}}
+    mt_all:      {tasks: {handover: {enabled: true}, qoe: {enabled: true},  dwell: {enabled: true},  target: {enabled: true}}}

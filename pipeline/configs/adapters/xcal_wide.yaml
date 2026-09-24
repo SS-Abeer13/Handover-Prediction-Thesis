@@ -1,0 +1,50 @@
+# Adapter for a raw XCAL wide CSV export (e.g. "test 10 sept-M1.csv").
+# NOTE (R0 feasibility gate): in the pilot capture the Best_N* neighbour columns,
+# RTT and packet-loss columns were present but entirely empty, and application
+# throughput was populated in <1% of rows. Candidate-neighbour ranking and QoE
+# targets are therefore DISABLED by default for this adapter.
+adapter:
+  name: xcal_wide
+  strip_column_whitespace: true
+  samples:
+    path_key: samples
+    time: {column: Time, format: "%m/%d/%Y %H:%M:%S.%f"}
+    rename:
+      Longitude: lon
+      Latitude: lat
+      "Speed(km/h)": speed_kmh
+      "LTE-S_PCell PCI": serving_pci
+      "LTE-S_PCell EARFCN": serving_earfcn
+      "LTE-S_Band": serving_band
+      "LTE-S_eNB-ID": serving_enb
+      "LTE-S_PLMN ID": plmn
+      "LTE-S_Global Cell ID(Serving)": serving_cell_name
+      "LTE-S_PCell RSRP": serving_rsrp
+      "LTE-S_PCell RSRQ": serving_rsrq
+      "LTE-S_PCell RSSI": serving_rssi
+      "LTE-S_PCell SINR": serving_sinr
+      "LTE-S_PCell CQI": serving_cqi
+      "LTE-S_RRC state": rrc_state
+      "LTE-S_Best_N1_Cell_ID": nbr1_id
+      "LTE-S_Best_N1_RSRP": nbr1_rsrp
+      "LTE-S_Best_N2_Cell_ID": nbr2_id
+      "LTE-S_Best_N2_RSRP": nbr2_rsrp
+      "LTE-S_Best_N3_Cell_ID": nbr3_id
+      "LTE-S_Best_N3_RSRP": nbr3_rsrp
+      "LTE-S_Total Phy DL TP(Kbps)": phy_dl_kbps
+      "LTE-S_Total Phy UL TP(Kbps)": phy_ul_kbps
+      "Round Trip Time": rtt_ms
+      "Rx TCP/UDP Throughput": dl_tp_kbps
+      "Tx TCP/UDP Throughput": ul_tp_kbps
+  handovers: null               # derived from serving-cell transitions
+overrides:
+  labels:
+    handover: {source: serving_cell_change}
+    target_cell: {require_candidate_match: false}
+  features:
+    blocks: [rf, mobility, history]
+  tasks:
+    qoe: {enabled: false}
+    target: {enabled: false}
+  segmentation:
+    route_from: config

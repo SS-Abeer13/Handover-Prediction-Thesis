@@ -1,0 +1,123 @@
+{
+  "alpha": 0.1,
+  "thresholds": [
+    [
+      0.577138327825031,
+      0.5085497748952126
+    ],
+    [
+      0.6175866121247722,
+      0.47038344512660746
+    ],
+    [
+      0.6174938405492854,
+      0.47254469569426605
+    ],
+    [
+      0.6443772097571234,
+      0.4809250978647066
+    ]
+  ],
+  "coverage": {
+    "val": {
+      "0": {
+        "empirical_coverage": 0.9037674467415259,
+        "per_drive_coverage_min": 0.857707509881423,
+        "per_drive_coverage_median": 0.9127843696838027,
+        "per_drive_coverage_iqr": 0.0402647968673594,
+        "n_drives": 14,
+        "mean_set_size": 1.0646447686011125,
+        "singleton_rate": 0.9353552313988877,
+        "ambiguous_rate": 0.06464476860111239,
+        "empty_rate": 0.0,
+        "n": 9529
+      },
+      "1": {
+        "empirical_coverage": 0.907313997477932,
+        "per_drive_coverage_min": 0.8555399719495091,
+        "per_drive_coverage_median": 0.9185215500928542,
+        "per_drive_coverage_iqr": 0.03870380488865621,
+        "n_drives": 14,
+        "mean_set_size": 1.0629466162253047,
+        "singleton_rate": 0.9370533837746953,
+        "ambiguous_rate": 0.06294661622530474,
+        "empty_rate": 0.0,
+        "n": 9516
+      },
+      "2": {
+        "empirical_coverage": 0.9093013468013468,
+        "per_drive_coverage_min": 0.8614775725593667,
+        "per_drive_coverage_median": 0.921315207780725,
+        "per_drive_coverage_iqr": 0.045294092224100524,
+        "n_drives": 14,
+        "mean_set_size": 1.0609217171717171,
+        "singleton_rate": 0.9390782828282829,
+        "ambiguous_rate": 0.06092171717171717,
+        "empty_rate": 0.0,
+        "n": 9504
+      },
+      "3": {
+        "empirical_coverage": 0.9160071752664345,
+        "per_drive_coverage_min": 0.8767123287671232,
+        "per_drive_coverage_median": 0.9290049207217058,
+        "per_drive_coverage_iqr": 0.03679247906637517,
+        "n_drives": 14,
+        "mean_set_size": 1.0735464809538884,
+        "singleton_rate": 0.9264535190461116,
+        "ambiguous_rate": 0.07354648095388835,
+        "empty_rate": 0.0,
+        "n": 9477
+      }
+    },
+    "test": {
+      "0": {
+        "empirical_coverage": 0.9051175049417967,
+        "per_drive_coverage_min": 0.8774002954209749,
+        "per_drive_coverage_median": 0.898415516548305,
+        "per_drive_coverage_iqr": 0.035439511387371114,
+        "n_drives": 14,
+        "mean_set_size": 1.0510652317153526,
+        "singleton_rate": 0.9489347682846475,
+        "ambiguous_rate": 0.051065231715352516,
+        "empty_rate": 0.0,
+        "n": 9106
+      },
+      "1": {
+        "empirical_coverage": 0.905081390233172,
+        "per_drive_coverage_min": 0.8757687576875769,
+        "per_drive_coverage_median": 0.900558023536747,
+        "per_drive_coverage_iqr": 0.027809127135588696,
+        "n_drives": 14,
+        "mean_set_size": 1.0500439947206335,
+        "singleton_rate": 0.9499560052793665,
+        "ambiguous_rate": 0.050043994720633526,
+        "empty_rate": 0.0,
+        "n": 9092
+      },
+      "2": {
+        "empirical_coverage": 0.9059367771781033,
+        "per_drive_coverage_min": 0.8780788177339901,
+        "per_drive_coverage_median": 0.9035111052001596,
+        "per_drive_coverage_iqr": 0.02863459037802807,
+        "n_drives": 14,
+        "mean_set_size": 1.0470316114109484,
+        "singleton_rate": 0.9529683885890516,
+        "ambiguous_rate": 0.047031611410948346,
+        "empty_rate": 0.0,
+        "n": 9079
+      },
+      "3": {
+        "empirical_coverage": 0.910958904109589,
+        "per_drive_coverage_min": 0.8826151560178306,
+        "per_drive_coverage_median": 0.9131596451975316,
+        "per_drive_coverage_iqr": 0.027378821236646922,
+        "n_drives": 14,
+        "mean_set_size": 1.052364118426867,
+        "singleton_rate": 0.947635881573133,
+        "ambiguous_rate": 0.05236411842686699,
+        "empty_rate": 0.0,
+        "n": 9052
+      }
+    }
+  }
+}

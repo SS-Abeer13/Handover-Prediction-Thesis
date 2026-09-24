@@ -1,0 +1,8 @@
+# R14: deep ensemble + calibration + conformal + OOD + abstention.
+experiment:
+  name: uncertainty
+  models: [gru]
+  regimes: [topology_agnostic]
+  feature_sets: [rf_mob_hist_qoe]
+  conditions: [grouped_drive, external_route]
+  ensemble: true

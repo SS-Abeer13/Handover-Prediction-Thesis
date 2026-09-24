@@ -1,0 +1,1400 @@
+% =====================================================================
+%  Handover-prediction thesis - bibliography
+%  Screening pass 1 (thread A complete; threads B-D pending)
+%  Screening pass 2, 14 Sept 2026: 16 entries re-verified against the
+%  publisher or author record. One venue error and three author-list
+%  errors corrected - see doc 21 section 4.
+%  Screening pass 3, 15 Sept 2026: survey widened from 88 to 108 entries
+%  across nine new or thin threads (J-R), and four pass-2 entries patched
+%  in place. 93 entries now carry verified=full, 15 verified=partial.
+%  KNOWN GAP: four pass-1 entries still carry no author field at all -
+%  crossoperator2026outage, intime2025cho, residuallstm2024mobility and
+%  preho2026leo. They must be completed or dropped before submission.
+%  See doc 22 for the thread-by-thread synthesis.
+%
+%  VERIFICATION POLICY
+%  Entries carry a `verified` note:
+%    verified=full      title, authors, venue and DOI/arXiv id all confirmed
+%    verified=id-only   identifier confirmed, DOI not issued or not retrieved
+%    verified=partial   title + venue confirmed; author list or DOI unconfirmed
+%  Anything not marked verified=full MUST be re-checked against the publisher
+%  record before submission. Several 2025-2026 preprints are very recent.
+% =====================================================================
+
+% ---------------------------------------------------------------------
+% A. ML/DL HANDOVER AND RADIO-LINK-FAILURE PREDICTION  (direct competitors)
+% ---------------------------------------------------------------------
+
+@article{chou2026rlfrailway,
+  author  = {Chou, Po-Heng and Lin, Da-Chih and Wei, Hung-Yu and Saad, Walid and
+             Tsao, Yu},
+  title   = {Learning-based Radio Link Failure Prediction Based on Measurement
+             Dataset in Railway Environments},
+  journal = {arXiv preprint},
+  year    = {2026},
+  eprint  = {2511.08851},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2, v3: title, all five authors and affiliations
+             confirmed from the arXiv HTML). No DOI issued. Taipei Metro Brown
+             Line, 10 Hz, RLF within 1-3 s, prevalence about 1:500. Split
+             protocol NOT STATED. Metrics accuracy/precision/recall/F1/AUC; no
+             calibration; consecutive-point alarm confirmation policies serve as
+             the false-alarm control. Code: github.com/BoneZhou/RLF-Prediction}
+}
+
+@article{kabeer2025sequence,
+  author  = {Kabeer, Muhammad and Nordin, Rosdiadee and Behjati, Mehran and
+             {Lau Sian Lun}},
+  title   = {Sequence-Based Deep Learning for Handover Optimization in Dense
+             Urban Cellular Network},
+  journal = {arXiv preprint},
+  year    = {2025},
+  eprint  = {2510.02958},
+  doi     = {10.48550/arXiv.2510.02958},
+  note    = {verified=full (pass 2: all four authors and affiliations confirmed,
+             Sunway University). Real multi-operator drive test, 2 km2 Sunway
+             City Malaysia, 30925 records, 132 nodes, GNetTrack Pro on Samsung
+             S21 Ultra. Task: time-of-stay and ping-pong detection. Split
+             protocol NOT STATED. Prevalence acknowledged but not quantified;
+             no calibration, no false-alarm rate. Dataset release stated.}
+}
+
+@article{narayana2026ainative,
+  author  = {Narayana, Mannam Veera and Singh, Rohit and {Deepa M.R.} and
+             Ganti, Radha Krishna},
+  title   = {Enabling {AI}-Native Mobility in {6G}: A Real-World Dataset for
+             Handover, Beam Management, and Timing Advance},
+  journal = {arXiv preprint},
+  year    = {2026},
+  eprint  = {2605.12453},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2: four authors, all IIT Madras, confirmed).
+             Commercial 5G SA band n78, Chennai; 117390 measurement reports
+             Nov 2025-Mar 2026, 1546 A3 handovers, 3196 RACH triggers, five
+             mobility modes. Dataset paper: NO ML baselines and no split
+             protocol - exploratory analysis only. Data "available upon
+             acceptance".}
+}
+
+@article{dzaferagic2024oran,
+  author  = {Dzaferagic, Merim and Xavier, Bruno and Collins, Diarmuid and
+             D'Onofrio, Vincenzo and Martinello, Marcos and Ruffini, Marco},
+  title   = {{ML}-Based Handover Prediction Over a Real {O-RAN} Deployment Using
+             {RAN} Intelligent Controller},
+  journal = {IEEE Transactions on Network and Service Management},
+  year    = {2024},
+  doi     = {10.1109/TNSM.2024.3468910},
+  eprint  = {2404.19671},
+  note    = {verified=full. 11 h, 40000 samples at 1 s, 10.9\% handover rate,
+             OpenIreland testbed. Split protocol not stated.}
+}
+
+@article{panitsas2024predictive,
+  author  = {Panitsas, Ioannis and Mudvari, Akrit and Maatouk, Ali and
+             Tassiulas, Leandros},
+  title   = {A Deep and Transfer Learning Approach for Handover Management in
+             {O-RAN}},
+  journal = {arXiv preprint},
+  year    = {2024},
+  eprint  = {2404.08113},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2). TITLE CHANGED between versions - v1 was
+             "Predictive Handover Strategy in 6G and Beyond: A Deep and Transfer
+             Learning Approach"; cite the current title. Simulated RAN, 21/36/51
+             base stations, 10 GB of temporal RSRP. Multi-class next-serving-cell
+             prediction. Split: 80/20 with 10-fold CV, NOT grouped by trajectory.
+             Accuracy/precision/recall/F1; a confidence threshold is mentioned
+             but no calibration analysis and no false-alarm rate.}
+}
+
+@inproceedings{boutiba2021rlf,
+  author    = {Boutiba, Karim and Bagaa, Miloud and Ksentini, Adlen},
+  title     = {Radio Link Failure Prediction in {5G} Networks},
+  booktitle = {IEEE Global Communications Conference (GLOBECOM)},
+  address   = {Madrid, Spain},
+  year      = {2021},
+  note      = {verified=full (pass 2, EURECOM publication record 6672; IEEE
+               Xplore document 9685587; no DOI on either record). LSTM + SVM on
+               a 5G testbed (OpenAirInterface); RSRP/RSRQ/CQI/PHR. Headline is
+               98\% accuracy on connection status - accuracy on an imbalanced
+               failure task. No prevalence-aware metric, no calibration, no
+               false-alarm rate, split protocol NOT STATED.}
+}
+
+@article{mandapati2025metacontinual,
+  author  = {Mandapati, Sasi Vardhan Reddy},
+  title   = {Meta-Continual Mobility Forecasting for Proactive Handover
+             Prediction},
+  journal = {arXiv preprint},
+  year    = {2025},
+  eprint  = {2512.11841},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2: single author, independent researcher).
+             GeoLife GPS traces + DeepMIMO ray tracing - hybrid, not measured
+             radio. Horizon 3 steps. SPATIALLY GROUPED SPLIT: 60/20/20 over
+             zones, test zones unseen - one of only two grouped protocols in the
+             screened set. Metrics ADE/FDE, F1, AUROC, missed-HO, ping-pong
+             rate. No calibration, no false-alarm rate.}
+}
+
+@article{chien2024federated,
+  author  = {Chien, and Huang, and Chang, and Hwang},
+  title   = {Privacy-Preserving Handover Optimization Using Federated Learning
+             and {LSTM} Networks},
+  journal = {Sensors},
+  volume  = {24}, number = {20}, pages = {6685}, year = {2024},
+  doi     = {10.3390/s24206685},
+  note    = {verified=partial. Claims real data but source, duration and scale
+             all unspecified; split protocol not stated.}
+}
+
+@article{wadud2026oran,
+  author  = {Wadud, Abdul and Golpayegani, Fatemeh and Afraz, Nima},
+  title   = {{AI}-Driven Multi-Modal Adaptive Handover Control Optimization for
+             {O-RAN}},
+  journal = {arXiv preprint},
+  year    = {2026},
+  eprint  = {2603.17158},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2: three authors confirmed; accepted for IEEE
+             ICC 2026 Workshop WS-01, DOI pending). MATLAB 5G Toolbox
+             simulation, 1 O-CU / 3 O-DU / 27 O-RU, 100 users, 7 km2, 30 repeats
+             with 95\% CIs. Headline 99.84\% mode-classification accuracy. No
+             held-out split stated for the ML components; no calibration.}
+}
+
+@article{amirova2026datadriven,
+  author  = {Amirova, and Abdiraman, and Aldasheva, and Shayea, Ibraheem and
+             Yedilkhan, and Tussupov},
+  title   = {Data-Driven and Machine Learning-Based Analysis of Handover
+             Behavior and Network Stability in Mobile Networks},
+  journal = {Future Internet},
+  volume  = {18}, number = {6}, pages = {290}, year = {2026},
+  doi     = {10.3390/fi18060290},
+  note    = {verified=full. CLOSEST DIRECT COMPETITOR. 27000 records,
+             232 handovers (0.86\%), Astana. Device-level hold-out, PR curves,
+             bootstrap CI on AUC. RF precision 0.117 at recall 0.843.}
+}
+
+@article{bartsioka2025dynamic,
+  author  = {Bartsioka, Maria Lamprini A. and Giannopoulos, Anastasios and
+             Spantideas, Sotirios},
+  title   = {Intelligent Dynamic Handover via {AI}-assisted Signal Quality
+             Prediction in {6G} Multi-{RAT} Networks},
+  journal = {arXiv preprint},
+  year    = {2025},
+  eprint  = {2510.14832},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2). Python 5G/WiFi HetNet simulator, 2 base
+             stations + 4 access points. Task is SINR/SNR regression, not
+             handover classification. Random 80/20 split, not grouped. RMSE,
+             handover failure rate, ping-pong counts; hysteresis variants stand
+             in for false-alarm control. No calibration.}
+}
+
+@article{sun2025proactive,
+  author  = {Sun, and Han, and Yang, and Huang, and Zhang, and Leung, Victor C. M.},
+  title   = {Proactive Handover Type Prediction and Parameter Optimization Based
+             on Machine Learning},
+  journal = {IEEE Transactions on Wireless Communications},
+  volume  = {24}, number = {4}, pages = {3515--3528}, year = {2025},
+  doi     = {10.1109/TWC.2025.3531702},
+  note    = {verified=partial (DOI via OpenAlex; full text not read).
+             Simulated ultra-dense network; 94.83\% accuracy on 4-class
+             imbalanced handover-type task.}
+}
+
+% --- thread A, bibliography verified but methods not yet extracted ---
+
+@article{paropkari2022deepmobility,
+  author  = {Paropkari, Rahul A. and Thantharate, Anurag and Beard, Cory},
+  title   = {Deep-Mobility: A Deep Learning Approach for an Efficient and
+             Reliable {5G} Handover},
+  journal = {IEEE Wireless Telecommunications Symposium (WTS)},
+  year    = {2022},
+  eprint  = {2101.06558},
+  note    = {verified=partial; Xplore 9767158, third author unconfirmed.}
+}
+
+@article{gnn2025oranmobility,
+  author  = {{Gonzalez Bermudez}, Ana and Farreras, Miquel and Groshev, Milan and
+             Trujillo, Jos\'e Antonio and {de la Bandera}, Isabel and
+             Barco, Raquel},
+  title   = {Graph Neural Networks for {O-RAN} Mobility Management: A Link
+             Prediction Approach},
+  journal = {arXiv preprint}, year = {2025}, eprint = {2502.02170},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2, v3: six authors confirmed). Real Huawei
+             data: 169000 nodes (100000 users, 69000 cells), about 35 million
+             edges. Task is user-cell LINK PREDICTION on a graph, not a
+             time-horizon forecast. Random 80/10/10 edge split with structure
+             preservation - not grouped by user or cell. AUC, AP, precision,
+             recall, F1, MCC; threshold tuning for imbalance but no calibration
+             and no event-level false-alarm rate.}
+}
+
+@article{transformer2024rlf,
+  author  = {Hasan, Kazi and Trappenberg, Thomas and Haque, Israat},
+  title   = {A Generalized Transformer-based Radio Link Failure Prediction
+             Framework in {5G} {RAN}s},
+  journal = {arXiv preprint}, year = {2024}, eprint = {2407.05197},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2: three authors, Dalhousie University).
+             A JOURNAL VERSION EXISTS - "A Generalized GNN-Transformer-Based
+             Radio Link Failure Prediction Framework in 5G RAN", IEEE Xplore
+             document 11018489; cite that version if it can be retrieved.
+             Real Turkcell KPI + weather data, 1.8M urban / 0.4M rural samples,
+             failure prevalence 0.06\% urban and 0.3\% rural. THE ONLY PAPER IN
+             THE SCREENED SET WITH A TEMPORAL SPLIT: rolling-origin, 5 folds,
+             split by time not at random. Reports F1 only; no calibration, no
+             false-alarm rate. Code (GenTrap) released. NB the task is next-day
+             cell-level RLF, not a per-sample mobility forecast.}
+}
+
+@article{oran2024connectedvehicles,
+  author  = {Santana, Maria and Dias, Kelvin Lopes},
+  title   = {Open {RAN}-Enabled Deep Learning-Assisted Mobility Management for
+             Connected Vehicles},
+  journal = {arXiv preprint}, year = {2024}, eprint = {2412.21161},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 2: two authors confirmed). OMNeT++ / Simu5G
+             simulation seeded with real ATCLL traces. LSTM/GRU signal-quality
+             forecast driving proactive handover. Split protocol NOT STATED
+             (grid search with cross-validation, proportions undisclosed).
+             Reports CQI, delay, session freeze, throughput with ANOVA; no
+             classification metric, no calibration, no false alarms.}
+}
+
+@article{lee2020cho,
+  author  = {Lee, Changsung and Cho, Hyoungjun and Song, Sooeun and
+             Chung, Jong Moon},
+  title   = {Prediction-Based Conditional Handover for {5G} mm-Wave Networks:
+             A Deep-Learning Approach},
+  journal = {IEEE Vehicular Technology Magazine},
+  volume  = {15}, number = {1}, pages = {54--62}, year = {2020},
+  doi     = {10.1109/MVT.2019.2959065},
+  note    = {verified=full (pass 2). CORRECTED IN PASS 2: the venue is the
+             Vehicular Technology MAGAZINE, not the Transactions, and there are
+             four authors, not two. The pass-1 entry would have been a wrong
+             citation. Blockage-aware CHO target prediction; preparation success
+             rate and signalling overhead are the reported metrics.}
+}
+
+@article{hgclstm2025,
+  author  = {{Djuikom Foka}, Gwladys Ornella and Stanica, Razvan and
+             Naboulsi, Diala},
+  title   = {{HGC-LSTM}: A graph neural network-based model for handover
+             forecasting in mobile networks},
+  journal = {Computer Networks},
+  volume  = {270}, pages = {111497}, year = {2025},
+  note    = {verified=full (pass 2: authors and volume confirmed from the
+             authors' own publication list; Elsevier PII S1389128625004645,
+             HAL hal-05288414). Forecasts AGGREGATE handover counts per cell
+             over time, not per-UE handover events - a different task from ours
+             and the reason it is not in the protocol-audit comparator set.}
+}
+
+@inproceedings{stgnn2023handover,
+  author    = {{Djuikom Foka}, Gwladys Ornella and Stanica, Razvan and
+               Naboulsi, Diala},
+  title     = {Handover Forecasting in Cellular Networks: A Spatio-temporal
+               Graph Neural Network Approach},
+  booktitle = {14th International Conference on Network of the Future (NoF)},
+  address   = {Izmir, Turkey},
+  pages     = {80--88},
+  year      = {2023},
+  doi       = {10.1109/NoF58724.2023.10302814},
+  note      = {verified=full (pass 2: authors, venue, pages and DOI confirmed;
+               the pass-1 entry had booktitle "IEEE" and no authors). Same team
+               and same aggregate-count task as hgclstm2025.}
+}
+
+@article{crossoperator2026outage,
+  title   = {Single-snapshot radio outage prediction in hilly urban {5G}
+             networks: a cross-operator feasibility study},
+  journal = {Ad Hoc Networks}, year = {2026},
+  note    = {verified=partial; Elsevier PII S1570870526002027.
+             METHODOLOGICALLY CLOSEST to our cross-capture transfer thread -
+             extract methods in pass 2.}
+}
+
+@article{intime2025cho,
+  title   = {In-time conditional handover for {B5G}/{6G}},
+  journal = {Computer Communications}, year = {2025},
+  doi     = {10.1016/j.comcom.2025.108107},
+  note    = {verified=partial.}
+}
+
+@article{residuallstm2024mobility,
+  title   = {Enhancing mobility management in {5G} networks using deep residual
+             {LSTM} model},
+  journal = {Applied Soft Computing}, year = {2024},
+  doi     = {10.1016/j.asoc.2024.112103},
+  note    = {verified=partial.}
+}
+
+@article{sulaiman2025predictive,
+  author  = {Sulaiman},
+  title   = {Predictive handover mechanism for seamless mobility in {5G} and
+             beyond networks},
+  journal = {IET Communications}, year = {2025},
+  doi     = {10.1049/cmu2.12878},
+  note    = {verified=partial; author list incomplete.}
+}
+
+@article{preho2026leo,
+  title   = {{PreHO}: Predictive Handover for {LEO} Satellite Networks},
+  journal = {arXiv preprint}, year = {2026}, eprint = {2603.07987},
+  note    = {verified=id-only.}
+}
+
+@inproceedings{alkhateeb2018blockage,
+  author    = {Alkhateeb, Ahmed and Beltagy, Iz},
+  title     = {Machine Learning for Reliable {mmWave} Systems: Blockage
+               Prediction and Proactive Handoff},
+  booktitle = {IEEE Global Conference on Signal and Information Processing
+               (GlobalSIP), invited paper},
+  year      = {2018}, eprint = {1807.02723}, archivePrefix = {arXiv},
+  note      = {verified=full (pass 2). CORRECTED IN PASS 2: there are TWO
+               authors, not three - the pass-1 entry carried a third author who
+               is not on the paper. Foundational proactive-handoff reference;
+               ray-traced (DeepMIMO-style) data, not measurements.}
+}
+
+@inproceedings{blockage2022realmmwave,
+  author    = {Wu, Shunyao and Alrabeiah, Muhammad and Hredzak, Andrew and
+               Chakrabarti, Chaitali and Alkhateeb, Ahmed},
+  title     = {Deep Learning for Moving Blockage Prediction using Real
+               Millimeter Wave Measurements},
+  booktitle = {IEEE International Conference on Communications (ICC)},
+  year      = {2022}, eprint = {2101.06886}, archivePrefix = {arXiv},
+  note      = {verified=full (pass 2: five authors confirmed). Real mmWave
+               testbed measurements: 158 trajectories, augmented to 632
+               sequence pairs per interval - two orders of magnitude smaller
+               than our set. GRU on received-power sequences; blockage
+               classification plus time-to-blockage regression. Split protocol
+               NOT STATED. Top-1 accuracy and MAE only; no prevalence-aware
+               metric, no calibration.}
+}
+
+@article{survey2024mlhandover,
+  author  = {Thillaigovindhan, Senthil Kumar and Roslee, Mardeni and
+             Mitani, Sufian Mousa Ibrahim and Osman, Anwar Faizd and
+             Ali, Fatimah Zaharah},
+  title   = {A Comprehensive Survey on Machine Learning Methods for Handover
+             Optimization in {5G} Networks},
+  journal = {Electronics}, volume = {13}, number = {16}, pages = {3223},
+  year    = {2024}, doi = {10.3390/electronics13163223},
+  note    = {verified=full (author list recovered in pass 3 from the MDPI
+             record; the pass-1 entry carried none). Framing survey.}
+}
+
+% ---------------------------------------------------------------------
+% C. PUBLIC DRIVE-TEST DATASETS  (external validation + data-release norms)
+% ---------------------------------------------------------------------
+
+@article{shafi2025mendeley,
+  author  = {Shafi, M. M. Sadman and Istiaque, K. M. and Sowad, Shafayet Sadik
+             and Kawser, Mohammad Tawhid},
+  title   = {Drive-Test-Based {LTE} Handover Dataset for Cellular Mobility
+             Studies in Urban Bangladesh},
+  journal = {Mendeley Data}, volume = {V1}, year = {2025},
+  doi     = {10.17632/n2pvmtyn2j.1},
+  note    = {verified=full. Used in this work as an independent external
+             validation set (12 captures, 310 signalling-confirmed handovers).}
+}
+
+@unpublished{shafi2025bandit,
+  author  = {Shafi, M. M. Sadman and Istiaque, K. M. and Sowad, Shafayet Sadik
+             and Kawser, Mohammad Tawhid},
+  title   = {Handover Optimization in {LTE} Networks Using Contextual Bandit
+             Reinforcement Learning and Real-World Data},
+  note    = {verified=full (read in full from the manuscript PDF; doc 11 and
+             doc 17). Islamic University of Technology, EEE. NO PUBLICATION
+             RECORD FOUND - treat as an unpublished manuscript until a venue is
+             confirmed. Reimplemented and evaluated under our protocol in
+             doc 21 section 3 and master section 25.1. If it remains
+             unpublished at submission time, the comparison must be phrased
+             without a citation, or the authors asked for permission.},
+  year    = {2025}
+}
+
+@article{schippers2025donext,
+  author  = {Schippers, and Geis, and B{\"o}cker, Stefan and Wietfeld, Christian},
+  title   = {{DoNext}: An Open-Access Measurement Dataset for Machine
+             Learning-Driven {5G} Mobile Network Analysis},
+  journal = {IEEE Transactions on Machine Learning in Communications and
+             Networking}, year = {2025},
+  doi     = {10.1109/TMLCN.2025.3564239},
+  note    = {verified=full. Two-year 4G/5G campaign, Dortmund. Strongest open
+             drive-test corpus for further external validation.}
+}
+
+@article{wiedner2026vienna,
+  author  = {Wiedner, and Eller, Lukas and Mussbah, Michael and R{\"o}ssler,
+             and Maresch, and Svoboda, Philipp and Rupp, Markus},
+  title   = {The Vienna {4G}/{5G} Drive-Test Dataset},
+  journal = {arXiv preprint}, year = {2026}, eprint = {2603.02638},
+  note    = {verified=partial. Data DOI 10.5281/zenodo.18338399, CC BY 4.0.
+             ~100 km2, 3 operators, LTE + NR NSA. No RRC signalling, no
+             handover counts, no ML baselines.}
+}
+
+@article{farthofer2022opendrivetest,
+  author  = {Farthofer, Sandra and Herlich, Matthias and Maier, Christian and
+             Pochaba, Sabrina and Lackner, Julia and Dorfinger, Peter},
+  title   = {An Open Mobile Communications Drive Test Data Set and Its Use for
+             Machine Learning},
+  journal = {IEEE Open Journal of the Communications Society},
+  volume  = {3}, pages = {1688--1701}, year = {2022},
+  doi     = {10.1109/OJCOMS.2022.3210289},
+  note    = {verified=full.}
+}
+
+% ---------------------------------------------------------------------
+% E1. DISCRETE-TIME SURVIVAL / HAZARD MODELLING  (our formulation)
+% ---------------------------------------------------------------------
+
+@article{gensheimer2019nnetsurvival,
+  author  = {Gensheimer, Michael F. and Narasimhan, Balasubramanian},
+  title   = {A scalable discrete-time survival model for neural networks},
+  journal = {PeerJ}, volume = {7}, pages = {e6257}, year = {2019},
+  doi     = {10.7717/peerj.6257}, note = {verified=full}
+}
+
+@article{kvamme2021pchazard,
+  author  = {Kvamme, H{\aa}vard and Borgan, {\O}rnulf},
+  title   = {Continuous and discrete-time survival prediction with neural
+             networks},
+  journal = {Lifetime Data Analysis}, volume = {27}, pages = {710--736},
+  year    = {2021}, doi = {10.1007/s10985-021-09532-6}, note = {verified=full}
+}
+
+@inproceedings{lee2018deephit,
+  author    = {Lee, Changhee and Zame, William R. and Yoon, Jinsung and
+               van der Schaar, Mihaela},
+  title     = {{DeepHit}: A Deep Learning Approach to Survival Analysis with
+               Competing Risks},
+  booktitle = {AAAI Conference on Artificial Intelligence}, year = {2018},
+  pages     = {2314--2321}, doi = {10.1609/aaai.v32i1.11842},
+  note      = {verified=full}
+}
+
+% ---------------------------------------------------------------------
+% E2. SELF-EXCITING POINT PROCESSES  (our ping-pong characterisation)
+% ---------------------------------------------------------------------
+
+@article{hawkes1971spectra,
+  author  = {Hawkes, Alan G.},
+  title   = {Spectra of some self-exciting and mutually exciting point
+             processes},
+  journal = {Biometrika}, volume = {58}, number = {1}, pages = {83--90},
+  year    = {1971}, note = {verified=full}
+}
+
+@article{ozaki1979maximum,
+  author  = {Ozaki, T.},
+  title   = {Maximum likelihood estimation of {Hawkes}' self-exciting point
+             processes},
+  journal = {Annals of the Institute of Statistical Mathematics},
+  volume  = {31}, pages = {145--155}, year = {1979},
+  note    = {verified=full. Recursive likelihood used in our implementation.}
+}
+
+@article{reinhart2018review,
+  author  = {Reinhart, Alex},
+  title   = {A review of self-exciting spatio-temporal point processes and
+             their applications},
+  journal = {Statistical Science}, volume = {33}, number = {3}, year = {2018},
+  eprint  = {1708.02647}, note = {verified=full}
+}
+
+@inproceedings{du2016rmtpp,
+  author    = {Du, Nan and Dai, Hanjun and Trivedi, Rakshit and Upadhyay, Utkarsh
+               and Gomez-Rodriguez, Manuel and Song, Le},
+  title     = {Recurrent Marked Temporal Point Processes: Embedding Event
+               History to Vector},
+  booktitle = {ACM SIGKDD}, year = {2016}, pages = {1555--1564},
+  doi       = {10.1145/2939672.2939875}, note = {verified=full}
+}
+
+@inproceedings{mei2017neuralhawkes,
+  author    = {Mei, Hongyuan and Eisner, Jason},
+  title     = {The Neural {Hawkes} Process: A Neurally Self-Modulating
+               Multivariate Point Process},
+  booktitle = {Advances in Neural Information Processing Systems}, year = {2017},
+  eprint    = {1612.09328}, note = {verified=full}
+}
+
+@inproceedings{zuo2020thp,
+  author    = {Zuo, Simiao and Jiang, Haoming and Li, Zichong and Zhao, Tuo and
+               Zha, Hongyuan},
+  title     = {Transformer {Hawkes} Process},
+  booktitle = {International Conference on Machine Learning}, year = {2020},
+  volume    = {119}, pages = {11692--11702}, note = {verified=full}
+}
+
+@inproceedings{shchur2020intensityfree,
+  author    = {Shchur, Oleksandr and Bilo{\v s}, Marin and G{\"u}nnemann, Stephan},
+  title     = {Intensity-Free Learning of Temporal Point Processes},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2020}, eprint = {1909.12127}, note = {verified=full}
+}
+
+@inproceedings{xue2024easytpp,
+  author    = {Xue, Siqiao and Shi, Xiaoming and Chu, Zhixuan and others},
+  title     = {{EasyTPP}: Towards Open Benchmarking Temporal Point Processes},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2024}, eprint = {2307.08097}, note = {verified=full}
+}
+
+% ---------------------------------------------------------------------
+% E3. CONFORMAL PREDICTION AND RISK CONTROL  (our guarantee)
+% ---------------------------------------------------------------------
+
+@inproceedings{angelopoulos2024crc,
+  author    = {Angelopoulos, Anastasios N. and Bates, Stephen and Fisch, Adam
+               and Lei, Lihua and Schuster, Tal},
+  title     = {Conformal Risk Control},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2024}, eprint = {2208.02814},
+  note      = {verified=full. Basis of our false-negative-rate bound.}
+}
+
+@article{bates2021rcps,
+  author  = {Bates, Stephen and Angelopoulos, Anastasios and Lei, Lihua and
+             Malik, Jitendra and Jordan, Michael I.},
+  title   = {Distribution-Free, Risk-Controlling Prediction Sets},
+  journal = {Journal of the ACM}, volume = {68}, number = {6}, year = {2021},
+  doi     = {10.1145/3478535}, note = {verified=full}
+}
+
+@article{dunn2023hierarchical,
+  author  = {Dunn, Robin and Wasserman, Larry and Ramdas, Aaditya},
+  title   = {Distribution-Free Prediction Sets for Two-Layer Hierarchical
+             Models},
+  journal = {Journal of the American Statistical Association},
+  volume  = {118}, number = {544}, year = {2023},
+  doi     = {10.1080/01621459.2022.2060112},
+  note    = {verified=full. Justifies drive-level rather than sample-level
+             calibration.}
+}
+
+@article{barber2023beyondexch,
+  author  = {Barber, Rina Foygel and Cand{\`e}s, Emmanuel J. and Ramdas,
+             Aaditya and Tibshirani, Ryan J.},
+  title   = {Conformal prediction beyond exchangeability},
+  journal = {Annals of Statistics}, volume = {51}, number = {2},
+  pages   = {816--845}, year = {2023}, doi = {10.1214/23-AOS2276},
+  note    = {verified=full}
+}
+
+@inproceedings{gibbs2021aci,
+  author    = {Gibbs, Isaac and Cand{\`e}s, Emmanuel},
+  title     = {Adaptive Conformal Inference Under Distribution Shift},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2021}, eprint = {2106.00170}, note = {verified=full}
+}
+
+@article{candes2023conformalsurvival,
+  author  = {Cand{\`e}s, Emmanuel J. and Lei, Lihua and Ren, Zhimei},
+  title   = {Conformalized survival analysis},
+  journal = {Journal of the Royal Statistical Society Series B},
+  volume  = {85}, number = {1}, pages = {24--45}, year = {2023},
+  doi     = {10.1093/jrsssb/qkac004}, note = {verified=full}
+}
+
+% ---------------------------------------------------------------------
+% E4. OFF-POLICY EVALUATION AND CAUSAL IDENTIFICATION  (why RL is closed)
+% ---------------------------------------------------------------------
+
+@inproceedings{dudik2011dr,
+  author    = {Dud{\'i}k, Miroslav and Langford, John and Li, Lihong},
+  title     = {Doubly Robust Policy Evaluation and Learning},
+  booktitle = {International Conference on Machine Learning}, year = {2011},
+  eprint    = {1103.4601}, note = {verified=full}
+}
+
+@inproceedings{sachdeva2020deficient,
+  author    = {Sachdeva, Noveen and Su, Yi and Joachims, Thorsten},
+  title     = {Off-policy Bandits with Deficient Support},
+  booktitle = {ACM SIGKDD}, year = {2020}, eprint = {2006.09438},
+  note      = {verified=full. The canonical treatment of the support problem
+               that makes OPE unidentified under deterministic logging.}
+}
+
+@article{narita2021algorithmexperiment,
+  author  = {Narita, Yusuke and Yata, Kohei},
+  title   = {Algorithm is Experiment: Machine Learning, Market Design, and
+             Policy Eligibility Rules},
+  journal = {arXiv preprint}, year = {2021}, eprint = {2104.12909},
+  note    = {verified=full. Quasi-propensity score; identification at the
+             boundary of a deterministic decision rule - the basis for our
+             proposed fuzzy-RD design at the A3 trigger.}
+}
+
+@inproceedings{laroche2019spibb,
+  author    = {Laroche, Romain and Trichelair, Paul and {Tachet des Combes},
+               R{\'e}mi},
+  title     = {Safe Policy Improvement with Baseline Bootstrapping},
+  booktitle = {International Conference on Machine Learning}, year = {2019},
+  eprint    = {1712.06924}, note = {verified=full}
+}
+
+@article{uehara2022opereview,
+  author  = {Uehara, Masatoshi and Shi, Chengchun and Kallus, Nathan},
+  title   = {A Review of Off-Policy Evaluation in Reinforcement Learning},
+  journal = {arXiv preprint}, year = {2022}, eprint = {2212.06355},
+  note    = {verified=full}
+}
+
+@article{alizadeh2025offlinemro,
+  author  = {Alizadeh, and Giovanidis, Anastasios and Ramachandra, and
+             Koutsoukis, and Arouk, Osama},
+  title   = {Offline Reinforcement Learning for Mobility Robustness
+             Optimization},
+  journal = {arXiv preprint}, year = {2025}, eprint = {2506.22793},
+  note    = {verified=partial (Ericsson). Closest published RL-for-MRO work;
+             evaluated in an NR simulator, no OPE.}
+}
+
+@article{benzaghta2025bomobility,
+  author  = {Benzaghta, Mohamed and Ammar, Sahar and
+             L{\'o}pez-P{\'e}rez, David and Shihada, Basem and
+             Geraci, Giovanni},
+  title   = {Data-Driven Cellular Mobility Management via Bayesian Optimization
+             and Reinforcement Learning},
+  journal = {arXiv preprint}, year = {2025}, eprint = {2505.21249},
+  note    = {verified=partial. Optimises A3 offset and TTT over 30 cells with
+             Sionna ray tracing on a real London deployment.}
+}
+
+% ---------------------------------------------------------------------
+% E5. MODELLING, EVALUATION AND INTERPRETABILITY
+% ---------------------------------------------------------------------
+
+@inproceedings{lou2013ga2m,
+  author    = {Lou, Yin and Caruana, Rich and Gehrke, Johannes and Hooker, Giles},
+  title     = {Accurate Intelligible Models with Pairwise Interactions},
+  booktitle = {ACM SIGKDD}, year = {2013}, doi = {10.1145/2487575.2487579},
+  note      = {verified=full}
+}
+
+@article{nori2019interpretml,
+  author  = {Nori, Harsha and Jenkins, Samuel and Koch, Paul and Caruana, Rich},
+  title   = {{InterpretML}: A Unified Framework for Machine Learning
+             Interpretability},
+  journal = {arXiv preprint}, year = {2019}, eprint = {1909.09223},
+  note    = {verified=full}
+}
+
+@article{gupta2016monotonic,
+  author  = {Gupta, Maya and Cotter, Andrew and Pfeifer, Jan and others},
+  title   = {Monotonic Calibrated Interpolated Look-Up Tables},
+  journal = {Journal of Machine Learning Research}, volume = {17},
+  number  = {109}, pages = {1--47}, year = {2016}, note = {verified=full}
+}
+
+@article{hollmann2025tabpfn,
+  author  = {Hollmann, Noah and M{\"u}ller, Samuel and Purucker, Lennart and
+             Krishnakumar, Arjun and K{\"o}rfer, Max and Hoo, Shi Bin and
+             Schirrmeister, Robin Tibor and Hutter, Frank},
+  title   = {Accurate predictions on small data with a tabular foundation model},
+  journal = {Nature}, volume = {637}, year = {2025},
+  doi     = {10.1038/s41586-024-08328-6}, note = {verified=full}
+}
+
+@inproceedings{dempster2021minirocket,
+  author    = {Dempster, Angus and Schmidt, Daniel F. and Webb, Geoffrey I.},
+  title     = {{MiniRocket}: A Very Fast (Almost) Deterministic Transform for
+               Time Series Classification},
+  booktitle = {ACM SIGKDD}, year = {2021}, eprint = {2012.08791},
+  note      = {verified=full}
+}
+
+@inproceedings{elkan2008posonly,
+  author    = {Elkan, Charles and Noto, Keith},
+  title     = {Learning classifiers from only positive and unlabeled data},
+  booktitle = {ACM SIGKDD}, year = {2008}, pages = {213--220},
+  doi       = {10.1145/1401890.1401920},
+  note      = {verified=full. The /c correction we apply using the measured
+               44-58\% label-recovery rate.}
+}
+
+@inproceedings{kiryo2017nnpu,
+  author    = {Kiryo, Ryuichi and Niu, Gang and du Plessis, Marthinus C. and
+               Sugiyama, Masashi},
+  title     = {Positive-Unlabeled Learning with Non-Negative Risk Estimator},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2017}, eprint = {1703.00593}, note = {verified=full}
+}
+
+@article{bekker2020pusurvey,
+  author  = {Bekker, Jessa and Davis, Jesse},
+  title   = {Learning from positive and unlabeled data: a survey},
+  journal = {Machine Learning}, volume = {109}, pages = {719--760},
+  year    = {2020}, doi = {10.1007/s10994-020-05877-5}, note = {verified=full}
+}
+
+@inproceedings{gulrajani2021domainbed,
+  author    = {Gulrajani, Ishaan and Lopez-Paz, David},
+  title     = {In Search of Lost Domain Generalization},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2021}, eprint = {2007.01434},
+  note      = {verified=full. Properly tuned ERM matches the DG toolbox -
+               our justification for not pursuing IRM/DANN/Fish.}
+}
+
+% ---------------------------------------------------------------------
+% F. CONFIGURATION RECOVERY FROM RRC SIGNALLING  (PRIOR ART - we are NOT first)
+%    These pre-empt any claim that recovering deployed A3 parameters from
+%    signalling is novel. They must be cited up front.
+% ---------------------------------------------------------------------
+
+@inproceedings{deng2018mobilityconfig,
+  author    = {Deng, Yuanjie and Peng, Chunyi and Fida, Mah-Rukh and Meng, Jiayi
+               and Hu, Y. Charlie},
+  title     = {Mobility Support in Cellular Networks: A Measurement Study on
+               Its Configurations and Implications},
+  booktitle = {ACM Internet Measurement Conference (IMC)},
+  pages     = {147--160}, year = {2018},
+  doi       = {10.1145/3278532.3278546},
+  note      = {verified=full; READ IN FULL (doc 17). THE LTE PRECEDENT for
+               recovering operator mobility configurations. Author given names
+               reconstructed from the ACM record - re-check the first and fourth
+               before submission.}
+}
+
+@article{ghoshal2025handoverconfigs,
+  author  = {Ghoshal, and Khan, and Dinh, and Kong, and Basit, and Wang, and
+             Feng, and Hu, and Koutsonikolas, Dimitrios},
+  title   = {Handover Configurations in Operational {5G} Networks: Diversity,
+             Evolution, and Impact on Performance},
+  journal = {arXiv preprint}, year = {2025}, eprint = {2511.03116},
+  note    = {verified=id-only; venue likely ACM IMC, unconfirmed. Accuver XCAL
+             Solo on Qualcomm Diag; recovers hysteresis, threshold, offset, TTT
+             and trigger quantity for A1-A6/B1/B2 per operator and band.
+             15000+ km, 48426 handovers, 239163 HO events, 3 US operators.
+             Ping-pong 15-16 percent (AT&T, T-Mobile) and 25 percent (Verizon)
+             at a 15 s return window, per-handover denominator. Attributes
+             Verizon's rate to its 256 ms TTT. THE BENCHMARK FOR OUR SECTION.}
+}
+
+@inproceedings{hassan2022vivisecting,
+  author    = {Hassan, Ahmad and Narayanan, Arvind and Zhang, Anlan and Ye, Wei
+               and Zhu, Ruiyang and Jin, Shuowei and Carpenter, Jason and
+               Mao, Z. Morley and Qian, Feng and Zhang, Zhi-Li},
+  title     = {Vivisecting Mobility Management in {5G} Cellular Networks},
+  booktitle = {ACM SIGCOMM}, year = {2022}, doi = {10.1145/3544216.3544217},
+  note      = {verified=full. Establishes XCAL-based RRC extraction as accepted
+               methodology - legitimises our pipeline rather than threatening it.}
+}
+
+@inproceedings{liu2024m2ho,
+  author    = {Liu, and Deng, and Tan, and Qian, Feng and Zhang, and Swami, and
+               Krishnamurthy, Srikanth V.},
+  title     = {{M2HO}: Mobility Management and Handover in Operational Networks},
+  booktitle = {ACM MobiCom}, year = {2024}, doi = {10.1145/3636534.3690680},
+  note      = {verified=partial. Extracts handover commands from
+               mobilityControlInfo but explicitly does NOT recover numerical
+               parameters - a useful contrast case.}
+}
+
+% ---------------------------------------------------------------------
+% G. PING-PONG CHARACTERISATION AND CELL DWELL TIME
+% ---------------------------------------------------------------------
+
+@inproceedings{kalntis2024telcolens,
+  author    = {Kalntis, Michail and Bhattacharjee, and Su{\'a}rez-Varela, Jos{\'e}
+               and Iosifidis, George and Lutu, Andra and
+               {Oma{\~n}a Iglesias}, Jes{\'u}s and Kuipers, Fernando},
+  title     = {Through the Telco Lens: A Countrywide Empirical Study of Cellular
+               Handovers},
+  booktitle = {ACM Internet Measurement Conference (IMC)}, year = {2024},
+  doi       = {10.1145/3646547.3688452}, eprint = {2411.19586},
+  note      = {verified=full. ~40M users, European tier-1 MNO, >1.7B handovers
+               per day. Reports no ping-pong rate.}
+}
+
+@article{zidic2023pingpong,
+  author  = {Zidic, Antonio and Masteli{\'c}, Toni and {Ni{\v z}eti{\'c} Kosovi{\'c}},
+             Ivana and {\v C}agalj, Mario and Lorincz, Josip},
+  title   = {Analyses of ping-pong handovers in real {4G} telecommunication
+             networks},
+  journal = {Computer Networks}, volume = {227}, pages = {109699}, year = {2023},
+  doi     = {10.1016/j.comnet.2023.109699},
+  note    = {verified=full; READ IN FULL (doc 17). The only journal paper
+             devoted to ping-pong rates on a real 4G network; our ping-pong
+             comparison in C12 is stated against its window and denominator.}
+}
+
+@article{fang1999teletraffic,
+  author  = {Fang, Yuguang and Chlamtac, Imrich},
+  title   = {Teletraffic Analysis and Mobility Modeling of {PCS} Networks},
+  journal = {IEEE Transactions on Communications}, volume = {47}, number = {7},
+  pages   = {1062--1072}, year = {1999}, doi = {10.1109/26.774856},
+  note    = {verified=full. THE BRIDGE CITATION for a non-constant-hazard
+             formulation: when cell residence time is non-exponential, channel
+             holding time is too.}
+}
+
+@article{cruzperez2020highorder,
+  author  = {{Cruz-P{\'e}rez}, Felipe A. and others},
+  title   = {Performance Sensitivity to the High-Order Statistics of Time
+             Interval Variables in Cellular Networks},
+  journal = {Mobile Information Systems}, volume = {2020},
+  pages   = {1347601}, year = {2020}, doi = {10.1155/2020/1347601},
+  note    = {verified=full. Best modern citation for "the mean is not enough"
+             in cell dwell time.}
+}
+
+@techreport{3gpp36331,
+  author      = {{3GPP}},
+  title       = {Evolved Universal Terrestrial Radio Access ({E-UTRA}); Radio
+                 Resource Control ({RRC}); Protocol specification},
+  institution = {3rd Generation Partnership Project}, type = {TS},
+  number      = {36.331}, year = {2016},
+  note        = {Event A3 defined in clause 5.5.4.4 (within 5.5.4, Measurement
+                 report triggering). MeasConfig and ReportConfigEUTRA in clause
+                 6.3.5. Clause number stable across releases; heading wording
+                 changed (Rel-8/9/10 "than serving", Rel-12/13
+                 "than PCell/PSCell", Rel-15+ "than SpCell") - cite a version.}
+}
+
+@techreport{3gpp36839,
+  author      = {{3GPP}},
+  title       = {Evolved Universal Terrestrial Radio Access ({E-UTRA}); Mobility
+                 enhancements in heterogeneous networks},
+  institution = {3rd Generation Partnership Project}, type = {TR},
+  number      = {36.839}, year = {2013},
+  note        = {v11.1.0, Release 11 - final. Source of the Time-of-Stay
+                 framing behind every ping-pong definition. Numeric TOS
+                 threshold NOT VERIFIED; commonly quoted as 1 s.}
+}
+
+% ---------------------------------------------------------------------
+% H. EVALUATION METHODOLOGY AND REPRODUCIBILITY  (our differentiator)
+% ---------------------------------------------------------------------
+
+@article{kapoor2023leakage,
+  author  = {Kapoor, Sayash and Narayanan, Arvind},
+  title   = {Leakage and the reproducibility crisis in machine-learning-based
+             science},
+  journal = {Patterns}, volume = {4}, number = {9}, pages = {100804},
+  year    = {2023}, doi = {10.1016/j.patter.2023.100804},
+  eprint  = {2207.07048}, note = {verified=full}
+}
+
+@inproceedings{arp2022dosdonts,
+  author    = {Arp, Daniel and Quiring, Erwin and Pendlebury, Feargus and
+               Warnecke, Alexander and Pierazzi, Fabio and Wressnegger,
+               Christian and Cavallaro, Lorenzo and Rieck, Konrad},
+  title     = {Dos and Don'ts of Machine Learning in Computer Security},
+  booktitle = {USENIX Security Symposium}, year = {2022}, eprint = {2010.09470},
+  note      = {verified=full. Journal version: Pitfalls in Machine Learning for
+               Computer Security, CACM, doi 10.1145/3643456. Names temporal and
+               spatial snooping, sampling bias and base-rate fallacy as
+               checkable sins - the best cross-domain analogue for our audit.}
+}
+
+@inproceedings{jacobs2022emperor,
+  author    = {Jacobs, Arthur S. and Beltiukov, Roman and Willinger, Walter and
+               Ferreira, Ronaldo A. and Gupta, Arpit and Granville, Lisandro Z.},
+  title     = {{AI/ML} for Network Security: The Emperor has no Clothes},
+  booktitle = {ACM Conference on Computer and Communications Security (CCS)},
+  year      = {2022}, doi = {10.1145/3548606.3560609},
+  note      = {verified=full. IRTF ANRP award. Headline numbers in
+               ML-for-networking survive because models learn dataset artefacts.}
+}
+
+@article{saito2015prroc,
+  author  = {Saito, Takaya and Rehmsmeier, Marc},
+  title   = {The Precision-Recall Plot Is More Informative than the {ROC} Plot
+             When Evaluating Binary Classifiers on Imbalanced Datasets},
+  journal = {PLOS ONE}, volume = {10}, number = {3}, pages = {e0118432},
+  year    = {2015}, doi = {10.1371/journal.pone.0118432}, note = {verified=full}
+}
+
+@inproceedings{guo2017calibration,
+  author    = {Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger,
+               Kilian Q.},
+  title     = {On Calibration of Modern Neural Networks},
+  booktitle = {International Conference on Machine Learning}, year = {2017},
+  volume    = {70}, pages = {1321--1330}, eprint = {1706.04599},
+  note      = {verified=full}
+}
+
+@article{gneiting2007scoring,
+  author  = {Gneiting, Tilmann and Raftery, Adrian E.},
+  title   = {Strictly Proper Scoring Rules, Prediction, and Estimation},
+  journal = {Journal of the American Statistical Association}, volume = {102},
+  number  = {477}, pages = {359--378}, year = {2007},
+  doi     = {10.1198/016214506000001437}, note = {verified=full}
+}
+
+@article{roberts2017crossvalidation,
+  author  = {Roberts, David R. and Bahn, Volker and Ciuti, Simone and others},
+  title   = {Cross-validation strategies for data with temporal, spatial,
+             hierarchical, or phylogenetic structure},
+  journal = {Ecography}, volume = {40}, number = {8}, pages = {913--929},
+  year    = {2017}, doi = {10.1111/ecog.02881}, note = {verified=full}
+}
+
+@article{meyer2018targetoriented,
+  author  = {Meyer, Hanna and Reudenbach, Christoph and Hengl, Tomislav and
+             Katurji, Marwan and Nauss, Thomas},
+  title   = {Improving performance of spatio-temporal machine learning models
+             using forward feature selection and target-oriented validation},
+  journal = {Environmental Modelling \& Software}, volume = {101},
+  pages   = {1--9}, year = {2018}, doi = {10.1016/j.envsoft.2017.12.001},
+  note    = {verified=full. Leave-location-out / leave-time-out CV - the direct
+             transferable precedent for grouping by drive and by capture.}
+}
+
+@article{bergmeir2018cvtimeseries,
+  author  = {Bergmeir, Christoph and Hyndman, Rob J. and Koo, Bonsoo},
+  title   = {A note on the validity of cross-validation for evaluating
+             autoregressive time series prediction},
+  journal = {Computational Statistics \& Data Analysis}, volume = {120},
+  pages   = {70--83}, year = {2018}, doi = {10.1016/j.csda.2017.11.003},
+  note    = {verified=full}
+}
+
+% ---------------------------------------------------------------------
+% I. SURVEYS AND FRAMING
+% ---------------------------------------------------------------------
+
+@article{ankome2026review,
+  author  = {Ankome, T. and Hanada, E.},
+  title   = {Reactive to Predictive Mobility Management: A Systematic Review of
+             {ML}-Driven Handover Optimization in {5G} and Beyond},
+  journal = {Machine Learning and Knowledge Extraction}, volume = {8},
+  number  = {5}, pages = {133}, year = {2026}, doi = {10.3390/make8050133},
+  note    = {verified=full (pass 3: screening counts and taxonomy shares read
+             from the article). PRISMA review: 429 records screened, 336 after
+             deduplication, 49 studies included, spanning 2010-2025. Taxonomy
+             shares: signal-based 12 percent, ML 37, RL 27, FL 12, SDN 12.
+             Reports MAE degrading 0.6 dB simulated to 1.74 dB on real data.
+             Two findings we cite directly: heterogeneity of simulators and
+             outcome definitions PREVENTED a meta-analysis, and most studies
+             report percentage improvements over paper-chosen baselines
+             rather than absolute performance. Data splitting, class
+             imbalance and calibration receive minimal explicit discussion
+             anywhere in the 49.}
+}
+
+@article{asif2026aimobility,
+  author  = {Asif, Hafiz M. and Alhammadi, Abdulraqeb and Tarhuni, Naser and
+             {Bait-Suwailam}, Mohammed M.},
+  title   = {{AI}-Driven Mobility Management in {5G} and {6G} Wireless Networks:
+             A Survey},
+  journal = {Future Internet}, volume = {18}, number = {8}, pages = {425},
+  year    = {2026}, doi = {10.3390/fi18080425},
+  note    = {verified=full (author list corrected in pass 3: the pass-2 entry
+             truncated the first author to "Asif," with no given name).
+             Reports 82.6 percent of surveyed studies rely on simulated
+             datasets - our single best justification for real data. Frames
+             mobility management as a lifecycle (predict, decide, tune,
+             execute, monitor, refine) and notes that MRO and load balancing
+             contend for the SAME handover control parameters.}
+}
+
+@article{mbulwa2023selfopt,
+  author  = {Mbulwa, Abdulraqeb I. and Yew, Hoe Tung and Chekima, Ali and
+             Dargham, Jamal A.},
+  title   = {Self-Optimization of Handover Control Parameters for {5G} Wireless
+             Networks and Beyond},
+  journal = {IEEE Access}, volume = {12}, pages = {6117--6135}, year = {2023},
+  doi     = {10.1109/ACCESS.2023.3346039}, note = {verified=full}
+}
+
+@article{benzaghta2025bohandover,
+  author  = {Benzaghta, Mohamed and Ammar, Sahar and
+             L{\'o}pez-P{\'e}rez, David and Shihada, Basem and
+             Geraci, Giovanni},
+  title   = {Data-Driven Design of {3GPP} Handover Parameters with Bayesian
+             Optimization and Transfer Learning},
+  journal = {arXiv preprint}, year = {2025}, eprint = {2504.02633},
+  note    = {verified=full (pass 3: second author resolved to Sahar Ammar;
+             the pass-2 entry truncated it). Sionna ray tracing over a real London operator
+             layout; 35-73 percent ping-pong reduction. Strongest contemporary
+             tuning baseline - but still not real logs.}
+}
+
+% =====================================================================
+%  SCREENING PASS 3, 15 Sept 2026 - WIDENED SURVEY
+%  Twenty entries added across nine threads that pass 1 and pass 2 left
+%  thin: standards-track mobility (J), review-of-reviews (K), graph and
+%  trajectory models (L), conformal prediction inside wireless (M),
+%  the survival and point-process methodology we actually borrow (N, O),
+%  domain adaptation (P), uncertainty (Q), and event-level evaluation (R).
+%  Every entry below was checked against the publisher or arXiv record on
+%  15 Sept 2026. Four pass-2 entries were also patched: see the PATCHED
+%  block at the end.
+% =====================================================================
+
+% ---------------------------------------------------------------------
+% J. STANDARDS-TRACK MOBILITY: CONDITIONAL HANDOVER AND LOWER-LAYER
+%    TRIGGERED MOBILITY  (what a prediction is allowed to drive)
+% ---------------------------------------------------------------------
+
+@article{deb2024chofading,
+  author  = {Deb, Souvik and Rathod, Megh and Balamurugan, Rishi and
+             Ghosh, Shankar K. and Singh, Rajeev K. and Sanyal, Samriddha},
+  title   = {Performance Evaluation of Conditional Handover in {5G} Systems
+             under Fading Scenario},
+  journal = {arXiv preprint},
+  year    = {2024},
+  eprint  = {2403.04379},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 3: title and all six authors read from the
+             arXiv PDF front matter). Discrete-time Markov chain for CHO with
+             execution/preparation offsets and timers, UE velocity and
+             Rayleigh/Rician fading; validated against Python and ns-3
+             system-level simulation. Metrics: handover failure probability,
+             latency, packet loss. NO learned component and NO measured data -
+             this is the analytical half of the CHO literature, and it is the
+             reason our lead-time distribution matters: CHO preparation needs
+             a lead time, not a label.}
+}
+
+@article{khodapanah2024ltm,
+  author  = {Khodapanah, Behnam and Goyal, Sanjay and others},
+  title   = {On {L1/L2}-Triggered Mobility in {3GPP} Release 18 and Beyond},
+  journal = {IEEE (Xplore document 10744020)},
+  year    = {2024},
+  note    = {verified=partial (pass 3: title, venue and the first two authors
+             confirmed from the Semantic Scholar record; IEEE Xplore was not
+             retrievable and the remaining author list is UNCONFIRMED -
+             RE-CHECK BEFORE SUBMISSION). Cited only for the standards
+             direction: Rel-18 LTM moves the cell-switch decision below RRC,
+             which shortens the actionable horizon and makes a sub-second,
+             calibrated hazard more useful than a slow classifier, not less.}
+}
+
+% ---------------------------------------------------------------------
+% K. REVIEW OF REVIEWS  (how the field describes its own evidence base)
+% ---------------------------------------------------------------------
+
+@article{saoud2025mobilitysurvey,
+  author  = {Saoud, Bilal and Shayea, Ibraheem and Alnakhli, Mohammed A. and
+             Mohamad, Hafizal},
+  title   = {Mobility and Handover Management in {5G/6G} Networks: Challenges,
+             Innovations, and Sustainable Solutions},
+  journal = {Technologies}, volume = {13}, number = {8}, pages = {352},
+  year    = {2025}, doi = {10.3390/technologies13080352},
+  note    = {verified=full (pass 3). States plainly that the field lacks
+             quantitative cross-comparison between strategies - the same
+             complaint our protocol audit makes with numbers.}
+}
+
+@article{chabira2025aidriven,
+  author  = {Chabira, Chaima and Shayea, Ibraheem and
+             Nurzhaubayeva, Gulsaya and Aldasheva, Laura and
+             Yedilkhan, Didar and Amanzholova, Saule},
+  title   = {{AI}-Driven Handover Management and Load Balancing Optimization in
+             Ultra-Dense {5G/6G} Cellular Networks},
+  journal = {Technologies}, volume = {13}, number = {7}, pages = {276},
+  year    = {2025}, doi = {10.3390/technologies13070276},
+  note    = {verified=full (pass 3). Review, no original experiment. Reports
+             the field's metric vocabulary - handover failure rate, latency,
+             QoS, energy - and confirms that neither calibration nor
+             prevalence-aware ranking metrics appear in it.}
+}
+
+% ---------------------------------------------------------------------
+% L. GRAPH AND TRAJECTORY MODELS FOR MOBILITY
+% ---------------------------------------------------------------------
+
+@article{mehregan2025thgcn,
+  author  = {Mehregan, Nazanin and {De Grande}, Robson E.},
+  title   = {{GCN}-Based Throughput-Oriented Handover Management in Dense {5G}
+             Vehicular Networks},
+  journal = {arXiv preprint},
+  year    = {2025},
+  eprint  = {2505.04894},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 3: both authors and the acceptance note
+             confirmed; accepted at IEEE DCOSS-IoT 2025). TH-GCN builds a
+             dynamic UE-cell graph. SIMULATED. Headline claims are relative
+             deltas (up to 78 percent fewer handovers, 10 percent better
+             signal quality) against chosen baselines, with no absolute
+             ranking metric and no split protocol stated - the exact reporting
+             style the Ankome review criticises.}
+}
+
+@article{sanchezmartin2026grimcell,
+  author  = {{S\'anchez-Mart\'in}, Joaqu\'in Manuel and
+             {Bejarano-Luque}, Juan Luis and Gij\'on, Carolina and
+             Toril, Mat\'ias and {Luna-Ram\'irez}, Salvador},
+  title   = {{GRIMCELL}: A Graph Neural Network to Predict the Impact of New
+             Cells in Mobile Networks},
+  journal = {Machine Learning and Knowledge Extraction}, volume = {8},
+  number = {9}, pages = {260}, year = {2026},
+  doi = {10.3390/make8090260},
+  note    = {verified=full (pass 3). XENet message passing over radio-planning,
+             CM and PM data from a commercial LTE-A Pro network; 55 real
+             deployment events. Proof that operator-grade graph learning on
+             REAL network data is publishable - and that it is done at cell
+             and day granularity, not at the per-second granularity a handover
+             warning needs.}
+}
+
+@article{dinh2026mobilityresource,
+  author  = {{Nguyen Dang Dinh}, Khoa and Fazio, Peppino and Voznak, Miroslav},
+  title   = {A Proposed Mobility and Resource Prediction Method for Seamless
+             Handover and Service Continuity in {5G} Small Cell Networks},
+  journal = {PLOS ONE}, volume = {21}, number = {8}, pages = {e0355372},
+  year    = {2026}, doi = {10.1371/journal.pone.0355372},
+  note    = {verified=full (pass 3). SUMO trajectories over a real Singapore
+             map; autoregressive RNN predicts the next cell sequence AND the
+             resource blocks needed. Split is by travel day over a few hundred
+             tracked users. Metrics are accuracy, R2 and MSE - regression
+             metrics, so prevalence never enters.}
+}
+
+@article{graser2025mobilitydl,
+  author  = {Graser, Anita and Jalali, Anahid and Lampert, Jasmin and
+             Wei{\ss}enfeld, Axel and Janowicz, Krzysztof},
+  title   = {{MobilityDL}: A Review of Deep Learning from Trajectory Data},
+  journal = {GeoInformatica}, volume = {29}, number = {1}, pages = {115--147},
+  year    = {2025}, doi = {10.1007/s10707-024-00518-8},
+  note    = {verified=full (pass 3). Organises trajectory deep learning by
+             DATA DENSITY rather than by architecture - dense individual
+             traces through sparse check-ins to aggregated flows. Our 1 Hz
+             drives sit at the dense end, where the review notes the
+             literature is thinnest for event (as opposed to location)
+             prediction.}
+}
+
+@article{safiullin2026rlhandover,
+  author  = {Safiullin, Ildar A. and Ashaev, Ivan P. and Korobkov, Alexey A. and
+             Gaysin, Artur K. and Nadeev, Adel F.},
+  title   = {Reinforcement Learning-Based Handover Algorithm for {5G/6G}
+             {AI-RAN}},
+  journal = {Inventions}, volume = {11}, number = {1}, pages = {8},
+  year    = {2026}, doi = {10.3390/inventions11010008},
+  note    = {verified=full (pass 3: five authors confirmed). ns-3 simulation of
+             clustered base stations with overlapping coverage; an RL agent
+             decides when to hand over from signal quality and cell load.
+             Reports a 4x lower handover rate with throughput maintained and
+             less ping-pong. SIMULATED, KPI-only, no split protocol because
+             there is no held-out prediction task - the closest recent RL
+             comparator, and it shows why an RL result and a prediction result
+             cannot be compared directly at all.}
+}
+
+% ---------------------------------------------------------------------
+% M. CONFORMAL PREDICTION INSIDE WIRELESS  (nearest methodological kin)
+% ---------------------------------------------------------------------
+
+@article{cohen2023conformalwireless,
+  author  = {Cohen, Kfir M. and Park, Sangwoo and Simeone, Osvaldo and
+             Shamai Shitz, Shlomo},
+  title   = {Calibrating {AI} Models for Wireless Communications via Conformal
+             Prediction},
+  journal = {arXiv preprint},
+  year    = {2022},
+  eprint  = {2212.07775},
+  archivePrefix = {arXiv},
+  doi     = {10.48550/arXiv.2212.07775},
+  note    = {verified=full (pass 3: all four authors confirmed). Applies split
+             and cross-validation conformal prediction to demodulation,
+             modulation classification and channel prediction. THE closest
+             precedent for what we do - but the guarantee is over prediction
+             SETS for i.i.d.-within-frame signal processing tasks, not over a
+             per-drive exchangeable stream of rare events, and no telecom
+             mobility task appears.}
+}
+
+@article{simeone2025conformalcalibration,
+  author  = {Simeone, Osvaldo and Park, Sangwoo and Zecchin, Matteo},
+  title   = {Conformal Calibration: Ensuring the Reliability of Black-Box
+             {AI} in Wireless Systems},
+  journal = {arXiv preprint},
+  year    = {2025},
+  eprint  = {2504.09310},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 3: three authors, King's College London,
+             v3 dated 27 April 2025). Lifecycle framing: conformal methods for
+             pre-deployment calibration and hyperparameter selection,
+             deployment-time monitoring under distribution shift, and
+             post-deployment counterfactual analysis. Our conformal risk
+             control section instantiates exactly the first of those three
+             for a mobility KPI; the paper itself reports no mobility case.}
+}
+
+% ---------------------------------------------------------------------
+% N. SURVIVAL / TIME-TO-EVENT METHODOLOGY  (the formulation we borrow)
+% ---------------------------------------------------------------------
+
+@article{wiegrebe2024dlsurvival,
+  author  = {Wiegrebe, Simon and Kopper, Philipp and Sonabend, Raphael and
+             Bischl, Bernd and Bender, Andreas},
+  title   = {Deep Learning for Survival Analysis: A Review},
+  journal = {Artificial Intelligence Review}, volume = {57}, number = {3},
+  pages   = {65}, year = {2024}, doi = {10.1007/s10462-023-10681-3},
+  note    = {verified=full (pass 3). Systematic review of 61 deep
+             time-to-event methods, taxonomised by survival attribute and by
+             architecture. Establishes that the discrete-time route - binary
+             indicators per interval, trained as classification - is a
+             mainstream branch, not an improvisation, which is the citation
+             our section 7 needed. Also notes that reviewed methods evaluate
+             with C-index and integrated Brier score; our horizon-wise AUPRC
+             plus coherence violation rate is a deliberate departure, because
+             an operator acts at one horizon, not on a ranking over all of
+             them.}
+}
+
+@article{thorsenmeyer2022discrete,
+  author  = {{Thorsen-Meyer}, Hans-Christian and Placido, Davide and
+             {Kaas-Hansen}, Benjamin Skov and others},
+  title   = {Discrete-Time Survival Analysis in the Critically Ill: A Deep
+             Learning Approach Using Heterogeneous Data},
+  journal = {npj Digital Medicine}, volume = {5}, pages = {142},
+  year    = {2022}, doi = {10.1038/s41746-022-00679-6},
+  note    = {verified=partial (pass 3: title, venue, article number and the
+             first three authors confirmed from the publisher page; the full
+             author list is truncated by an et al. on that page - COMPLETE
+             BEFORE SUBMISSION). Multilabel head over discretised windows with
+             a right-censoring-aware log-likelihood - structurally the same
+             object as our per-horizon hazard head, from a field that has
+             argued about it for longer.}
+}
+
+% ---------------------------------------------------------------------
+% O. POINT-PROCESS METHODOLOGY  (the ping-pong analysis)
+% ---------------------------------------------------------------------
+
+@article{laub2025hawkesreview,
+  author  = {Laub, Patrick J. and Lee, Young and Pollett, Philip K. and
+             Taimre, Thomas},
+  title   = {Hawkes Models and Their Applications},
+  journal = {Annual Review of Statistics and Its Application}, volume = {12},
+  pages   = {233--258}, year = {2025},
+  doi     = {10.1146/annurev-statistics-112723-034304},
+  note    = {verified=full (pass 3). Current reference treatment of the
+             self-exciting process: construction, simulation, multivariate and
+             marked and spatiotemporal extensions. Replaces our reliance on
+             Hawkes 1971 alone for the modelling claims, and is the cleanest
+             citation for the branching-ratio interpretation we report.}
+}
+
+@article{pricewilliams2020selfexciting,
+  author  = {{Price-Williams}, Matthew and Heard, Nicholas A.},
+  title   = {Nonparametric Self-Exciting Models for Computer Network Traffic},
+  journal = {Statistics and Computing}, volume = {30}, number = {2},
+  pages   = {209--220}, year = {2020}, doi = {10.1007/s11222-019-09875-z},
+  note    = {verified=full (pass 3). Wold process with a monotone step
+             excitation fitted to Imperial College and Los Alamos network
+             traffic, VALIDATED BY TIME-RESCALING with Kolmogorov-Smirnov
+             tests on held-out data. This is the precedent for our Ogata
+             residual test: in networking, a self-exciting fit is expected to
+             be checked, not just reported.}
+}
+
+% ---------------------------------------------------------------------
+% P. DOMAIN ADAPTATION  (the transfer experiment)
+% ---------------------------------------------------------------------
+
+@inproceedings{sun2016deepcoral,
+  author    = {Sun, Baochen and Saenko, Kate},
+  title     = {Deep {CORAL}: Correlation Alignment for Deep Domain Adaptation},
+  booktitle = {Computer Vision -- ECCV 2016 Workshops},
+  series    = {Lecture Notes in Computer Science}, volume = {9915},
+  pages     = {443--450}, year = {2016}, publisher = {Springer, Cham},
+  doi       = {10.1007/978-3-319-49409-8_35},
+  note      = {verified=full (pass 3). The method our stage-19 transfer
+               experiment implements. Citing the primary source matters here
+               because we report a NEGATIVE result with it.}
+}
+
+@article{ismailfawaz2024udabenchmark,
+  author  = {{Ismail Fawaz}, Hassan and {Del Grosso}, Ganesh and
+             Kerdoncuff, Tanguy and Boisbunon, Aur{\'e}lie and Saffar, Illyyne},
+  title   = {Deep Unsupervised Domain Adaptation for Time Series
+             Classification: A Benchmark},
+  journal = {arXiv preprint},
+  year    = {2023},
+  eprint  = {2312.09857},
+  archivePrefix = {arXiv},
+  note    = {verified=full (pass 3: five authors, Ericsson Research). Nine UDA
+             algorithms over twelve time-series datasets. Finding we lean on:
+             several published methods, VRADA and CoTMix among them, do WORSE
+             than source-only training with no adaptation at all. Our
+             measured CORAL null is therefore in line with a benchmark, not an
+             implementation failure.}
+}
+
+@article{shi2022dasurvey,
+  author  = {Shi, Yongjie and Ying, Xianghua and Yang, Jinfa},
+  title   = {Deep Unsupervised Domain Adaptation with Time Series Sensor Data:
+             A Survey},
+  journal = {Sensors}, volume = {22}, number = {15}, pages = {5507},
+  year    = {2022}, doi = {10.3390/s22155507},
+  note    = {verified=full (pass 3). Taxonomy of sensor-stream domain shift.
+             Used to name the shift we face - device and day, not sensor -
+             and to justify per-drive z-scoring as the cheap baseline.}
+}
+
+% ---------------------------------------------------------------------
+% Q. UNCERTAINTY  (the ensemble baseline)
+% ---------------------------------------------------------------------
+
+@inproceedings{lakshminarayanan2017ensembles,
+  author    = {Lakshminarayanan, Balaji and Pritzel, Alexander and
+               Blundell, Charles},
+  title     = {Simple and Scalable Predictive Uncertainty Estimation using
+               Deep Ensembles},
+  booktitle = {Advances in Neural Information Processing Systems 30
+               (NIPS 2017)},
+  year      = {2017}, eprint = {1612.01474}, archivePrefix = {arXiv},
+  note      = {verified=full (pass 3: three authors, NIPS 2017 confirmed).
+               The primary source for the ensemble we use as our
+               uncertainty baseline before conformal.}
+}
+
+% ---------------------------------------------------------------------
+% R. EVENT-LEVEL EVALUATION  (why a per-row score is not enough)
+% ---------------------------------------------------------------------
+
+@article{wagner2025tsadmetrics,
+  author  = {Wagner, Dennis and Nair, Arjun and Franks, Billy Joe and others},
+  title   = {Formally Exploring Time-Series Anomaly Detection Evaluation
+             Metrics},
+  journal = {arXiv preprint},
+  year    = {2025},
+  eprint  = {2510.17562},
+  archivePrefix = {arXiv},
+  note    = {verified=partial (pass 3: title, id, 20 October 2025 date and the
+             first three of a 24-author list confirmed; the tail of the author
+             list is NOT reproduced here - COMPLETE BEFORE SUBMISSION).
+             Shows formally that common point-adjusted anomaly metrics each
+             satisfy only a few desirable properties and none satisfy all,
+             which explains why published comparisons disagree. Direct support
+             for our decision to report event-level detection rate, lead time
+             and false alarms per hour and per km ALONGSIDE row-level AUPRC
+             rather than instead of it.}
+}
+
+% =====================================================================
+%  PATCHED IN PASS 3 - corrections to entries added in passes 1-2.
+%  The originals are preserved in references.bib.bak.
+%  * survey2024mlhandover  had NO author list. Confirmed from the MDPI
+%    record: Thillaigovindhan, Senthil Kumar; Roslee, Mardeni;
+%    Mitani, Sufian Mousa Ibrahim; Osman, Anwar Faizd; Ali, Fatimah Zaharah.
+%  * asif2026aimobility    first author was truncated to "Asif," with no
+%    given name. Correct: Asif, Hafiz M.; and Bait-Suwailam's initial is M.
+%  * benzaghta2025bohandover second author was truncated to "Ammar,".
+%    Correct: Ammar, Sahar. Entry upgrades to verified=full.
+%  * ankome2026review      note enriched: 429 records screened, 336 after
+%    deduplication, 49 studies included, span 2010-2025; taxonomy shares
+%    signal-based 12 percent, ML 37, RL 27, FL 12, SDN 12. The review's own
+%    words on the evidence base: most studies report percentage improvements
+%    over paper-chosen baselines rather than absolute performance, and
+%    evidence quality is limited by simulation-based assessment and few real
+%    datasets.
+%  All four corrections have been applied IN PLACE above; nothing here
+%  depends on duplicate-key resolution.
+% =====================================================================
+

@@ -1,0 +1,6 @@
+capture,commands,with a decoded Complete,completion rate,median interruption (ms),re-establishments,commands followed by one within 5 s,re-establishments within 2 s after a command
+10 Sept (urban arterial),307,307,1.0,1.0,113,19,30
+12 Sept (urban loop),176,176,1.0,0.0,64,8,12
+13 Sept (dense urban),297,297,1.0,1.0,159,5,13
+15 Sept (highway),177,177,1.0,1.0,5,4,0
+pooled,957,957,1.0,1.0,341,36,55

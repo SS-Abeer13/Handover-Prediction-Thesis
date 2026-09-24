@@ -1,0 +1,1 @@
+model: {name: transformer, kind: temporal, params: {d_model: 96, nhead: 4, layers: 2, ff: 192, dropout: 0.15}}

@@ -1,0 +1,3 @@
+horizon_s,v1 (nothing lagged),neighbour and gap columns lagged,serving-cell radio scalars lagged,all serving-relative lagged (GPS live),v2 (everything lagged),share of the v1-v2 drop caused by the neighbour and gap columns alone,share caused by the serving-cell radio scalars alone,share attributable to lagging GPS as well
+1.0,0.607,0.595,0.178,0.159,0.16,0.025,0.958,-0.002
+5.0,0.558,0.55,0.451,0.439,0.445,0.072,0.951,-0.059

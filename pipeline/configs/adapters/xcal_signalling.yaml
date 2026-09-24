@@ -1,0 +1,56 @@
+# XCAL wide CSV + the RRC signalling text export of the same drive.
+#
+# The CSV supplies the regular 1 Hz grid (serving RF, GPS, speed); the signalling
+# log supplies what the CSV's own columns leave empty in these captures -
+# neighbour measurements, signalling-confirmed handovers with a target cell, the
+# network's A3/TTT/hysteresis settings, and RRC re-establishments.
+adapter:
+  name: xcal_signalling
+  strip_column_whitespace: true
+  samples:
+    path_key: samples
+    time: {column: Time, format: "%m/%d/%Y %H:%M:%S.%f"}
+    rename:
+      Longitude: lon
+      Latitude: lat
+      "Speed(km/h)": speed_kmh
+      "LTE-S_PCell PCI": serving_pci
+      "LTE-S_PCell EARFCN": serving_earfcn
+      "LTE-S_Band": serving_band
+      "LTE-S_eNB-ID": serving_enb
+      "LTE-S_PLMN ID": plmn
+      "LTE-S_Global Cell ID(Serving)": serving_cell_name
+      "LTE-S_PCell RSRP": serving_rsrp
+      "LTE-S_PCell RSRQ": serving_rsrq
+      "LTE-S_PCell RSSI": serving_rssi
+      "LTE-S_PCell SINR": serving_sinr
+      "LTE-S_PCell CQI": serving_cqi
+      "LTE-S_RRC state": rrc_state
+      "LTE-S_Total Phy DL TP(Kbps)": phy_dl_kbps
+      "LTE-S_Total Phy UL TP(Kbps)": phy_ul_kbps
+      "Round Trip Time": rtt_ms
+      "Rx TCP/UDP Throughput": dl_tp_kbps
+      "Tx TCP/UDP Throughput": ul_tp_kbps
+  signalling:
+    path_key: signalling
+    # a grid point adopts the most recent MeasurementReport no older than this
+    projection_tolerance_s: 3.0   # sweet spot: candidate hit-rate holds to 3s, degrades beyond
+    prefer_signalling_handovers: true
+  handovers: null
+overrides:
+  labels:
+    handover: {source: signalling}
+    target_cell: {require_candidate_match: false}
+  features:
+    blocks: [rf, mobility, history]
+  tasks:
+    handover: {enabled: true, weight: 1.0}
+    qoe: {enabled: false}
+    target: {enabled: false}
+  segmentation:
+    route_from: config
+    method: fixed_duration
+    fixed_duration_s: 300
+  qc:
+    min_drive_duration_s: 60
+    min_drive_samples: 60

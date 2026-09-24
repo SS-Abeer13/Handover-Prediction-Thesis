@@ -1,0 +1,21 @@
+held_out,label,horizon_s,n,prevalence,auprc,lift,auroc,ece
+XCAL10Sept,10 Sept urban arterial,0.5,2055,0.05,0.44,8.9,0.915,0.031
+XCAL10Sept,10 Sept urban arterial,1.0,2055,0.084,0.826,9.9,0.949,0.027
+XCAL10Sept,10 Sept urban arterial,2.0,2043,0.154,0.657,4.3,0.852,0.073
+XCAL10Sept,10 Sept urban arterial,3.0,2032,0.213,0.63,3.0,0.81,0.112
+XCAL10Sept,10 Sept urban arterial,5.0,2006,0.313,0.646,2.1,0.77,0.166
+XCAL12Sept,12 Sept urban loop,0.5,1083,0.042,0.383,9.2,0.901,0.032
+XCAL12Sept,12 Sept urban loop,1.0,1083,0.077,0.718,9.4,0.909,0.04
+XCAL12Sept,12 Sept urban loop,2.0,1076,0.14,0.646,4.6,0.862,0.066
+XCAL12Sept,12 Sept urban loop,3.0,1069,0.192,0.655,3.4,0.833,0.097
+XCAL12Sept,12 Sept urban loop,5.0,1055,0.274,0.667,2.4,0.806,0.153
+XCAL13Sept,13 Sept dense urban,0.5,2911,0.037,0.463,12.6,0.947,0.022
+XCAL13Sept,13 Sept dense urban,1.0,2911,0.063,0.832,13.2,0.943,0.019
+XCAL13Sept,13 Sept dense urban,2.0,2895,0.119,0.628,5.3,0.851,0.067
+XCAL13Sept,13 Sept dense urban,3.0,2878,0.168,0.57,3.4,0.807,0.098
+XCAL13Sept,13 Sept dense urban,5.0,2845,0.25,0.57,2.3,0.764,0.141
+XCAL15Sept,15 Sept highway,0.5,2082,0.022,0.277,12.8,0.873,0.019
+XCAL15Sept,15 Sept highway,1.0,2082,0.051,0.761,14.9,0.927,0.018
+XCAL15Sept,15 Sept highway,2.0,2070,0.097,0.568,5.9,0.832,0.053
+XCAL15Sept,15 Sept highway,3.0,2059,0.138,0.499,3.6,0.777,0.087
+XCAL15Sept,15 Sept highway,5.0,2035,0.211,0.494,2.3,0.751,0.148

@@ -1,0 +1,1 @@
+model: {name: logreg, kind: snapshot, params: {C: 1.0, max_iter: 2000, class_weight: balanced}}
