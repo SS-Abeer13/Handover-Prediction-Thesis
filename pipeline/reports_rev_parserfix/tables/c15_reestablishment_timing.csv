@@ -1,0 +1,4 @@
+cause,n,median_ms_since_command,share_within_1s
+handoverFailure,3,603.0,1.0
+otherFailure,17,4801.0,0.0
+reconfigurationFailure,321,8723.0,0.0778816199376947

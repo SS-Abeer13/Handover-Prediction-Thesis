@@ -123,18 +123,31 @@ def _parse_measurement_report(text: str) -> dict:
     m = re.search(r"measId\s+(\d+)", text)
     if m:
         out["meas_id"] = int(m.group(1))
-    pcell = re.search(r"measResultPCell\s*.*?rsrpResult\s+(\d+)\s*,\s*rsrqResult\s+(-?\d+)",
+    # rsrqResult is OPTIONAL in MeasResults (TS 36.331 6.3.5): it is absent when the
+    # reportConfig asks for reportQuantity rsrp only (seen on the 9 Oct Banglalink log).
+    # The original pattern required both and so dropped every RSRP-only report.
+    pcell = re.search(r"measResultPCell\s*rsrpResult\s+(\d+)(?:\s*,\s*rsrqResult\s+(-?\d+))?",
                       text, re.S)
+    if pcell is None:     # original layout, kept so the four Grameenphone logs parse as before
+        pcell = re.search(r"measResultPCell\s*.*?rsrpResult\s+(\d+)\s*,\s*rsrqResult\s+(-?\d+)",
+                          text, re.S)
     if pcell:
         out["serving_rsrp_idx"] = int(pcell.group(1))
-        out["serving_rsrq_idx"] = int(pcell.group(2))
+        if pcell.group(2) is not None:
+            out["serving_rsrq_idx"] = int(pcell.group(2))
     neigh_block = re.search(r"measResultNeighCells\s+measResultListEUTRA\s*:(.*?)(?:measResultServFreqList|$)",
                             text, re.S)
     if neigh_block:
-        for pci, rsrp, rsrq in re.findall(
-                r"physCellId\s+(\d+)\s*,\s*measResult\s*.*?rsrpResult\s+(\d+)\s*,\s*rsrqResult\s+(-?\d+)",
-                neigh_block.group(1), re.S):
-            out["neighbours"].append({"pci": int(pci), "rsrp_idx": int(rsrp), "rsrq_idx": int(rsrq),
+        # One entry per physCellId; each entry's RSRP/RSRQ is searched inside that entry
+        # only, so an RSRP-only entry can no longer borrow the next entry's RSRQ.
+        for ent in re.split(r"(?=physCellId\s+\d+)", neigh_block.group(1)):
+            pm = re.match(r"physCellId\s+(\d+)\s*,\s*measResult", ent)
+            rp = re.search(r"rsrpResult\s+(\d+)", ent)
+            if not pm or not rp:
+                continue
+            rq = re.search(r"rsrqResult\s+(-?\d+)", ent)
+            out["neighbours"].append({"pci": int(pm.group(1)), "rsrp_idx": int(rp.group(1)),
+                                      "rsrq_idx": int(rq.group(1)) if rq else None,
                                       "src": "pcell_list"})
     # Carrier-aggregation reports carry a second neighbour source that the block
     # above deliberately stops short of: measResultServFreqList-r10 reports the

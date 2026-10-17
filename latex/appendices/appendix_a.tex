@@ -3,7 +3,7 @@
 
 \begin{table}[htbp]
 \centering
-\caption{Per-horizon AUPRC for every learner under leave-one-campaign-out, against the prevalence floor.}
+\caption{Per-horizon AUPRC for every learner under leave-one-campaign-out, against the prevalence floor (tuned arm, corrected parser).}
 \label{tab:A_1}
 \vspace{0.4em}
 \singlespacing
@@ -13,14 +13,14 @@
 \toprule
 \textbf{Learner} & \textbf{0.5 s} & \textbf{1 s} & \textbf{2 s} & \textbf{3 s} & \textbf{5 s} \\
 \midrule
-LightGBM & 0.103 & 0.179 & 0.285 & 0.362 & 0.475 \\
-MLP & 0.101 & 0.173 & 0.280 & 0.359 & 0.467 \\
-TCN & 0.104 & 0.167 & 0.281 & 0.367 & 0.481 \\
-Transformer & 0.090 & 0.152 & 0.256 & 0.338 & 0.453 \\
-GRU & 0.075 & 0.130 & 0.237 & 0.321 & 0.438 \\
-Logistic regression & 0.072 & 0.130 & 0.224 & 0.299 & 0.417 \\
+LightGBM & 0.097 & 0.169 & 0.268 & 0.342 & 0.454 \\
+MLP & 0.098 & 0.168 & 0.293 & 0.380 & 0.493 \\
+TCN & 0.104 & 0.163 & 0.282 & 0.369 & 0.487 \\
+Transformer & 0.093 & 0.149 & 0.258 & 0.336 & 0.450 \\
+GRU & 0.076 & 0.130 & 0.242 & 0.330 & 0.449 \\
 Hawkes-kernel intensity (LR) & 0.070 & 0.120 & 0.210 & 0.285 & 0.403 \\
-Event A3 rule (deployed parameters) & 0.068 & 0.116 & 0.204 & 0.272 & 0.374 \\
+Logistic regression & 0.066 & 0.119 & 0.210 & 0.286 & 0.408 \\
+Event A3 rule (deployed parameters) & 0.068 & 0.114 & 0.201 & 0.268 & 0.370 \\
 History block only (LightGBM) & 0.066 & 0.114 & 0.203 & 0.277 & 0.397 \\
 Dwell time only (LightGBM) & 0.062 & 0.105 & 0.190 & 0.258 & 0.367 \\
 Prevalence floor & 0.037 & 0.068 & 0.126 & 0.176 & 0.261 \\
@@ -32,7 +32,7 @@ Prevalence floor & 0.037 & 0.068 & 0.126 & 0.176 & 0.261 \\
 
 \begin{table}[htbp]
 \centering
-\caption{Event-level operating characteristics of the primary model at the 5 \% false-positive operating point. Note: Evaluated events reduce from the 938 quality-controlled commands inside retained session blocks to 934--937 across horizons because commands occurring within the first $h$ seconds of a 180~s block boundary lack full pre-event lookahead history.}
+\caption{Event-level operating characteristics of the primary model at the 5 \% false-positive operating point. Eligibility rule: a command at $\tau$ is counted if it lies between the held-out campaign's first usable prediction row and $h$ seconds after its last usable row ($t_{\min} \le \tau \le t_{\max} + h$), so the count rises with the horizon (934 to 937 of the 938 quality-controlled commands). ``Resolvable'' means at least one usable row lies in $[\tau - h, \tau)$; unresolvable commands are counted as missed. The operating threshold is set per fold at a 5\,\% row-level false-positive rate on that fold's calibration block.}
 \label{tab:A_2}
 \vspace{0.4em}
 \singlespacing
@@ -42,11 +42,11 @@ Prevalence floor & 0.037 & 0.068 & 0.126 & 0.176 & 0.261 \\
 \toprule
 \textbf{Horizon} & \textbf{Events} & \textbf{Resolvable on the 1 Hz grid} & \textbf{Detected} & \textbf{Detection rate} & \textbf{False alarms / h} & \textbf{False alarms / km} & \textbf{Median lead time} \\
 \midrule
-0.5 s & 934 & 34.2 \% & 203 & 21.7 \% & 277.6 & 8.45 & 0.25 s \\
-1 s & 935 & 64.6 \% & 318 & 34.0 \% & 179.0 & 5.45 & 0.47 s \\
-2 s & 935 & 74.8 \% & 314 & 33.6 \% & 124.1 & 3.78 & 1.24 s \\
-3 s & 936 & 88.2 \% & 344 & 36.8 \% & 91.8 & 2.80 & 1.96 s \\
-5 s & 937 & 95.3 \% & 398 & 42.5 \% & 69.6 & 2.12 & 3.31 s \\
+0.5 s & 934 & 34.2 \% & 201 & 21.5 \% & 270.0 & 8.22 & 0.23 s \\
+1 s & 935 & 64.6 \% & 308 & 32.9 \% & 169.4 & 5.16 & 0.50 s \\
+2 s & 935 & 74.8 \% & 324 & 34.7 \% & 128.3 & 3.91 & 1.18 s \\
+3 s & 936 & 88.2 \% & 348 & 37.2 \% & 96.0 & 2.92 & 1.96 s \\
+5 s & 937 & 95.3 \% & 408 & 43.5 \% & 76.7 & 2.34 & 3.36 s \\
 \bottomrule
 \end{tabular}%
 }
@@ -82,7 +82,7 @@ Verdict & defect present, attenuated by a one-row KPI refresh lag & no defect: s
 
 \begin{table}[htbp]
 \centering
-\caption{Per-campaign calibration at the one-second horizon.}
+\caption{Per-campaign calibration at the one-second horizon (coherence arms, corrected parser).}
 \label{tab:A_4}
 \vspace{0.4em}
 \singlespacing
@@ -92,12 +92,12 @@ Verdict & defect present, attenuated by a one-row KPI refresh lag & no defect: s
 \toprule
 \textbf{Arm} & \textbf{1st Campaign (urban arterial) ECE / Brier} & \textbf{2nd Campaign (urban loop) ECE / Brier} & \textbf{3rd Campaign (dense urban) ECE / Brier} & \textbf{4th Campaign (highway) ECE / Brier} \\
 \midrule
-independent & 0.056 / 0.078 & 0.049 / 0.071 & 0.049 / 0.061 & 0.036 / 0.050 \\
-independent + cumulative max & 0.055 / 0.078 & 0.049 / 0.071 & 0.049 / 0.061 & 0.036 / 0.050 \\
-independent + PAV & 0.056 / 0.078 & 0.049 / 0.071 & 0.050 / 0.061 & 0.036 / 0.050 \\
-independent + isotonic & 0.030 / 0.074 & 0.019 / 0.067 & 0.013 / 0.057 & 0.044 / 0.051 \\
-independent + isotonic + PAV & 0.027 / 0.074 & 0.018 / 0.067 & 0.013 / 0.057 & 0.042 / 0.051 \\
-hazard & 0.044 / 0.075 & 0.027 / 0.068 & 0.044 / 0.060 & 0.026 / 0.051 \\
+independent & 0.057 / 0.078 & 0.047 / 0.071 & 0.050 / 0.061 & 0.033 / 0.049 \\
+independent + cumulative max & 0.059 / 0.078 & 0.047 / 0.071 & 0.049 / 0.061 & 0.033 / 0.049 \\
+independent + PAV & 0.056 / 0.078 & 0.048 / 0.071 & 0.050 / 0.061 & 0.032 / 0.049 \\
+independent + isotonic & 0.024 / 0.073 & 0.020 / 0.068 & 0.014 / 0.058 & 0.047 / 0.052 \\
+independent + isotonic + PAV & 0.021 / 0.073 & 0.016 / 0.068 & 0.015 / 0.058 & 0.046 / 0.051 \\
+hazard & 0.048 / 0.076 & 0.032 / 0.068 & 0.043 / 0.060 & 0.028 / 0.051 \\
 \bottomrule
 \end{tabular}%
 }
@@ -106,7 +106,7 @@ hazard & 0.044 / 0.075 & 0.027 / 0.068 & 0.044 / 0.060 & 0.026 / 0.051 \\
 
 \begin{table}[htbp]
 \centering
-\caption{Sensitivity of every window chosen after the data were collected. Each is varied across a factor of two. These runs use a single seed and default LightGBM hyper-parameters without nested tuning, so absolute values differ from the tuned three-seed results of Chapter~5 (e.g.\ the 10~s cutoff gives 2.62$\times$ vs 1.72$\times$ here against 3.1$\times$ vs 1.9$\times$ in Table~\ref{tab:5_11}); only the ordering across values is interpreted. This is local sensitivity around the chosen values, not a test of whether the choices themselves were unbiased.}
+\caption{Sensitivity of every window chosen after the data were collected. Each is varied across a factor of two. These runs use a single seed and default LightGBM hyper-parameters without nested tuning, so absolute values differ from the tuned three-seed results of Chapter~5 (e.g.\ the 10~s cutoff gives 2.53$\times$ vs 1.59$\times$ here against 3.0$\times$ vs 1.8$\times$ in Table~\ref{tab:5_11}). Corrected-parser run; only the ordering across values is interpreted. This is local sensitivity around the chosen values, not a test of whether the choices themselves were unbiased.}
 \label{tab:A_5}
 \vspace{0.4em}
 \singlespacing
@@ -115,26 +115,26 @@ hazard & 0.044 / 0.075 & 0.027 / 0.068 & 0.044 / 0.060 & 0.026 / 0.051 \\
 \toprule
 \textbf{Window varied} & \textbf{Value} & \textbf{Quantity it governs} & \textbf{Result} \\
 \midrule
-Random-block length & 60 s & 1 s AUPRC vs LOCO & +17.6 \% \\
-Random-block length & 120 s & 1 s AUPRC vs LOCO & +8.1 \% \\
-Random-block length & 180 s & 1 s AUPRC vs LOCO & +15.6 \% \\
-Random-block length & 240 s & 1 s AUPRC vs LOCO & +5.9 \% \\
-Random-block length & 300 s & 1 s AUPRC vs LOCO & +7.2 \% \\
-Purge between blocked train and test & 0 s & 1 s AUPRC vs LOCO & +3.7 \% \\
-Purge between blocked train and test & 30 s & 1 s AUPRC vs LOCO & +3.1 \% \\
-Purge between blocked train and test & 60 s & 1 s AUPRC vs LOCO & +1.6 \% \\
-Purge between blocked train and test & 90 s & 1 s AUPRC vs LOCO & -4.1 \% \\
-Purge between blocked train and test & 120 s & 1 s AUPRC vs LOCO & -2.1 \% \\
-Purge between blocked train and test & 180 s & 1 s AUPRC vs LOCO & -5.6 \% \\
-Quiet / in-burst cutoff & 5 s & 1 s lift by stratum & 2.57x vs 1.48x \\
-Quiet / in-burst cutoff & 10 s & 1 s lift by stratum & 2.62x vs 1.72x \\
-Quiet / in-burst cutoff & 15 s & 1 s lift by stratum & 2.80x vs 1.84x \\
-Quiet / in-burst cutoff & 20 s & 1 s lift by stratum & 3.19x vs 1.86x \\
-Post-handover blank & 0 s & 1 s lift on the row set & 2.10x on 10,236 rows \\
-Post-handover blank & 1 s & 1 s lift on the row set & 2.28x on 9,333 rows \\
-Post-handover blank & 2 s & 1 s lift on the row set & 2.31x on 8,586 rows \\
-Post-handover blank & 3 s & 1 s lift on the row set & 2.41x on 8,004 rows \\
-Post-handover blank & 5 s & 1 s lift on the row set & 2.55x on 7,074 rows \\
+Random-block length & 60 s & 1 s AUPRC vs LOCO & +25.4 \% \\
+Random-block length & 120 s & 1 s AUPRC vs LOCO & +15.8 \% \\
+Random-block length & 180 s & 1 s AUPRC vs LOCO & +14.9 \% \\
+Random-block length & 240 s & 1 s AUPRC vs LOCO & +8.2 \% \\
+Random-block length & 300 s & 1 s AUPRC vs LOCO & +10.0 \% \\
+Purge between blocked train and test & 0 s & 1 s AUPRC vs LOCO & +10.7 \% \\
+Purge between blocked train and test & 30 s & 1 s AUPRC vs LOCO & +8.2 \% \\
+Purge between blocked train and test & 60 s & 1 s AUPRC vs LOCO & +7.9 \% \\
+Purge between blocked train and test & 90 s & 1 s AUPRC vs LOCO & +4.0 \% \\
+Purge between blocked train and test & 120 s & 1 s AUPRC vs LOCO & +3.6 \% \\
+Purge between blocked train and test & 180 s & 1 s AUPRC vs LOCO & +7.6 \% \\
+Quiet / in-burst cutoff & 5 s & 1 s lift by stratum & 2.43x vs 1.37x \\
+Quiet / in-burst cutoff & 10 s & 1 s lift by stratum & 2.53x vs 1.59x \\
+Quiet / in-burst cutoff & 15 s & 1 s lift by stratum & 2.76x vs 1.70x \\
+Quiet / in-burst cutoff & 20 s & 1 s lift by stratum & 3.01x vs 1.73x \\
+Post-handover blank & 0 s & 1 s lift on the row set & 2.01x on 10,236 rows \\
+Post-handover blank & 1 s & 1 s lift on the row set & 2.23x on 9,333 rows \\
+Post-handover blank & 2 s & 1 s lift on the row set & 2.17x on 8,586 rows \\
+Post-handover blank & 3 s & 1 s lift on the row set & 2.31x on 8,004 rows \\
+Post-handover blank & 5 s & 1 s lift on the row set & 2.53x on 7,074 rows \\
 \bottomrule
 \end{tabularx}
 \end{table}

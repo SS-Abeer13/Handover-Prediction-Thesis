@@ -1,0 +1,4 @@
+| episode set   |   episodes |   episodes with a command within 2 s |   episodes owning a command (one-to-one) |   episodes owning two or more commands |   commands owned in total |   commands claimed more than once |   inflation factor |
+|:--------------|-----------:|-------------------------------------:|-----------------------------------------:|---------------------------------------:|--------------------------:|----------------------------------:|-------------------:|
+| A3 episodes   |       2640 |                                 1747 |                                      671 |                                     14 |                       686 |                              1076 |               2.6  |
+| all episodes  |      10665 |                                 4741 |                                      993 |                                     18 |                      1012 |                              3748 |               4.77 |

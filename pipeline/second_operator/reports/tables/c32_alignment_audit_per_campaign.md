@@ -1,0 +1,12 @@
+| capture                     | subset                            |   n |   row t-3 |   row t-2 |   row t-1 |   row t+0 |   row t+1 |
+|:----------------------------|:----------------------------------|----:|----------:|----------:|----------:|----------:|----------:|
+| 9 Oct (Banglalink, Gazipur) | all handovers                     |  87 |     0.138 |     0.08  |     0.046 |     0.667 |     0.885 |
+| 9 Oct (Banglalink, Gazipur) | isolated (previous > 8 s earlier) |  20 |     0     |     0     |     0     |     0.65  |     0.95  |
+| 10 Sept (urban arterial)    | all handovers                     | 290 |     0.186 |     0.145 |     0.128 |     0.752 |     0.876 |
+| 10 Sept (urban arterial)    | isolated (previous > 8 s earlier) |  83 |     0.12  |     0.12  |     0.12  |     0.675 |     0.904 |
+| 12 Sept (urban loop)        | all handovers                     | 174 |     0.345 |     0.287 |     0.161 |     0.672 |     0.851 |
+| 12 Sept (urban loop)        | isolated (previous > 8 s earlier) |  40 |     0.125 |     0.125 |     0.1   |     0.6   |     0.925 |
+| 13 Sept (dense urban)       | all handovers                     | 297 |     0.199 |     0.199 |     0.158 |     0.805 |     0.875 |
+| 13 Sept (dense urban)       | isolated (previous > 8 s earlier) | 100 |     0.08  |     0.08  |     0.08  |     0.81  |     0.91  |
+| 15 Sept (highway)           | all handovers                     | 177 |     0.278 |     0.295 |     0.192 |     0.78  |     0.831 |
+| 15 Sept (highway)           | isolated (previous > 8 s earlier) |  68 |     0.179 |     0.179 |     0.176 |     0.824 |     0.853 |

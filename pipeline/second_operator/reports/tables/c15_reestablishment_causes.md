@@ -1,0 +1,7 @@
+| capture    |   handoverFailure |   otherFailure |   reconfigurationFailure |
+|:-----------|------------------:|---------------:|-------------------------:|
+| XCAL09Oct  |                 1 |              7 |                        0 |
+| XCAL10Sept |                 1 |              6 |                      106 |
+| XCAL12Sept |                 2 |              2 |                       60 |
+| XCAL13Sept |                 0 |              4 |                      155 |
+| XCAL15Sept |                 0 |              5 |                        0 |

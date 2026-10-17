@@ -1,0 +1,3 @@
+subset,n,row t-3,row t-2,row t-1,row t+0,row t+1
+all handovers,938,0.237,0.217,0.156,0.759,0.862
+isolated (previous > 8 s earlier),291,0.121,0.121,0.117,0.746,0.897
