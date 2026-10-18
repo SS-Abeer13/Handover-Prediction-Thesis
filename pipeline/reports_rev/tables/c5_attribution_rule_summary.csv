@@ -1,0 +1,4 @@
+rule,handovers,a3_attributed,a3_positive_offset,positive_share_of_a3,none_in_2s
+latest,957,651,487,0.7480798771121352,30
+target_pci,957,658,496,0.7537993920972644,80
+target_pci_freq,957,679,500,0.7363770250368189,116

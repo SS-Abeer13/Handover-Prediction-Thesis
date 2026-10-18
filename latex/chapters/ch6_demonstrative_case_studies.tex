@@ -6,7 +6,7 @@ This chapter demonstrates how the work reported in Chapters 1 to 5 addresses the
 \section{Introduction}
 \label{sec:6_1}
 
-Outcome Based Education requires that a capstone project be assessed against what the student is able to do at its conclusion rather than against the volume of work performed. The sections that follow map the activities of this project onto the defined outcomes, in the order set out in the departmental thesis format: course outcomes in Section 6.2, aspects of program outcomes in Section 6.3, knowledge profiles in Section 6.4, the use of complex engineering problems in Section 6.5, the socio-cultural, environmental and ethical impact in Section 6.6, and the attributes of complex engineering problem solving and complex engineering activities in Sections 6.7 and 6.8.
+Outcome Based Education requires that a capstone project be assessed against what the student is able to do at its conclusion rather than against the volume of work performed. The sections that follow map the activities of this project onto the defined outcomes, in the order set out in the departmental thesis format: course outcomes in Section 6.2, aspects of program outcomes in Section 6.3, knowledge profiles in Section 6.4, the use of complex engineering problems in Section 6.5, the socio-cultural, environmental and ethical impact in Section 6.6, and the attributes of complex engineering problem solving and complex engineering activities in Sections 6.7 and 6.8, and project management, resources and budget in Section 6.9.
 
 
 \section{Course outcomes addressed}
@@ -60,6 +60,8 @@ Table~\ref{tab:6_2} lists the program outcomes this project addresses and where 
 \toprule
 \textbf{PO} & \textbf{Aspect} & \textbf{Addressed} & \textbf{Evidence} \\
 \midrule
+PO1 & Engineering knowledge & $\sqrt{}$ & LTE mobility procedures and RRC signalling, Sections 2.1 and 3.3; survival analysis and conformal risk control, Chapter 4 \\
+PO2 & Problem analysis & $\sqrt{}$ & Problem statement and requirements, Section 1.3; protocol audit, Section 2.3 \\
 PO3 & Public health & --- & No health claim is made; see Section 6.6 \\
 PO3 & Safety & $\sqrt{}$ & Connection continuity and radio-link failure, Section 1.2 \\
 PO3 & Societal & $\sqrt{}$ & Section 6.6 \\
@@ -73,11 +75,13 @@ PO6 & Legal & $\sqrt{}$ & Data handling and operator anonymity, Section 6.6 \\
 PO7 & Societal and environmental & $\sqrt{}$ & Section 6.6 \\
 PO8 & Professional ethics and responsibilities & $\sqrt{}$ & Reporting of negative results, Section 5.11 \\
 PO8 & Norms & $\sqrt{}$ & Conformance to 3GPP TS 36.331 terminology throughout \\
+PO9 & Individual and team work & $\sqrt{}$ & Three-member team sharing field campaigns, decoding, modelling and writing, Section 6.9 \\
 PO10 & Comprehend and write effective reports & $\sqrt{}$ & This report \\
 PO10 & Design documentation & $\sqrt{}$ & Chapters 3 and 4 \\
 PO10 & Make effective presentations & $\sqrt{}$ & Progress and defence presentations \\
 PO11 & Engineering management principles & $\sqrt{}$ & Section 6.9 \\
 PO11 & Economic decision-making & $\sqrt{}$ & Section 6.9 \\
+PO12 & Life-long learning & $\sqrt{}$ & Methods adopted from outside the field (discrete-time survival analysis, conformal risk control, point processes), Chapters 2 and 4 \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -116,7 +120,7 @@ K8 & Engagement with research literature: the screening of 108 publications and 
 
 The problem addressed here satisfies the defining characteristics of a complex engineering problem in several independent respects.
 
-It involves conflicting technical requirements whose trade-offs must be resolved quantitatively rather than asserted. The clearest is the warning trade-off of Section 5.5: an earlier and more sensitive warning is more useful to the network and also more expensive, and the frontier from a 20 \% target miss rate at a 48\% alarm rate to a 5 \% target at 85\% is measured rather than assumed.
+It involves conflicting technical requirements whose trade-offs must be resolved quantitatively rather than asserted. The clearest is the warning trade-off of Section 5.5: an earlier and more sensitive warning is more useful to the network and also more expensive, and the frontier from a 20\% target miss rate at a 48\% alarm rate to a 5\% target at 85\% is measured rather than assumed.
 
 It is not amenable to a standard procedure. The evaluation protocol the comparator literature treats as standard is demonstrably wrong on this data, and Section 5.3 measures by how much; so is the implicit assumption that a measurement row describes the interval before its own timestamp, which Section 5.1 measures.
 
@@ -153,7 +157,7 @@ It spans several sub-disciplines: the LTE control plane, radio propagation, stat
 P1 & Depth of knowledge required & $\sqrt{}$ & Survival formulation and its monotonicity proof, Section 4.3; conformal risk control, Section 4.10 \\
 P2 & Range of conflicting requirements & $\sqrt{}$ & The warning frontier of Section 5.5: lead time against false-alarm cost, measured across the whole curve \\
 P3 & Depth of analysis required & $\sqrt{}$ & No standard procedure applies; the standard evaluation protocol is shown to be invalid here, Section 5.3 \\
-P4 & Familiarity of issues & $\sqrt{}$ & The deployed configuration was unknown before decoding, Section 3.5, and differs in sign from the literature's assumption \\
+P4 & Familiarity of issues & $\sqrt{}$ & The deployed configuration was unknown before decoding, Section 3.5: the offset that drives most handovers (+1~dB) has the sign the literature assumes but a smaller magnitude, and the negative offsets belong to monitoring configurations that rarely lead to a handover \\
 P5 & Extent of applicable codes & $\sqrt{}$ & 3GPP TS 36.331 and TS 36.300 govern the signalling interpretation throughout Chapter 3 \\
 P6 & Extent of stakeholder involvement & $\sqrt{}$ & Operator, subscriber and regulator interests differ; Section 6.6 states which are and are not addressed \\
 P7 & Interdependence & $\sqrt{}$ & Six sub-problems --- decoding, labelling, feature design, formulation, evaluation and risk control --- each of which constrains the others \\
@@ -207,7 +211,7 @@ The project was conducted over two academic terms. The first term covered proble
 \midrule
 Drive-test instrumentation & Departmental equipment, used under supervision & Nil (departmental) \\
 Mobile data and subscription & Four measurement campaigns on a live network & 3,000 \\
-Vehicle fuel and hire & Approximately 95 km across four campaigns, including the highway run & 9,000 \\
+Vehicle fuel and hire & Approximately 96 km across four campaigns, including the highway run & 9,000 \\
 Computation & Model training and evaluation on personal and departmental hardware & Nil \\
 Report production and binding & Three hard-bound copies as required & 3,000 \\
 Total &  & 15,000 \\

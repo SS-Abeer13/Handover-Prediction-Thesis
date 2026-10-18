@@ -1,11 +1,18 @@
-%%{init: {"flowchart": {"wrappingWidth": 260}}}%%
-flowchart LR
-  A["<b>01 &nbsp; Measure</b><br/>1 Hz RF, GPS and speed<br/>+ decoded RRC signalling<br/>4 captures, 57 drives"] --> B["<b>02 &nbsp; Ground the labels</b><br/>VarMeasConfig replayed as a timeline:<br/>measId bindings persist until removed<br/>938 handover commands,<br/>timestamped to 1 ms"]
-  B --> C["<b>03 &nbsp; Represent</b><br/>112 features from three blocks<br/>export rows lagged one row<br/>every window backward-looking"]
-  C --> D["<b>04 &nbsp; Predict as a hazard</b><br/>one discrete-time fit<br/>five horizons, coherent<br/>by the product-limit identity"]
-  D --> E["<b>05 &nbsp; Evaluate</b><br/>leave-one-campaign-out; ranking,<br/>calibration, event-level cost;<br/>conformal risk control as a diagnostic"]
+%%{init: {"themeVariables": {"fontSize": "20px"}, "flowchart": {"wrappingWidth": 330, "nodeSpacing": 40, "rankSpacing": 40}}}%%
+flowchart TB
+  subgraph r1 [" "]
+    direction LR
+    A["<b>01 &nbsp; Measure</b><br/>1 Hz RF, GPS and speed<br/>+ decoded RRC signalling<br/>4 campaigns, 57 blocks of 180 s"] --> B["<b>02 &nbsp; Ground the labels</b><br/>VarMeasConfig replayed as a timeline;<br/>measId bindings persist<br/>938 handover commands,<br/>timestamped to 1 ms"] --> C["<b>03 &nbsp; Represent</b><br/>112 features from three blocks<br/>export rows lagged one row<br/>every window backward-looking"]
+  end
+  subgraph r2 [" "]
+    direction LR
+    D["<b>04 &nbsp; Predict as a hazard</b><br/>one discrete-time fit<br/>five horizons, coherent<br/>by the product-limit identity"] --> E["<b>05 &nbsp; Evaluate</b><br/>leave-one-campaign-out; ranking,<br/>calibration, event-level cost;<br/>conformal risk control as a diagnostic"]
+  end
+  r1 --> r2
   classDef hi fill:#fbeeee,stroke:#891313,stroke-width:2px,color:#891313;
   classDef mid fill:#eef2f7,stroke:#1f4e79,stroke-width:1.5px,color:#1f4e79;
   class B hi;
   class D hi;
   class E mid;
+  style r1 fill:#ffffff,stroke:#ffffff
+  style r2 fill:#ffffff,stroke:#ffffff

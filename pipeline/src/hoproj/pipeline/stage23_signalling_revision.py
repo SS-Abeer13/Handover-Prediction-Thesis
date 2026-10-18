@@ -253,5 +253,66 @@ def main():
          "c7_episode_summary")
 
 
+def attribution_sensitivity():
+    """Table 3.1 under three attribution rules [review, 18 Oct].
+
+    latest           the rule used throughout: the most recent report in the 2 s
+                     before the command, whatever its measId (recency only)
+    target_pci       the most recent report in the 2 s window whose neighbour list
+                     contains the command's target PCI
+    target_pci_freq  as target_pci, and the report's measurement object is on the
+                     command's target carrier
+    A command with no qualifying report is 'none in 2 s'.
+    """
+    from ..data.signalling import parse_signalling
+    from .stage12_xcal_prepare import CAPTURES
+    rv2 = pickle.load(open("data/rev/reports_v2.pkl", "rb"))
+    sig = pickle.load(open("data/rev/signalling.pkl", "rb"))
+    raw = {tag: Path(r) / s for tag, r, _, s in CAPTURES}
+    rows = []
+    for cap in sorted(sig):
+        log = parse_signalling(raw[cap])
+        pcis = log.neighbours.groupby("report_idx")["pci"].agg(lambda x: set(int(v) for v in x))
+        rep = rv2[cap]["reports"].copy()
+        rep["pcis"] = [pcis.get(i, set()) for i in rep.index]
+        rep = rep.sort_values("t").reset_index(drop=True)
+        rt = rep["t"].to_numpy()
+        ho = sig[cap]["handovers"]
+        ho = ho[ho["completed"]].sort_values("t")
+        for h in ho.itertuples():
+            hi = np.searchsorted(rt, np.datetime64(h.t), side="left")
+            lo = np.searchsorted(rt, np.datetime64(h.t - pd.Timedelta(seconds=WINDOW_S)), side="left")
+            win = rep.iloc[lo:hi]
+            for rule in ("latest", "target_pci", "target_pci_freq"):
+                w = win
+                if rule != "latest":
+                    w = w.loc[np.array([int(h.target_pci) in s for s in w["pcis"]], dtype=bool)]
+                if rule == "target_pci_freq":
+                    w = w.loc[(w["carrier_earfcn"] == h.target_earfcn).to_numpy(dtype=bool)]
+                r = w.iloc[-1] if len(w) else None
+                if r is None:
+                    prof = "none in 2 s"
+                elif r["event_id"] == "A3":
+                    prof = (f"A3 {r['a3_offset_db']:+g} dB, Hys {r['hysteresis_db']:g} dB, "
+                            f"TTT {r['time_to_trigger_ms']:g} ms")
+                else:
+                    prof = r["event_id"] if r["event_id"] is not None else "unresolved"
+                rows.append({"capture": cap, "rule": rule, "profile": prof,
+                             "a3": r is not None and r["event_id"] == "A3",
+                             "positive_offset": r is not None and r["event_id"] == "A3"
+                             and r["a3_offset_db"] > 0})
+    R = pd.DataFrame(rows)
+    prof = (R.groupby(["rule", "profile"]).size().rename("handovers").reset_index()
+            .sort_values(["rule", "handovers"], ascending=[True, False]))
+    save(prof, "c5_attribution_rule_sensitivity")
+    summ = R.groupby("rule").agg(handovers=("a3", "size"), a3_attributed=("a3", "sum"),
+                                 a3_positive_offset=("positive_offset", "sum")).reset_index()
+    summ["positive_share_of_a3"] = summ["a3_positive_offset"] / summ["a3_attributed"]
+    summ["none_in_2s"] = R[R.profile == "none in 2 s"].groupby("rule").size().reindex(summ["rule"]).fillna(0).to_numpy()
+    save(summ, "c5_attribution_rule_summary")
+
+
 if __name__ == "__main__":
     main()
+    attribution_sensitivity()
+

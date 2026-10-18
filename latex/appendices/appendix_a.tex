@@ -32,7 +32,7 @@ Prevalence floor & 0.037 & 0.068 & 0.126 & 0.176 & 0.261 \\
 
 \begin{table}[htbp]
 \centering
-\caption{Event-level operating characteristics of the primary model at the 5 \% false-positive operating point. Eligibility rule: a command at $\tau$ is counted if it lies between the held-out campaign's first usable prediction row and $h$ seconds after its last usable row ($t_{\min} \le \tau \le t_{\max} + h$), so the count rises with the horizon (934 to 937 of the 938 quality-controlled commands). ``Resolvable'' means at least one usable row lies in $[\tau - h, \tau)$; unresolvable commands are counted as missed. At 1~s, 604 of the 935 eligible commands (64.6\,\%) are resolvable. Sections~\ref{sec:3_6} and~\ref{sec:5_5} quote 64.2\,\% (602 of 938) from a separate count over all 938 quality-controlled commands on the continuous sequence; the two differ in denominator and by two commands, so they do not sum with each other's complement. The operating threshold is set per fold at a 5\,\% row-level false-positive rate on that fold's calibration block.}
+\caption{Event-level operating characteristics of the primary model at the 5\% false-positive operating point. Eligibility rule: a command at $\tau$ is counted if it lies between the held-out campaign's first usable prediction row and $h$ seconds after its last usable row ($t_{\min} \le \tau \le t_{\max} + h$), so the count rises with the horizon (934 to 937 of the 938 quality-controlled commands). ``Resolvable'' means at least one usable row lies in $[\tau - h, \tau)$; unresolvable commands are counted as missed. At 1~s, 604 of the 935 eligible commands (64.6\%) are resolvable. Sections~\ref{sec:3_6} and~\ref{sec:5_5} quote 64.2\% (602 of 938) from a separate count over all 938 quality-controlled commands on the continuous sequence; the two differ in denominator and by two commands, so they do not sum with each other's complement. The operating threshold is set per fold at a 5\% row-level false-positive rate on that fold's calibration block.}
 \label{tab:A_2}
 \vspace{0.4em}
 \singlespacing
@@ -42,11 +42,11 @@ Prevalence floor & 0.037 & 0.068 & 0.126 & 0.176 & 0.261 \\
 \toprule
 \textbf{Horizon} & \textbf{Events} & \textbf{Resolvable on the 1 Hz grid} & \textbf{Detected} & \textbf{Detection rate} & \textbf{False alarms / h} & \textbf{False alarms / km} & \textbf{Median lead time} \\
 \midrule
-0.5 s & 934 & 34.2 \% & 201 & 21.5 \% & 270.0 & 8.22 & 0.23 s \\
-1 s & 935 & 64.6 \% & 308 & 32.9 \% & 169.4 & 5.16 & 0.50 s \\
-2 s & 935 & 74.8 \% & 324 & 34.7 \% & 128.3 & 3.91 & 1.18 s \\
-3 s & 936 & 88.2 \% & 348 & 37.2 \% & 96.0 & 2.92 & 1.96 s \\
-5 s & 937 & 95.3 \% & 408 & 43.5 \% & 76.7 & 2.34 & 3.36 s \\
+0.5 s & 934 & 34.2\% & 201 & 21.5\% & 270.0 & 8.22 & 0.23 s \\
+1 s & 935 & 64.6\% & 308 & 32.9\% & 169.4 & 5.16 & 0.50 s \\
+2 s & 935 & 74.8\% & 324 & 34.7\% & 128.3 & 3.91 & 1.18 s \\
+3 s & 936 & 88.2\% & 348 & 37.2\% & 96.0 & 2.92 & 1.96 s \\
+5 s & 937 & 95.3\% & 408 & 43.5\% & 76.7 & 2.34 & 3.36 s \\
 \bottomrule
 \end{tabular}%
 }
@@ -69,11 +69,11 @@ Network and region & One operator, Dhaka and Gazipur & One operator, Ireland (Ra
 Event clock & RRC signalling: command and complete & serving-cell identifier changes only & XCAL handover event column \\
 Row semantics & aggregate over the second, written at its end & instantaneous sample & set by us: last, or first, sample of the second \\
 Handovers audited & 938 & 1,175 cell changes & 4,712 in 12 files \\
-Row t shows the target cell & 75.9 \% & 29.4 \% & 93.2 \% \\
-Isolated handovers only & 74.6 \% (n = 291) & not separable (no signalling clock) & 92.8 \% (n = 3,160) \\
-Row t-1 shows the target cell & 15.6 \% & no step across the integer boundary & 0.1 \% \\
-Same rows, start-of-second rule & not available (the tool aggregates) & not applicable (rows are samples) & 4.1 \% \\
-Update delay observed & p90 99 ms from RRC complete messages & not observable on a 1 Hz grid & 50-75 ms, recovered from the contamination cliff (98 \% at 75-100 ms left, 44 \% at 50-75 ms, 0 \% below 50 ms) \\
+Row $t$ shows the target cell & 75.9\% & 29.4\% & 93.2\% \\
+Isolated handovers only & 74.6\% (n = 291) & not separable (no signalling clock) & 92.8\% (n = 3,160) \\
+Row $t-1$ shows the target cell & 15.6\% & no step across the integer boundary & 0.1\% \\
+Same rows, start-of-second rule & not available (the tool aggregates) & not applicable (rows are samples) & 4.1\% \\
+Update delay observed & p90 99 ms from RRC complete messages & not observable on a 1 Hz grid & 50-75 ms, recovered from the contamination cliff (98\% at 75-100 ms left, 44\% at 50-75 ms, 0\% below 50 ms) \\
 Verdict & defect present, attenuated by a one-row KPI refresh lag & no defect: sampled rows are not aggregates & defect present under end-of-second, absent under start-of-second \\
 \bottomrule
 \end{tabularx}
@@ -115,17 +115,17 @@ hazard & 0.048 / 0.076 & 0.032 / 0.068 & 0.043 / 0.060 & 0.028 / 0.051 \\
 \toprule
 \textbf{Window varied} & \textbf{Value} & \textbf{Quantity it governs} & \textbf{Result} \\
 \midrule
-Random-block length & 60 s & 1 s AUPRC vs LOCO & +25.4 \% \\
-Random-block length & 120 s & 1 s AUPRC vs LOCO & +15.8 \% \\
-Random-block length & 180 s & 1 s AUPRC vs LOCO & +14.9 \% \\
-Random-block length & 240 s & 1 s AUPRC vs LOCO & +8.2 \% \\
-Random-block length & 300 s & 1 s AUPRC vs LOCO & +10.0 \% \\
-Purge between blocked train and test & 0 s & 1 s AUPRC vs LOCO & +10.7 \% \\
-Purge between blocked train and test & 30 s & 1 s AUPRC vs LOCO & +8.2 \% \\
-Purge between blocked train and test & 60 s & 1 s AUPRC vs LOCO & +7.9 \% \\
-Purge between blocked train and test & 90 s & 1 s AUPRC vs LOCO & +4.0 \% \\
-Purge between blocked train and test & 120 s & 1 s AUPRC vs LOCO & +3.6 \% \\
-Purge between blocked train and test & 180 s & 1 s AUPRC vs LOCO & +7.6 \% \\
+Random-block length & 60 s & 1 s AUPRC vs LOCO & +25.4\% \\
+Random-block length & 120 s & 1 s AUPRC vs LOCO & +15.8\% \\
+Random-block length & 180 s & 1 s AUPRC vs LOCO & +14.9\% \\
+Random-block length & 240 s & 1 s AUPRC vs LOCO & +8.2\% \\
+Random-block length & 300 s & 1 s AUPRC vs LOCO & +10.0\% \\
+Purge between blocked train and test & 0 s & 1 s AUPRC vs LOCO & +10.7\% \\
+Purge between blocked train and test & 30 s & 1 s AUPRC vs LOCO & +8.2\% \\
+Purge between blocked train and test & 60 s & 1 s AUPRC vs LOCO & +7.9\% \\
+Purge between blocked train and test & 90 s & 1 s AUPRC vs LOCO & +4.0\% \\
+Purge between blocked train and test & 120 s & 1 s AUPRC vs LOCO & +3.6\% \\
+Purge between blocked train and test & 180 s & 1 s AUPRC vs LOCO & +7.6\% \\
 Quiet / in-burst cutoff & 5 s & 1 s lift by stratum & 2.43x vs 1.37x \\
 Quiet / in-burst cutoff & 10 s & 1 s lift by stratum & 2.53x vs 1.59x \\
 Quiet / in-burst cutoff & 15 s & 1 s lift by stratum & 2.76x vs 1.70x \\
@@ -151,24 +151,24 @@ Post-handover blank & 5 s & 1 s lift on the row set & 2.53x on 7,074 rows \\
 \toprule
 \textbf{Quantity} & \textbf{Value} \\
 \midrule
-Handovers with a positive margin (row t predicted contaminated) & 923 \\
-of which row t does carry the target & 712 \\
-Residual: row t carries the source instead & 211 \\
-of the residual, row t+1 carries the target & 178 (84\%) \\
+Handovers with a positive margin (row $t$ predicted contaminated) & 923 \\
+of which row $t$ does carry the target & 712 \\
+Residual: row $t$ carries the source instead & 211 \\
+of the residual, row $t+1$ carries the target & 178 (84\%) \\
 Median margin, residual handovers & 0.477 s \\
 Median margin, contaminated handovers & 0.522 s \\
  &  \\
 Ten residual handovers, smallest margin first (unfiltered) &  \\
-1st Campaign, $\delta$ = 0.999 s, margin 0.000 s & row t shows PCI 489, row t+1 shows PCI 380, target is PCI 380 \\
-1st Campaign, $\delta$ = 0.998 s, margin 0.001 s & row t shows PCI 27, row t+1 shows PCI 91, target is PCI 91 \\
-2nd Campaign, $\delta$ = 0.998 s, margin 0.002 s & row t shows PCI 346, row t+1 shows PCI 38, target is PCI 38 \\
-1st Campaign, $\delta$ = 0.995 s, margin 0.004 s & row t shows PCI 13, row t+1 shows PCI 256, target is PCI 147 \\
-3rd Campaign, $\delta$ = 0.995 s, margin 0.005 s & row t shows PCI 435, row t+1 shows PCI 303, target is PCI 303 \\
-3rd Campaign, $\delta$ = 0.984 s, margin 0.015 s & row t shows PCI 30, row t+1 shows PCI 348, target is PCI 348 \\
-1st Campaign, $\delta$ = 0.980 s, margin 0.019 s & row t shows PCI 270, row t+1 shows PCI 280, target is PCI 280 \\
-4th Campaign, $\delta$ = 0.978 s, margin 0.022 s & row t shows PCI 39, row t+1 shows PCI 88, target is PCI 88 \\
-4th Campaign, $\delta$ = 0.975 s, margin 0.024 s & row t shows PCI 193, row t+1 shows PCI 292, target is PCI 292 \\
-1st Campaign, $\delta$ = 0.876 s, margin 0.026 s & row t shows PCI 280, row t+1 shows PCI 33, target is PCI 33 \\
+1st Campaign, $\delta$ = 0.999 s, margin 0.000 s & row $t$ shows PCI 489, row $t+1$ shows PCI 380, target is PCI 380 \\
+1st Campaign, $\delta$ = 0.998 s, margin 0.001 s & row $t$ shows PCI 27, row $t+1$ shows PCI 91, target is PCI 91 \\
+2nd Campaign, $\delta$ = 0.998 s, margin 0.002 s & row $t$ shows PCI 346, row $t+1$ shows PCI 38, target is PCI 38 \\
+1st Campaign, $\delta$ = 0.995 s, margin 0.004 s & row $t$ shows PCI 13, row $t+1$ shows PCI 256, target is PCI 147 \\
+3rd Campaign, $\delta$ = 0.995 s, margin 0.005 s & row $t$ shows PCI 435, row $t+1$ shows PCI 303, target is PCI 303 \\
+3rd Campaign, $\delta$ = 0.984 s, margin 0.015 s & row $t$ shows PCI 30, row $t+1$ shows PCI 348, target is PCI 348 \\
+1st Campaign, $\delta$ = 0.980 s, margin 0.019 s & row $t$ shows PCI 270, row $t+1$ shows PCI 280, target is PCI 280 \\
+4th Campaign, $\delta$ = 0.978 s, margin 0.022 s & row $t$ shows PCI 39, row $t+1$ shows PCI 88, target is PCI 88 \\
+4th Campaign, $\delta$ = 0.975 s, margin 0.024 s & row $t$ shows PCI 193, row $t+1$ shows PCI 292, target is PCI 292 \\
+1st Campaign, $\delta$ = 0.876 s, margin 0.026 s & row $t$ shows PCI 280, row $t+1$ shows PCI 33, target is PCI 33 \\
 \bottomrule
 \end{tabularx}
 \end{table}

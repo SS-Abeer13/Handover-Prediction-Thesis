@@ -41,6 +41,8 @@ The reproduction directory structure is organized hierarchically into code, conf
 
 \begin{verbatim}
 pipeline/
+  sept10/ sept12/ sept13/ sept15/ oct09/
+    data/raw/                     # Raw XCAL CSV export + signalling text, per capture
   artifacts/
     freeze_manifest.json          # Configuration freeze (not registered)
   configs/
@@ -48,6 +50,7 @@ pipeline/
     adapters/                     # Hardware and logging schema mappings
   data/
     processed_xcal/               # Derived, quality-controlled row/event frames
+    rev/                          # Decoded-signalling pickles (stage 12b)
     external/                     # Resampled public corpora (NUWiNS, Astana)
   reports_rev/
     tables/                       # Original-parser tables (superseded)
@@ -102,15 +105,15 @@ To guarantee artifact integrity and permit exact verification against pipeline b
 & \texttt{E087A59F4CA8043F21911094A897E553} & (Table~\ref{tab:5_13}, Figure~\ref{fig:5_15}). \\
 \texttt{c18\_ablation.csv}$^{\dagger}$ & \texttt{6012AA7D8FC96B1FEC7158A36567823D} & Feature group ablation comparison \\
 & \texttt{2FB0DDDABA5DC09084BD29AECACC86A4} & (Tables~\ref{tab:5_2}, \ref{tab:5_15}). \\
-\texttt{c32\_blind\_second\_}$^{\ddagger}$ & \texttt{25C4E1498BD539ACD2E9FE00B1CCDEAF} & Blind second-operator test \\
-\texttt{\ \ operator.csv} & \texttt{BE1610FF76D77CDC74B3CDE61FD58B17} & (Table~\ref{tab:5_19}). \\
-\texttt{c32\_alignment\_audit\_}$^{\ddagger}$ & \texttt{A9107B45A4E4D26F91C4C399801D6230} & Per-campaign alignment audit \\
-\texttt{\ \ per\_campaign.csv} & \texttt{B0A0379C94BB9630E893DECDDB30D4E9} & (Table~\ref{tab:5_18}). \\
+\texttt{c32\_blind\_second\_} & \texttt{25C4E1498BD539ACD2E9FE00B1CCDEAF} & Blind second-operator test \\
+\texttt{\ \ operator.csv}$^{\ddagger}$ & \texttt{BE1610FF76D77CDC74B3CDE61FD58B17} & (Table~\ref{tab:5_19}). \\
+\texttt{c32\_alignment\_audit\_} & \texttt{A9107B45A4E4D26F91C4C399801D6230} & Per-campaign alignment audit \\
+\texttt{\ \ per\_campaign.csv}$^{\ddagger}$ & \texttt{B0A0379C94BB9630E893DECDDB30D4E9} & (Table~\ref{tab:5_18}). \\
 \texttt{c32\_lag\_ablation\_oct9.csv}$^{\ddagger}$ & \texttt{EABA6324E00962CCF1D172866DB7290C} & Lag ablation on the blind capture \\
 & \texttt{7B8BFBB5B1200967AF74F1075C81922A} & (Table~\ref{tab:5_18}). \\
 \texttt{c19\_sens\_blank.csv}$^{\dagger}$ & \texttt{FF36F1B118B3339FECF825785D24116E} & Post-handover blanking window sensitivity \\
 & \texttt{8DB670D297B25FAE2015AE6B71D6C863} & (Table~\ref{tab:A_5}). \\
-\multicolumn{3}{@{}p{0.95\linewidth}@{}}{\scriptsize $^{\dagger}$\,\texttt{reports\_rev\_parserfix/tables/} (corrected parser). $^{\ddagger}$\,\texttt{second\_operator/reports/tables/}. \texttt{freeze\_manifest.json}: \texttt{artifacts/}. All other files: \texttt{reports\_rev/tables/}.} \\
+\multicolumn{3}{@{}p{0.95\linewidth}@{}}{\scriptsize $^{\dagger}$\,\texttt{reports\_rev\_parserfix/tables/} (corrected parser). $^{\ddagger}$\,\texttt{second\_operator/reports/tables/}. \texttt{freeze\_manifest.json}: \texttt{pipeline/artifacts/}. All other files: \texttt{reports\_rev/tables/}.} \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -126,15 +129,17 @@ export PYTHONPATH=$PWD/src           # Unix / macOS
 $env:PYTHONPATH="$PWD/src"           # Windows PowerShell
 
 # The stages that produce the reported tables, in order
-# (run_all executes only the superseded stages 12-21)
+# (run_all is the older runner; it covers the pre-revision stages 12-21)
 python -m hoproj.pipeline.stage12_xcal_prepare   # ingestion, QC, alignment
 python -m hoproj.pipeline.stage12b_rev_pickles    # data/rev signalling pickles
 python -m hoproj.pipeline.stage22_revision --exp all   # Chapter 5 model tables
 python -m hoproj.pipeline.stage23_signalling_revision  # A3, profiles, Table 3.3
 python -m hoproj.pipeline.stage26_rev_extras      # ping-pong, Hawkes, KS tests
+python -m hoproj.pipeline.stage28_nuwins_audit --fetch all   # Table A.3 (NUWiNS)
+python -m hoproj.pipeline.stage29_alignment_mechanism --exp all  # Tables A.3, A.6
 python -m hoproj.pipeline.stage30_sensitivity     # Table A.5
 # Blind second-operator test (raw files in oct09/data/raw/)
 python -m hoproj.pipeline.stage32_second_operator
 \end{verbatim}
 
-Execution is deterministic for a fixed thread count: random seeds are fixed across Python \texttt{random}, \texttt{numpy}, and \texttt{torch} (a re-run on 17 October 2026 reproduced the stage-22 tables to four decimals; with a different number of threads LightGBM varies by about $\pm 0.005$ AUPRC). The reported tables of Chapter~5 use seeds 0, 1 and 2 with predictions averaged; the sensitivity runs of Table~\ref{tab:A_5} use the single seed 0 with default LightGBM hyper-parameters. Output tables are written directly into \texttt{reports\_rev/tables/}, where automated checksum verification scripts confirm exact correspondence with Table~\ref{tab:C_checksums}.
+Execution is deterministic for a fixed thread count: random seeds are fixed across Python \texttt{random}, \texttt{numpy}, and \texttt{torch} (a re-run on 17 October 2026 reproduced the stage-22 tables to four decimals; with a different number of threads LightGBM varies by about $\pm 0.005$ AUPRC). The reported tables of Chapter~5 use seeds 0, 1 and 2 with predictions averaged; the sensitivity runs of Table~\ref{tab:A_5} use the single seed 0 with default LightGBM hyper-parameters. Every stage writes its tables to \texttt{reports\_rev/tables/}; there is no output-directory flag. The corrected-parser tables marked $\dagger$ in Table~\ref{tab:C_checksums} were produced by running the commands above with the corrected \texttt{signalling.py} and then copied to \texttt{reports\_rev\_parserfix/tables/}, so that the original-parser tables remain alongside them; stage 32 writes to \texttt{second\_operator/reports/tables/}. A fresh run of the commands above reproduces the $\dagger$ files in \texttt{reports\_rev/tables/}, where their checksums can be compared with Table~\ref{tab:C_checksums}.

@@ -114,7 +114,7 @@ def case_studies():
     save(pd.DataFrame(rows), "c20_case_studies")
 
     # ---- the traces themselves, 20 s either side of each drawn row
-    fig, axes = plt.subplots(3, N_EACH, figsize=(4.2 * N_EACH, 9), sharex=True)
+    fig, axes = plt.subplots(3, N_EACH, figsize=(4.0 * N_EACH, 10), sharex=True)
     for ax_row, lab in zip(axes, ("true positive", "false alarm", "missed handover")):
         sel = [j for (l, j) in picks if l == lab]
         for ax, j in zip(ax_row, sel):
@@ -126,23 +126,23 @@ def case_studies():
             if "nbr1_rsrp" in w:
                 ax.plot(rel, w["nbr1_rsrp"], color="#c0392b", lw=1.0, ls="--",
                         label="best neighbour RSRP")
-            ax.set_ylabel("RSRP (dBm)", fontsize=8)
+            ax.set_ylabel("RSRP (dBm)", fontsize=11)
             ax2 = ax.twinx()
             ax2.plot(rel, p1[w.index.to_numpy()], color="#117a3d", lw=1.4,
                      label="model P(handover ≤ 1 s)")
             ax2.axhline(thr, color="#117a3d", lw=0.7, ls=":")
             ax2.set_ylim(0, 1)
-            ax2.set_ylabel("probability", fontsize=8)
+            ax2.set_ylabel("probability", fontsize=11)
             for tau in d.events[d.events.capture == cap]["t"]:
                 rt = (tau - fr.iloc[j]["t"]).total_seconds()
                 if -20 <= rt <= 10:
                     ax.axvline(rt, color="k", lw=0.8, alpha=0.6)
             ax.axvline(0, color="#f39c12", lw=1.6, alpha=0.9)
-            ax.set_title(f"{lab} — {clean_cap(cap)}, score {p1[j]:.2f}", fontsize=8)
-            ax.tick_params(labelsize=7)
-            ax2.tick_params(labelsize=7)
+            ax.set_title(f"{lab}\n{clean_cap(cap)}, score {p1[j]:.2f}", fontsize=11)
+            ax.tick_params(labelsize=10)
+            ax2.tick_params(labelsize=10)
     for ax in axes[-1]:
-        ax.set_xlabel("seconds relative to the drawn row", fontsize=8)
+        ax.set_xlabel("seconds relative to the drawn row", fontsize=11)
     from matplotlib.lines import Line2D
     handles = [Line2D([], [], color="#1b6ca8", lw=1.2, label="serving RSRP"),
                Line2D([], [], color="#c0392b", lw=1.0, ls="--", label="best neighbour RSRP"),
@@ -152,8 +152,8 @@ def case_studies():
     fig.legend(handles=handles, loc="lower center", ncol=5, fontsize=8, frameon=False)
     fig.suptitle("Unsifted cases drawn at random from the out-of-fold predictions "
                  f"(seed {SEED}); orange line is the drawn row, black lines are handover "
-                 "commands", fontsize=9)
-    fig.tight_layout(rect=[0, 0.04, 1, 0.96])
+                 "commands", fontsize=12)
+    fig.tight_layout(rect=[0, 0.05, 1, 0.96])
     FIGS.mkdir(parents=True, exist_ok=True)
     fig.savefig(FIGS / "fig_c20_cases.png", dpi=170)
     if LATEX_FIGS.exists():
