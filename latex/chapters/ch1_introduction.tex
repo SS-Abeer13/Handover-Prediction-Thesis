@@ -34,17 +34,17 @@ The natural question is whether such a predictor already exists. A screening of 
 \section{Problem statement}
 \label{sec:1_3}
 
-The problem addressed in this thesis is the following. Given the measurements available to a handset at time t --- serving and neighbour signal levels and qualities, their short-term statistics, mobility state and the recent signalling history --- estimate the probability that the network will issue a handover command within h seconds, for several values of h simultaneously, such that:
+The problem addressed in this thesis is the following. Given the measurements available to a handset at time $t$ --- serving and neighbour signal levels and qualities, their short-term statistics, mobility state and the recent signalling history --- estimate the probability that the network will issue a handover command within $h$ seconds, for several values of $h$ simultaneously, such that:
 
 the estimates are mutually consistent, in the sense that the probability for a longer horizon is never smaller than that for a shorter one;
 
-the estimates are calibrated, in the sense that an asserted probability of p corresponds to an empirical event frequency near p;
+the estimates are calibrated, in the sense that an asserted probability of $p$ corresponds to an empirical event frequency near $p$;
 
 the evaluation protocol cannot transfer information from a test drive into training; and
 
 the warning derived from the estimates carries a stated bound on the fraction it will miss on future units, and the unit of that fraction --- a row of the measurement grid, or a handover command --- is stated rather than left to the reader; and
 
-the information available to the model at time t is demonstrably available at time t --- that is, the alignment between the measurement grid and the event clock is verified rather than assumed.
+the information available to the model at time $t$ is demonstrably available at time $t$ --- that is, the alignment between the measurement grid and the event clock is verified rather than assumed.
 
 None of these five requirements is satisfied jointly anywhere in the audited literature, and the fourth and fifth are not satisfied anywhere at all in the handover-prediction setting.
 
@@ -72,7 +72,7 @@ The scope of this work is deliberately bounded, and the bounds are stated here r
 
 The study covers one commercial LTE operator, four measurement campaigns, two mobility regimes and 57 drives, plus one blind 17-minute session on a second operator recorded after the pipeline was frozen. It does not claim that the numerical results transfer to another operator or another radio access technology. Chapter 5 reports two external checks that bear on that question, and the second-operator session shows that the methodological findings transfer while the ranking of learners does not. The measurement export is sampled at one hertz. At the raw inter-event interval level, 90.5\% of consecutive handover events have a separation $\ge 1\text{ s}$. However, when an operational 2~s post-handover blanking window is enforced to suppress immediate ping-pong contamination, the effective fraction of handover commands with an eligible prediction row in their 1~s lead window is capped at 64.2\% (with 35.8\% of events falling within the blanking window of a preceding command); this is a property of the one-hertz grid combined with the chosen blanking policy rather than of the predictive models, and it is not an unavoidable limit for every one-hertz forecaster: a shorter blanking window admits more rows (Table~\ref{tab:A_5}) at the price of scoring immediate post-handover successors.
 
-The system developed here is an offline predictor evaluated on recorded data. It is not integrated into a network, and no claim is made that deploying it would improve any network key performance indicator. In particular, no causal claim is made about the benefit of acting on the warning, for the reason given in Chapter 5: the logging policy is deterministic, so the propensities required for off-policy evaluation are zero or one and the causal estimand is not identified on observational data of this kind. Only a counting upper bound is reported.
+The system developed here is an offline predictor evaluated on recorded data. It is not integrated into a network, and no claim is made that deploying it would improve any network key performance indicator. In particular, no causal claim is made about the benefit of acting on the warning, for the following reason: the logging policy is deterministic, so the propensities required for off-policy evaluation are zero or one and the causal estimand is not identified on observational data of this kind. Only a counting upper bound is reported.
 
 Finally, the thesis makes no claim relating to human health. No human subjects were involved, no exposure measurements were taken, and the impact analysis in Chapter 6 is confined to what the measurements support.
 

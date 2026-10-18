@@ -37,7 +37,7 @@ Because the vendor diagnostic CSV export omits periodic neighbour-cell logging (
         \item Serving-to-best neighbour gap ($\text{RSRP}_{\text{serving}} - \text{RSRP}_{\text{best}}$) (\texttt{gap\_serving\_best\_nbr}) (1 feature);
         \item First difference of serving-to-best gap ($d_1$) (1 feature);
         \item Rolling mean of serving-to-best gap over 3~s, 5~s, and 10~s windows (3 features);
-        \item Duration of the A3-like lead streak, measuring how many consecutive seconds the best candidate has exceeded the serving cell (\texttt{nbr\_better\_streak\_s}) (1 feature);
+        \item Duration of the A3-like lead streak, measuring how many consecutive seconds the best candidate's RSRP has strictly exceeded the serving RSRP (\texttt{nbr\_better\_streak\_s}); the test is the raw inequality, with no offset or hysteresis, and a missing neighbour counts as not better (1 feature);
         \item Serving cell rank among candidate cells (\texttt{serving\_rank\_among\_cands}) (1 feature).
     \end{itemize}
 
@@ -80,9 +80,9 @@ Total for History block: 6 features.
 Because neighbour cell readings are event-triggered rather than periodic, they are held across the 1~Hz grid according to the following deterministic rules:
 \begin{itemize}
     \item \textbf{Zero-Order Hold Window:} Each 1~Hz sample grid point $t$ takes the candidate measurements from the most recent preceding \texttt{MeasurementReport} carrying neighbour cells, provided the report timestamp $\tau_{\text{MR}} \le t$ falls within a backward tolerance window of $\text{tolerance\_s} = 3.0\text{ s}$.
-    \item \textbf{Expiration Policy:} When no report carrying candidate neighbour cells has occurred within the preceding 3.0~s, the held neighbour readings expire. All neighbour RSRP and gap features revert to NaN (subsequently imputed with baseline constants), and the corresponding neighbour missingness indicators (\texttt{mask\_nbr*\_rsrp}) are set to 1.
+    \item \textbf{Expiration Policy:} When no report carrying candidate neighbour cells has occurred within the preceding 3.0~s, the held neighbour readings expire. All neighbour RSRP and gap features revert to NaN, and the corresponding neighbour missingness indicators (\texttt{mask\_nbr*\_rsrp}) are set to 1. Differences and rolling statistics are computed on these series with the gaps left missing (a rolling mean averages the values present in its window; the first difference of the gap is set to 0 where it is undefined). No constant is written into \texttt{features.parquet}. LightGBM receives the NaN values and routes them natively; for the other learners each column is imputed inside every fold with its training-partition median (0 if the column is entirely missing there), then standardised and clipped to $\pm 8$ standard deviations (Section~\ref{sec:4_6}).
     \item \textbf{Serving Cell Handover Reset:} When an \texttt{RRCConnectionReconfiguration} with \texttt{mobilityControlInfo} completes, the serving cell changes. All serving-to-neighbour gaps are evaluated against \texttt{serving\_rsrp} provided by the 1~Hz synchronous measurement stream. When a handover completes, the newly committed serving cell supplies subsequent serving measurements; if the new serving cell was previously ranked as a neighbour candidate, candidate rankings are updated to prevent circular self-referencing.
-    \item \textbf{Pipeline Alignment Order:} Zero-order holding operates on the synchronous 1~Hz grid \emph{prior} to the one-row shift. When the one-row lag is applied to remove end-of-second aggregation leakage, the entire held vector is shifted by $+1$ sample interval ($t-1$), ensuring that all held neighbour values, differences, and rolling statistics close strictly at or before $t-1$.
+    \item \textbf{Pipeline Alignment Order:} Zero-order holding operates on the synchronous 1~Hz grid \emph{prior} to the one-row shift. When the one-row lag is applied to remove end-of-second aggregation leakage, the entire held vector is shifted by $+1$ sample interval ($t-1$), ensuring that all held neighbour values, differences, and rolling statistics close strictly at or before $t-1$. Serving and neighbour columns are shifted together, so a serving-to-neighbour gap used at $t$ compares the serving RSRP of row $t-1$ with the neighbour readings held at grid instant $t-1$; reports decoded in $(t-1, t]$ are not used at $t$. The 0.27~s median report age and the 3.0~s expiry are measured at the grid instant where the hold is taken, that is, relative to $t-1$ in the lagged frame.
 \end{itemize}
 
 \section{Column Reconciliation Across Tables}
@@ -94,7 +94,7 @@ Second, in the 109-column lagging experiment (Table~\ref{tab:5_2b}), all 109 col
 
 \begin{table}[htbp]
 \centering
-\caption{Reconciliation of feature counts across manuscript tables.}
+\caption{Reconciliation of feature counts across manuscript tables. The 56-column and 31-column subsets share one column (\texttt{serving\_rank\_among\_cands}), and the six missingness masks belong to neither, so the serving-relative subset is $56 + 31 - 1 + 6 = 92$ columns.}
 \label{tab:B_reconcile}
 \vspace{0.4em}
 \singlespacing

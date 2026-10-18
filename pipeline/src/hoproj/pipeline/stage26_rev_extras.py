@@ -181,7 +181,7 @@ def pingpong():
 
 def hawkes():
     d = load_revision_data(PROC, SIG, lag=1, reports_pickle=REP)
-    rows = []
+    rows, fits = [], {}
     for cap, g in d.events.groupby("capture"):
         s = d.frame[d.frame.capture == cap]
         t0 = s["t"].min() - pd.to_timedelta(s["ts"].min(), unit="s")
@@ -189,6 +189,7 @@ def hawkes():
         sm = pd.DataFrame({"drive_id": cap, "t": pd.date_range(t0, s["t"].max(), freq="1s")})
         try:
             f = fit_hawkes(ev, sm)
+            fits[cap] = f
             rows.append({"stratum": CAPTURE_NAMES[cap], "events": len(g), **f.as_dict()})
         except Exception as exc:                                  # noqa: BLE001
             LOG.warning("hawkes failed for %s: %s", cap, exc)
@@ -198,6 +199,45 @@ def hawkes():
     rows.append({"stratum": "pooled", "events": len(d.events), **f.as_dict()})
     save(pd.DataFrame(rows), "c_hawkes_fit")
     save(ogata_residuals(d, f), "c_hawkes_gof")
+    save(ogata_per_campaign(d, f, fits), "c_hawkes_gof_per_campaign")
+
+
+def _rescaled(ts: np.ndarray, mu: float, a: float, b: float) -> np.ndarray:
+    lam = [mu * t + (a / b) * np.sum(1 - np.exp(-b * (t - ts[ts < t]))) for t in ts]
+    r = np.diff(np.array(lam))
+    return r[np.isfinite(r) & (r >= 0)]
+
+
+def ogata_per_campaign(d, pooled, fits: dict) -> pd.DataFrame:
+    """Per-campaign Ogata tests with a Holm-Bonferroni correction over the campaigns.
+
+    Each campaign is a separate realisation: the excitation history and the
+    compensator start again at its first command, so campaign c contributes
+    n_c - 1 residuals.  Two fits are tested: the pooled fit (the one Section 5.10
+    quotes) and the campaign's own fit.
+    """
+    from scipy import stats
+    rows = []
+    for cap, g in d.events.groupby("capture"):
+        ts = np.sort((g["t"] - g["t"].min()).dt.total_seconds().to_numpy())
+        for which, f in (("pooled fit", pooled), ("own fit", fits.get(cap))):
+            if f is None:
+                continue
+            r = _rescaled(ts, f.mu, f.alpha, f.beta)
+            ks = stats.kstest(r, "expon")
+            rows.append({"campaign": CAPTURE_NAMES[cap], "fit": which, "n_residuals": int(len(r)),
+                         "ks_statistic_D": float(ks.statistic), "p_value": float(ks.pvalue),
+                         "mean_residual": float(r.mean())})
+    out = pd.DataFrame(rows)
+    out["p_holm"] = np.nan
+    for which, g in out.groupby("fit"):
+        order = g["p_value"].sort_values().index
+        m, run = len(order), 0.0
+        for i, ix in enumerate(order):
+            run = max(run, min(1.0, (m - i) * out.at[ix, "p_value"]))
+            out.at[ix, "p_holm"] = run
+    out["rejects_at_0.05_holm"] = out["p_holm"] < 0.05
+    return out
 
 
 def ogata_residuals(d, f) -> pd.DataFrame:

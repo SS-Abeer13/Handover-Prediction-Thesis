@@ -32,7 +32,7 @@ Prevalence floor & 0.037 & 0.068 & 0.126 & 0.176 & 0.261 \\
 
 \begin{table}[htbp]
 \centering
-\caption{Event-level operating characteristics of the primary model at the 5 \% false-positive operating point. Eligibility rule: a command at $\tau$ is counted if it lies between the held-out campaign's first usable prediction row and $h$ seconds after its last usable row ($t_{\min} \le \tau \le t_{\max} + h$), so the count rises with the horizon (934 to 937 of the 938 quality-controlled commands). ``Resolvable'' means at least one usable row lies in $[\tau - h, \tau)$; unresolvable commands are counted as missed. The operating threshold is set per fold at a 5\,\% row-level false-positive rate on that fold's calibration block.}
+\caption{Event-level operating characteristics of the primary model at the 5 \% false-positive operating point. Eligibility rule: a command at $\tau$ is counted if it lies between the held-out campaign's first usable prediction row and $h$ seconds after its last usable row ($t_{\min} \le \tau \le t_{\max} + h$), so the count rises with the horizon (934 to 937 of the 938 quality-controlled commands). ``Resolvable'' means at least one usable row lies in $[\tau - h, \tau)$; unresolvable commands are counted as missed. At 1~s, 604 of the 935 eligible commands (64.6\,\%) are resolvable. Sections~\ref{sec:3_6} and~\ref{sec:5_5} quote 64.2\,\% (602 of 938) from a separate count over all 938 quality-controlled commands on the continuous sequence; the two differ in denominator and by two commands, so they do not sum with each other's complement. The operating threshold is set per fold at a 5\,\% row-level false-positive rate on that fold's calibration block.}
 \label{tab:A_2}
 \vspace{0.4em}
 \singlespacing
@@ -158,7 +158,7 @@ of the residual, row t+1 carries the target & 178 (84\%) \\
 Median margin, residual handovers & 0.477 s \\
 Median margin, contaminated handovers & 0.522 s \\
  &  \\
-Ten residual handovers, smallest margin first &  \\
+Ten residual handovers, smallest margin first (unfiltered) &  \\
 1st Campaign, $\delta$ = 0.999 s, margin 0.000 s & row t shows PCI 489, row t+1 shows PCI 380, target is PCI 380 \\
 1st Campaign, $\delta$ = 0.998 s, margin 0.001 s & row t shows PCI 27, row t+1 shows PCI 91, target is PCI 91 \\
 2nd Campaign, $\delta$ = 0.998 s, margin 0.002 s & row t shows PCI 346, row t+1 shows PCI 38, target is PCI 38 \\

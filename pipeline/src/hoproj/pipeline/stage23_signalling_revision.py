@@ -215,13 +215,23 @@ def main():
                          & ((ft - t) / np.timedelta64(1, "s") <= 5)).any()) for t in ht)
         after = sum(bool((((ht - t) / np.timedelta64(1, "s") >= -2)
                           & ((ht - t) / np.timedelta64(1, "s") <= 0)).any()) for t in ft)
+        # the same two windows in both counting units, so the columns nest [review, 18 Oct]
+        def _cmds(w):
+            return sum(bool((((ft - t) / np.timedelta64(1, "s") > 0)
+                             & ((ft - t) / np.timedelta64(1, "s") <= w)).any()) for t in ht)
+
+        def _reest(w):
+            return sum(bool((((ht - t) / np.timedelta64(1, "s") >= -w)
+                             & ((ht - t) / np.timedelta64(1, "s") < 0)).any()) for t in ft)
         gt.append({"capture": CAPTURE_NAMES[cap], "commands": int(len(h)),
                    "with a decoded Complete": int(h["completed"].sum()),
                    "completion rate": float(h["completed"].mean()),
                    "median interruption (ms)": float(h["interrupt_ms"].median()),
                    "re-establishments": int(len(f)),
                    "commands followed by one within 5 s": int(near),
-                   "re-establishments within 2 s after a command": int(after)})
+                   "re-establishments within 2 s after a command": int(after),
+                   "commands followed by one within 2 s": int(_cmds(2)),
+                   "re-establishments within 5 s after a command": int(_reest(5))})
     g = pd.DataFrame(gt)
     tot = {"capture": "pooled", "commands": int(g["commands"].sum()),
            "with a decoded Complete": int(g["with a decoded Complete"].sum()),
@@ -231,7 +241,10 @@ def main():
            "re-establishments": int(g["re-establishments"].sum()),
            "commands followed by one within 5 s": int(g["commands followed by one within 5 s"].sum()),
            "re-establishments within 2 s after a command":
-               int(g["re-establishments within 2 s after a command"].sum())}
+               int(g["re-establishments within 2 s after a command"].sum()),
+           "commands followed by one within 2 s": int(g["commands followed by one within 2 s"].sum()),
+           "re-establishments within 5 s after a command":
+               int(g["re-establishments within 5 s after a command"].sum())}
     save(pd.concat([g, pd.DataFrame([tot])], ignore_index=True), "c15_handover_completion")
     save(pd.DataFrame([{"a3_reports": len(a3r), "a3_episodes": len(a3e),
                         "reports_per_episode": len(a3r) / len(a3e),
