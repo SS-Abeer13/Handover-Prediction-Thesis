@@ -14,7 +14,6 @@ pdflatex main && pdflatex main
 
 ## Before submission
 
-- Replace `zenodo.XXXXXXX` in *Data and code availability* with the DOI that the v1.0.0 release mints.
 - Add the corresponding author's e-mail with `\ead{...}` under his `\author` line.
 - Check the CRediT roles. They are a draft based on the thesis division of work.
 - Keep or reword the generative-AI declaration. Elsevier requires one if AI tools were used in writing.

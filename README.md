@@ -1,5 +1,7 @@
 # Conformalized Discrete-Time Hazard Modeling for Multi-Horizon Handover Forecasting in Cellular Networks
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23479562.svg)](https://doi.org/10.5281/zenodo.23479562)
+
 > **B.Sc. Project and Thesis**, Department of Electrical and Electronic Engineering,
 > Islamic University of Technology (IUT), Gazipur, Bangladesh
 >
@@ -70,4 +72,4 @@ The alignment audit is `row_alignment_audit()` in `pipeline/src/hoproj/revision/
 
 ## Citation
 
-Please cite the archived release (see `CITATION.cff`). The Zenodo DOI is added on the first archived release.
+Please cite the archived release: **doi:[10.5281/zenodo.23479562](https://doi.org/10.5281/zenodo.23479562)** (v1.0.0, the version cited in the journal manuscript). The concept DOI [10.5281/zenodo.23479561](https://doi.org/10.5281/zenodo.23479561) always resolves to the latest version. See also `CITATION.cff`.

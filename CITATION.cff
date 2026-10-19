@@ -4,6 +4,7 @@ title: "Handover-Prediction-Thesis: timestamp-alignment audit and leakage-audite
 type: software
 version: 1.0.0
 date-released: 2026-10-19
+doi: 10.5281/zenodo.23479562
 repository-code: "https://github.com/SS-Abeer13/Handover-Prediction-Thesis"
 authors:
   - family-names: Sakib
