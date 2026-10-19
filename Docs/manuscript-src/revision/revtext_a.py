@@ -16,10 +16,10 @@ def part_a(N):
 39: TITLE,
 17: ("I do hereby declare that the work presented in this thesis, entitled "
      f"{TITLE}, is the outcome of the investigation and research carried out by us under the "
-     "supervision of Dr. Mohmmad Tawhid Kawser, Professor, Department of Electrical and "
+     "supervision of Dr. Mohammad Tawhid Kawser, Professor, Department of Electrical and "
      "Electronic Engineering, Islamic University of Technology (IUT), Gazipur, Bangladesh."),
 56: "Date: ……………………",
-59: ("We wish to express our sincere gratitude to our supervisor, Dr. Mohmmad Tawhid Kawser, "
+59: ("We wish to express our sincere gratitude to our supervisor, Dr. Mohammad Tawhid Kawser, "
     "Department of Electrical and Electronic Engineering, Islamic University of Technology, for the "
     "guidance, patience and critical reading that shaped this thesis. His insistence that a measured "
     "claim is worth more than an impressive one is the single most useful lesson we carry out of this "

@@ -158,7 +158,7 @@ def fig_alignment():
     ax.legend(frameon=False, fontsize=7, loc="lower left")
     ax.set_title("(e)  late commands escape,\nin both XCAL corpora", fontsize=8.5)
 
-    # (f) the cliff measures the update delay
+    # (f) the cliff: an inferred logging characteristic (not a measured latency)
     ax = fig.add_subplot(gs[2, 2])
     mid = [np.mean([float(v) for v in s_.split(" - ")])
            for s_ in ec["time left in the second (ms)"]]
@@ -167,7 +167,7 @@ def fig_alignment():
     ax.set_ylim(0, 1.08)
     ax.axvspan(50, 75, color="#e8f0e6", zorder=-1)
     ax.text(62, 0.06, "50–75 ms", rotation=90, ha="center", va="bottom", fontsize=7, color=C[2])
-    ax.set_title("(f)  the cliff measures the\nserving-cell update delay", fontsize=8.5)
+    ax.set_title("(f)  the cliff: an inferred\nlogging characteristic", fontsize=8.5)
     save_fig(fig, "fig_c9_alignment.png")
 
 
@@ -519,7 +519,7 @@ def fig_mechanism():
     ax.legend(frameon=False, fontsize=7, loc="lower left")
     ax.set_title("(c)  late commands escape,\nin both XCAL corpora", fontsize=8.5)
 
-    # (d) the cliff measures the serving-cell update delay
+    # (d) the cliff: an inferred logging characteristic (not a measured latency)
     ax = fig.add_subplot(gs[1, 2])
     ec = t("c9ext_nuwins_execution_cdf")
     mid = [np.mean([float(v) for v in s_.split(" - ")])
@@ -529,7 +529,7 @@ def fig_mechanism():
     ax.set_ylim(0, 1.05)
     ax.axvspan(50, 75, color="#e8f0e6", zorder=-1)
     ax.text(62, 0.06, "50–75 ms", rotation=90, ha="center", va="bottom", fontsize=7, color=C[2])
-    ax.set_title("(d)  the cliff measures the\nserving-cell update delay", fontsize=8.5)
+    ax.set_title("(d)  the cliff: an inferred\nlogging characteristic", fontsize=8.5)
     save_fig(fig, "fig_c9_mechanism.png")
 
 

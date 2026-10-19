@@ -12,7 +12,7 @@ Verizon) with:
 We audit:
 - Native 100 ms resolution: Does the handover transition complete within <100 ms?
 - 1 Hz downsampled export: Does taking the last sample of each integer second reproduce
-  the 75.9% row t+0 contamination observed on Grameenphone data in Section 5.1 / Table A.3?
+  the 75.9% row t+0 contamination observed on operator A data in Section 5.1 / Table A.3?
 - Intra-second handover arrival distribution vs contamination.
 """
 from __future__ import annotations
@@ -441,10 +441,10 @@ def save_reports(results_dict: dict[str, dict[str, pd.DataFrame]]) -> None:
     (OUT_DIR / "c9ext_nuwins_subsecond.md").write_text(all_native.to_markdown(index=False))
 
     # Build Cross-Instrument / Cross-Dataset Comparative Summary Table
-    # Load Grameenphone (internal) and Irish (G-NetTrack Pro)
-    gp_ours = pd.read_csv(OUT_DIR / "c9_row_alignment_audit.csv")
-    gp_iso = gp_ours[gp_ours["subset"].str.startswith("isolated")].iloc[0]
-    gp_all = gp_ours[gp_ours["subset"].str.startswith("all")].iloc[0]
+    # Load operator A (internal) and Irish (G-NetTrack Pro)
+    opa_ours = pd.read_csv(OUT_DIR / "c9_row_alignment_audit.csv")
+    opa_iso = opa_ours[opa_ours["subset"].str.startswith("isolated")].iloc[0]
+    opa_all = opa_ours[opa_ours["subset"].str.startswith("all")].iloc[0]
 
     irish_b = pd.read_csv(OUT_DIR / "c9ext_cell_contamination.csv").iloc[0]
 
@@ -455,37 +455,37 @@ def save_reports(results_dict: dict[str, dict[str, pd.DataFrame]]) -> None:
     summary_rows = [
         {
             "Property / Metric": "Instrument & Export Resolution",
-            "This Work (Grameenphone)": "XCAL 1 Hz export (Dhaka/Gazipur)",
+            "This Work (operator A)": "XCAL 1 Hz export (Dhaka/Gazipur)",
             "Irish Operator (MMSys 2020)": "G-NetTrack Pro ~1 Hz (Ireland)",
             "US Operators (NUWiNS PAM 2025)": "XCAL 10 Hz raw -> 1 Hz export (US Tier-1)"
         },
         {
             "Property / Metric": "Row t+0: Target Cell Serving Share (All Handovers)",
-            "This Work (Grameenphone)": f"{100 * float(gp_all['row t+0']):.1f} % (n={gp_all['n']})",
+            "This Work (operator A)": f"{100 * float(opa_all['row t+0']):.1f} % (n={opa_all['n']})",
             "Irish Operator (MMSys 2020)": f"{100 * float(irish_b.share_closer_to_new_cell):.1f} % (n={int(irish_b.cell_changes_tested)}) [closer to new]",
             "US Operators (NUWiNS PAM 2025)": f"{100 * float(nu_all['row t+0']):.1f} % (n={nu_all['n']})"
         },
         {
             "Property / Metric": "Row t+0: Target Cell Serving Share (Isolated Handovers)",
-            "This Work (Grameenphone)": f"{100 * float(gp_iso['row t+0']):.1f} % (n={gp_iso['n']})",
+            "This Work (operator A)": f"{100 * float(opa_iso['row t+0']):.1f} % (n={opa_iso['n']})",
             "Irish Operator (MMSys 2020)": "N/A (no signalling clock)",
             "US Operators (NUWiNS PAM 2025)": f"{100 * float(nu_iso['row t+0']):.1f} % (n={nu_iso['n']})"
         },
         {
             "Property / Metric": "Row t-1: Target Cell Serving Share (One Second Lagged)",
-            "This Work (Grameenphone)": f"{100 * float(gp_iso['row t-1']):.1f} %",
+            "This Work (operator A)": f"{100 * float(opa_iso['row t-1']):.1f} %",
             "Irish Operator (MMSys 2020)": "No contamination across integer step",
             "US Operators (NUWiNS PAM 2025)": f"{100 * float(nu_iso['row t-1']):.1f} %"
         },
         {
             "Property / Metric": "Native Sub-Second Execution Duration",
-            "This Work (Grameenphone)": "Unobserved (1 Hz export grid only)",
+            "This Work (operator A)": "Unobserved (1 Hz export grid only)",
             "Irish Operator (MMSys 2020)": "Unobserved (1 Hz grid only)",
             "US Operators (NUWiNS PAM 2025)": "40 - 80 ms (target serves at tau + 100 ms)"
         },
         {
             "Property / Metric": "Alignment Defect Replication Status",
-            "This Work (Grameenphone)": "Observed (+276% AUPRC inflation)",
+            "This Work (operator A)": "Observed (+276% AUPRC inflation)",
             "Irish Operator (MMSys 2020)": "Does NOT replicate (G-NetTrack Pro)",
             "US Operators (NUWiNS PAM 2025)": "REPLICATES EXACTLY on XCAL 1 Hz export"
         }

@@ -1,4 +1,4 @@
-| Property / Metric                                       | This Work (Grameenphone)           | Irish Operator (MMSys 2020)          | US Operators (NUWiNS PAM 2025)             |
+| Property / Metric                                       | This Work (operator A)           | Irish Operator (MMSys 2020)          | US Operators (NUWiNS PAM 2025)             |
 |:--------------------------------------------------------|:-----------------------------------|:-------------------------------------|:-------------------------------------------|
 | Instrument & Export Resolution                          | XCAL 1 Hz export (Dhaka/Gazipur)   | G-NetTrack Pro ~1 Hz (Ireland)       | XCAL 10 Hz raw -> 1 Hz export (US Tier-1)  |
 | Row t+0: Target Cell Serving Share (All Handovers)      | 75.9 % (n=938)                     | 29.4 % (n=1175) [closer to new]      | 91.9 % (n=408)                             |

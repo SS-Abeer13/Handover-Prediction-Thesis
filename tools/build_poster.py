@@ -116,7 +116,7 @@ def create_poster():
     p2 = tf_meta.add_paragraph()
     p2.alignment = PP_ALIGN.CENTER
     r2 = p2.add_run()
-    r2.text = "Supervisor: Dr. Mohmmad Tawhid Kawser, Professor"
+    r2.text = "Supervisor: Dr. Mohammad Tawhid Kawser, Professor"
     r2.font.name = "Times New Roman"
     r2.font.size = Pt(32)
     r2.font.bold = True

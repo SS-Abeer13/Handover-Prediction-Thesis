@@ -124,11 +124,11 @@ def _parse_measurement_report(text: str) -> dict:
     if m:
         out["meas_id"] = int(m.group(1))
     # rsrqResult is OPTIONAL in MeasResults (TS 36.331 6.3.5): it is absent when the
-    # reportConfig asks for reportQuantity rsrp only (seen on the 9 Oct Banglalink log).
+    # reportConfig asks for reportQuantity rsrp only (seen on the 9 Oct operator B log).
     # The original pattern required both and so dropped every RSRP-only report.
     pcell = re.search(r"measResultPCell\s*rsrpResult\s+(\d+)(?:\s*,\s*rsrqResult\s+(-?\d+))?",
                       text, re.S)
-    if pcell is None:     # original layout, kept so the four Grameenphone logs parse as before
+    if pcell is None:     # original layout, kept so the four operator A logs parse as before
         pcell = re.search(r"measResultPCell\s*.*?rsrpResult\s+(\d+)\s*,\s*rsrqResult\s+(-?\d+)",
                           text, re.S)
     if pcell:

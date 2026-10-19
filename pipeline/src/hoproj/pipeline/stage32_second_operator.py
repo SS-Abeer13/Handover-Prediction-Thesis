@@ -1,11 +1,9 @@
-"""Stage 32 - the 9 Oct 2026 Banglalink capture: a blind, second-operator test.
+"""Stage 32 - the 9 Oct 2026 operator B capture: a blind, second-operator test.
 
     python -m hoproj.pipeline.stage32_second_operator            # build + blind + tables
     python -m hoproj.pipeline.stage32_second_operator --skip-build
 
-WHAT THIS CAPTURE IS.  Every campaign in the study (10/12/13/15 Sept) is Grameenphone
-(MCC 470 / MNC 01).  ``oct-9-2026.csv`` / ``oct-9-2026.txt`` are Banglalink
-(MNC 03), recorded on 9 Oct 2026 near IUT, Gazipur, with the same XCAL set-up.  It
+WHAT THIS CAPTURE IS.  Every campaign in the study (10/12/13/15 Sept) is operator A.  ``oct-9-2026.csv`` / ``oct-9-2026.txt`` are operator B, recorded on 9 Oct 2026 near IUT, Gazipur, with the same XCAL set-up.  It
 was recorded after the modelling freeze and after the alignment audit, so it is the
 first campaign that is blind with respect to *every* pipeline decision, including the
 one-row lag (review concern: "campaign 4 is not blind").
@@ -13,12 +11,12 @@ one-row lag (review concern: "campaign 4 is not blind").
 WHAT THIS STAGE DOES - AND DELIBERATELY DOES NOT DO.
 * It does NOT add 9 Oct to ``stage12_xcal_prepare.CAPTURES``.  Pooling it into the
   main leave-one-campaign-out table would turn the only blind, cross-operator test into
-  one more training campaign.  The headline stays the four Grameenphone campaigns.
+  one more training campaign.  The headline stays the four operator A campaigns.
 * It builds a separate five-campaign dataset under ``second_operator/`` (stage 12's
-  unchanged per-capture code path) so the four Grameenphone rows are bit-identical to
+  unchanged per-capture code path) so the four operator A rows are bit-identical to
   ``data/processed_xcal``.
 * Blind test = exactly the 9 Oct fold of LOCO under the frozen stage-22 protocol: fit
-  and calibration rows from the four Grameenphone campaigns (temporal calibration
+  and calibration rows from the four operator A campaigns (temporal calibration
   split), nested 20-trial tuning, seeds 0-2, scored on 9 Oct only.
 * Confirmatory tables: the row-alignment audit, ping-pong ladder and carrier strata,
   handover profiles, all per campaign.
@@ -27,7 +25,7 @@ Raw files are expected, like the other captures, at ``oct09/data/raw/oct-9-2026.
 relative to the pipeline root.
 
 Requires the RSRP-only neighbour fix in ``hoproj.data.signalling`` (14 Oct 2026):
-Banglalink reports neighbours with reportQuantity = rsrp, and the old parser dropped
+operator B reports neighbours with reportQuantity = rsrp, and the old parser dropped
 all but 16 of 776 neighbour rows on this log.
 """
 from __future__ import annotations
@@ -54,7 +52,7 @@ from .stage26_rev_extras import _pp, _pp_flags
 LOG = get_logger("hoproj.stage32")
 
 OCT = ("XCAL09Oct", "oct09/data/raw", "oct-9-2026.csv", "oct-9-2026.txt")
-OCT_NAME = "9 Oct (Banglalink, Gazipur)"
+OCT_NAME = "9 Oct (operator B, Gazipur)"
 ROOT2 = Path("second_operator")
 LEARNERS = ["a3", "lr", "lgbm", "dwell", "history", "hawkes", "mlp"]
 

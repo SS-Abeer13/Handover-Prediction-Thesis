@@ -1,3 +1,5 @@
+> **Notice (October 2026).** This README describes the **pre-audit v1 pipeline** (stages 0–21). Its headline claims, such as grouped whole-drive splits over 57 drives, finite-sample guarantees and high AUROC, were overturned by the timestamp-alignment audit and are kept only as a record. The current results come from `python -m hoproj.pipeline.run_revision` (stages 22–31) and `python -m hoproj.pipeline.stage32_second_operator`. The tables quoted in the thesis and paper are in `reports_rev_parserfix/tables` and `second_operator/reports/tables`. See the repository root `README.md`.
+
 # Uncertainty-Aware Multi-Horizon LTE Handover and QoE Forecasting
 
 Training pipeline implementing the thesis *"Uncertainty-Aware Multi-Horizon

@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the archived release."
+title: "Handover-Prediction-Thesis: timestamp-alignment audit and leakage-audited multi-horizon handover forecasting from LTE drive-test signalling"
+type: software
+version: 1.0.0
+date-released: 2026-10-19
+repository-code: "https://github.com/SS-Abeer13/Handover-Prediction-Thesis"
+authors:
+  - family-names: Sakib
+    given-names: Saadman
+    affiliation: "Islamic University of Technology (IUT), Gazipur, Bangladesh"
+  - family-names: Kalim
+    given-names: Adhnan
+    affiliation: "Islamic University of Technology (IUT), Gazipur, Bangladesh"
+  - family-names: Ashfaque
+    given-names: Evan
+    affiliation: "Islamic University of Technology (IUT), Gazipur, Bangladesh"
+  - family-names: Kawser
+    given-names: Mohammad Tawhid
+    affiliation: "Islamic University of Technology (IUT), Gazipur, Bangladesh"
+keywords:
+  - handover prediction
+  - data leakage
+  - drive test
+  - LTE
+  - RRC signalling
+  - discrete-time survival analysis
