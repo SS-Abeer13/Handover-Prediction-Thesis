@@ -8,7 +8,7 @@
 > **Authors:** Saadman Sakib (210021110), Adhnan Kalim (210021308), Evan Ashfaque (210021335)
 > **Supervisor:** Dr. Mohammad Tawhid Kawser, Professor, Department of EEE, IUT
 >
-> **Journal manuscript derived from this thesis:** `paper/` (*One row too late: timestamp-alignment leakage in drive-test handover prediction, its cost, and a blind second-operator test*)
+> **Journal manuscript derived from this thesis:** `paper/` (*Timestamp-Alignment Leakage in Drive-Test Handover Prediction: Quantification, Mitigation, and Blind Second-Operator Validation*)
 
 ---
 

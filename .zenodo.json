@@ -1,7 +1,7 @@
 {
   "title": "Handover-Prediction-Thesis: timestamp-alignment audit and leakage-audited multi-horizon handover forecasting from LTE drive-test signalling",
   "upload_type": "software",
-  "description": "<p>Code, derived tables and drive-test logs for the B.Sc. thesis <em>Conformalized Discrete-Time Hazard Modeling for Multi-Horizon Handover Forecasting in Cellular Networks</em> (Islamic University of Technology, 2026) and the journal manuscript <em>One row too late: timestamp-alignment leakage in drive-test handover prediction, its cost, and a blind second-operator test</em>. Includes the one-hertz export alignment audit, the one-row lag decomposition, the splitting-protocol ladder, the discrete-time hazard models, and the blind second-operator test. Current results: stages 22 to 32; tables in pipeline/reports_rev_parserfix and pipeline/second_operator.</p>",
+  "description": "<p>Code, derived tables and drive-test logs for the B.Sc. thesis <em>Conformalized Discrete-Time Hazard Modeling for Multi-Horizon Handover Forecasting in Cellular Networks</em> (Islamic University of Technology, 2026) and the journal manuscript <em>Timestamp-Alignment Leakage in Drive-Test Handover Prediction: Quantification, Mitigation, and Blind Second-Operator Validation</em>. Includes the one-hertz export alignment audit, the one-row lag decomposition, the splitting-protocol ladder, the discrete-time hazard models, and the blind second-operator test. Current results: stages 22 to 32; tables in pipeline/reports_rev_parserfix and pipeline/second_operator.</p>",
   "creators": [
     {"name": "Sakib, Saadman", "affiliation": "Islamic University of Technology (IUT)"},
     {"name": "Kalim, Adhnan", "affiliation": "Islamic University of Technology (IUT)"},
