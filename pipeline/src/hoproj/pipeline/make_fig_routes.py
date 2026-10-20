@@ -2,9 +2,14 @@
 
 Redraw from the route and handover CSVs and the cached OpenStreetMap basemap in
 Presentation/matlab (tiles fetched once at zoom 13; Map data (c) OpenStreetMap contributors, ODbL).
-Usage: python make_fig_routes.py <out.png>
+Usage:
+  python make_fig_routes.py <out.png>                 cached OSM basemap (Bengali labels)
+  python make_fig_routes.py <out.png> --tiles carto   English/Latin labels: downloads
+        CARTO Voyager tiles once (zoom 13, ~35 tiles, cached in Presentation/matlab/tiles_carto)
+        Needs internet. Attribution: (c) OpenStreetMap contributors (c) CARTO.
+  python make_fig_routes.py <out.png> --tiles mock    offline self-test of the stitching
 """
-import sys, pathlib
+import sys, pathlib, math, io, time, argparse, urllib.request
 import numpy as np, pandas as pd
 import matplotlib
 matplotlib.use("Agg")
@@ -14,7 +19,12 @@ from matplotlib.lines import Line2D
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 SRC = ROOT / "Presentation" / "matlab"
-OUT = sys.argv[1] if len(sys.argv) > 1 else "fig03_map_routes.png"
+ap = argparse.ArgumentParser()
+ap.add_argument("out", nargs="?", default="fig03_map_routes.png")
+ap.add_argument("--tiles", choices=["cached", "carto", "mock"], default="cached")
+ap.add_argument("--zoom", type=int, default=13)
+args = ap.parse_args()
+OUT = args.out
 
 lat0, lon0 = 23.812500, 90.404213
 def km(lat, lon):
@@ -27,17 +37,68 @@ H = pd.read_csv(SRC / "map_handovers_4camp.csv")
 cols = {1: "#1f4e79", 2: "#e69f00", 3: "#2a8c55", 4: "#c0392b"}
 drives = {1: 15, 2: 8, 3: 20, 4: 14}
 
-xw, xe, ys, yn = -5.5020, 15.4772, -7.9731, 19.8306
-img = np.asarray(Image.open(SRC / "osm_basemap_4camp.jpg").convert("RGB")).astype(float)
-img = (255 - 0.72 * (255 - img)).astype(np.uint8)
+xw, xe, ys, yn = -5.5020, 15.4772, -7.9731, 19.8306   # plotted window (km)
+_R, _K = 6378.137, math.cos(math.radians(lat0))
+_merc = lambda p: math.log(math.tan(math.pi / 4 + math.radians(p) / 2))
+_X = lambda lon: _R * math.radians(lon - lon0) * _K
+_Y = lambda lat: _R * (_merc(lat) - _merc(lat0)) * _K
+_tlon = lambda n, z: n / 2 ** z * 360 - 180
+_tlat = lambda m, z: math.degrees(math.atan(math.sinh(math.pi * (1 - 2 * m / 2 ** z))))
+_tx = lambda lon, z: int((lon + 180) / 360 * 2 ** z)
+_ty = lambda lat, z: int((1 - math.asinh(math.tan(math.radians(lat))) / math.pi) / 2 * 2 ** z)
+
+
+def _lon_of(xkm):
+    return lon0 + math.degrees(xkm / (_R * _K))
+
+
+def _lat_of(ykm):
+    m = ykm / (_R * _K) + _merc(lat0)
+    return math.degrees(2 * math.atan(math.exp(m)) - math.pi / 2)
+
+
+def stitched_basemap(source, z):
+    """Web-Mercator tiles covering the plotted window -> (image, extent in km)."""
+    n_w, n_e = _tx(_lon_of(xw), z), _tx(_lon_of(xe), z)
+    m_n, m_s = _ty(_lat_of(yn), z), _ty(_lat_of(ys), z)
+    cache = SRC / ("tiles_carto" if source == "carto" else "tiles_mock")
+    cache.mkdir(exist_ok=True)
+    mosaic = Image.new("RGB", ((n_e - n_w + 1) * 256, (m_s - m_n + 1) * 256), "white")
+    for n in range(n_w, n_e + 1):
+        for m in range(m_n, m_s + 1):
+            f = cache / f"{z}_{n}_{m}.png"
+            if source == "mock":                      # crop from the cached z12 mosaic
+                mos = Image.open(SRC / "osm_basemap_4camp.jpg").convert("RGB")
+                n0, m0 = 3075, 1766                   # tile index of the mosaic's top-left
+                tile = mos.crop(((n - n0) * 256, (m - m0) * 256, (n - n0 + 1) * 256, (m - m0 + 1) * 256))
+            else:
+                if not f.exists():
+                    url = f"https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{n}/{m}.png"
+                    req = urllib.request.Request(url, headers={"User-Agent": "handover-figure/1.0 (academic; one-time fetch)"})
+                    f.write_bytes(urllib.request.urlopen(req, timeout=30).read())
+                    time.sleep(0.2)
+                tile = Image.open(f).convert("RGB")
+            mosaic.paste(tile, ((n - n_w) * 256, (m - m_n) * 256))
+    ext = [_X(_tlon(n_w, z)), _X(_tlon(n_e + 1, z)), _Y(_tlat(m_s + 1, z)), _Y(_tlat(m_n, z))]
+    return np.asarray(mosaic).astype(float), ext
+
+
+if args.tiles == "cached":
+    img = np.asarray(Image.open(SRC / "osm_basemap_4camp.jpg").convert("RGB")).astype(float)
+    # cached zoom-12 mosaic: top-left tile corner at (-14.313, 26.068) km, 0.03496 km/px
+    px = 0.03496
+    ext = [-14.313, -14.313 + 1024 * px, 26.068 - 1024 * px, 26.068]
+    credit = "Map data \u00a9 OpenStreetMap contributors"
+else:
+    z = 12 if args.tiles == "mock" else args.zoom
+    img, ext = stitched_basemap(args.tiles, z)
+    credit = ("Map data \u00a9 OpenStreetMap contributors" if args.tiles == "mock"
+              else "\u00a9 OpenStreetMap contributors \u00a9 CARTO")
+img = (255 - 0.72 * (255 - img)).astype(np.uint8) if args.tiles != "carto" else img.astype(np.uint8)
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 11})
 fig, ax = plt.subplots(figsize=(5.6, 6.6), dpi=300)
-# the cached 1024-px mosaic (zoom 12) is registered to the route coordinates by
-# maximising road coverage under the GPS fixes; 0.03496 km per pixel at this latitude
-px = 0.03496
-xl0, yt0 = -14.34, 26.03
-ax.imshow(img, extent=[xl0, xl0 + 1024 * px, yt0 - 1024 * px, yt0], origin="upper", zorder=0, interpolation="bilinear")
+ax.imshow(img, extent=ext, origin="upper", zorder=0, interpolation="bilinear")
 for c in (1, 2, 3, 4):
     r = R[R.cap == c]
     x, y = km(r.lat.values, r.lon.values)
@@ -53,7 +114,7 @@ ax.set_aspect("equal"); ax.set_xlim(xw, xe); ax.set_ylim(ys, yn)
 ax.set_xticks([-5, 0, 5, 10, 15]); ax.set_yticks([-5, 0, 5, 10, 15])
 ax.set_xlabel("East of corridor centre (km)")
 ax.set_ylabel("North of corridor centre (km)")
-ax.text(xe - .2, ys + .3, "Map data \u00a9 OpenStreetMap contributors", fontsize=7.5, ha="right", va="bottom",
+ax.text(xe - .2, ys + .3, credit, fontsize=7.5, ha="right", va="bottom",
         bbox=dict(fc="white", ec="none", pad=1.5), zorder=6)
 
 n = H.groupby("cap").size()
