@@ -12,9 +12,16 @@ pdflatex main && pdflatex main
 - Most Elsevier submission systems want the single-column review layout instead. To get it, change the class line to `\documentclass[preprint,review,12pt]{elsarticle}`.
 - `references.tex` is generated from `../latex/references.tex`. Regenerate it with `python make_refs.py` after adding or removing a `\cite`. It lists the references in order of first citation.
 
-## Before submission
+## Submission package (Computer Communications, Editorial Manager)
 
-- Add the corresponding author's e-mail with `\ead{...}` under his `\author` line.
-- Check the CRediT roles. They are a draft based on the thesis division of work.
-- Keep or reword the generative-AI declaration. Elsevier requires one if AI tools were used in writing.
-- Use the journal's reference style if the guide asks for one other than `elsarticle-num`.
+| Upload as | File |
+|---|---|
+| Manuscript (PDF for reviewers) | `main_review.pdf` (single column, line numbers) |
+| LaTeX source | `submission_source.zip` (main.tex, references.tex, figures/) |
+| Highlights | `highlights.docx` (5 bullets, each at most 85 characters) |
+| Cover letter | `cover_letter.docx` (add the date before uploading) |
+| Data statement | Zenodo, doi:10.5281/zenodo.23479562 |
+
+- The abstract is 248 words, within the 250-word limit. There are 7 keywords, within the limit of 1 to 7.
+- On 20 Oct 2026 every reference was checked against Crossref, DataCite, arXiv or PMLR.
+- `main.pdf` is the two-column 5p layout, for reading. Rebuild the review copy from `main.tex` with the class line `\documentclass[preprint,review,12pt]{elsarticle}` and `\linenumbers`.
