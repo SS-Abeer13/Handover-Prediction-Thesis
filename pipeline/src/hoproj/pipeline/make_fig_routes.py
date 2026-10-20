@@ -4,9 +4,9 @@ Redraw from the route and handover CSVs and the cached OpenStreetMap basemap in
 Presentation/matlab (tiles fetched once at zoom 13; Map data (c) OpenStreetMap contributors, ODbL).
 Usage:
   python make_fig_routes.py <out.png>                 cached OSM basemap (Bengali labels)
-  python make_fig_routes.py <out.png> --tiles carto   English/Latin labels: downloads
-        CARTO Voyager tiles once (zoom 13, ~35 tiles, cached in Presentation/matlab/tiles_carto)
-        Needs internet. Attribution: (c) OpenStreetMap contributors (c) CARTO.
+  python make_fig_routes.py <out.png> --tiles esri    English labels: downloads Esri World Street Map
+        tiles once (zoom 13, ~35 tiles, cached in Presentation/matlab/tiles_esri). Needs internet.
+        LOOK AT THE RESULT: a provider that has started requiring a key returns watermarked tiles.
   python make_fig_routes.py <out.png> --tiles mock    offline self-test of the stitching
 """
 import sys, pathlib, math, io, time, argparse, urllib.request
@@ -21,7 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[4]
 SRC = ROOT / "Presentation" / "matlab"
 ap = argparse.ArgumentParser()
 ap.add_argument("out", nargs="?", default="fig03_map_routes.png")
-ap.add_argument("--tiles", choices=["cached", "carto", "mock"], default="cached")
+ap.add_argument("--tiles", choices=["cached", "esri", "mock"], default="cached")
 ap.add_argument("--zoom", type=int, default=13)
 args = ap.parse_args()
 OUT = args.out
@@ -61,19 +61,19 @@ def stitched_basemap(source, z):
     """Web-Mercator tiles covering the plotted window -> (image, extent in km)."""
     n_w, n_e = _tx(_lon_of(xw), z), _tx(_lon_of(xe), z)
     m_n, m_s = _ty(_lat_of(yn), z), _ty(_lat_of(ys), z)
-    cache = SRC / ("tiles_carto" if source == "carto" else "tiles_mock")
+    cache = SRC / ("tiles_esri" if source == "esri" else "tiles_mock")
     cache.mkdir(exist_ok=True)
     mosaic = Image.new("RGB", ((n_e - n_w + 1) * 256, (m_s - m_n + 1) * 256), "white")
     for n in range(n_w, n_e + 1):
         for m in range(m_n, m_s + 1):
-            f = cache / f"{z}_{n}_{m}.png"
+            f = cache / f"{z}_{n}_{m}.img"
             if source == "mock":                      # crop from the cached z12 mosaic
                 mos = Image.open(SRC / "osm_basemap_4camp.jpg").convert("RGB")
                 n0, m0 = 3075, 1766                   # tile index of the mosaic's top-left
                 tile = mos.crop(((n - n0) * 256, (m - m0) * 256, (n - n0 + 1) * 256, (m - m0 + 1) * 256))
             else:
                 if not f.exists():
-                    url = f"https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{n}/{m}.png"
+                    url = f"https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{m}/{n}"
                     req = urllib.request.Request(url, headers={"User-Agent": "handover-figure/1.0 (academic; one-time fetch)"})
                     f.write_bytes(urllib.request.urlopen(req, timeout=30).read())
                     time.sleep(0.2)
@@ -93,8 +93,8 @@ else:
     z = 12 if args.tiles == "mock" else args.zoom
     img, ext = stitched_basemap(args.tiles, z)
     credit = ("Map data \u00a9 OpenStreetMap contributors" if args.tiles == "mock"
-              else "\u00a9 OpenStreetMap contributors \u00a9 CARTO")
-img = (255 - 0.72 * (255 - img)).astype(np.uint8) if args.tiles != "carto" else img.astype(np.uint8)
+              else "Esri, HERE, Garmin, \u00a9 OpenStreetMap contributors")
+img = (255 - 0.72 * (255 - img)).astype(np.uint8) if args.tiles != "esri" else img.astype(np.uint8)
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 11})
 fig, ax = plt.subplots(figsize=(5.6, 6.6), dpi=300)
