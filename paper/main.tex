@@ -29,12 +29,14 @@
 
 \title{Timestamp-Alignment Leakage in Drive-Test Handover Prediction: Quantification, Mitigation, and Blind Second-Operator Validation}
 
-\author[iut]{Saadman Sakib}
-\author[iut]{Adhnan Kalim}
-\author[iut]{Evan Ashfaque}
-\author[iut]{Mohammad Tawhid Kawser\corref{cor}}
-\cortext[cor]{Corresponding author.}
-\ead{kawser@iut-dhaka.edu}
+\author[iut]{Saadman Sakib\corref{cor}}
+\ead{saadmansakib21@iut-dhaka.edu}
+\author[iut]{Adhnan Kalim\corref{cor}}
+\ead{adhnankalim@iut-dhaka.edu}
+\author[iut]{Evan Ashfaque\corref{cor}}
+\ead{evanashfaque@iut-dhaka.edu}
+\author[iut]{Mohammad Tawhid Kawser}
+\cortext[cor]{Corresponding authors.}
 \affiliation[iut]{organization={Department of Electrical and Electronic Engineering, Islamic University of Technology (IUT)},
             addressline={Board Bazar},
             city={Gazipur},
@@ -151,7 +153,7 @@ Operator B (blind) & 17.4 min & 883 & 87 (87) & --- \\
 \end{tabularx}
 \end{table}
 
-\paragraph{What is blind, and what is not} A configuration manifest was written before Campaign~4 was driven, and Campaign~4 is the only campaign that differs in both corridor and speed, so it is reported as a held-out campaign. It is held out from model fitting and tuning. It is not blind to pipeline design: the alignment audit of Section~\ref{sec:audit} was performed after all four campaigns were acquired, and the one-row lag it motivates was decided with Campaign~4 in view. The manifest itself was not registered externally. We therefore treat every four-campaign result as exploratory. A fifth capture was recorded on 9 October 2026 with the same handset and XCAL build on a second commercial operator (operator~B), after the modelling freeze and after the audit. It is blind to every pipeline decision, the lag included, it is never pooled with the development campaigns, and nothing was tuned on it. A third dataset, a public drive-test release on operator~A from the same city~\cite{ref38}, was collected two years earlier by a cohort in our own department, co-authored by the corresponding author; it is a same-institution replication, used in the thesis this paper derives from only for a signalling-only transfer check, and it is not used for any claim in this paper.
+\paragraph{What is blind, and what is not} A configuration manifest was written before Campaign~4 was driven, and Campaign~4 is the only campaign that differs in both corridor and speed, so it is reported as a held-out campaign. It is held out from model fitting and tuning. It is not blind to pipeline design: the alignment audit of Section~\ref{sec:audit} was performed after all four campaigns were acquired, and the one-row lag it motivates was decided with Campaign~4 in view. The manifest itself was not registered externally. We therefore treat every four-campaign result as exploratory. A fifth capture was recorded on 9 October 2026 with the same handset and XCAL build on a second commercial operator (operator~B), after the modelling freeze and after the audit. It is blind to every pipeline decision, the lag included, it is never pooled with the development campaigns, and nothing was tuned on it. A third dataset, a public drive-test release on operator~A from the same city~\cite{ref38}, was collected two years earlier by a cohort in our own department, co-authored by one of the authors (M.~T.~Kawser); it is a same-institution replication, used in the thesis this paper derives from only for a signalling-only transfer check, and it is not used for any claim in this paper.
 
 %% =====================================================================
 \section{The alignment audit}
@@ -499,7 +501,7 @@ The pipeline, the alignment audit, the protocol definitions and the scripts that
 \textbf{Saadman Sakib:} Conceptualization, Methodology, Software, Investigation, Formal analysis, Writing -- original draft. \textbf{Adhnan Kalim:} Investigation, Data curation, Validation, Writing -- review \& editing. \textbf{Evan Ashfaque:} Investigation, Data curation, Visualization, Writing -- review \& editing. \textbf{Mohammad Tawhid Kawser:} Supervision, Resources, Methodology, Writing -- review \& editing.
 
 \section*{Declaration of competing interest}
-The corresponding author is a co-author of the public drive-test dataset~\cite{ref38} referred to in Section~\ref{sec:corpus}; that dataset is not used for any result reported here. The authors declare no other competing interests.
+One of the authors (M.~T.~Kawser) is a co-author of the public drive-test dataset~\cite{ref38} referred to in Section~\ref{sec:corpus}; that dataset is not used for any result reported here. The authors declare no other competing interests.
 
 \section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
 During the preparation of this work the authors used an AI assistant (Claude, Anthropic) to help condense the thesis on which this article is based into journal form and to edit the language. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the published article.
