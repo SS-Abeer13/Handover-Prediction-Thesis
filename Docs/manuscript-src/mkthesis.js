@@ -108,8 +108,8 @@ const tocE = [], figE = [], tabE = [];
   }
 }
 let PAGES = {};
-try { PAGES = JSON.parse(fs.readFileSync('/home/claude/thesis/pages.json', 'utf8')); } catch (e) {}
-fs.writeFileSync('/home/claude/thesis/entries.json',
+try { PAGES = JSON.parse(fs.readFileSync('./thesis/pages.json', 'utf8')); } catch (e) {}
+fs.writeFileSync('./thesis/entries.json',
   JSON.stringify({ toc: tocE, fig: figE, tab: tabE }, null, 1));
 
 function listLine(label, key, lvl) {
@@ -142,7 +142,7 @@ while (i < md.length) {
     push(new Paragraph({
       alignment: AlignmentType.CENTER, spacing: { before: 240, after: 120, line: 240, lineRule: 'auto' },
       children: [new ImageRun({ type: 'png',
-        data: fs.readFileSync('/home/claude/thesis/assets/iut_logo.png'),
+        data: fs.readFileSync('./thesis/assets/iut_logo.png'),
         transformation: { width: 132, height: 164 } })],
     }));
     push(new Paragraph({

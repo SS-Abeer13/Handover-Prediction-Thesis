@@ -11,7 +11,7 @@ import pandas as pd
 from msnumbers import build, t
 
 ROOT = Path(__file__).resolve().parents[3]
-DOC = ROOT / "Claude outputs" / "Handover_Thesis_Manuscript_Revised-5.docx"
+DOC = ROOT / "drafts" / "Handover_Thesis_Manuscript_Revised-5.docx"
 TABLES_DIR = ROOT / "pipeline" / "reports_rev" / "tables"
 ok, bad = [], []
 

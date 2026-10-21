@@ -122,7 +122,7 @@ Two properties of that definition matter for this thesis. First, the condition i
 
 Figure 1.1 draws that sequence against a measured pair of serving and neighbour traces. Event A3 is therefore a reaction rule and not a prediction rule, and this is not a deficiency of the standard. The rule was designed to decide reliably, not early, and it performs that function well. What the standard does not provide, and what an increasingly latency-sensitive service mix increasingly wants, is advance notice: an indication, one or two seconds before the fact, that a handover is imminent, so that the target cell can be prepared, the transmission schedule adjusted, or an unnecessary transfer suppressed.
 
-@@FIG|/home/claude/figs/png_print/fig01_a3_event.png|Figure 1.1 Event A3 fires only after the neighbour has been better than the serving cell by a configured offset for a full time-to-trigger. The dominant configuration measured on this network is a +1 dB offset with a 320 ms time-to-trigger.|6.3
+@@FIG|./figs/png_print/fig01_a3_event.png|Figure 1.1 Event A3 fires only after the neighbour has been better than the serving cell by a configured offset for a full time-to-trigger. The dominant configuration measured on this network is a +1 dB offset with a 320 ms time-to-trigger.|6.3
 
 ## 1.2 Motivation
 
@@ -279,7 +279,7 @@ This work sits in that gap: measurement-grade ground truth obtained from decoded
 
 The methodology adopted follows directly from the gap. It consists of five stages, illustrated in Figure 2.1, and each stage is developed in detail in Chapters 3 and 4.
 
-@@FIG|/home/claude/figs/png/m14_framework.png|Figure 2.1 The methodology in five stages. Stage 2 supplies the ground truth; Stage 4 is the formulation that keeps the five horizons mutually consistent; Stage 5 is the grouped evaluation protocol.|6.3
+@@FIG|./figs/png/m14_framework.png|Figure 2.1 The methodology in five stages. Stage 2 supplies the ground truth; Stage 4 is the formulation that keeps the five horizons mutually consistent; Stage 5 is the grouped evaluation protocol.|6.3
 
 **Stage 1 — Collection.** Four drive-test campaigns are conducted on a live commercial LTE network using an instrumented handset, recording a one-hertz radio measurement export and, in parallel, a decoded RRC signalling log.
 
@@ -318,7 +318,7 @@ Using the signalling log rather than a vendor handover counter is a deliberate d
 
 Four campaigns were conducted on a single commercial LTE operator in September 2026, covering two distinct mobility regimes. Three cover urban corridors in Dhaka: an urban arterial road, an urban loop, and a dense urban area. The fourth covers the Uttara–Gazipur highway, at a mean speed of 49.5 km/h, approximately three times the mean urban speed. Figure 3.1 shows the routes and the geographical distribution of the handover events for the three Dhaka campaigns; the highway corridor runs north-east beyond the mapped extent and is summarised in Table 3.2 rather than mapped.
 
-@@FIG|/home/claude/figs/png_print/fig03_map_routes.png|Figure 3.1 The three Dhaka campaigns on an OpenStreetMap background: 43 drives and the 761 signalling-confirmed handovers recorded on them. Events cluster at particular junctions rather than distributing uniformly along the route. The 15 September highway campaign lies outside this extent. Map data © OpenStreetMap contributors.|4.48
+@@FIG|./figs/png_print/fig03_map_routes.png|Figure 3.1 The three Dhaka campaigns on an OpenStreetMap background: 43 drives and the 761 signalling-confirmed handovers recorded on them. Events cluster at particular junctions rather than distributing uniformly along the route. The 15 September highway campaign lies outside this extent. Map data © OpenStreetMap contributors.|4.48
 
 The clustering visible in Figure 3.1 is the first indication that the prediction signal is partly geometric, and it is also the first argument against random-row splitting: if handovers concentrate at identifiable locations, a random split allows a model to learn those locations from the training rows and recognise them in the test rows of the same drive.
 
@@ -340,7 +340,7 @@ A parser that flattens the log — collecting all configuration fragments and re
 
 The correction is to replay the configuration as a timeline. Every configuration fragment is timestamped and applied in order, producing, for any instant *t*, the exact set of `measId` bindings in force at *t*. Each `MeasurementReport` is then resolved against the state of that timeline at its own timestamp. Figure 3.2 illustrates the difference between the two procedures.
 
-@@FIG|/home/claude/figs/png_print/fig07_config_timeline.png|Figure 3.2 Measurement identifiers are scoped to the message that carries them. A flat parse resolves every report against the union of all configuration fragments; the timeline resolves each report against the configuration in force at its own timestamp.|6.3
+@@FIG|./figs/png_print/fig07_config_timeline.png|Figure 3.2 Measurement identifiers are scoped to the message that carries them. A flat parse resolves every report against the union of all configuration fragments; the timeline resolves each report against the configuration in force at its own timestamp.|6.3
 
 After the correction, between 43 % and 52 % of measurement reports resolve to Event A3, depending on the campaign, with the remainder distributed across A1, A2 and A5. Every quantity reported in this thesis that depends on report classification — most importantly the report-conversion rate of Section 5.8 — is computed after the correction, and no pre-correction figure is quoted anywhere.
 
@@ -370,7 +370,7 @@ This is a small finding with a disproportionate consequence for the literature. 
 
 Figure 3.3 makes a second point about Table 3.1 that the numbers alone conceal. The profile that produces almost three quarters of the handovers is the one whose entry condition is satisfied least often, and the profile whose condition holds on nine samples in ten produces fewer than one handover in twelve. Whether the gap condition holds is therefore a poor indicator of whether a handover is imminent, which is the measurement behind the mechanism result of Section 5.8.
 
-@@FIG|/home/claude/figs/png_print/fig39_profile_bubble.png|Figure 3.3 Deployed A3 profiles: the share of handovers each produces against the fraction of samples on which its own entry condition already holds. Bubble area is the handover count. The two quantities move in opposite directions.|6.3
+@@FIG|./figs/png_print/fig39_profile_bubble.png|Figure 3.3 Deployed A3 profiles: the share of handovers each produces against the fraction of samples on which its own entry condition already holds. Bubble area is the handover count. The two quantities move in opposite directions.|6.3
 
 ## 3.6 The dataset
 
@@ -387,7 +387,7 @@ Table 3.2 summarises the resulting dataset.
 
 The pooled dataset covers approximately 95 km of driving. A handover occurs on average once every eleven seconds, with a median inter-handover gap of three and a half seconds. Alongside the 938 successful handovers, the signalling log records 341 `RRCConnectionReestablishment` procedures, that is, occasions on which the radio link failed and the connection had to be rebuilt rather than transferred; these are the events the motivation of Section 1.2 refers to. Figure 3.4 shows the distribution of samples and events across the campaigns.
 
-@@FIG|/home/claude/figs/png_print/fig05_dataset.png|Figure 3.4 Composition of the pooled dataset. The four campaigns differ in duration and in event density; the highway campaign contributes the fewest handovers per minute and the highest mean speed.|6.3
+@@FIG|./figs/png_print/fig05_dataset.png|Figure 3.4 Composition of the pooled dataset. The four campaigns differ in duration and in event density; the highway campaign contributes the fewest handovers per minute and the highest mean speed.|6.3
 
 Three properties of this dataset bound what can be claimed from it, and they are stated here rather than in the conclusion.
 
@@ -463,7 +463,7 @@ The argument uses no property of the learner beyond the range of its output. Any
 
 Figure 4.1 illustrates the two formulations side by side.
 
-@@FIG|/home/claude/figs/png_print/fig08_hazard_concept.png|Figure 4.1 Independent per-horizon classifiers against the hazard formulation. Five independent fits violate horizon ordering on 43.6 % of samples; the product of hazards cannot violate it at all.|6.3
+@@FIG|./figs/png_print/fig08_hazard_concept.png|Figure 4.1 Independent per-horizon classifiers against the hazard formulation. Five independent fits violate horizon ordering on 43.6 % of samples; the product of hazards cannot violate it at all.|6.3
 
 ## 4.4 The likelihood under censoring
 
@@ -553,7 +553,7 @@ Calibration quality is reported as the expected calibration error, computed as t
 
 *Grouping.* The unit of splitting is the whole drive. A drive appears either in training or in test on a given fold, never in both. Figure 4.2 illustrates the rotation.
 
-@@FIG|/home/claude/figs/png/m03_protocol.png|Figure 4.2 The grouped evaluation protocol. Splits are taken at the level of the whole drive under a four-fold rotation, repeated over five seeds, giving twenty paired observations per comparison.|6.3
+@@FIG|./figs/png/m03_protocol.png|Figure 4.2 The grouped evaluation protocol. Splits are taken at the level of the whole drive under a four-fold rotation, repeated over five seeds, giving twenty paired observations per comparison.|6.3
 
 *Rotation.* A four-fold rotation over the 57 drives ensures that every drive is tested exactly once per seed, with approximately 14 drives held out against 43 in training on each fold.
 
@@ -627,15 +627,15 @@ At the event level rather than the sample level, 44.7 % of handover events are d
 
 Two views of that result are worth separating, because they answer different questions. Figure 5.1 reports where the model sits on the receiver-operating and precision-recall planes at each horizon, restricted to the low-false-positive region an operator would actually use. Figure 5.2 leaves the sample level entirely and plots the quantity an operator pays: the fraction of handover *events* caught against the number of false-alarm episodes raised per hour of driving.
 
-@@FIG|/home/claude/figs/png_print/fig35_operating_points.png|Figure 5.1 Certified operating points at each horizon. Left: recall at false-positive rates of 1, 5 and 10 %. Right: precision at recall levels of 0.5 and 0.8, against the prevalence floor of each horizon. Points are plotted rather than interpolated, because the frozen result tables carry operating points and not full curves.|6.3
+@@FIG|./figs/png_print/fig35_operating_points.png|Figure 5.1 Certified operating points at each horizon. Left: recall at false-positive rates of 1, 5 and 10 %. Right: precision at recall levels of 0.5 and 0.8, against the prevalence floor of each horizon. Points are plotted rather than interpolated, because the frozen result tables carry operating points and not full curves.|6.3
 
-@@FIG|/home/claude/figs/png_print/fig32_operating_plane.png|Figure 5.2 The event-level cost plane. Each track is one model walked across the five look-ahead times, with marker size growing with the horizon. The deployed A3 rule raises false alarms at a comparable rate while detecting a small fraction of the events.|6.3
+@@FIG|./figs/png_print/fig32_operating_plane.png|Figure 5.2 The event-level cost plane. Each track is one model walked across the five look-ahead times, with marker size growing with the horizon. The deployed A3 rule raises false alarms at a comparable rate while detecting a small fraction of the events.|6.3
 
 ## 5.2 Model comparison under an equal budget
 
 Figure 5.3 and Table 5.2 report all seven learners under identical folds, seeds, formulation and hyperparameter budget.
 
-@@FIG|/home/claude/figs/png_print/fig10_model_comparison.png|Figure 5.3 AUPRC by horizon for seven learners against the prevalence floor. LightGBM leads at every horizon and logistic regression is second; no model with temporal memory overtakes either.|6.3
+@@FIG|./figs/png_print/fig10_model_comparison.png|Figure 5.3 AUPRC by horizon for seven learners against the prevalence floor. LightGBM leads at every horizon and logistic regression is second; no model with temporal memory overtakes either.|6.3
 
 @@TCAP|Table 5.2 Model comparison at the one-second horizon under an equal twenty-trial tuning budget.
 | Model | AUPRC | Lift | AUROC |
@@ -654,7 +654,7 @@ The deployed A3 rule sits at the bottom of the table by a wide margin, which is 
 
 Table 5.2 reports a mean, and a mean over eight grouped-drive folds is a fragile object. Figure 5.4 therefore draws every fold. The spread inside a single arm is wider than the gap between the two LightGBM arms, which is why the paired test of Section 5.4, rather than the ordering of the means, is what settles the comparison between formulations.
 
-@@FIG|/home/claude/figs/png_print/fig29_fold_dispersion.png|Figure 5.4 Per-fold AUPRC at the one-second horizon, with all eight grouped-drive folds drawn for each arm. Boxes show the median and inter-quartile range; the whiskers extend to the furthest fold within 1.5 inter-quartile ranges.|6.3
+@@FIG|./figs/png_print/fig29_fold_dispersion.png|Figure 5.4 Per-fold AUPRC at the one-second horizon, with all eight grouped-drive folds drawn for each arm. Boxes show the median and inter-quartile range; the whiskers extend to the furthest fold within 1.5 inter-quartile ranges.|6.3
 
 ## 5.3 The evaluation protocol is worth more than the model
 
@@ -673,7 +673,7 @@ The experiment is a controlled substitution. Everything is held fixed — the da
 | Logistic regression | **+4 %** |
 | Event A3 rule | −2 % |
 
-@@FIG|/home/claude/figs/png_print/fig12_leakage.png|Figure 5.5 Inflation from random-row splitting, by architecture. The inflation scales with the amount of temporal memory an architecture carries, so the leaderboard reorders rather than merely rising.|6.3
+@@FIG|./figs/png_print/fig12_leakage.png|Figure 5.5 Inflation from random-row splitting, by architecture. The inflation scales with the amount of temporal memory an architecture carries, so the leaderboard reorders rather than merely rising.|6.3
 
 Figure 5.5 plots the same seven inflations in rank order. The mechanism is straightforward once stated. Two samples one second apart on the same drive are near-duplicates: the serving cell is the same, the neighbour set is the same, and the rolling features overlap in nine of their ten seconds. A random split therefore places almost the same row on both sides of it, and the more temporal memory an architecture carries, the more it profits from encountering its own near-neighbour during training. The parameter-free A3 rule has nothing to over-fit with, and its score moves slightly in the opposite direction.
 
@@ -698,11 +698,11 @@ Figure 5.8 places all four configurations on the same axes: the left panel track
 
 Because the folds are paired, the appropriate picture is a paired one. Figure 5.6 draws one line per fold between the two formulations: the calibration error falls on every fold without exception, which is what makes the signed-rank test meaningful on only eight observations. Figure 5.7 then follows the same comparison along the horizon axis, and adds the result that bounds the usable range of the output: both formulations degrade steeply beyond two seconds, so the five-second probability should be read as a ranking rather than as a probability.
 
-@@FIG|/home/claude/figs/png_print/fig30_paired_ece.png|Figure 5.6 Paired calibration error at the one-second horizon, one line per grouped-drive fold. Every fold improves under the hazard formulation; the heavy bars mark the arm means.|5.95
+@@FIG|./figs/png_print/fig30_paired_ece.png|Figure 5.6 Paired calibration error at the one-second horizon, one line per grouped-drive fold. Every fold improves under the hazard formulation; the heavy bars mark the arm means.|5.95
 
-@@FIG|/home/claude/figs/png_print/fig36_ece_ribbon.png|Figure 5.7 Calibration error against the look-ahead horizon. The line is the fold median and the band is the inter-quartile range across folds. The separation is present at every horizon and both formulations degrade sharply beyond two seconds.|6.3
+@@FIG|./figs/png_print/fig36_ece_ribbon.png|Figure 5.7 Calibration error against the look-ahead horizon. The line is the fold median and the band is the inter-quartile range across folds. The separation is present at every horizon and both formulations degrade sharply beyond two seconds.|6.3
 
-@@FIG|/home/claude/figs/png_print/fig13_hazard_results.png|Figure 5.8 Coherence and calibration of the hazard formulation against the independent-classifier control. The violation rate falls from 43.6 % to zero by construction, and calibration improves at every horizon.|6.3
+@@FIG|./figs/png_print/fig13_hazard_results.png|Figure 5.8 Coherence and calibration of the hazard formulation against the independent-classifier control. The violation rate falls from 43.6 % to zero by construction, and calibration improves at every horizon.|6.3
 
 The operational meaning of an expected calibration error of 0.024 at the one-second horizon is worth stating plainly, because a calibration figure is easy to report and easy to ignore. It means that among the samples on which the system asserts a probability near 0.8, a handover follows within one second on approximately 80 % of occasions. That is what permits the output to enter a decision rule rather than merely to sort samples, and it is what none of the 22 audited models in Section 2.3 reports. Together with Section 5.5 this answers objective O3.
 
@@ -727,7 +727,7 @@ Third, and most consequentially, the number of calibration drives binds independ
 
 Figure 5.9 puts the three observations on one pair of axes in the form conformal work conventionally uses: the realised risk against the nominal level, with the guarantee boundary drawn as the diagonal. Every operating point lies on or below the diagonal, which is the claim the procedure makes; the second axis carries what that compliance costs, and the shaded strip on the left is the region no choice of threshold can reach with twenty-eight calibration drives.
 
-@@FIG|/home/claude/figs/png_print/fig31_conformal_coverage.png|Figure 5.9 Realised per-drive miss rate against the certified target, with the alarm rate on the right-hand axis. Points on or below the diagonal satisfy the guarantee. The shaded strip marks the targets made unreachable by the number of calibration drives.|6.3
+@@FIG|./figs/png_print/fig31_conformal_coverage.png|Figure 5.9 Realised per-drive miss rate against the certified target, with the alarm rate on the right-hand axis. Points on or below the diagonal satisfy the guarantee. The shaded strip marks the targets made unreachable by the number of calibration drives.|6.3
 
 ## 5.6 Generalisation across corridors and speed regimes
 
@@ -747,7 +747,7 @@ AUROC remains between 0.909 and 0.949 across all four, so no single campaign is 
 
 The highway row is the one that bears on the objective. That campaign was driven after every modelling decision had been frozen, so nothing in the model was tuned on it, and it differs from the training data in both corridor and speed regime. It nonetheless reaches AUROC 0.927, with the **highest lift and the lowest calibration error of the four**. Adding it to the pooled dataset moved the headline AUROC by nothing: 0.933 before and 0.933 after. A fourth campaign that changes the headline result by zero is the strongest available evidence that the first three were not being over-fitted.
 
-@@FIG|/home/claude/figs/png_print/fig38_capture_smallmultiples.png|Figure 5.10 Leave-one-campaign-out on four metrics. Each panel holds one campaign out entirely and trains on the other three; the dashed line is the pooled result on the same metric. The highway, in maroon, is the campaign frozen out of every modelling decision.|6.3
+@@FIG|./figs/png_print/fig38_capture_smallmultiples.png|Figure 5.10 Leave-one-campaign-out on four metrics. Each panel holds one campaign out entirely and trains on the other three; the dashed line is the pooled result on the same metric. The highway, in maroon, is the campaign frozen out of every modelling decision.|6.3
 
 ## 5.7 External validation on an independently collected dataset
 
@@ -761,7 +761,7 @@ The leave-one-campaign-out experiment still shares an operator, an instrument an
 
 Table 5.7 reports the comparison and Figure 5.11 places it beside the pairwise transfers among the Dhaka campaigns. The transferred model reaches AUROC 0.752 on data it has never seen, against 0.745 for a model trained on that dataset itself. The two figures are close, and the appropriate reading is not that the transferred model is superior — the difference is within the range that resampling produces — but that **what transfers is the formulation rather than the fit**. A fitted model belongs to the network it was fitted on; a formulation and a feature construction do not, and it is the latter that this thesis offers.
 
-@@FIG|/home/claude/figs/png_print/fig15_transfer.png|Figure 5.11 Pairwise transfer between the three Dhaka campaigns and out to the curated public dataset: AUROC at one second, whole drives held out. Between-campaign transfer shares no drives, routes or cells; external transfer shares no network and no operator. The highway campaign is not in this matrix; it is reported in Table 5.6 and Figure 5.10.|6.3
+@@FIG|./figs/png_print/fig15_transfer.png|Figure 5.11 Pairwise transfer between the three Dhaka campaigns and out to the curated public dataset: AUROC at one second, whole drives held out. Between-campaign transfer shares no drives, routes or cells; external transfer shares no network and no operator. The highway campaign is not in this matrix; it is reported in Table 5.6 and Figure 5.10.|6.3
 
 ## 5.8 Mechanism: the network triggers on its weakest signal
 
@@ -776,7 +776,7 @@ Table 5.8 reports the single-feature discriminative power of the three most info
 | Serving SINR | 0.830 |
 | A3 serving-to-neighbour gap | **0.566** |
 
-@@FIG|/home/claude/figs/png_print/fig17_mechanism.png|Figure 5.12 Single-feature discriminative power. Serving dwell time, which the deployed rule does not use, is the strongest single predictor; the serving-to-neighbour gap, which the rule thresholds on, is among the weakest.|6.3
+@@FIG|./figs/png_print/fig17_mechanism.png|Figure 5.12 Single-feature discriminative power. Serving dwell time, which the deployed rule does not use, is the strongest single predictor; the serving-to-neighbour gap, which the rule thresholds on, is among the weakest.|6.3
 
 Figure 5.12 ranks the seven strongest single features. The quantity on which the network makes its decision is close to the least informative input available. Serving dwell time — how long the handset has been attached to its current cell — reaches AUROC 0.874 entirely on its own, while the serving-to-neighbour gap reaches 0.566, barely above chance for a single feature.
 
@@ -786,7 +786,7 @@ The interpretation is a statement about the rule rather than about the model. Th
 
 Figure 5.13 shows the same result as a dose-response relation rather than as a summary statistic, which is the stronger form of the evidence. Sweeping the serving-to-neighbour gap across thirty decibels moves the probability of a handover within one second only between roughly 0.08 and 0.22, and the relation is not even monotone: the most negative gap bin carries the highest handover probability of all. A quantity that behaves this way cannot, on its own, order samples by imminence.
 
-@@FIG|/home/claude/figs/png_print/fig33_dose_response.png|Figure 5.13 Probability of a handover within one second against the serving-to-neighbour gap, in 2.5 dB bins, with Wilson binomial intervals. The lower panel gives the sample count in each bin, so a wide interval is visibly a small-sample interval.|6.29
+@@FIG|./figs/png_print/fig33_dose_response.png|Figure 5.13 Probability of a handover within one second against the serving-to-neighbour gap, in 2.5 dB bins, with Wilson binomial intervals. The lower panel gives the sample count in each bin, so a wide interval is visibly a small-sample interval.|6.29
 
 ## 5.9 The A3 report-conversion rate
 
@@ -801,7 +801,7 @@ The first of the two network findings concerns what happens to a measurement rep
 | Highway | 71.9 % |
 | **Pooled (7,385 reports)** | **62.9 %** |
 
-@@FIG|/home/claude/figs/png_print/fig19_conversion.png|Figure 5.14 A3 report conversion by campaign. The decline rate rises with cell size, reaching 71.9 % on the highway where cells are largest.|6.3
+@@FIG|./figs/png_print/fig19_conversion.png|Figure 5.14 A3 report conversion by campaign. The decline rate rises with cell size, reaching 71.9 % on the highway where cells are largest.|6.3
 
 Figure 5.14 draws the same four campaigns against the pooled rate. Two qualifiers travel with this number wherever it is quoted, and both are stated here because omitting either changes the figure materially. The measurement counts **Event A3 reports only**; taken over all measurement report types together the decline rate is 68.7 %. And it uses a **two-second conversion window**; a different window produces a different number. Both qualifiers are computable only after the configuration-timeline correction of Section 3.3, without which report type cannot be determined reliably.
 
@@ -825,7 +825,7 @@ The rate moves by more than sixteen percentage points without a single change to
 
 The window length is a fourth choice, and Figure 5.15 reports the full grid rather than the single row of Table 5.10. Across three window lengths and four identity-and-return conventions the same 938 handovers yield twelve defensible ping-pong rates between 19.5 % and 38.5 %. No cell in that grid is wrong; what is wrong is publishing one of them without saying which.
 
-@@FIG|/home/claude/figs/png_print/fig37_pingpong_heatmap.png|Figure 5.15 The ping-pong rate over the full definitional grid: three return windows against four combinations of cell identity and return rule, computed on one unchanging set of 938 handovers. The outlined cell is the definition quoted throughout this thesis.|6.3
+@@FIG|./figs/png_print/fig37_pingpong_heatmap.png|Figure 5.15 The ping-pong rate over the full definitional grid: three return windows against four combinations of cell identity and return rule, computed on one unchanging set of 938 handovers. The outlined cell is the definition quoted throughout this thesis.|6.3
 
 Table 5.11 reports where the phenomenon concentrates.
 
@@ -837,15 +837,15 @@ Table 5.11 reports where the phenomenon concentrates.
 | Dominant profile (+1 dB, 320 ms), 72 % of all handovers | 29.2 % |
 | Highway campaign, mean speed 49.5 km/h | 31.1 % |
 
-@@FIG|/home/claude/figs/png_print/fig24_pingpong_mechanism.png|Figure 5.16 Where ping-pong concentrates. The dominant axis is the carrier relationship, not the mobility regime; the highway returns as often as the urban corridors despite three times the mean speed.|6.3
+@@FIG|./figs/png_print/fig24_pingpong_mechanism.png|Figure 5.16 Where ping-pong concentrates. The dominant axis is the carrier relationship, not the mobility regime; the highway returns as often as the urban corridors despite three times the mean speed.|6.3
 
 Figure 5.16 separates the three strata. Two results follow. Ping-pong is concentrated almost entirely in intra-carrier handovers, at 31.0 % against 6.5 % across carriers, a factor of nearly five. And it is **not driven by speed**, which is the intuitive explanation: the highway campaign, at three times the urban mean speed, returns at 31.1 %, marginally *above* the pooled rate. The lever available to an operator is therefore the time-to-trigger of the dominant configuration profile rather than any speed-dependent adaptation. This thesis stops short of claiming a causal effect for such a change, for the reason given in Section 5.13.
 
 Modelling the arrival stream as a self-exciting process supports the same conclusion from a different direction. The fitted Hawkes branching ratio is 0.605 with a 95 % interval of [0.524, 0.673], so each handover triggers on average approximately 0.6 further handovers; per campaign the value runs 0.649, 0.609, 0.567 and 0.513, lowest on the highway. The Ogata residual test of Section 4.11 rejects the exponential kernel (*D* = 0.074, *p* = 7 × 10⁻⁴), which is reported rather than suppressed: the clustering is real, but its temporal shape is not the exponential decay that the standard Hawkes kernel assumes. Figure 5.17 gives the per-campaign estimates with their intervals and Figure 5.18 illustrates the fitted intensity against the arrival stream itself.
 
-@@FIG|/home/claude/figs/png_print/fig34_forest_hawkes.png|Figure 5.17 Hawkes branching ratio estimated on each campaign separately and on the pooled stream, with bootstrap intervals. The pooled estimate is drawn as a diamond in the usual convention. The per-campaign intervals overlap, so the campaigns differ in point estimate but not detectably in clustering strength.|6.3
+@@FIG|./figs/png_print/fig34_forest_hawkes.png|Figure 5.17 Hawkes branching ratio estimated on each campaign separately and on the pooled stream, with bootstrap intervals. The pooled estimate is drawn as a diamond in the usual convention. The per-campaign intervals overlap, so the campaigns differ in point estimate but not detectably in clustering strength.|6.3
 
-@@FIG|/home/claude/figs/png_print/fig18_hawkes.png|Figure 5.18 Self-excitation in the handover arrival stream. The fitted branching ratio is 0.605; the Ogata residual test rejects the exponential kernel, so the clustering is real but not exponentially shaped.|6.3
+@@FIG|./figs/png_print/fig18_hawkes.png|Figure 5.18 Self-excitation in the handover arrival stream. The fitted branching ratio is 0.605; the Ogata residual test rejects the exponential kernel, so the clustering is real but not exponentially shaped.|6.3
 
 ## 5.11 Negative results
 
@@ -859,7 +859,7 @@ Four approaches were implemented in good faith, measured, and did not help. They
 | Explicit cell-clustering features | No gain over the retained feature set |
 | Deep CORAL and a second unsupervised domain adaptation method | No gain over source-only training |
 
-@@FIG|/home/claude/figs/png_print/fig22_negatives.png|Figure 5.19 Approaches that did not improve on the retained configuration. The dedicated ping-pong classifier is indistinguishable from chance.|6.3
+@@FIG|./figs/png_print/fig22_negatives.png|Figure 5.19 Approaches that did not improve on the retained configuration. The dedicated ping-pong classifier is indistinguishable from chance.|6.3
 
 Table 5.12 lists them and Figure 5.19 sets each against the configuration that was retained. The dedicated ping-pong classifier is the most informative of the four. Ping-pong is highly structured at the population level, as Section 5.10 shows, and yet it is not predictable at the level of the individual handover from these inputs: whether a particular transfer will be reversed appears to depend on the state of the target cell, which the handset does not observe.
 
@@ -867,7 +867,7 @@ The domain-adaptation null is consistent with published benchmarking rather than
 
 One further ablation deserves its own figure, because its result is easy to state backwards. Figure 5.20 shows that adding the thirteen signalling features to the radio, mobility and history block changes the one-second AUPRC by nothing at all — 0.811 against 0.811 — while signalling features on their own still reach 0.370, roughly five times the prevalence floor. The signalling block therefore carries genuine information about imminence; the radio features simply carry it already.
 
-@@FIG|/home/claude/figs/png_print/fig40_signalling_ablation.png|Figure 5.20 Feature-block ablation at the one-second horizon, one marker per seed. Signalling features are informative on their own and redundant once the radio, mobility and history block is present.|6.3
+@@FIG|./figs/png_print/fig40_signalling_ablation.png|Figure 5.20 Feature-block ablation at the one-second horizon, one marker per seed. Signalling features are informative on their own and redundant once the radio, mobility and history block is present.|6.3
 
 Finally, removing the signalling leakage guard of Section 4.6 raises the apparent score substantially, which is the expected behaviour of a leak and is the reason the guard exists. That configuration is not reported as a result anywhere in this thesis.
 

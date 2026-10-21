@@ -73,14 +73,14 @@
 
 | # | Step | Owner | Effort | Unlocks |
 |---|---|---|---|---|
-| 1 | ~~Run the §5.1 alignment audit on the NUWiNS XCAL data~~ | Claude | **done 18 Sept** | G1 closed: 4,712 handovers, 3 operators, mechanism established |
+| 1 | ~~Run the §5.1 alignment audit on the NUWiNS XCAL data~~ | authors | **done 18 Sept** | G1 closed: 4,712 handovers, 3 operators, mechanism established |
 | 2 | Email the authors of arXiv:2511.03116 asking for early access | Abeer | 10 min | G1 + G3, and a citation-worthy collaboration |
 | 3 | Email the authors of arXiv:2605.12453 for the same | Abeer | 10 min | G2 + G4 |
 | 4 | Re-export the four captures from XCAL at native message rate | Abeer | one afternoon | G4, settles the row-time semantics for good |
 | 5 | Collect 4–6 more sessions (different days, routes, times) | Abeer | one week of driving | G2 — makes paired tests informative |
 | 6 | One capture on a second operator, even a short one | Abeer | one afternoon | G3 — the single biggest generality gain |
 | 7 | Download the Vienna dataset if steps 2–3 stall | Abeer | 30 min | weak G2/G3 |
-| 8 | Fold whatever arrives into §5.1, Table A.3 and §5.7 | Claude | ~2 hours each | — |
+| 8 | Fold whatever arrives into §5.1, Table A.3 and §5.7 | authors | ~2 hours each | — |
 
 *Steps 2 and 3 (the two author emails) are still the highest-value remaining items: G2 (independent
 units) and G4 (sub-second resolution) are untouched by the NUWiNS run, because that corpus has no

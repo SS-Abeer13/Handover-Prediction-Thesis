@@ -6,7 +6,7 @@ PDF = sys.argv[1]
 txt = subprocess.run(['pdftotext', '-layout', PDF, '-'],
                      capture_output=True, text=True).stdout
 pages = txt.split('\f')
-E = json.load(open('/home/claude/thesis/entries.json'))
+E = json.load(open('./thesis/entries.json'))
 
 
 def norm(s):
@@ -94,7 +94,7 @@ for group in ('fig', 'tab'):
             cursor = idx
             out[e['key']] = str(idx - offset + 1)
 
-json.dump(out, open('/home/claude/thesis/pages.json', 'w'), indent=1)
+json.dump(out, open('./thesis/pages.json', 'w'), indent=1)
 print('mapped', len(out), 'entries; body starts at PDF page', offset + 1,
       '; missing', len(missing))
 for m in missing[:15]:

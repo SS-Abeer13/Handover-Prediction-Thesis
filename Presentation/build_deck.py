@@ -13,9 +13,9 @@ from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 import copy, os
 
 TPL = "/mnt/user-data/uploads/Handover Thesis/Presentation/Sample Thesis Presentation.pptx"
-BG_TITLE = "/home/claude/tmpl/x/ppt/media/image1.png"
-BG_BODY = "/home/claude/tmpl/x/ppt/media/image2.png"
-PNG = "/home/claude/figs/png"
+BG_TITLE = "./tmpl/x/ppt/media/image1.png"
+BG_BODY = "./tmpl/x/ppt/media/image2.png"
+PNG = "./figs/png"
 OUT = "/mnt/user-data/outputs/Handover-Thesis-Defence.pptx"
 
 MAROON = RGBColor(0x89, 0x13, 0x13)

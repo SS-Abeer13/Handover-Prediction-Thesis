@@ -19,7 +19,7 @@ from tables_spec import appendix_d, tables
 ROOT = Path("d:/Handover Thesis").resolve()
 SRC = ROOT / "Docs" / "Handover_Thesis_Manuscript_Draft.docx"
 FIGS = ROOT / "pipeline" / "reports_rev" / "figures"
-OUT = ROOT / "Claude outputs" / "Handover_Thesis_Manuscript_Revised-5.docx"
+OUT = ROOT / "drafts" / "Handover_Thesis_Manuscript_Revised-5.docx"
 MIRROR = ROOT / "Docs" / "Handover_Thesis_Manuscript_Revised.docx"
 
 TABLE_SLOT = {1: "2.1", 2: "3.1", 3: "3.2", 4: "4.1", 5: "4.2", 6: "4.3", 7: "5.1", 8: "5.3", 9: "5.5",

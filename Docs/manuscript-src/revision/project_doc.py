@@ -4,7 +4,7 @@ from pathlib import Path
 
 from msnumbers import build
 
-OUT = Path("/home/claude/w/ms/revision-2026-09-18.md")
+OUT = Path("./w/ms/revision-2026-09-18.md")
 
 
 def main():

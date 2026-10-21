@@ -135,7 +135,6 @@ my own predictions refuted.
 | Other figures | `pipeline\reports\figures\viz_*.png` |
 | Bibliography | `pipeline\docs\literature\references.bib` (108 entries, verification-tagged: 93 full, 15 partial; originals in `.bak`) |
 | Protocol audit | `pipeline\docs\literature\protocol_audit.csv` (22 competitor rows + ours) |
-| Executed notebooks | `Claude outputs\*.html` |
 | Pipeline code | `pipeline\src\hoproj\` — 18 stages, stage00 to stage17 |
 | Tests | `pipeline\tests\` — 17 passing |
 | Original proposal | `Docs\Proposal\` |
