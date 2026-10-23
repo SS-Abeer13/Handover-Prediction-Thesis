@@ -21,7 +21,7 @@
 
 \newcommand{\x}{$\times$}
 
-\journal{Computer Communications}
+\journal{Engineering Applications of Artificial Intelligence}
 
 \begin{document}
 
@@ -29,14 +29,12 @@
 
 \title{Timestamp-Alignment Leakage in Drive-Test Handover Prediction: Quantification, Mitigation, and Blind Second-Operator Validation}
 
-\author[iut]{Saadman Sakib\corref{cor}}
-\ead{saadmansakib21@iut-dhaka.edu}
-\author[iut]{Adhnan Kalim\corref{cor}}
-\ead{adhnankalim@iut-dhaka.edu}
-\author[iut]{Evan Ashfaque\corref{cor}}
-\ead{evanashfaque@iut-dhaka.edu}
-\author[iut]{Mohammad Tawhid Kawser}
-\cortext[cor]{Corresponding authors.}
+\author[iut]{Saadman Sakib}
+\author[iut]{Adhnan Kalim}
+\author[iut]{Evan Ashfaque}
+\author[iut]{Mohammad Tawhid Kawser\corref{cor}}
+\cortext[cor]{Corresponding author.}
+\ead{kawser@iut-dhaka.edu}
 \affiliation[iut]{organization={Department of Electrical and Electronic Engineering, Islamic University of Technology (IUT)},
             addressline={Board Bazar},
             city={Gazipur},
@@ -44,19 +42,19 @@
             country={Bangladesh}}
 
 \begin{abstract}
-Learned handover predictors are often trained on one-hertz drive-test exports and report high scores. We show that a property of the export, not of the network or learner, can produce much of that score. In four drive-test campaigns on a commercial LTE network (10,260 one-hertz samples, 938 handover commands decoded from RRC signalling), the export row stamped in the second before a handover command already carries the post-handover serving cell in 76\% of handovers, against 16\% one row earlier. Lagging every export feature by one row moves the one-second area under the precision--recall curve (AUPRC) of the same fixed-parameter model from 0.604 to 0.156, a 3.9-fold inflation; 94\% of the fall comes from serving-cell radio scalars that change their referent when the serving cell flips. End-of-second downsampling of a native-rate public corpus from the same tool (4,712 handovers, three operators) reproduces the defect (93\%), and start-of-second downsampling removes it (4\%). A capture on a second operator, recorded after the pipeline was frozen and blind to the repair, replicates both findings: 67\% contamination and a 4.3-fold inflation. With the leak removed and whole campaigns held out, an exploratory evaluation gives a one-second AUPRC of 0.169 against a 6.8\% prevalence floor, and the splitting protocol reorders the learners: random-row splitting inflates gradient-boosted trees by 49\% and a linear model by 8\%. On the blind operator the predictive level transferred but the ranking of learners did not. The audit takes a few lines of code and is released with the pipeline.
+Machine learning models for cellular handover forecasting are frequently trained on one-hertz drive-test exports and report optimistic predictive scores. This paper demonstrates that an unexamined feature of tabular export aggregation, rather than the underlying cellular network or machine learning algorithm, can produce much of that apparent predictive performance. Across four drive-test measurement campaigns on a commercial Long Term Evolution (LTE) cellular network (10,260 one-hertz samples, 938 handover commands decoded directly from Radio Resource Control (RRC) signalling), the export row stamped in the second immediately preceding a handover command already reflects the post-handover serving cell in 76\% of handovers, compared to only 16\% one row earlier. Lagging all export features by a single row shifts the one-second Area Under the Precision-Recall Curve (AUPRC) of the benchmark model from 0.604 to 0.156, representing a 3.9-fold inflation; 94\% of this reduction stems from serving-cell radio measurements whose referents invert upon handover execution. End-of-second aggregation on native-rate telemetry from an independent corpus spanning three operators reproduces the contamination (93\%), whereas start-of-second alignment eliminates it (4\%). A validation drive on a second cellular operator, conducted after freezing the training pipeline, confirms both findings: 67\% row contamination and a 4.3-fold performance inflation. When this temporal leakage is removed and campaign holdout evaluation is enforced, gradient-boosted decision trees achieve an exploratory one-second AUPRC of 0.169 against a 6.8\% prevalence baseline.
 \end{abstract}
 
 \begin{highlights}
 \item One-hertz drive-test rows carry the post-handover cell before the handover command.
-\item Ignoring this inflates one-second handover-prediction AUPRC about four-fold.
+\item Ignoring this inflates one-second handover-prediction performance four-fold.
 \item Serving-cell radio scalars, not cell identifiers, carry 94\% of the leak.
 \item Splitting protocol reorders learner rankings, not just their scores.
 \item The leak replicates blind on a second operator; learner rankings do not.
 \end{highlights}
 
 \begin{keyword}
-Handover prediction \sep Data leakage \sep Drive test \sep LTE \sep RRC signalling \sep Evaluation protocol \sep Discrete-time survival analysis
+Machine learning \sep Gradient-boosted decision trees \sep Discrete-time survival analysis \sep Conformal risk control \sep Data leakage audit \sep Timestamp alignment \sep Cellular handover forecasting \sep Telecommunication telemetry \sep Drive testing
 \end{keyword}
 
 \end{frontmatter}
@@ -126,7 +124,7 @@ States export--event-clock alignment & 0 & Audited \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.82\linewidth]{figures/fig03_map_routes.png}
-\caption{Routes of the four development campaigns (operator~A), Dhaka urban corridors and the Uttara--Gazipur highway, and of the blind operator-B capture (purple, Section~\ref{sec:blind}). Open circles mark the 938 quality-controlled operator-A handover commands (HO); the 87 operator-B commands are not drawn. Basemap: Esri, HERE, Garmin, and OpenStreetMap contributors.}
+\caption{Routes of the four development campaigns (operator~A), Dhaka urban corridors and the Uttara--Gazipur highway. Open circles mark the 938 quality-controlled handover commands.}
 \label{fig:map}
 \end{figure}
 
@@ -153,7 +151,7 @@ Operator B (blind) & 17.4 min & 883 & 87 (87) & --- \\
 \end{tabularx}
 \end{table}
 
-\paragraph{What is blind, and what is not} A configuration manifest was written before Campaign~4 was driven, and Campaign~4 is the only campaign that differs in both corridor and speed, so it is reported as a held-out campaign. It is held out from model fitting and tuning. It is not blind to pipeline design: the alignment audit of Section~\ref{sec:audit} was performed after all four campaigns were acquired, and the one-row lag it motivates was decided with Campaign~4 in view. The manifest itself was not registered externally. We therefore treat every four-campaign result as exploratory. A fifth capture was recorded on 9 October 2026 with the same handset and XCAL build on a second commercial operator (operator~B), after the modelling freeze and after the audit. It is blind to every pipeline decision, the lag included, it is never pooled with the development campaigns, and nothing was tuned on it. A third dataset, a public drive-test release on operator~A from the same city~\cite{ref38}, was collected two years earlier by a cohort in our own department, co-authored by one of the authors (M.~T.~Kawser); it is a same-institution replication, used in the thesis this paper derives from only for a signalling-only transfer check, and it is not used for any claim in this paper.
+\paragraph{What is blind, and what is not} A configuration manifest was written before Campaign~4 was driven, and Campaign~4 is the only campaign that differs in both corridor and speed, so it is reported as a held-out campaign. It is held out from model fitting and tuning. It is not blind to pipeline design: the alignment audit of Section~\ref{sec:audit} was performed after all four campaigns were acquired, and the one-row lag it motivates was decided with Campaign~4 in view. The manifest itself was not registered externally. We therefore treat every four-campaign result as exploratory. A fifth capture was recorded on 9 October 2026 with the same handset and XCAL build on a second commercial operator (operator~B), after the modelling freeze and after the audit. It is blind to every pipeline decision, the lag included, it is never pooled with the development campaigns, and nothing was tuned on it. A third dataset, a public drive-test release on operator~A from the same city~\cite{ref38}, was collected two years earlier by a cohort in our own department, co-authored by the corresponding author; it is a same-institution replication, used in the thesis this paper derives from only for a signalling-only transfer check, and it is not used for any claim in this paper.
 
 %% =====================================================================
 \section{The alignment audit}
@@ -498,10 +496,10 @@ On one-hertz drive-test exports, the row stamped before a handover command usual
 The pipeline, the alignment audit, the protocol definitions and the scripts that produce every table in this paper are archived at Zenodo, \url{https://doi.org/10.5281/zenodo.23479562} (frozen release v1.0.0 of \url{https://github.com/SS-Abeer13/Handover-Prediction-Thesis}). The archive also contains the raw one-hertz exports and decoded signalling logs of the five captures, the derived frames, and the tables behind every number reported here.
 
 \section*{CRediT authorship contribution statement}
-\textbf{Saadman Sakib:} Conceptualization, Methodology, Software, Investigation, Formal analysis, Writing -- original draft. \textbf{Adhnan Kalim:} Methodology, Investigation, Data curation, Validation, Formal analysis, Writing -- review \& editing. \textbf{Evan Ashfaque:} Investigation, Data curation, Visualization, Writing -- review \& editing. \textbf{Mohammad Tawhid Kawser:} Supervision, Resources, Methodology, Writing -- review \& editing.
+\textbf{Saadman Sakib:} Conceptualization, Methodology, Software, Investigation, Formal analysis, Writing -- original draft. \textbf{Adhnan Kalim:} Investigation, Data curation, Validation, Writing -- review \& editing. \textbf{Evan Ashfaque:} Investigation, Data curation, Visualization, Writing -- review \& editing. \textbf{Mohammad Tawhid Kawser:} Supervision, Resources, Methodology, Writing -- review \& editing.
 
 \section*{Declaration of competing interest}
-One of the authors (M.~T.~Kawser) is a co-author of the public drive-test dataset~\cite{ref38} referred to in Section~\ref{sec:corpus}; that dataset is not used for any result reported here. The authors declare no other competing interests.
+The corresponding author is a co-author of the public drive-test dataset~\cite{ref38} referred to in Section~\ref{sec:corpus}; that dataset is not used for any result reported here. The authors declare no other competing interests.
 
 \section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
 During the preparation of this work the authors used an AI assistant (Claude, Anthropic) to help condense the thesis on which this article is based into journal form and to edit the language. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the published article.
